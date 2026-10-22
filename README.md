@@ -1,81 +1,65 @@
-# Mondragon 5 — Merged Static Site
+# Mondragon — Astro
 
-Project ini adalah hasil penggabungan **3 file ZIP** hasil download terpisah dari satu website Framer yang sama:
+Astro 1:1 conversion of the Framer-exported Mondragon site. The goal is visual and behavioural parity with the original export, so the pre-rendered Framer markup and its client runtime are intentionally preserved.
 
-- `mondragon-5-digital-creative-agency-copy-site.zip` → halaman Home, About, dan daftar Cases
-- `mondragon-5-digital-creative-agency-copy-site (1).zip` → halaman case Armada dan Montana
-- `mondragon-5-digital-creative-agency-copy-site (2).zip` → halaman Contact dan case Pirate Hub
+## Requirements
 
-Semua halaman sekarang berada dalam satu struktur folder, memakai satu folder `assets` gabungan, dan saling terhubung.
+- Node.js **22.23.4+** (Astro 7 requirement)
+- npm 9.6.5+
 
-## Halaman yang tersedia
+## Commands
 
-| URL | Halaman |
-| --- | --- |
-| `/` | Home |
-| `/about/` | About |
-| `/cases/` | Daftar semua case |
-| `/cases/armada/` | Case Armada |
-| `/cases/montana/` | Case Montana |
-| `/cases/pirate-hub/` | Case Pirate Hub |
-| `/cases/calderone/` | Case Calderone |
-| `/cases/oasis/` | Case Oasis |
-| `/contact/` | Contact |
-
-> Catatan: halaman **Calderone** dan **Oasis** tidak ada di dalam ketiga ZIP, tetapi tautannya ada di halaman daftar Cases. Kedua halaman ini dilengkapi otomatis dari situs live-nya dan seluruh asetnya sudah diunduh agar tautan tidak rusak.
-
-## Cara menjalankan
-
-### Cara termudah (Windows)
-
-1. Klik dua kali `start.cmd`.
-2. Browser akan terbuka otomatis di `http://localhost:4173`.
-
-Script akan memakai Node.js portable yang sudah ada di:
-
-```
-..\.setup\node\node-v24.22.1-win-x64\node.exe
+```bash
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # static output in dist/
+npm run preview   # preview the production build
 ```
 
-Jika Node.js tersedia di `PATH`, script juga bisa memakai `node` biasa.
+Deploy the generated `dist/` folder at the domain root. All links and assets are relative to the page depth, matching the original Framer routing.
 
-### Manual
+## Project structure
 
-```powershell
-node serve.js 4173
+```text
+src/
+  layouts/
+    BaseLayout.astro       # <html>, <head>, <body> shell
+  pages/
+    index.astro            # /
+    about/index.astro      # /about/
+    cases/index.astro      # /cases/
+    cases/armada/index.astro
+    cases/calderone/index.astro
+    cases/montana/index.astro
+    cases/oasis/index.astro
+    cases/pirate-hub/index.astro
+    contact/index.astro    # /contact/
+  fragments/pages/         # exact <head> and <body> fragments from the export (.frag)
+public/
+  assets/                  # images, fonts, Framer runtime modules
+  f2c-sw.js                # Framer asset/CMS mapping service worker
+scripts/
+  extract-pages.mjs        # regenerate fragments and page routes
 ```
 
-Lalu buka `http://localhost:4173`.
+## How the conversion works
 
-> **Penting:** jangan membuka `index.html` langsung lewat `file://`. Website ini memakai ES modules, module imports, dan service worker yang hanya bekerja melalui HTTP server. Selain itu service worker didaftarkan di `/f2c-sw.js`, jadi situs harus dijalankan dari root domain/localhost, bukan dari subfolder acak.
+Each Astro page imports its `<head>` and `<body>` fragment as raw text and passes it through `BaseLayout.astro`:
 
-## Struktur folder
-
-```
-mondragon-site/
-├─ index.html                 # Home
-├─ about/index.html
-├─ cases/index.html
-├─ cases/armada/index.html
-├─ cases/montana/index.html
-├─ cases/pirate-hub/index.html
-├─ cases/calderone/index.html
-├─ cases/oasis/index.html
-├─ contact/index.html
-├─ assets/                    # Gabungan aset ketiga ZIP + aset 2 halaman tambahan
-├─ f2c-sw.js                  # Service worker gabungan dari 3 deployment
-├─ serve.js                   # Static server tanpa dependency
-├─ start.cmd                  # Launcher Windows (klik dua kali)
-├─ start.ps1                  # Launcher PowerShell
-└─ README.md
+```astro
+<BaseLayout {head} {body} />
 ```
 
-## Catatan teknis
+`BaseLayout.astro` renders the fragments with `<Fragment set:html={...} />`. Astro handles routing, dev/build tooling and static generation; the Framer hydration bundle continues to drive animations and interactions.
 
-- Ketiga ZIP berasal dari **deployment/site ID Framer yang berbeda** (`7unOYoPP...`, `5OMdGr8...`, `2n1K4F4...`), walau isinya website yang sama. Karena itu folder modul per-deployment tetap dipertahankan di dalam `assets/framerusercontent.com/sites/`.
-- Folder `assets` digabung dari ketiga ZIP. Semua file dengan path sama sudah dicek dan isinya identik, kecuali `f2c-sw.js` yang memang berbeda per deployment.
-- `f2c-sw.js` dibuat ulang dengan menggabungkan ketiga peta aset dan service worker, sehingga semua halaman bisa memakai satu service worker.
-- Tautan yang tadinya menunjuk ke tiga domain live (`serene-example-...`, `tedious-anything-...`, `flowing-fade-...`) sudah diarahkan ke halaman lokal.
-- Metadata `canonical` dan `og:url` masih menunjuk ke domain Framer asli. Ini tidak mengganggu tampilan; ubah jika nanti website dipublikasikan di domain sendiri.
-- Sebagian besar aset (gambar, font, modul Framer, dan data CMS) disimpan lokal sehingga tetap tampil tanpa koneksi internet. Pengecualian: video Vimeo dan beberapa layanan eksternal (analytics, social link) tetap membutuhkan internet.
-- Jalankan `start.ps1` jika lebih nyaman memakai PowerShell.
+This is deliberate: the original export is compiled Framer output, not editable component source. Keeping the Framer runtime is what preserves the visuals exactly. If the source HTML is updated, regenerate the fragments and routes with:
+
+```bash
+npm run extract
+```
+
+## Notes
+
+- The template promo widget has already been removed from the HTML and disabled in the Framer bundles.
+- `public/f2c-sw.js` is retained because the Framer runtime and CMS data rely on its asset URL mapping.
+- External Vimeo embeds, analytics and social links still require internet access at runtime.

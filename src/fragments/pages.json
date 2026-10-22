@@ -1,0 +1,65 @@
+[
+  {
+    "route": "/about/",
+    "slug": "about",
+    "source": "about/index.html",
+    "headBytes": 298382,
+    "bodyBytes": 295275
+  },
+  {
+    "route": "/cases/armada/",
+    "slug": "cases-armada",
+    "source": "cases/armada/index.html",
+    "headBytes": 269833,
+    "bodyBytes": 113718
+  },
+  {
+    "route": "/cases/calderone/",
+    "slug": "cases-calderone",
+    "source": "cases/calderone/index.html",
+    "headBytes": 272274,
+    "bodyBytes": 118738
+  },
+  {
+    "route": "/cases/",
+    "slug": "cases",
+    "source": "cases/index.html",
+    "headBytes": 265104,
+    "bodyBytes": 189600
+  },
+  {
+    "route": "/cases/montana/",
+    "slug": "cases-montana",
+    "source": "cases/montana/index.html",
+    "headBytes": 269835,
+    "bodyBytes": 119016
+  },
+  {
+    "route": "/cases/oasis/",
+    "slug": "cases-oasis",
+    "source": "cases/oasis/index.html",
+    "headBytes": 268804,
+    "bodyBytes": 112383
+  },
+  {
+    "route": "/cases/pirate-hub/",
+    "slug": "cases-pirate-hub",
+    "source": "cases/pirate-hub/index.html",
+    "headBytes": 267045,
+    "bodyBytes": 119041
+  },
+  {
+    "route": "/contact/",
+    "slug": "contact",
+    "source": "contact/index.html",
+    "headBytes": 290304,
+    "bodyBytes": 154279
+  },
+  {
+    "route": "/",
+    "slug": "home",
+    "source": "index.html",
+    "headBytes": 289629,
+    "bodyBytes": 599378
+  }
+]
