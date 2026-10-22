@@ -1,7 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import head from '../../fragments/pages/about/head.frag?raw';
-import body from '../../fragments/pages/about/body.frag?raw';
+import Test from '../../layouts/Test.astro';
+import html from '/home/claude/tools/out/pages/about.html?raw';
 ---
-
-<BaseLayout {head} {body} />
+<Test html={html} />
