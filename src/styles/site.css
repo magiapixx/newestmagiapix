@@ -1207,3 +1207,11 @@ html body { background: rgb(94, 94, 94); }/* About section copy: font size follo
 @media (min-width:810px) and (max-width:1199.98px){.m-faSoo .m-a6ig74 .rt.type-1qeok15{--m-font-size:min(4.444vw,40px)}.m-faSoo div[aria-label]{font-size:min(2.469vw,22px)!important}}
 @media (min-width:1200px) and (max-width:1599.98px){.m-faSoo .m-a6ig74 .rt.type-1qeok15{--m-font-size:3vw}.m-faSoo div[aria-label]{font-size:1.667vw!important}}
 @media (min-width:1600px){.m-faSoo div[aria-label]{font-size:min(2.25vw,43px)!important;line-height:1.028em!important;letter-spacing:-.0278em!important}}
+/* Footer social icons and big links: size follows the viewport width in the same ratio as each breakpoint's design */
+.m-mIo8f .m-xfrdtw .rt.type-9iwysc{--m-line-height:.979em;--m-letter-spacing:-.0213em}
+.m-mIo8f .m-xfrdtw .rt.type-1qeok15{--m-line-height:1.028em;--m-letter-spacing:-.0278em}
+.m-mIo8f .m-12mer3l-container .m-FaA1Q.v-1e433w3 [class$="-container"]{width:var(--footer-icon);height:var(--footer-icon)}
+.m-mIo8f .m-12mer3l-container .m-FaA1Q.v-1e433w3{gap:var(--footer-icon-gap)}
+@media (max-width:809.98px){.m-mIo8f{--footer-icon:min(8.46vw,48px);--footer-icon-gap:min(3.846vw,22px)}.m-mIo8f .m-xfrdtw .rt.type-1qeok15{--m-font-size:min(9.23vw,56px)}}
+@media (min-width:810px) and (max-width:1199.98px){.m-mIo8f{--footer-icon:min(4.074vw,6vh);--footer-icon-gap:1.852vw}.m-mIo8f .m-xfrdtw .rt.type-1qeok15{--m-font-size:min(4.444vw,6vh)}}
+@media (min-width:1200px){.m-mIo8f{--footer-icon:min(2.75vw,6vh,45px);--footer-icon-gap:min(1.25vw,20px)}.m-mIo8f .m-xfrdtw .rt.type-9iwysc{--m-font-size:min(3.917vw,6vh,64px)}}
