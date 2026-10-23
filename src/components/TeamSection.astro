@@ -1,0 +1,65 @@
+---
+// Team - Section
+import HeadingsVertical from './HeadingsVertical.astro';
+import PlusMedium from './PlusMedium.astro';
+import TeamCard from './TeamCard.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Phone";
+  headingsVerticalVariant: string;
+  tickerStyle: string;
+  tickerDataTicker: string;
+  tickerStyle2: string;
+  teamCardVariant: string;
+}
+
+const { variant = "Desktop", headingsVerticalVariant, tickerStyle, tickerDataTicker, tickerStyle2, teamCardVariant } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-h5b72",
+  "Tablet": "v-k7200f",
+  "Phone": "v-17140v3",
+};
+---
+
+<section class:list={["m-auCvG m-h5b72", VARIANTS[variant]]} style="background-color:var(--color-accent, rgb(0, 255, 161));height:100%;width:100%"
+  ><div class="m-1by1t13"
+    ><div class="m-mbsjnw"
+      ><div class="m-1okhw8g"
+        ><div class="m-15mtodn-container"
+          ><HeadingsVertical first="/Team" variant={headingsVerticalVariant}></HeadingsVertical
+        ></div
+        ><PlusMedium class="m-8fm7zx" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+        ><PlusMedium class="m-vtwndk" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+      ></div
+    ></div
+    ><div class="m-1sl0b19" draggable="false" style={tickerStyle} data-ticker={tickerDataTicker}
+      ><ul style={tickerStyle2}
+        ><li class="ticker-item" aria-hidden="false" aria-posinset="1" aria-setsize="5" style="flex-grow:0;flex-shrink:0;position:relative;height:fit-content;width:fit-content;transform:none"
+          ><div class="m-1lvnd34-container"
+            ><TeamCard image={{"src":"/images/bPZmG2rjUWEwY0DWIaw3bBawMc.0tk6w28.jpg","srcset":"/images/bPZmG2rjUWEwY0DWIaw3bBawMc.0adci4l.jpg 815w, /images/bPZmG2rjUWEwY0DWIaw3bBawMc.0tk6w28.jpg 884w"}} name="Marcus Thorne" position="CEO of Agency" variant={teamCardVariant}></TeamCard
+          ></div
+        ></li
+        ><li class="ticker-item" aria-hidden="false" aria-posinset="2" aria-setsize="5" style="flex-grow:0;flex-shrink:0;position:relative;height:fit-content;width:fit-content;transform:none"
+          ><div class="m-mwp17f-container"
+            ><TeamCard image={{"src":"/images/VAaEjdoCi2XzlpyNY2UvWtWMr8.0tk6w28.jpg","srcset":"/images/VAaEjdoCi2XzlpyNY2UvWtWMr8.0adci4l.jpg 815w, /images/VAaEjdoCi2XzlpyNY2UvWtWMr8.0tk6w28.jpg 884w"}} name="Elena Rossi" position="Senior Brand Strategist" variant={teamCardVariant}></TeamCard
+          ></div
+        ></li
+        ><li class="ticker-item" aria-hidden="false" aria-posinset="3" aria-setsize="5" style="flex-grow:0;flex-shrink:0;position:relative;height:fit-content;width:fit-content;transform:none"
+          ><div class="m-126geeg-container"
+            ><TeamCard image={{"src":"/images/30dkBY1cIhZrvnfS1TvZGkZm8A.0tk6w28.jpg","srcset":"/images/30dkBY1cIhZrvnfS1TvZGkZm8A.0adci4l.jpg 815w, /images/30dkBY1cIhZrvnfS1TvZGkZm8A.0tk6w28.jpg 884w"}} name="Julian Hong" position="Lead Web Engineer" variant={teamCardVariant}></TeamCard
+          ></div
+        ></li
+        ><li class="ticker-item" aria-hidden="false" aria-posinset="4" aria-setsize="5" style="flex-grow:0;flex-shrink:0;position:relative;height:fit-content;width:fit-content;transform:none"
+          ><div class="m-o451a0-container"
+            ><TeamCard image={{"src":"/images/vM3AvReKCi8ULkpg5P2y3W1B1c.0tk6w28.jpg","srcset":"/images/vM3AvReKCi8ULkpg5P2y3W1B1c.0adci4l.jpg 815w, /images/vM3AvReKCi8ULkpg5P2y3W1B1c.0tk6w28.jpg 884w"}} name="Sophie Lee" position="Experience Designer" variant={teamCardVariant}></TeamCard
+          ></div
+        ></li
+        ><li class="ticker-item" aria-hidden="false" aria-posinset="5" aria-setsize="5" style="flex-grow:0;flex-shrink:0;position:relative;height:fit-content;width:fit-content;transform:none"
+          ><div class="m-1bztjr0-container"
+            ><TeamCard image={{"src":"/images/R9qpd6MA5563TP21NWmJRJ80g2c.0tk6w28.jpg","srcset":"/images/R9qpd6MA5563TP21NWmJRJ80g2c.0adci4l.jpg 815w, /images/R9qpd6MA5563TP21NWmJRJ80g2c.0tk6w28.jpg 884w"}} name="German Clays" position="CTO Engineer" variant={teamCardVariant}></TeamCard
+          ></div
+        ></li
+      ></ul
+    ></div> </div
+></section>

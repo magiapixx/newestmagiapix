@@ -1,0 +1,54 @@
+---
+// Case - Variations of Cards
+import CaseCard from './CaseCard.astro';
+
+interface Props {
+  variant?: "Desktop - Left" | "Desktop - Right" | "Tablet - Left" | "Tablet - Right" | "Phone" | "Desktop - Left - Wide" | "Desktop - Right - Wide";
+  caseCardVariant?: string;
+  caseCardLink: string;
+  caseCardDataSrc: string;
+  caseCardText: string;
+  caseCardText2: string;
+}
+
+const { variant = "Desktop - Left", caseCardVariant, caseCardLink, caseCardDataSrc, caseCardText, caseCardText2 } = Astro.props;
+
+const VARIANTS = {
+  "Desktop - Left": "v-1oh8u3v",
+  "Desktop - Right": "v-1iwzm30",
+  "Tablet - Left": "v-1lhoiqj",
+  "Tablet - Right": "v-z9xzzs",
+  "Phone": "v-1rk20yp",
+  "Desktop - Left - Wide": "v-1dzmlo0",
+  "Desktop - Right - Wide": "v-16rbpz",
+};
+---
+
+{
+  variant === "Desktop - Left" || variant === "Desktop - Right" || variant === "Tablet - Left" || variant === "Tablet - Right" || variant === "Desktop - Left - Wide" || variant === "Desktop - Right - Wide" ? (
+    <Fragment
+      ><div class:list={["m-BLVcM m-1oh8u3v", VARIANTS[variant]]} style="max-width:100%;width:100%"
+        ><div class="m-1d3epex"
+          ><div class="m-f08an4"
+            ><div class="m-l58ndi-container" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8},&quot;threshold&quot;:0}"
+              ><CaseCard variant={caseCardVariant} link={caseCardLink} dataSrc={caseCardDataSrc} text={caseCardText} text2={caseCardText2}></CaseCard
+            ></div
+          ></div
+        ></div
+        ><div class="m-fd41wu"></div
+      ></div></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><div class:list={["m-BLVcM m-1oh8u3v", VARIANTS[variant]]} style="max-width:100%;width:100%"
+        ><div class="m-1d3epex"
+          ><div class="m-f08an4"
+            ><div class="m-l58ndi-container" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8},&quot;threshold&quot;:0}"
+              ><CaseCard variant="Phone" link={caseCardLink} dataSrc={caseCardDataSrc} text={caseCardText} text2={caseCardText2}></CaseCard
+            ></div
+          ></div
+        ></div
+      ></div></Fragment
+    >
+  ) : null
+}

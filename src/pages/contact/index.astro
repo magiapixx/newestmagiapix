@@ -1,7 +1,92 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import head from '../../fragments/pages/contact/head.frag?raw';
-import body from '../../fragments/pages/contact/body.frag?raw';
+import ContactPageHeader from '../../components/ContactPageHeader.astro';
+import ContactsSection from '../../components/ContactsSection.astro';
+import FooterSection from '../../components/FooterSection.astro';
+import FormSection from '../../components/FormSection.astro';
+import Navigation from '../../components/Navigation.astro';
 ---
 
-<BaseLayout {head} {body} />
+<BaseLayout title="Contact — Magiapix" description="Magiapix is a digital and creative agency for brands, studios and small teams.">
+  <div id="main" data-smooth-scroll="12"
+    ><div class="m-VOZrd m-1p7p7oi" style="min-height:100vh;width:auto"
+      ><div class="m-saiNB m-v1e60h" style="min-height:100vh;width:auto;display:contents"
+        ><div class="m-y2q2mc-container" style="transform:translateX(-50%)"
+          ><div class="bp hide-phone hide-tablet"
+            ><Navigation variant="Desktop"></Navigation
+          ></div
+          ><div class="bp hide-tablet hide-desktop"
+            ><Navigation variant="Phone"></Navigation
+          ></div
+          ><div class="bp hide-phone hide-desktop"
+            ><Navigation variant="Tablet"></Navigation
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-iwissc-container"
+            ><div class="bp hide-tablet"
+              ><ContactPageHeader variant="Desktop" logoVerticalWhiteStyle="transform:translateY(-50%)"></ContactPageHeader
+            ></div
+            ><div class="bp hide-desktop"
+              ><ContactPageHeader variant="Tablet"></ContactPageHeader
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-desktop"
+          ><div class="m-iwissc-container"
+            ><ContactPageHeader variant="Phone"></ContactPageHeader
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-1xcgcwn-container" id="contact" data-nav-theme="dark"
+            ><div class="bp hide-tablet"
+              ><FormSection variant="Desktop"></FormSection
+            ></div
+            ><div class="bp hide-desktop"
+              ><FormSection variant="Tablet"></FormSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-desktop"
+          ><div class="m-1xcgcwn-container" id="contact" data-nav-theme="dark"
+            ><FormSection variant="Phone"></FormSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-kabfq8-container" id="info"
+            ><div class="bp hide-tablet"
+              ><ContactsSection variant="Desktop"></ContactsSection
+            ></div
+            ><div class="bp hide-desktop"
+              ><ContactsSection variant="Tablet"></ContactsSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-desktop"
+          ><div class="m-kabfq8-container" id="info"
+            ><ContactsSection variant="Phone"></ContactsSection
+          ></div
+        ></div
+        ><div class="m-1cukk2t" id="end" data-nav-theme="light"></div
+      ></div
+      ><div id="overlay"></div
+      ><div class="m-h650cb"></div
+      ><div class="bp hide-phone"
+        ><div class="m-vouzml-container"
+          ><div class="bp hide-tablet"
+            ><FooterSection variant="Desktop" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+          ></div
+          ><div class="bp hide-desktop"
+            ><FooterSection variant="Tablet" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+          ></div
+        ></div
+      ></div
+      ><div class="bp hide-desktop hide-tablet"
+        ><div class="m-vouzml-container"
+          ><FooterSection variant="Phone" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+        ></div
+      ></div
+    ></div
+    ><div id="template-overlay"></div
+  ></div>
+</BaseLayout>

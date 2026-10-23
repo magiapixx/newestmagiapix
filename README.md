@@ -1,6 +1,6 @@
-# Mondragon — Astro
+# Magiapix — website
 
-Astro 1:1 conversion of the Framer-exported Mondragon site. The goal is visual and behavioural parity with the original export, so the pre-rendered Framer markup and its client runtime are intentionally preserved.
+The Magiapix agency site, built with [Astro](https://astro.build). Pages are plain Astro components, animations are small TypeScript modules and the WebGL effects use three.js. There is no Framer runtime or Framer markup left in the project.
 
 ## Requirements
 
@@ -16,50 +16,66 @@ npm run build     # static output in dist/
 npm run preview   # preview the production build
 ```
 
-Deploy the generated `dist/` folder at the domain root. All links and assets are relative to the page depth, matching the original Framer routing.
+Deploy the generated `dist/` folder at the domain root. Set `site` in `astro.config.mjs` to the live URL to get absolute canonical and Open Graph URLs.
 
 ## Project structure
 
 ```text
 src/
-  layouts/
-    BaseLayout.astro       # <html>, <head>, <body> shell
+  layouts/BaseLayout.astro   # <html>/<head> (title, description, social meta) and the script entry
   pages/
-    index.astro            # /
-    about/index.astro      # /about/
-    cases/index.astro      # /cases/
-    cases/armada/index.astro
-    cases/calderone/index.astro
-    cases/montana/index.astro
-    cases/oasis/index.astro
-    cases/pirate-hub/index.astro
-    contact/index.astro    # /contact/
-  fragments/pages/         # exact <head> and <body> fragments from the export (.frag)
+    index.astro              # /
+    about/index.astro        # /about/
+    cases/index.astro        # /cases/
+    cases/[slug].astro       # /cases/<slug>/  (one template for every case study)
+    contact/index.astro      # /contact/
+  components/                # one .astro file per design component (sections, cards, links, icons…)
+  data/cases.ts              # case-study content: title, description, texts, images, prev/next
+  scripts/
+    main.ts                  # starts everything below
+    components/              # interactions: intro, nav, reveals, hovers, FAQ, form, ticker, scramble…
+    lib/                     # motion helpers (springs, layout transitions, in-view)
+    webgl/                   # canvas effects, loaded only on pages that use them
+  styles/
+    fonts.css                # @font-face
+    site.css                 # component styles
+    breakpoints.css          # desktop / tablet / phone visibility helpers
+    component-states.css     # hover / open states
+    interactions.css         # styles used by the scripts
 public/
-  assets/                  # images, fonts, Framer runtime modules
-  f2c-sw.js                # Framer asset/CMS mapping service worker
-scripts/
-  extract-pages.mjs        # regenerate fragments and page routes
+  images/ videos/ fonts/     # local copies of every asset
+  meta/                      # favicon, touch icon, social share image
 ```
 
-## How the conversion works
+### Components and breakpoints
 
-Each Astro page imports its `<head>` and `<body>` fragment as raw text and passes it through `BaseLayout.astro`:
+Most components take a `variant` prop (`"Desktop"`, `"Tablet"`, `"Phone"`, or a state like `"Load and Fill - End"`). Pages render the desktop, tablet and phone version of a section side by side, each wrapped in a `.bp` element that `breakpoints.css` hides outside its screen size, so the layout switches without JavaScript.
 
-```astro
-<BaseLayout {head} {body} />
-```
+### Case studies
 
-`BaseLayout.astro` renders the fragments with `<Fragment set:html={...} />`. Astro handles routing, dev/build tooling and static generation; the Framer hydration bundle continues to drive animations and interactions.
+To edit a case study, change its entry in `src/data/cases.ts`. To add one, add an entry there (the order is the order used for prev/next links) and put its images in `public/images/`.
 
-This is deliberate: the original export is compiled Framer output, not editable component source. Keeping the Framer runtime is what preserves the visuals exactly. If the source HTML is updated, regenerate the fragments and routes with:
+### Animations
 
-```bash
-npm run extract
-```
+Everything that moved in the original site still moves the same way:
 
-## Notes
+| Where | Module |
+| --- | --- |
+| Page intro, scroll reveals, text scramble | `intro.ts`, `reveal.ts`, `scramble.ts` |
+| Smooth scrolling | `smooth-scroll.ts` (Lenis) |
+| Navigation, nav links, menu | `nav.ts`, `nav-link.ts` |
+| Link underlines, hover accents, awards, prev/next | `line-link.ts`, `underline-sweep.ts`, `hover-accent.ts`, `award.ts` |
+| Services, price cards, FAQ | `service.ts`, `price-card.ts`, `faq.ts` |
+| Showreel, videos, clients ticker | `showreel.ts`, `video.ts`, `ticker.ts` |
+| Hero image transition, pixel-flip case cards, case hero distortion, footer light beams, film grain | `webgl/luma.ts`, `webgl/pixel-flip.ts`, `webgl/distortion.ts`, `webgl/light-beams.ts`, `webgl/noise.ts` |
 
-- The template promo widget has already been removed from the HTML and disabled in the Framer bundles.
-- `public/f2c-sw.js` is retained because the Framer runtime and CMS data rely on its asset URL mapping.
-- External Vimeo embeds, analytics and social links still require internet access at runtime.
+Effects are attached to markup through `data-*` attributes (`data-reveal`, `data-gl`, `data-show`, …), so the components stay plain HTML.
+
+## Contact form
+
+The form posts to the URL in `PUBLIC_CONTACT_ENDPOINT` (see `.env.example`), as `FormData` with `Accept: application/json`, and shows "Thank you!" or "Error!" on the button. Without an endpoint it falls back to opening a `mailto:` link to the address on the contact page.
+
+## External services
+
+- The showreel plays from Vimeo (`player.vimeo.com`) once the visitor clicks play.
+- Social links point to the agency's profiles.

@@ -1,7 +1,199 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import head from '../fragments/pages/home/head.frag?raw';
-import body from '../fragments/pages/home/body.frag?raw';
+import AboutSection from '../components/AboutSection.astro';
+import CasesSection from '../components/CasesSection.astro';
+import ClientsTicker from '../components/ClientsTicker.astro';
+import FooterSection from '../components/FooterSection.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Navigation from '../components/Navigation.astro';
+import PricesSection from '../components/PricesSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import ShowreelSection from '../components/ShowreelSection.astro';
+import SubscriptionSection from '../components/SubscriptionSection.astro';
 ---
 
-<BaseLayout {head} {body} />
+<BaseLayout title="Magiapix — Digital & Creative Agency" description="Magiapix is a digital and creative agency for brands, studios and small teams.">
+  <div id="main" data-smooth-scroll="12"
+    ><div class="m-VOZrd m-1p7p7oi" style="min-height:100vh;width:auto"
+      ><div class="m-ho6gy m-72rtr7" style="min-height:100vh;width:auto;display:contents"
+        ><div class="m-1gxe5to-container"
+          ><div aria-hidden="true" style="position:fixed;inset:0;z-index:9999;display:flex;gap:0;width:100vw;height:100dvh;overflow:hidden;pointer-events:all" data-intro=""
+            ><div style="flex:1 1 0%;min-width:0;height:100%;background-color:var(--color-accent, rgb(0, 255, 161));transform-origin:50% 50%;will-change:transform;transform:none"></div
+            ><div style="flex:1 1 0%;min-width:0;height:100%;background-color:var(--color-accent, rgb(0, 255, 161));transform-origin:50% 50%;will-change:transform;transform:none"></div
+            ><div style="flex:1 1 0%;min-width:0;height:100%;background-color:var(--color-accent, rgb(0, 255, 161));transform-origin:50% 50%;will-change:transform;transform:none"></div
+            ><div style="flex:1 1 0%;min-width:0;height:100%;background-color:var(--color-accent, rgb(0, 255, 161));transform-origin:50% 50%;will-change:transform;transform:none"></div
+          ></div
+        ></div
+        ><div class="m-192izcr-container" style="transform:translateX(-50%)"
+          ><div class="bp hide-tablet hide-phone"
+            ><Navigation variant="Desktop"></Navigation
+          ></div
+          ><div class="bp hide-phone hide-lg hide-xl"
+            ><Navigation variant="Tablet"></Navigation
+          ></div
+          ><div class="bp hide-tablet hide-lg hide-xl"
+            ><Navigation variant="Phone"></Navigation
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-rxibub-container" id="hero"
+            ><div class="bp hide-tablet hide-xl"
+              ><HeroSection variant="Desktop" headingsVerticalVariant="Scroll Down - H6"></HeroSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><HeroSection variant="Tablet" headingsVerticalVariant="Scroll Down - H6 - Smaller"></HeroSection
+            ></div
+            ><div class="bp hide-tablet hide-lg"
+              ><HeroSection variant="Wide" headingsVerticalVariant="Scroll Down - H6"></HeroSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-rxibub-container" id="hero"
+            ><HeroSection variant="Phone"></HeroSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-wkn3iw-container" id="about"
+            ><div class="bp hide-tablet hide-xl"
+              ><AboutSection variant="Desktop" textBackAnimationVariant="Normal" text2Style={"font-family:\"Zalando Sans Variable\", \"Zalando Sans Variable Placeholder\", sans-serif;font-size:20px;font-style:normal;font-weight:540;letter-spacing:0.15px;line-height:23px;text-align:left;font-variation-settings:\"wght\" 540;-webkit-font-variation-settings:\"wght\" 540;--m-font-weight:540;--m-font-variation-axes:\"wght\" 540;--m-font-variation-axes-preview:\"wght\" 540;margin:0;padding:0;color:var(--color-white, rgb(255, 255, 255));white-space:pre-wrap;overflow-wrap:break-word"}></AboutSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><AboutSection variant="Tablet"></AboutSection
+            ></div
+            ><div class="bp hide-tablet hide-lg"
+              ><AboutSection variant="Wide" textBackAnimationVariant="H4" text2Style={"font-family:\"Zalando Sans Variable\", \"Zalando Sans Variable Placeholder\", sans-serif;font-size:36px;font-style:normal;font-weight:475;letter-spacing:-1px;line-height:37px;text-align:left;font-variation-settings:\"wght\" 475;-webkit-font-variation-settings:\"wght\" 475;--m-font-weight:475;--m-font-variation-axes:\"wght\" 475;--m-font-variation-axes-preview:\"wght\" 475;margin:0;padding:0;color:var(--color-white, rgb(255, 255, 255));white-space:pre-wrap;overflow-wrap:break-word"}></AboutSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-wkn3iw-container" id="about"
+            ><AboutSection variant="Phone"></AboutSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-172hv11-container" id="Services" data-nav-theme="dark"
+            ><div class="bp hide-tablet hide-xl"
+              ><ServicesSection variant="Desktop" headingsVerticalVariant="/Services - H1 Light Back" serviceStyle="--sezid2:7px 0px 0px 0px" serviceText={"Visual\nIdentity"} serviceHasBlock serviceInverseStyle="--1ijwx7z:6px 0px 0px 0px" serviceText3={"Creative\nDevelopment "}></ServicesSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><ServicesSection variant="Tablet" headingsVerticalVariant="/Services - H2 Light Back" serviceStyle="--sezid2:4px 0px 0px 0px" serviceText2={"Visual\nIdentity"} serviceHasBlock2 serviceInverseStyle="--1ijwx7z:3px 0px 0px 0px" serviceText22={"Creative\nDevelopment "}></ServicesSection
+            ></div
+            ><div class="bp hide-tablet hide-lg"
+              ><ServicesSection variant="Wide" headingsVerticalVariant="/Services - H1 Light Back" serviceStyle="--sezid2:7px 0px 0px 0px" serviceText={"Visual\nIdentity"} serviceHasBlock serviceInverseStyle="--1ijwx7z:6px 0px 0px 0px" serviceText3={"Creative\nDevelopment "}></ServicesSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-172hv11-container" id="Services" data-nav-theme="dark"
+            ><ServicesSection variant="Phone"></ServicesSection
+          ></div
+        ></div
+        ><div class="bp hide-phone hide-xl"
+          ><div class="m-1ntdfpz-container" id="cases"
+            ><div class="bp hide-tablet"
+              ><CasesSection variant="Desktop" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%" headingsVerticalVariant="/Cases - H1 Light Back" caseCardVariationsVariant="Desktop - Left" caseCardVariationsCaseCardVariant="Desktop" caseCardVariationsVariant2="Desktop - Right"></CasesSection
+            ></div
+            ><div class="bp hide-lg"
+              ><CasesSection variant="Tablet" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%" headingsVerticalVariant="/Cases - H2 Light Back" caseCardVariationsVariant="Tablet - Left" caseCardVariationsCaseCardVariant="Tablet" caseCardVariationsVariant2="Tablet - Right"></CasesSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-1ntdfpz-container" id="cases"
+            ><CasesSection variant="Phone"></CasesSection
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-phone hide-lg"
+          ><div class="m-1ntdfpz-container" id="cases"
+            ><CasesSection variant="Wide" style="background-color:var(--color-white, rgb(255, 255, 255));max-width:100%;width:100%" headingsVerticalVariant="/Cases - H1 Light Back" caseCardVariationsVariant="Desktop - Left - Wide" caseCardVariationsCaseCardVariant="Desktop" caseCardVariationsVariant2="Desktop - Right - Wide"></CasesSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-cfbga4-container" id="showreel"
+            ><div class="bp hide-tablet hide-xl"
+              ><ShowreelSection variant="Desktop" headingsVerticalVariant="/Show - H1 Light Back" headingsVerticalVariant2="Reel - H1 Light Back"></ShowreelSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><ShowreelSection variant="Tablet" headingsVerticalVariant="/Show - H2 Light Back" headingsVerticalVariant2="Reel - H2 Light Back"></ShowreelSection
+            ></div
+            ><div class="bp hide-tablet hide-lg"
+              ><ShowreelSection variant="Wide" headingsVerticalVariant="/Show - H1 Light Back" headingsVerticalVariant2="Reel - H1 Light Back"></ShowreelSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-cfbga4-container" id="showreel"
+            ><ShowreelSection variant="Phone"></ShowreelSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-paz1jq-container" id="Subscription" data-nav-theme="light"
+            ><div class="bp hide-tablet hide-xl"
+              ><SubscriptionSection variant="Desktop" headingsVerticalVariant="/Subscription - H1"></SubscriptionSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><SubscriptionSection variant="Tablet" headingsVerticalVariant="/Subscription - H2"></SubscriptionSection
+            ></div
+            ><div class="bp hide-tablet hide-lg"
+              ><SubscriptionSection variant="Wide" headingsVerticalVariant="/Subscription - H1"></SubscriptionSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-paz1jq-container" id="Subscription" data-nav-theme="light"
+            ><SubscriptionSection variant="Phone"></SubscriptionSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-1bg3m36-container" id="prices"
+            ><div class="bp hide-tablet hide-xl"
+              ><PricesSection variant="Desktop" headingsVerticalVariant="/Prices - H2" priceCardVariant="Desktop" priceCardVariant2="Desktop Closed"></PricesSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><PricesSection variant="Tablet" headingsVerticalVariant="/Prices - H2" priceCardVariant="Tablet" priceCardVariant2="Tablet - Closed"></PricesSection
+            ></div
+            ><div class="bp hide-tablet hide-lg"
+              ><PricesSection variant="Wide" headingsVerticalVariant="/Prices - H1" priceCardVariant="Desktop" priceCardVariant2="Desktop Closed"></PricesSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-1bg3m36-container" id="prices"
+            ><PricesSection variant="Phone"></PricesSection
+          ></div
+        ></div
+      ></div
+      ><div id="overlay"></div
+      ><div class="m-h650cb"></div
+      ><div class="bp hide-phone hide-tablet"
+        ><div class="m-63qbpk-container"
+          ><ClientsTicker variant="Desktop" style="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:30px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateX(-30px)"></ClientsTicker> </div
+      ></div
+      ><div class="bp hide-desktop hide-tablet"
+        ><div class="m-63qbpk-container"
+          ><ClientsTicker variant="Phone" style="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:20px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateX(-20px)"></ClientsTicker> </div
+      ></div
+      ><div class="bp hide-phone hide-desktop"
+        ><div class="m-63qbpk-container"
+          ><ClientsTicker variant="Tablet" style="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:30px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateX(-30px)"></ClientsTicker> </div
+      ></div
+      ><div class="bp hide-phone"
+        ><div class="m-vouzml-container"
+          ><div class="bp hide-tablet"
+            ><FooterSection variant="Desktop" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+          ></div
+          ><div class="bp hide-desktop"
+            ><FooterSection variant="Tablet" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+          ></div
+        ></div
+      ></div
+      ><div class="bp hide-desktop hide-tablet"
+        ><div class="m-vouzml-container"
+          ><FooterSection variant="Phone" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+        ></div
+      ></div
+    ></div
+    ><div id="template-overlay"></div
+  ></div>
+</BaseLayout>

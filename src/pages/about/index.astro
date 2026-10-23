@@ -1,7 +1,139 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import head from '../../fragments/pages/about/head.frag?raw';
-import body from '../../fragments/pages/about/body.frag?raw';
+import AboutAndMetricsSection from '../../components/AboutAndMetricsSection.astro';
+import AboutPageHeader from '../../components/AboutPageHeader.astro';
+import AwardsSection from '../../components/AwardsSection.astro';
+import ClientsTicker from '../../components/ClientsTicker.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import FooterSection from '../../components/FooterSection.astro';
+import Navigation from '../../components/Navigation.astro';
+import TeamSection from '../../components/TeamSection.astro';
 ---
 
-<BaseLayout {head} {body} />
+<BaseLayout title="About — Magiapix" description="Magiapix is a digital and creative agency for brands, studios and small teams.">
+  <div id="main" data-smooth-scroll="12"
+    ><div class="m-VOZrd m-1p7p7oi" style="min-height:100vh;width:auto"
+      ><div class="m-KY3If m-12qmj22" style="min-height:100vh;width:auto;display:contents"
+        ><div class="m-1ujso5a-container" style="transform:translateX(-50%)"
+          ><div class="bp hide-tablet hide-phone"
+            ><Navigation variant="Desktop"></Navigation
+          ></div
+          ><div class="bp hide-lg hide-xl hide-phone"
+            ><Navigation variant="Tablet"></Navigation
+          ></div
+          ><div class="bp hide-tablet hide-lg hide-xl"
+            ><Navigation variant="Phone"></Navigation
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-3970hr-container"
+            ><div class="bp hide-tablet hide-xl"
+              ><AboutPageHeader variant="Desktop" headingsVerticalVariant="About Agency - H1" logoVerticalWhiteStyle="transform:translateY(-50%)"></AboutPageHeader
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><AboutPageHeader variant="Tablet" headingsVerticalVariant="About Agency - H1"></AboutPageHeader
+            ></div
+            ><div class="bp hide-tablet hide-lg"
+              ><AboutPageHeader variant="Wide" headingsVerticalVariant="About Agency - H1 Big" logoVerticalWhiteStyle="transform:translateY(-50%)"></AboutPageHeader
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-3970hr-container"
+            ><AboutPageHeader variant="Phone"></AboutPageHeader
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-1tl2vdc-container" id="about-and-metrics" data-nav-theme="dark"
+            ><div class="bp hide-tablet"
+              ><AboutAndMetricsSection variant="Desktop"></AboutAndMetricsSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><AboutAndMetricsSection variant="Tablet"></AboutAndMetricsSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-1tl2vdc-container" id="about-and-metrics" data-nav-theme="dark"
+            ><AboutAndMetricsSection variant="Phone"></AboutAndMetricsSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-edzw7o-container"
+            ><div class="bp hide-tablet"
+              ><TeamSection variant="Desktop" headingsVerticalVariant="/Team - H1 Light Back" tickerStyle="overflow-x:clip;display:flex;position:relative;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:pan-y" tickerDataTicker="55" tickerStyle2="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:3px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateX(-3px)" teamCardVariant="Desktop"></TeamSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><TeamSection variant="Tablet" headingsVerticalVariant="/Team - H2 Light Back" tickerStyle="overflow-x:clip;display:flex;position:relative;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:pan-y" tickerDataTicker="55" tickerStyle2="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:3px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateX(-3px)" teamCardVariant="Tablet"></TeamSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-edzw7o-container"
+            ><TeamSection variant="Phone" headingsVerticalVariant="/Team - H3 Light Back" tickerStyle="overflow-y:clip;display:flex;position:relative;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:pan-x" tickerDataTicker="40" tickerStyle2="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:column;gap:3px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateY(-3px)" teamCardVariant="Phone"></TeamSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-167ihsi-container"
+            ><div class="bp hide-tablet"
+              ><AwardsSection variant="Desktop" headingsVerticalVariant="/Awards - H1 Light Back" awardCardVariant="Desktop"></AwardsSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><AwardsSection variant="Tablet" headingsVerticalVariant="/Awards - H2 Light Back" awardCardVariant="Tablet" awardCardClientStyle="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))"></AwardsSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-167ihsi-container"
+            ><AwardsSection variant="Phone"></AwardsSection
+          ></div
+        ></div
+        ><div class="bp hide-phone"
+          ><div class="m-qaond6-container" id="faq" data-nav-theme="light"
+            ><div class="bp hide-tablet"
+              ><FAQSection variant="Desktop" headingsVerticalVariant="/FAQ - H1" fAQItemCardVariant="Desktop - Left" fAQItemCardPartnershipStyle="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))" fAQItemCardVariant2="Desktop - Right" fAQItemCardPartnershipStyle2="--m-text-alignment:right;--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))"></FAQSection
+            ></div
+            ><div class="bp hide-lg hide-xl"
+              ><FAQSection variant="Tablet" headingsVerticalVariant="/FAQ - H2" fAQItemCardVariant="Tablet" fAQItemCardPartnershipStyle="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" fAQItemCardVariant2="Tablet - Right" fAQItemCardPartnershipStyle2="--m-text-alignment:right;--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"></FAQSection
+            ></div
+          ></div
+        ></div
+        ><div class="bp hide-tablet hide-lg hide-xl"
+          ><div class="m-qaond6-container" id="faq" data-nav-theme="light"
+            ><FAQSection variant="Phone"></FAQSection
+          ></div
+        ></div
+      ></div
+      ><div id="overlay"></div
+      ><div class="m-h650cb"></div
+      ><div class="bp hide-phone hide-tablet"
+        ><div class="m-63qbpk-container"
+          ><ClientsTicker variant="Desktop" style="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:30px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateX(-30px)"></ClientsTicker> </div
+      ></div
+      ><div class="bp hide-desktop hide-tablet"
+        ><div class="m-63qbpk-container"
+          ><ClientsTicker variant="Phone" style="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:20px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateX(-20px)"></ClientsTicker> </div
+      ></div
+      ><div class="bp hide-phone hide-desktop"
+        ><div class="m-63qbpk-container"
+          ><ClientsTicker variant="Tablet" style="display:flex;position:relative;list-style-type:none;padding:0;margin:0;justify-content:flex-start;flex-direction:row;gap:30px;opacity:0;align-items:center;width:100%;height:100%;max-height:100%;max-width:100%;transform:translateX(-30px)"></ClientsTicker> </div
+      ></div
+      ><div class="bp hide-phone"
+        ><div class="m-vouzml-container"
+          ><div class="bp hide-tablet"
+            ><FooterSection variant="Desktop" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+          ></div
+          ><div class="bp hide-desktop"
+            ><FooterSection variant="Tablet" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+          ></div
+        ></div
+      ></div
+      ><div class="bp hide-desktop hide-tablet"
+        ><div class="m-vouzml-container"
+          ><FooterSection variant="Phone" avaImage={{"src":"/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"}} linkWithLineSmallLink="/contact/"></FooterSection
+        ></div
+      ></div
+    ></div
+    ><div id="template-overlay"></div
+  ></div>
+</BaseLayout>

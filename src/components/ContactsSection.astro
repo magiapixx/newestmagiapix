@@ -1,0 +1,200 @@
+---
+// Contacts - Section
+import HeadingsVertical from './HeadingsVertical.astro';
+import PlusMedium from './PlusMedium.astro';
+import SocialIcons from './SocialIcons.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Phone";
+}
+
+const { variant = "Desktop" } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-17t78od",
+  "Tablet": "v-tntjqb",
+  "Phone": "v-blpruo",
+};
+---
+
+{
+  variant === "Desktop" ? (
+    <Fragment
+      ><section class:list={["m-tKC5s m-alehh m-xbhBc m-zNzez m-7bSm2 m-PLMhr m-pQ5hH m-17t78od", VARIANTS[variant]]} style="background-color:var(--color-accent, rgb(0, 255, 161));height:100%;width:100%"
+        ><div class="m-4mhhp8"
+          ><div class="m-j6tzmb"
+            ><div class="m-66p3dh"
+              ><PlusMedium class="m-1lwxej5" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+              ><PlusMedium class="m-6tvrhe" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ></div
+          ></div
+          ><div class="m-jjy9k6"
+            ><div class="m-z08sb2"
+              ><div class="m-fyyctf" style="--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">18-22 Corsham St, Hoxton, London N1 6DR, UK </h6
+              ></div
+            ></div
+            ><div class="m-a2lx7p"></div
+            ><div class="m-34my6o"
+              ><div class="m-2z319" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="tel:+44 20 7946 0142" target="_blank" rel="">+44 20 7946 0142</a
+                ></h3
+              ></div
+              ><div class="m-1mr26j2" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="tel:+44 20 7946 0155" target="_blank" rel="">+44 20 7946 0155</a
+                ></h3
+              ></div
+            ></div
+            ><div class="m-6sb1vt"></div
+            ><div class="m-1wc6poa"
+              ><div class="m-meosom" style="--extracted-1eung3n:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                ><h4 class="rt type-1v5hq08" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="mailto:london@mondra.com" target="_blank" rel="">london@mondra.com</a
+                ></h4
+              ></div
+            ></div
+            ><div class="m-1jol8y5"></div
+            ><div class="m-sv13xc"
+              ><div class="m-csvvva-container"
+                ><SocialIcons variant="Desktop - Black" socialIconFillStyle="background-color:var(--color-white, rgb(255, 255, 255))" socialIconLinkedinIconStyle="--188dmzq:var(--color-black, rgb(0, 0, 0))"></SocialIcons
+              ></div
+              ><div class="m-1mwg5vu" style="--extracted-1w3ko1f:var(--color-black, rgb(0, 0, 0));--extracted-c9yw3e:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                ><p class="rt type-y2tuor" dir="auto" style="--m-text-alignment:right"
+                  ><span class="rt" style="--m-text-color:var(--extracted-1w3ko1f, var(--color-black, rgb(0, 0, 0)))">Monday to Friday:</span
+                  ><br class="rt"
+                  ><span class="rt" style="--m-text-color:var(--extracted-c9yw3e, var(--color-black, rgb(0, 0, 0)))">10:00 AM – 5:00 PM</span
+                ></p
+              ></div
+            ></div
+          ></div
+          ><div class="m-a9qyob"
+            ><div class="m-nottkf"
+              ><div class="m-7im4dl-container"
+                ><HeadingsVertical variant="/London - H1 Light Back" first="/London"></HeadingsVertical
+              ></div
+              ><PlusMedium class="m-2tgj99" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+              ><PlusMedium class="m-6peykl" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ></div
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : variant === "Tablet" ? (
+    <Fragment
+      ><section class:list={["m-tKC5s m-alehh m-xbhBc m-zNzez m-7bSm2 m-PLMhr m-pQ5hH m-17t78od", VARIANTS[variant]]} style="background-color:var(--color-accent, rgb(0, 255, 161));height:100%;width:100%"
+        ><div class="m-4mhhp8"
+          ><div class="m-j6tzmb"
+            ><div class="m-66p3dh"
+              ><PlusMedium class="m-1lwxej5" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+              ><PlusMedium class="m-6tvrhe" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ></div
+          ></div
+          ><div class="m-jjy9k6"
+            ><div class="m-z08sb2"
+              ><div class="m-fyyctf" style="--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">18-22 Corsham St, Hoxton, London N1 6DR, UK </h6
+              ></div
+            ></div
+            ><div class="m-a2lx7p"></div
+            ><div class="m-34my6o"
+              ><div class="m-2z319" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1eung3n:var(--color-black, rgb(0, 0, 0));transform:none"
+                ><h4 class="rt type-1v5hq08" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="tel:+44 20 7946 0142" target="_blank" rel="">+44 20 7946 0142</a
+                ></h4
+              ></div
+              ><div class="m-1mr26j2" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1eung3n:var(--color-black, rgb(0, 0, 0));transform:none"
+                ><h4 class="rt type-1v5hq08" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="tel:+44 20 7946 0155" target="_blank" rel="">+44 20 7946 0155</a
+                ></h4
+              ></div
+            ></div
+            ><div class="m-6sb1vt"></div
+            ><div class="m-1wc6poa"
+              ><div class="m-meosom" style="--extracted-1eung3n:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));transform:none"
+                ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="mailto:london@mondra.com" target="_blank" rel="">london@mondra.com</a
+                ></h5
+              ></div
+            ></div
+            ><div class="m-1jol8y5"></div
+            ><div class="m-sv13xc"
+              ><div class="m-csvvva-container"
+                ><SocialIcons variant="Tablet - Phone - Black" socialIconFillStyle="background-color:var(--color-black, rgb(0, 0, 0))" socialIconLinkedinIconStyle="--188dmzq:var(--color-black, rgb(0, 0, 0))"></SocialIcons
+              ></div
+              ><div class="m-1mwg5vu" style="--extracted-1w3ko1f:var(--color-black, rgb(0, 0, 0));--extracted-c9yw3e:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                ><p class="rt type-y2tuor" dir="auto" style="--m-text-alignment:right"
+                  ><span class="rt" style="--m-text-color:var(--extracted-1w3ko1f, var(--color-black, rgb(0, 0, 0)))">Monday to Friday:</span
+                  ><br class="rt"
+                  ><span class="rt" style="--m-text-color:var(--extracted-c9yw3e, var(--color-black, rgb(0, 0, 0)))">10:00 AM – 5:00 PM</span
+                ></p
+              ></div
+            ></div
+          ></div
+          ><div class="m-a9qyob"
+            ><div class="m-nottkf"
+              ><div class="m-7im4dl-container"
+                ><HeadingsVertical variant="/London - H2 Light Back" first="/London"></HeadingsVertical
+              ></div
+              ><PlusMedium class="m-6peykl" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ></div
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><section class:list={["m-tKC5s m-alehh m-xbhBc m-zNzez m-7bSm2 m-PLMhr m-pQ5hH m-17t78od", VARIANTS[variant]]} style="background-color:var(--color-accent, rgb(0, 255, 161));height:100%;width:100%"
+        ><div class="m-4mhhp8"
+          ><div class="m-jjy9k6"
+            ><div class="m-z08sb2"
+              ><div class="m-fyyctf" style="--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));transform:none"
+                ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">18-22 Corsham St, Hoxton, London N1 6DR, UK </p
+              ></div
+              ><div class="m-11gjstv" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))">/London</h3
+              ></div
+            ></div
+            ><div class="m-a2lx7p"></div
+            ><div class="m-34my6o"
+              ><div class="m-2z319" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));transform:none"
+                ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="tel:+44 20 7946 0142" target="_blank" rel="">+44 20 7946 0142</a
+                ></h5
+              ></div
+              ><div class="m-1mr26j2" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));transform:none"
+                ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="tel:+44 20 7946 0155" target="_blank" rel="">+44 20 7946 0155</a
+                ></h5
+              ></div
+            ></div
+            ><div class="m-6sb1vt"></div
+            ><div class="m-1wc6poa"
+              ><div class="m-meosom" style="--extracted-1eung3n:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));transform:none"
+                ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))"
+                  ><a class="rt type-p02mq0" href="mailto:london@mondra.com" target="_blank" rel="">london@mondra.com</a
+                ></p
+              ></div
+            ></div
+            ><div class="m-1jol8y5"></div
+            ><div class="m-sv13xc"
+              ><div class="m-csvvva-container"
+                ><SocialIcons variant="Tablet - Phone - Black" socialIconFillStyle="background-color:var(--color-black, rgb(0, 0, 0))" socialIconLinkedinIconStyle="--188dmzq:var(--color-black, rgb(0, 0, 0))"></SocialIcons
+              ></div
+              ><div class="m-1mwg5vu" style="--extracted-1w3ko1f:var(--color-black, rgb(0, 0, 0));--extracted-c9yw3e:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                ><p class="rt type-y2tuor" dir="auto" style="--m-text-alignment:left"
+                  ><span class="rt" style="--m-text-color:var(--extracted-1w3ko1f, var(--color-black, rgb(0, 0, 0)))">Monday to Friday:</span
+                  ><br class="rt"
+                  ><span class="rt" style="--m-text-color:var(--extracted-c9yw3e, var(--color-black, rgb(0, 0, 0)))">10:00 AM – 5:00 PM</span
+                ></p
+              ></div
+            ></div
+            ><PlusMedium class="m-16yfa6y" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><PlusMedium class="m-1g8767v" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : null
+}

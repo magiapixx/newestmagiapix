@@ -1,0 +1,5 @@
+@media (min-width: 1600px) { .hide-xl { display: none !important; } }
+@media (min-width: 1200px) and (max-width: 1599.98px) { .hide-lg { display: none !important; } }
+@media (min-width: 1200px) { .hide-desktop { display: none !important; } }
+@media (min-width: 810px) and (max-width: 1199.98px) { .hide-tablet { display: none !important; } }
+@media (max-width: 809.98px) { .hide-phone { display: none !important; } }

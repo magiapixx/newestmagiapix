@@ -1,0 +1,73 @@
+---
+// Pageheader - Section (Contact)
+import HeadingsVertical from './HeadingsVertical.astro';
+import LogoVerticalWhite from './LogoVerticalWhite.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Phone";
+  logoVerticalWhiteStyle?: string;
+}
+
+const { variant = "Desktop", logoVerticalWhiteStyle } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-x8kkmy",
+  "Tablet": "v-119hw8o",
+  "Phone": "v-1ue3ng4",
+};
+---
+
+{
+  variant === "Desktop" || variant === "Tablet" ? (
+    <Fragment
+      ><header class:list={["m-hMwLZ m-x8kkmy", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
+        ><div class="m-octv7h"
+          ><div class="m-u42mvl-container"
+            ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
+              ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/PaH9gfXFf1SMEKsGdPR1jFPtkI.jpg,/images/q8S91X2cbv33ALZwGjockAAAfo8.jpg" data-pause="0.7"></canvas
+            ></div
+          ></div
+        ></div
+        ><div class="m-1q5bunh"
+          ><div class="m-8rejp0"
+            ><div class="m-94h1a7-container"
+              ><HeadingsVertical variant="Contact - H1" first="Contact"></HeadingsVertical
+            ></div
+          ></div
+          ><div class="m-k932bk"></div
+          ><div class="m-1piotay"
+            ><LogoVerticalWhite class="m-15q6zc7" style={logoVerticalWhiteStyle}></LogoVerticalWhite
+            ><div class="m-1w00gaq-container"
+              ><HeadingsVertical variant="Scroll Down - H6"></HeadingsVertical
+            ></div
+          ></div
+        ></div
+      ></header></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><header class:list={["m-hMwLZ m-x8kkmy", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
+        ><div class="m-octv7h"
+          ><div class="m-u42mvl-container"
+            ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
+              ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/PaH9gfXFf1SMEKsGdPR1jFPtkI.jpg,/images/q8S91X2cbv33ALZwGjockAAAfo8.jpg" data-pause="0.7"></canvas
+            ></div
+          ></div
+        ></div
+        ><div class="m-1q5bunh"
+          ><div class="m-8rejp0"
+            ><div class="m-94h1a7-container"
+              ><HeadingsVertical variant="Contact - H2" first="Contact"></HeadingsVertical
+            ></div
+          ></div
+          ><div class="m-1piotay"
+            ><LogoVerticalWhite class="m-15q6zc7"></LogoVerticalWhite
+            ><div class="m-1w00gaq-container"
+              ><HeadingsVertical variant="Scroll Down - H6 - Smaller"></HeadingsVertical
+            ></div
+          ></div
+        ></div
+      ></header></Fragment
+    >
+  ) : null
+}

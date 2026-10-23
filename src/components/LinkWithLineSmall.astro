@@ -1,0 +1,20 @@
+---
+// Link With Line - Small
+import Line from './Line.astro';
+import LineAnimated from './LineAnimated.astro';
+
+interface Props {
+  link?: string;
+  style: string;
+}
+
+const { link, style } = Astro.props;
+---
+
+<a class="m-bGO9v m-xbhBc m-3UBND m-10tl6qb v-10tl6qb m-1sg2g88" href={link} style="height:100%"
+  ><div class="m-cf4z8f" style={style}
+    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--prop-GffgxLMr6))">Send Message</p
+  ></div
+  ><Line class="m-1491pu0"></Line
+  ><LineAnimated class="m-tu2sv7"></LineAnimated
+></a>

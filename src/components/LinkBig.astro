@@ -1,0 +1,37 @@
+---
+// Link Big
+interface Props {
+  variant?: "Normal" | "Smaller";
+  link: string;
+  text: string;
+}
+
+const { variant = "Normal", link, text } = Astro.props;
+
+const VARIANTS = {
+  "Normal": "v-12dxaoo",
+  "Smaller": "v-18r79j7",
+};
+---
+
+{
+  variant === "Normal" ? (
+    <Fragment
+      ><a class:list={["m-Mw6EY m-OjHb3 m-5BKxZ m-12dxaoo m-3et7lg", VARIANTS[variant]]} href={link} tabindex="0"
+        ><div class="m-oa3atu" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+          ><h4 class="rt type-9iwysc" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">{text}</h4
+        ></div
+        ><div class="m-1emisup" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+      ></a></Fragment
+    >
+  ) : variant === "Smaller" ? (
+    <Fragment
+      ><a class:list={["m-Mw6EY m-OjHb3 m-5BKxZ m-12dxaoo m-3et7lg", VARIANTS[variant]]} href={link}
+        ><div class="m-oa3atu" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255));transform:none"
+          ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))">{text}</h5
+        ></div
+        ><div class="m-1emisup" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+      ></a></Fragment
+    >
+  ) : null
+}

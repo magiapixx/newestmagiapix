@@ -1,0 +1,76 @@
+---
+// Pageheader - Section (Cases)
+import HeadingsVertical from './HeadingsVertical.astro';
+import LogoVerticalWhite from './LogoVerticalWhite.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Desktop - Wide" | "Phone";
+  headingsVerticalVariant?: string;
+  headingsVerticalFirst?: string;
+  logoVerticalWhiteStyle?: string;
+}
+
+const { variant = "Desktop", headingsVerticalVariant, headingsVerticalFirst, logoVerticalWhiteStyle } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-rlzhcv",
+  "Tablet": "v-10yn8j3",
+  "Desktop - Wide": "v-gzk4hp",
+  "Phone": "v-bdsxbs",
+};
+---
+
+{
+  variant === "Desktop" || variant === "Tablet" || variant === "Desktop - Wide" ? (
+    <Fragment
+      ><header class:list={["m-JHNch m-rlzhcv", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
+        ><div class="m-4vg42g"
+          ><div class="m-1vf98m7-container"
+            ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
+              ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/ZQqfSSYOzv1ENV9pRRJHAAy691Y.jpg,/images/83asOi3fwykzrvHg1eZXJiySeHc.jpg"></canvas
+            ></div
+          ></div
+        ></div
+        ><div class="m-ktpkvy"
+          ><div class="m-9l4w1o"
+            ><div class="m-1dwph83-container"
+              ><HeadingsVertical variant={headingsVerticalVariant} first={headingsVerticalFirst}></HeadingsVertical
+            ></div
+          ></div
+          ><div class="m-1cpnmm7"></div
+          ><div class="m-dqakio"
+            ><LogoVerticalWhite class="m-1dyn9nn" style={logoVerticalWhiteStyle}></LogoVerticalWhite
+            ><div class="m-1cuvaoo-container"
+              ><HeadingsVertical variant="Scroll Down - H6"></HeadingsVertical
+            ></div
+          ></div
+        ></div
+      ></header></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><header class:list={["m-JHNch m-rlzhcv", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
+        ><div class="m-4vg42g"
+          ><div class="m-1vf98m7-container"
+            ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
+              ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/ZQqfSSYOzv1ENV9pRRJHAAy691Y.jpg,/images/83asOi3fwykzrvHg1eZXJiySeHc.jpg"></canvas
+            ></div
+          ></div
+        ></div
+        ><div class="m-ktpkvy"
+          ><div class="m-9l4w1o"
+            ><div class="m-1dwph83-container"
+              ><HeadingsVertical variant="Cases - H2" first="Cases"></HeadingsVertical
+            ></div
+          ></div
+          ><div class="m-dqakio"
+            ><LogoVerticalWhite class="m-1dyn9nn"></LogoVerticalWhite
+            ><div class="m-1cuvaoo-container"
+              ><HeadingsVertical variant="Scroll Down - H6 - Smaller"></HeadingsVertical
+            ></div
+          ></div
+        ></div
+      ></header></Fragment
+    >
+  ) : null
+}

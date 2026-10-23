@@ -1,0 +1,40 @@
+import { initSmoothScroll } from './components/smooth-scroll';
+import { initIntro } from './components/intro';
+import { initReveals } from './components/reveal';
+import { initServices } from './components/service';
+import { initShowreel } from './components/showreel';
+import { initVideos } from './components/video';
+import { initPriceCards } from './components/price-card';
+import { initHoverAccents } from './components/hover-accent';
+import { initNav } from './components/nav';
+import { initNavLinks } from './components/nav-link';
+import { initScrollVariants } from './components/scroll-variants';
+import { initLineLinks } from './components/line-link';
+import { initAwards } from './components/award';
+import { initUnderlineSweeps } from './components/underline-sweep';
+import { initContactForms } from './components/contact-form';
+import { initFaqs } from './components/faq';
+import { initTickers } from './components/ticker';
+import { initScramble } from './components/scramble';
+
+initSmoothScroll();
+initIntro();
+initNav();
+initNavLinks();
+initReveals();
+initServices();
+initScrollVariants();
+initShowreel();
+initVideos();
+initPriceCards();
+initHoverAccents();
+initLineLinks();
+initAwards();
+initUnderlineSweeps();
+initContactForms();
+initFaqs();
+initTickers();
+initScramble();
+
+// three.js is only loaded on pages that have WebGL effects
+if (document.querySelector('[data-gl]')) import('./webgl').then((m) => m.initWebgl());

@@ -1,0 +1,473 @@
+---
+// Price - Card
+import AnimationAccent from './AnimationAccent.astro';
+import MinusBig from './MinusBig.astro';
+import PlusBig from './PlusBig.astro';
+import PriceVariation from './PriceVariation.astro';
+
+interface Props {
+  variant?: "Desktop" | "Desktop Closed" | "Tablet" | "Tablet - Closed" | "Phone" | "Phone - Closed";
+}
+
+const { variant = "Desktop" } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-3kxegu",
+  "Desktop Closed": "v-1en70zz",
+  "Tablet": "v-y977ge",
+  "Tablet - Closed": "v-1i8jsh1",
+  "Phone": "v-1ar4n6d",
+  "Phone - Closed": "v-1m69yn8",
+};
+---
+
+{
+  variant === "Desktop" ? (
+    <Fragment
+      ><div class:list={["m-GJSAG m-OjHb3 m-5BKxZ m-dS8v4 m-xbhBc m-lhYZM m-3kxegu", VARIANTS[variant]]} tabindex="0" style="width:100%"
+        ><div class="m-9hlph9"
+          ><PlusBig class="m-1eskb38" dataShow="closed" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></PlusBig
+          ><MinusBig class="m-1eskb38" dataShow="open" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></MinusBig
+          ><div class="m-1lox1kn" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+            ><h4 class="rt type-9iwysc" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">Partnership</h4
+          ></div
+        ></div
+        ><div class="m-iittt5"
+          ><div class="m-2lf2fr"
+            ><div class="m-1x7g55y" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Designed for startups looking to create their digital footprint</p
+            ></div
+          ></div
+          ><div class="m-dzmg28" data-show="open"></div
+          ><div class="m-ffalhn" data-show="open"
+            ><div class="m-6zvqj0"
+              ><div class="m-zeaaqv" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1h17kaf"
+              ><div class="m-quksqh" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Aligning brand strategy </p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1ylci33" data-show="open"
+            ><div class="m-1psavu4"
+              ><div class="m-62a855" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-18ala8y"
+              ><div class="m-5dh4a6" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Expanding UI/UX design and design systems</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u0esyd" data-show="open"
+            ><div class="m-l4fqu5"
+              ><div class="m-on5wvi" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-4vu43x"
+              ><div class="m-15aowms" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Developing front-end solutions and CMS setups</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1rt8irz" data-show="open"
+            ><div class="m-r78qia"
+              ><div class="m-bqlubc" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1m0f2xf"
+              ><div class="m-1llcc31" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Implementing with Webflow or Framer</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u9iaf8" data-show="open"
+            ><div class="m-1cwg7ry"
+              ><div class="m-6t18f1" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1s3fxb5"
+              ><div class="m-jla88z" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Continuous asynchronous collaboration and regular check-ins</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-aiwb2d" data-show="open"></div
+          ><div class="m-909pap-container" data-show="open"
+            ><PriceVariation variant="Variant 1" style="width:100%" style2="--extracted-1eung3n:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none" style3="--m-text-color:var(--extracted-1eung3n, var(--color-accent, rgb(0, 255, 161)))" text="$7,000" periodStyle2="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none" periodStyle3="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" period="/month"></PriceVariation
+          ></div
+        ></div
+        ><div class="m-15198h8-container" data-show="hover"
+          ><AnimationAccent variant="Load 1 - Fill" style="height: 100%;width: 100%" style2="background-color:var(--color-accent, rgb(0, 255, 161))"></AnimationAccent
+        ></div
+      ></div></Fragment
+    >
+  ) : variant === "Desktop Closed" ? (
+    <Fragment
+      ><div class:list={["m-GJSAG m-OjHb3 m-5BKxZ m-dS8v4 m-xbhBc m-lhYZM m-3kxegu", VARIANTS[variant]]} tabindex="0" style="width:100%"
+        ><div class="m-9hlph9"
+          ><MinusBig class="m-1eskb38" dataShow="open" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></MinusBig
+          ><PlusBig class="m-1eskb38" dataShow="closed" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusBig
+          ><div class="m-1lox1kn" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+            ><h4 class="rt type-9iwysc" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">Per Project</h4
+          ></div
+        ></div
+        ><div class="m-iittt5"
+          ><div class="m-2lf2fr"
+            ><div class="m-1x7g55y" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">An organized approach for teams introducing new products</p
+            ></div
+          ></div
+          ><div class="m-dzmg28" data-show="open"></div
+          ><div class="m-ffalhn" data-show="open"
+            ><div class="m-6zvqj0"
+              ><div class="m-zeaaqv" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1h17kaf"
+              ><div class="m-quksqh" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Strategy and exploration sessions</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1ylci33" data-show="open"
+            ><div class="m-1psavu4"
+              ><div class="m-62a855" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-18ala8y"
+              ><div class="m-5dh4a6" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">UX/UI design and product framework</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u0esyd" data-show="open"
+            ><div class="m-l4fqu5"
+              ><div class="m-on5wvi" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-4vu43x"
+              ><div class="m-15aowms" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Detailed visual design and prototypes</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1rt8irz" data-show="open"
+            ><div class="m-r78qia" style="transform: scale(1, 1) scale(1, 1)"
+              ><div class="m-bqlubc" style="background-color: var(--color-accent, rgb(0, 255, 161));transform: scale(1, 1) scale(1, 1)"></div
+            ></div
+            ><div class="m-1m0f2xf" style="transform: scale(1, 1) scale(1, 1)"
+              ><div class="m-1llcc31" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline;transform: scale(1, 1) scale(1, 1)"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Development using Webflow or Framer</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u9iaf8" data-show="open"
+            ><div class="m-1cwg7ry"
+              ><div class="m-6t18f1" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1s3fxb5"
+              ><div class="m-jla88z" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Support during launch and documentation</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-aiwb2d" data-show="open"></div
+          ><div class="m-909pap-container" data-show="open"
+            ><PriceVariation variant="v-zy2794" style="width: 100%" style2="--extracted-1eung3n: var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing: 0px" style3="--m-text-color: var(--extracted-1eung3n, var(--color-accent, rgb(0, 255, 161)))" text="$10,000" periodStyle2="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing: 0px" periodStyle3="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" period="Starting at"></PriceVariation
+          ></div
+        ></div
+      ></div></Fragment
+    >
+  ) : variant === "Tablet" ? (
+    <Fragment
+      ><div class:list={["m-GJSAG m-OjHb3 m-5BKxZ m-dS8v4 m-xbhBc m-lhYZM m-3kxegu", VARIANTS[variant]]} tabindex="0" style="width:100%"
+        ><div class="m-9hlph9"
+          ><PlusBig class="m-1eskb38" dataShow="closed" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></PlusBig
+          ><MinusBig class="m-1eskb38" dataShow="open" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></MinusBig
+          ><div class="m-1lox1kn" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255));transform:none"
+            ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))">Partnership</h5
+          ></div
+        ></div
+        ><div class="m-iittt5"
+          ><div class="m-2lf2fr"
+            ><div class="m-1x7g55y" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Designed for startups looking to create their digital footprint</p
+            ></div
+          ></div
+          ><div class="m-dzmg28" data-show="open"></div
+          ><div class="m-ffalhn" data-show="open"
+            ><div class="m-6zvqj0"
+              ><div class="m-zeaaqv" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1h17kaf"
+              ><div class="m-quksqh" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Aligning brand strategy </p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1ylci33" data-show="open"
+            ><div class="m-1psavu4"
+              ><div class="m-62a855" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-18ala8y"
+              ><div class="m-5dh4a6" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Expanding UI/UX design and design systems</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u0esyd" data-show="open"
+            ><div class="m-l4fqu5"
+              ><div class="m-on5wvi" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-4vu43x"
+              ><div class="m-15aowms" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Developing front-end solutions and CMS setups</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1rt8irz" data-show="open"
+            ><div class="m-r78qia"
+              ><div class="m-bqlubc" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1m0f2xf"
+              ><div class="m-1llcc31" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Implementing with Webflow or Framer</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u9iaf8" data-show="open"
+            ><div class="m-1cwg7ry"
+              ><div class="m-6t18f1" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1s3fxb5"
+              ><div class="m-jla88z" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Continuous asynchronous collaboration and regular check-ins</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-aiwb2d" data-show="open"></div
+          ><div class="m-909pap-container" data-show="open"
+            ><PriceVariation variant="Variant 1" style="width:100%" style2="--extracted-1eung3n:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none" style3="--m-text-color:var(--extracted-1eung3n, var(--color-accent, rgb(0, 255, 161)))" text="$7,000" periodStyle2="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none" periodStyle3="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" period="/month"></PriceVariation
+          ></div
+        ></div
+      ></div></Fragment
+    >
+  ) : variant === "Tablet - Closed" ? (
+    <Fragment
+      ><div class:list={["m-GJSAG m-OjHb3 m-5BKxZ m-dS8v4 m-xbhBc m-lhYZM m-3kxegu", VARIANTS[variant]]} tabindex="0" style="width:100%"
+        ><div class="m-9hlph9"
+          ><MinusBig class="m-1eskb38" dataShow="open" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></MinusBig
+          ><PlusBig class="m-1eskb38" dataShow="closed" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusBig
+          ><div class="m-1lox1kn" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255));transform:none"
+            ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))">Per Project</h5
+          ></div
+        ></div
+        ><div class="m-iittt5"
+          ><div class="m-2lf2fr"
+            ><div class="m-1x7g55y" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">An organized approach for teams introducing new products</p
+            ></div
+          ></div
+          ><div class="m-dzmg28" data-show="open"></div
+          ><div class="m-ffalhn" data-show="open"
+            ><div class="m-6zvqj0"
+              ><div class="m-zeaaqv" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1h17kaf"
+              ><div class="m-quksqh" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Strategy and exploration sessions</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1ylci33" data-show="open"
+            ><div class="m-1psavu4"
+              ><div class="m-62a855" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-18ala8y"
+              ><div class="m-5dh4a6" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">UX/UI design and product framework</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u0esyd" data-show="open"
+            ><div class="m-l4fqu5"
+              ><div class="m-on5wvi" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-4vu43x"
+              ><div class="m-15aowms" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Detailed visual design and prototypes</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1rt8irz" data-show="open"
+            ><div class="m-r78qia"
+              ><div class="m-bqlubc" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1m0f2xf"
+              ><div class="m-1llcc31" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Development using Webflow or Framer</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u9iaf8" data-show="open"
+            ><div class="m-1cwg7ry"
+              ><div class="m-6t18f1" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1s3fxb5"
+              ><div class="m-jla88z" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Support during launch and documentation</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-aiwb2d" data-show="open"></div
+          ><div class="m-909pap-container" data-show="open"
+            ><PriceVariation variant="v-zy2794" style="width: 100%;transform: scale(1, 1) scale(1, 1)" style2="--extracted-1eung3n: var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing: 0px;transform: scale(1, 1) scale(1, 1)" style3="--m-text-color: var(--extracted-1eung3n, var(--color-accent, rgb(0, 255, 161)))" text="$10,000" periodStyle="transform: scale(1, 1) scale(1, 1)" periodStyle2="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing: 0px;transform: scale(1, 1) scale(1, 1)" periodStyle3="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" period="Starting at"></PriceVariation
+          ></div
+        ></div
+      ></div></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><div class:list={["m-GJSAG m-OjHb3 m-5BKxZ m-dS8v4 m-xbhBc m-lhYZM m-3kxegu", VARIANTS[variant]]} tabindex="0" style="width:100%"
+        ><div class="m-9hlph9"
+          ><PlusBig class="m-1eskb38" dataShow="closed" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></PlusBig
+          ><MinusBig class="m-1eskb38" dataShow="open" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></MinusBig
+          ><div class="m-1lox1kn" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));transform:none"
+            ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Partnership</h6
+          ></div
+        ></div
+        ><div class="m-iittt5"
+          ><div class="m-2lf2fr"
+            ><div class="m-1x7g55y" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Designed for startups looking to create their digital footprint</p
+            ></div
+          ></div
+          ><div class="m-dzmg28" data-show="open"></div
+          ><div class="m-ffalhn" data-show="open"
+            ><div class="m-6zvqj0"
+              ><div class="m-zeaaqv" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1h17kaf"
+              ><div class="m-quksqh" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Aligning brand strategy </p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1ylci33" data-show="open"
+            ><div class="m-1psavu4"
+              ><div class="m-62a855" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-18ala8y"
+              ><div class="m-5dh4a6" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Expanding UI/UX design and design systems</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u0esyd" data-show="open"
+            ><div class="m-l4fqu5"
+              ><div class="m-on5wvi" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-4vu43x"
+              ><div class="m-15aowms" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Developing front-end solutions and CMS setups</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1rt8irz" data-show="open"
+            ><div class="m-r78qia"
+              ><div class="m-bqlubc" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1m0f2xf"
+              ><div class="m-1llcc31" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Implementing with Webflow or Framer</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u9iaf8" data-show="open"
+            ><div class="m-1cwg7ry"
+              ><div class="m-6t18f1" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1s3fxb5"
+              ><div class="m-jla88z" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Continuous asynchronous collaboration and regular check-ins</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-aiwb2d" data-show="open"></div
+          ><div class="m-909pap-container" data-show="open"
+            ><PriceVariation variant="Variant 1" style="width:100%" style2="--extracted-1eung3n:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none" style3="--m-text-color:var(--extracted-1eung3n, var(--color-accent, rgb(0, 255, 161)))" text="$7,000" periodStyle2="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none" periodStyle3="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" period="/month"></PriceVariation
+          ></div
+        ></div
+      ></div></Fragment
+    >
+  ) : variant === "Phone - Closed" ? (
+    <Fragment
+      ><div class:list={["m-GJSAG m-OjHb3 m-5BKxZ m-dS8v4 m-xbhBc m-lhYZM m-3kxegu", VARIANTS[variant]]} tabindex="0" style="width:100%"
+        ><div class="m-9hlph9"
+          ><MinusBig class="m-1eskb38" dataShow="open" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></MinusBig
+          ><PlusBig class="m-1eskb38" dataShow="closed" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusBig
+          ><div class="m-1lox1kn" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));transform:none"
+            ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Per Project</h6
+          ></div
+        ></div
+        ><div class="m-iittt5"
+          ><div class="m-2lf2fr"
+            ><div class="m-1x7g55y" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">An organized approach for teams introducing new products</p
+            ></div
+          ></div
+          ><div class="m-dzmg28" data-show="open"></div
+          ><div class="m-ffalhn" data-show="open"
+            ><div class="m-6zvqj0"
+              ><div class="m-zeaaqv" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1h17kaf"
+              ><div class="m-quksqh" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Strategy and exploration sessions</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1ylci33" data-show="open"
+            ><div class="m-1psavu4"
+              ><div class="m-62a855" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-18ala8y"
+              ><div class="m-5dh4a6" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">UX/UI design and product framework</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u0esyd" data-show="open"
+            ><div class="m-l4fqu5"
+              ><div class="m-on5wvi" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-4vu43x"
+              ><div class="m-15aowms" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Detailed visual design and prototypes</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1rt8irz" data-show="open"
+            ><div class="m-r78qia"
+              ><div class="m-bqlubc" style="background-color: var(--color-accent, rgb(0, 255, 161))"></div
+            ></div
+            ><div class="m-1m0f2xf"
+              ><div class="m-1llcc31" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Development using Webflow or Framer</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-1u9iaf8" data-show="open"
+            ><div class="m-1cwg7ry" style="transform: scale(1, 1) scale(1, 1)"
+              ><div class="m-6t18f1" style="background-color: var(--color-accent, rgb(0, 255, 161));transform: scale(1, 1) scale(1, 1)"></div
+            ></div
+            ><div class="m-1s3fxb5" style="transform: scale(1, 1) scale(1, 1)"
+              ><div class="m-jla88z" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline;transform: scale(1, 1) scale(1, 1)"
+                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Support during launch and documentation</p
+              ></div
+            ></div
+          ></div
+          ><div class="m-aiwb2d" data-show="open"></div
+          ><div class="m-909pap-container" data-show="open"
+            ><PriceVariation variant="v-zy2794" style="width: 100%" style2="--extracted-1eung3n: var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing: 0px" style3="--m-text-color: var(--extracted-1eung3n, var(--color-accent, rgb(0, 255, 161)))" text="$10,000" periodStyle2="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing: 0px" periodStyle3="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" period="Starting at"></PriceVariation
+          ></div
+        ></div
+      ></div></Fragment
+    >
+  ) : null
+}

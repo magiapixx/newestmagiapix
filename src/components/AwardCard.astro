@@ -1,0 +1,91 @@
+---
+// Award - Card
+import AnimationAccent from './AnimationAccent.astro';
+import ExternalLinkIcon from './ExternalLinkIcon.astro';
+import LineBold from './LineBold.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Phone";
+  name: string;
+  client: string;
+  type: string;
+  year: string;
+  clientStyle?: string;
+}
+
+const { variant = "Desktop", name, client, type, year, clientStyle } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-1ezkko",
+  "Tablet": "v-s57m7r",
+  "Phone": "v-drqb51",
+};
+---
+
+{
+  variant === "Desktop" ? (
+    <Fragment
+      ><a class:list={["m-i7kYl m-pQ5hH m-alehh m-lhYZM m-3UBND m-xbhBc m-1ezkko m-4w5ck7", VARIANTS[variant]]} href="https://www.awwwards.com/websites/" target="_blank" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+        ><div class="m-exb53o"
+          ><div class="m-1kk4hg7"
+            ><div class="m-8p26xb" style="--m-paragraph-spacing:0px;opacity:1;transform:none"
+              ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">{name}</h5
+            ></div
+          ></div
+          ><div class="m-1pqlvmn"
+            ><div class="m-1gedq9b" style="--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">{client}</p
+            ></div
+          ></div
+          ><div class="m-1kq3850"
+            ><div class="m-wg9mlt" style="--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">{type}</p
+            ></div
+          ></div
+          ><div class="m-11e43yq"
+            ><div class="m-9yt2ny" style="--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-alignment:right;--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">{year}</p
+            ></div
+            ><ExternalLinkIcon></ExternalLinkIcon
+          ></div
+        ></div
+        ><div class="m-17v03n0-container" data-show="hover"
+          ><AnimationAccent variant="Load and Fill - End" style="height: 100%;width: 100%" style2="background-color: var(--color-black, rgb(0, 0, 0))"></AnimationAccent
+        ></div
+      ></a></Fragment
+    >
+  ) : variant === "Tablet" || variant === "Phone" ? (
+    <Fragment
+      ><a class:list={["m-i7kYl m-pQ5hH m-alehh m-lhYZM m-3UBND m-xbhBc m-1ezkko m-4w5ck7", VARIANTS[variant]]} href="https://www.awwwards.com/websites/" target="_blank" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+        ><div class="m-exb53o"
+          ><div class="m-1kk4hg7"
+            ><div class="m-8p26xb" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));opacity:1;transform:none"
+              ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">{name}</h6
+            ></div
+          ></div
+          ><div class="m-1pqlvmn"
+            ><div class="m-1gedq9b" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-m3s7sn" dir="auto" style={clientStyle}>{client}</p
+            ></div
+          ></div
+          ><div class="m-1kq3850"
+            ><div class="m-wg9mlt" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">{type}</p
+            ></div
+          ></div
+          ><div class="m-11e43yq"
+            ><div class="m-9yt2ny" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-alignment:right;--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">{year}</p
+            ></div
+          ></div
+        ></div
+        ><div class="m-1m661c6"
+          ><div class="m-1eahvdf" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+            ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">View Award</p
+          ></div
+          ><LineBold></LineBold
+        ></div
+      ></a></Fragment
+    >
+  ) : null
+}

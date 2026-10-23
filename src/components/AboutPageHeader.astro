@@ -1,0 +1,75 @@
+---
+// Pageheader - Section (About)
+import HeadingsVertical from './HeadingsVertical.astro';
+import LogoVerticalWhite from './LogoVerticalWhite.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Wide" | "Phone";
+  headingsVerticalVariant?: string;
+  logoVerticalWhiteStyle?: string;
+}
+
+const { variant = "Desktop", headingsVerticalVariant, logoVerticalWhiteStyle } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-h46ur",
+  "Tablet": "v-ha7if9",
+  "Wide": "v-1mjzhwn",
+  "Phone": "v-p7mn0m",
+};
+---
+
+{
+  variant === "Desktop" || variant === "Tablet" || variant === "Wide" ? (
+    <Fragment
+      ><header class:list={["m-wsYjL m-h46ur", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
+        ><div class="m-i3jdos"
+          ><div class="m-s5qx0m-container"
+            ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
+              ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/OoVdTrOnV9WIuFFqqLn1QQcJw.jpg,/images/lKfisz2Inwxr7qCnKwBfE7ujdkA.jpg"></canvas
+            ></div
+          ></div
+        ></div
+        ><div class="m-1b19mwu"
+          ><div class="m-172tcv9"
+            ><div class="m-17wzla0-container"
+              ><HeadingsVertical variant={headingsVerticalVariant}></HeadingsVertical
+            ></div
+          ></div
+          ><div class="m-vdy85a"></div
+          ><div class="m-zuapat"
+            ><LogoVerticalWhite class="m-1r3pytp" style={logoVerticalWhiteStyle}></LogoVerticalWhite
+            ><div class="m-6b001-container"
+              ><HeadingsVertical variant="Scroll Down - H6"></HeadingsVertical
+            ></div
+          ></div
+        ></div
+      ></header></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><header class:list={["m-wsYjL m-h46ur", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
+        ><div class="m-i3jdos"
+          ><div class="m-s5qx0m-container"
+            ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
+              ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/OoVdTrOnV9WIuFFqqLn1QQcJw.jpg,/images/lKfisz2Inwxr7qCnKwBfE7ujdkA.jpg"></canvas
+            ></div
+          ></div
+        ></div
+        ><div class="m-1b19mwu"
+          ><div class="m-172tcv9"
+            ><div class="m-17wzla0-container"
+              ><HeadingsVertical variant="About Agency - H2"></HeadingsVertical
+            ></div
+          ></div
+          ><div class="m-zuapat"
+            ><LogoVerticalWhite class="m-1r3pytp"></LogoVerticalWhite
+            ><div class="m-6b001-container"
+              ><HeadingsVertical variant="Scroll Down - H6 - Smaller"></HeadingsVertical
+            ></div
+          ></div
+        ></div
+      ></header></Fragment
+    >
+  ) : null
+}

@@ -1,0 +1,259 @@
+---
+// Subscription - Section
+import HeadingsVertical from './HeadingsVertical.astro';
+import PlusMedium from './PlusMedium.astro';
+import PlusSmall from './PlusSmall.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Wide" | "Phone";
+  headingsVerticalVariant?: string;
+}
+
+const { variant = "Desktop", headingsVerticalVariant } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-r3folb",
+  "Tablet": "v-14dwyd8",
+  "Wide": "v-ffyfvy",
+  "Phone": "v-vz0dz5",
+};
+---
+
+{
+  variant === "Desktop" || variant === "Tablet" || variant === "Wide" ? (
+    <Fragment
+      ><section class:list={["m-5AYrz m-5BKxZ m-dS8v4 m-OjHb3 m-lhYZM m-r3folb", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
+        ><div class="m-19sddme"
+          ><div class="m-7fgkm7-container"
+            ><HeadingsVertical first="/Subscription" variant={headingsVerticalVariant}></HeadingsVertical
+          ></div
+          ><div class="m-199ljbk"></div
+          ><div class="m-1ljqxg9"
+            ><div class="m-rzy58b" style="--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255));--extracted-as4nhg:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
+              ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))">A flexible <span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-accent, rgb(0, 255, 161)))">subscription model</span> for premium digital design. Rapid execution, relentless iterations, and precise alignment with your brand ecosystem.</h5
+            ></div
+            ><div class="m-1oau65x" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+              ><div class="m-1yddm3j" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
+                ><PlusSmall class="m-gav0po" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-zfwdjk" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-mm2qhr" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-sggsoj" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><div class="m-1ljjzn"
+                  ><div class="m-18zy2x4"
+                    ><div class="m-1swiug9"
+                      ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+                        ><img decoding="async" loading="lazy" width="80" height="80" src="/images/xlnhAUAgwVLAHsDEHaP3Ekg9GCw.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+                      ></div
+                    ></div
+                  ></div
+                  ><div class="m-f0d2mo" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Flat Monthly Rate </h6
+                  ></div
+                ></div
+                ><div class="m-10rl7bg"
+                  ><div class="m-ig9bcw"></div
+                  ><div class="m-c75x7w" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Secure top-tier design support with a transparent monthly model. Absolute financial predictability for consistent creative output.</p
+                  ></div
+                ></div
+              ></div
+            ></div
+            ><div class="m-xl0g2l" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+              ><div class="m-1ga40su" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
+                ><PlusMedium class="m-107yjz7" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-5otuky" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-1stak7a" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-j4j69h" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><div class="m-1qvz932"
+                  ><div class="m-10a7xwb"
+                    ><div class="m-zfvz69"
+                      ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+                        ><img decoding="async" loading="lazy" width="80" height="80" src="/images/rnOcaRBsZ0SaJdqUEdnGXgS0es.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+                      ></div
+                    ></div
+                  ></div
+                  ><div class="m-14lhafj" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Infinite Iterations</h6
+                  ></div
+                ></div
+                ><div class="m-5kqlef"
+                  ><div class="m-bxdm8y"></div
+                  ><div class="m-a1chrp" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Queue as many tasks as needed. We continuously refine the output until it meets our uncompromising structural standards.</p
+                  ></div
+                ></div
+              ></div
+            ></div
+            ><div class="m-1dgrrs7" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+              ><div class="m-1q35lh6" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
+                ><PlusSmall class="m-1p89llp" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-1fu03ki" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-1rap3x9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-12z6u13" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><div class="m-1c42ioy"
+                  ><div class="m-3u6ojj"
+                    ><div class="m-1w6fbub"
+                      ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+                        ><img decoding="async" loading="lazy" width="80" height="80" src="/images/qwlHpkDerF2goQGHVw22KCquy0.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+                      ></div
+                    ></div
+                  ></div
+                  ><div class="m-17pobs5" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Rapid Turnarounds</h6
+                  ></div
+                ></div
+                ><div class="m-10e4ikb"
+                  ><div class="m-121pz8z"></div
+                  ><div class="m-1e7l0mo" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">A highly optimized workflow designed to deliver premium assets swiftly, without sacrificing architectural integrity.</p
+                  ></div
+                ></div
+              ></div
+            ></div
+            ><div class="m-1xh93l8" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+              ><div class="m-1q4s76e" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
+                ><PlusMedium class="m-16k3a85" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-16i6jx6" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-e7x6k9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-1nqy3im" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><div class="m-15um66v"
+                  ><div class="m-1j4ghat"
+                    ><div class="m-14llluh"
+                      ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+                        ><img decoding="async" loading="lazy" width="80" height="80" src="/images/2GhbTUuLsZiZnefO07P0cTksQ.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+                      ></div
+                    ></div
+                  ></div
+                  ><div class="m-n80e5u" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Senior Expertise</h6
+                  ></div
+                ></div
+                ><div class="m-i2e976"
+                  ><div class="m-1ycmtau"></div
+                  ><div class="m-1no94tj" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Collaborate exclusively with industry veterans who master the intersection of high-end aesthetics, strategy, and digital performance.</p
+                  ></div
+                ></div
+              ></div
+            ></div
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><section class:list={["m-5AYrz m-5BKxZ m-dS8v4 m-OjHb3 m-lhYZM m-r3folb", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
+        ><div class="m-19sddme"
+          ><div class="m-1ljqxg9"
+            ><div class="m-rzy58b" style="--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255));--extracted-as4nhg:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;--extracted-1vqrutl:var(--color-accent, rgb(0, 255, 161));--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));transform:none"
+              ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">A flexible <span class="rt" style="--m-text-color:var(--extracted-1vqrutl, var(--color-accent, rgb(0, 255, 161)))">subscription model</span> for premium digital design. Rapid execution, relentless iterations, and precise alignment with your brand ecosystem.</h6
+            ></div
+            ><div class="m-1knpvj9" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+              ><h4 class="rt type-9iwysc" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">/Subscription</h4
+            ></div
+            ><div class="m-1oau65x" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+              ><div class="m-1yddm3j" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
+                ><PlusSmall class="m-gav0po" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-zfwdjk" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-mm2qhr" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-sggsoj" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><div class="m-1ljjzn"
+                  ><div class="m-18zy2x4"
+                    ><div class="m-1swiug9"
+                      ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+                        ><img decoding="async" loading="lazy" width="80" height="80" src="/images/xlnhAUAgwVLAHsDEHaP3Ekg9GCw.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+                      ></div
+                    ></div
+                  ></div
+                  ><div class="m-f0d2mo" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Flat Monthly Rate </h6
+                  ></div
+                ></div
+                ><div class="m-10rl7bg"
+                  ><div class="m-c75x7w" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Secure top-tier design support with a transparent monthly model. Absolute financial predictability for consistent creative output.</p
+                  ></div
+                ></div
+              ></div
+            ></div
+            ><div class="m-xl0g2l" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+              ><div class="m-1ga40su" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
+                ><PlusMedium class="m-107yjz7" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-5otuky" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-1stak7a" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-j4j69h" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><div class="m-1qvz932"
+                  ><div class="m-10a7xwb"
+                    ><div class="m-zfvz69"
+                      ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+                        ><img decoding="async" loading="lazy" width="80" height="80" src="/images/rnOcaRBsZ0SaJdqUEdnGXgS0es.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+                      ></div
+                    ></div
+                  ></div
+                  ><div class="m-14lhafj" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Infinite Iterations</h6
+                  ></div
+                ></div
+                ><div class="m-5kqlef"
+                  ><div class="m-a1chrp" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Queue as many tasks as needed. We continuously refine the output until it meets our uncompromising structural standards.</p
+                  ></div
+                ></div
+              ></div
+            ></div
+            ><div class="m-1dgrrs7" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+              ><div class="m-1q35lh6" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
+                ><PlusSmall class="m-1p89llp" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-1fu03ki" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-1rap3x9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><PlusSmall class="m-12z6u13" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+                ><div class="m-1c42ioy"
+                  ><div class="m-3u6ojj"
+                    ><div class="m-1w6fbub"
+                      ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+                        ><img decoding="async" loading="lazy" width="80" height="80" src="/images/qwlHpkDerF2goQGHVw22KCquy0.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+                      ></div
+                    ></div
+                  ></div
+                  ><div class="m-17pobs5" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Rapid Turnarounds</h6
+                  ></div
+                ></div
+                ><div class="m-10e4ikb"
+                  ><div class="m-1e7l0mo" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">A highly optimized workflow designed to deliver premium assets swiftly, without sacrificing architectural integrity.</p
+                  ></div
+                ></div
+              ></div
+            ></div
+            ><div class="m-1xh93l8" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+              ><div class="m-1q4s76e" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
+                ><PlusMedium class="m-16k3a85" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-16i6jx6" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-e7x6k9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><PlusMedium class="m-1nqy3im" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><div class="m-15um66v"
+                  ><div class="m-1j4ghat"
+                    ><div class="m-14llluh"
+                      ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+                        ><img decoding="async" loading="lazy" width="80" height="80" src="/images/2GhbTUuLsZiZnefO07P0cTksQ.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+                      ></div
+                    ></div
+                  ></div
+                  ><div class="m-n80e5u" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Senior Expertise</h6
+                  ></div
+                ></div
+                ><div class="m-i2e976"
+                  ><div class="m-1no94tj" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                    ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Collaborate exclusively with industry veterans who master the intersection of high-end aesthetics, strategy, and digital performance.</p
+                  ></div
+                ></div
+              ></div
+            ></div
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : null
+}
