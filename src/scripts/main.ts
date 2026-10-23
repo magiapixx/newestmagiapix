@@ -5,10 +5,15 @@ import { initServices } from './components/service';
 import { initShowreel } from './components/showreel';
 import { initVideos } from './components/video';
 import { initPriceCards } from './components/price-card';
-import { initCaseCards } from './components/case-card';
+import { initHoverAccents } from './components/hover-accent';
 import { initNav } from './components/nav';
 import { initNavLinks } from './components/nav-link';
 import { initScrollVariants } from './components/scroll-variants';
+import { initLineLinks } from './components/line-link';
+import { initAwards } from './components/award';
+import { initUnderlineSweeps } from './components/underline-sweep';
+import { initContactForms } from './components/contact-form';
+import { initFaqs } from './components/faq';
 
 initSmoothScroll();
 initIntro();
@@ -20,7 +25,12 @@ initScrollVariants();
 initShowreel();
 initVideos();
 initPriceCards();
-initCaseCards();
+initHoverAccents();
+initLineLinks();
+initAwards();
+initUnderlineSweeps();
+initContactForms();
+initFaqs();
 
 // three.js is only loaded on pages that have WebGL effects
 if (document.querySelector('[data-gl]')) import('./webgl').then((m) => m.initWebgl());
