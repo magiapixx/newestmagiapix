@@ -1219,3 +1219,5 @@ html body { background: rgb(94, 94, 94); }/* About section copy: font size follo
 .m-mIo8f.v-90dfpr .m-d98quu{padding-top:91px}
 /* About section copy: rows follow the text height (not two equal halves), so the paragraph always sits a fixed gap below the statement */
 .m-faSoo:not(.v-l8l8b2) .m-1dqc4is{grid-template-rows:repeat(2,min-content);align-content:center;row-gap:max(40px,3vw)}
+/* active big link: back to white under the green hover sweep, which would otherwise hide green text */
+.m-Mw6EY[aria-current="page"]:hover .m-oa3atu{--extracted-1eung3n:var(--color-white, rgb(255, 255, 255))!important;--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255))!important}

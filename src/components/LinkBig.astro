@@ -12,13 +12,19 @@ const VARIANTS = {
   "Normal": "v-12dxaoo",
   "Smaller": "v-18r79j7",
 };
+
+// the link for the page being viewed (and Cases on case pages) shows in the accent color
+const trim = (path: string) => path.replace(/\/+$/, "") || "/";
+const here = trim(Astro.url.pathname);
+const active = link === "/" ? here === "/" : here === trim(link) || here.startsWith(trim(link) + "/");
+const color = active ? "var(--color-accent, rgb(0, 255, 161))" : "var(--color-white, rgb(255, 255, 255))";
 ---
 
 {
   variant === "Normal" ? (
     <Fragment
-      ><a class:list={["m-Mw6EY m-OjHb3 m-5BKxZ m-12dxaoo m-3et7lg", VARIANTS[variant]]} href={link} tabindex="0"
-        ><div class="m-oa3atu" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+      ><a class:list={["m-Mw6EY m-OjHb3 m-5BKxZ m-12dxaoo m-3et7lg", VARIANTS[variant]]} href={link} tabindex="0" aria-current={active ? "page" : undefined}
+        ><div class="m-oa3atu" style={`--extracted-1eung3n:${color};--m-paragraph-spacing:0px;transform:none`}
           ><h4 class="rt type-9iwysc" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">{text}</h4
         ></div
         ><div class="m-1emisup" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
@@ -26,8 +32,8 @@ const VARIANTS = {
     >
   ) : variant === "Smaller" ? (
     <Fragment
-      ><a class:list={["m-Mw6EY m-OjHb3 m-5BKxZ m-12dxaoo m-3et7lg", VARIANTS[variant]]} href={link}
-        ><div class="m-oa3atu" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255));transform:none"
+      ><a class:list={["m-Mw6EY m-OjHb3 m-5BKxZ m-12dxaoo m-3et7lg", VARIANTS[variant]]} href={link} aria-current={active ? "page" : undefined}
+        ><div class="m-oa3atu" style={`--extracted-1eung3n:${color};--m-paragraph-spacing:0px;--extracted-1lwpl3i:${color};transform:none`}
           ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))">{text}</h5
         ></div
         ><div class="m-1emisup" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
