@@ -1221,6 +1221,6 @@ html body { background: rgb(94, 94, 94); }/* About section copy: font size follo
 .m-faSoo:not(.v-l8l8b2) .m-1dqc4is{grid-template-rows:repeat(2,min-content);align-content:center;row-gap:max(40px,3vw)}
 /* active big link: back to white under the green hover sweep, which would otherwise hide green text */
 .m-Mw6EY[aria-current="page"]:hover .m-oa3atu{--extracted-1eung3n:var(--color-white, rgb(255, 255, 255))!important;--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255))!important}
-/* hero tagline: live text at weight 800, sized from the box height (MAGIAPIX is ~5.13em long) so it fills it without being cut off */
-.m-y5R0E .m-ing148.hero-tagline{aspect-ratio:.4823;width:auto;container-type:size}
-.hero-tagline p{margin:0;height:100%;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;font-family:"Zalando Sans Variable","Zalando Sans Variable Placeholder",sans-serif;font-weight:800;font-variation-settings:"wght" 800;font-size:calc(100cqh / 5.14);line-height:.825;letter-spacing:0;color:var(--color-accent,#00ffa1)}
+/* hero tagline: live text at weight 400 (matches the original logo), sized from the box height (MAGIAPIX is ~4.81em long) so it fills it without being cut off */
+.m-y5R0E .m-ing148.hero-tagline{aspect-ratio:.5135;width:auto;container-type:size}
+.hero-tagline p{margin:0;height:100%;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;font-family:"Zalando Sans Variable","Zalando Sans Variable Placeholder",sans-serif;font-weight:400;font-variation-settings:"wght" 400;font-size:calc(100cqh / 4.82);line-height:.825;letter-spacing:0;color:var(--color-accent,#00ffa1)}
