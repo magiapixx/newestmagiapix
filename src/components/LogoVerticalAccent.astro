@@ -2,10 +2,9 @@
 // Logo Vertical - Accent
 interface Props {
   class: string;
-  style?: string;
 }
 
-const { class: className, style } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<div class:list={["m-nBQOk", className]} style={style}></div>
+<div class:list={["m-nBQOk", className]}></div>
