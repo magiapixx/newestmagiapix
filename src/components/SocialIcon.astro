@@ -1,0 +1,25 @@
+---
+// Social Icon
+import BehanceIcon from './BehanceIcon.astro';
+import InstagramIcon from './InstagramIcon.astro';
+import LinkedinIcon from './LinkedinIcon.astro';
+import XIcon from './XIcon.astro';
+
+interface Props {
+  link: string;
+  fillStyle: string;
+  linkedinIconStyle?: string;
+  hasLinkedinIcon?: boolean;
+  xIconStyle?: string;
+  hasXIcon?: boolean;
+  behanceIconStyle?: string;
+  hasBehanceIcon?: boolean;
+  instagramIconStyle?: string;
+  hasInstagramIcon?: boolean;
+}
+
+const { link, fillStyle, linkedinIconStyle, hasLinkedinIcon, xIconStyle, hasXIcon, behanceIconStyle, hasBehanceIcon, instagramIconStyle, hasInstagramIcon } = Astro.props;
+---
+
+<a class="m-MQsLv m-1in1jcz v-1in1jcz m-94pb3s" href={link} target="_blank" style="height:100%;width:100%"
+  ><div class="m-1ceni24" style={fillStyle}></div>{hasLinkedinIcon && (<Fragment><LinkedinIcon style={linkedinIconStyle}></LinkedinIcon></Fragment>)}{hasXIcon && (<Fragment><XIcon style={xIconStyle}></XIcon></Fragment>)}{hasBehanceIcon && (<Fragment><BehanceIcon style={behanceIconStyle}></BehanceIcon></Fragment>)}{hasInstagramIcon && (<Fragment><InstagramIcon style={instagramIconStyle}></InstagramIcon></Fragment>)}</a>

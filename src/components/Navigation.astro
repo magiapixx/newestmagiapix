@@ -1,0 +1,116 @@
+---
+// Navigation
+import HamburgerIcon from './HamburgerIcon.astro';
+import LinkBig from './LinkBig.astro';
+import NavLink from './NavLink.astro';
+import PlusSmall from './PlusSmall.astro';
+import SocialIcons from './SocialIcons.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Phone";
+}
+
+const { variant = "Desktop" } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-ykxwx9",
+  "Tablet": "v-224r0t",
+  "Phone": "v-1sbst1b",
+};
+---
+
+{
+  variant === "Desktop" ? (
+    <Fragment
+      ><nav class:list={["m-dG6qZ m-ykxwx9", VARIANTS[variant]]} style="max-width:100%;width:100%"
+        ><div class="m-b3hrfq"
+          ><div class="m-g2yw96-container"
+            ><NavLink link="/" text="HOME"></NavLink
+          ></div
+          ><div class="m-nmovkm-container"
+            ><NavLink link="/about/" text="ABOUT"></NavLink
+          ></div
+          ><div class="m-a5411o-container"
+            ><NavLink link="/cases/" text="CASES"></NavLink
+          ></div
+          ><div class="m-uv55ks-container"
+            ><NavLink link="/contact/" text="CONTACT"></NavLink
+          ></div
+          ><div class="m-rkq7zl-container"
+            ><HamburgerIcon></HamburgerIcon
+          ></div
+        ></div
+        ><div class="m-v1sei0" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0"
+          ><div class="m-k7pk4q"
+            ><PlusSmall class="m-1r3wm52" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusSmall
+            ><div class="m-758z0a" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+            ><PlusSmall class="m-18k1pli" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusSmall
+          ></div
+          ><div class="m-1tm8p7r"
+            ><div class="m-bgrjjb-container"
+              ><LinkBig variant="Normal" link="/" text="HOME"></LinkBig
+            ></div
+            ><div class="m-1kiaoi2-container"
+              ><LinkBig variant="Normal" link="/about/" text="ABOUT"></LinkBig
+            ></div
+            ><div class="m-xegkc9-container"
+              ><LinkBig variant="Normal" link="/cases/" text="CASES"></LinkBig
+            ></div
+            ><div class="m-1xtgotn-container"
+              ><LinkBig variant="Normal" link="/contact/" text="CONTACT"></LinkBig
+            ></div
+          ></div
+          ><div class="m-1jsbkts"></div
+          ><div class="m-k1f444-container"
+            ><SocialIcons variant="Desktop" style="width:100%" socialIconFillStyle="background-color:var(--color-accent, rgb(0, 255, 161))" socialIconLinkedinIconStyle="--188dmzq:var(--color-accent, rgb(0, 255, 161))"></SocialIcons
+          ></div
+          ><div class="m-1bwqz64"
+            ><PlusSmall class="m-1jdi27c" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusSmall
+            ><div class="m-1uoljd" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+            ><PlusSmall class="m-1y5y404" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusSmall
+          ></div
+        ></div
+      ></nav></Fragment
+    >
+  ) : variant === "Tablet" || variant === "Phone" ? (
+    <Fragment
+      ><nav class:list={["m-dG6qZ m-ykxwx9", VARIANTS[variant]]} style="max-width:100%;width:100%"
+        ><div class="m-b3hrfq"
+          ><div class="m-rkq7zl-container"
+            ><HamburgerIcon></HamburgerIcon
+          ></div
+        ></div
+        ><div class="m-v1sei0" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0"
+          ><div class="m-k7pk4q"
+            ><PlusSmall class="m-1r3wm52" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusSmall
+            ><div class="m-758z0a" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+            ><PlusSmall class="m-18k1pli" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusSmall
+          ></div
+          ><div class="m-1tm8p7r"
+            ><div class="m-bgrjjb-container"
+              ><LinkBig variant="Normal" link="/" text="HOME"></LinkBig
+            ></div
+            ><div class="m-1kiaoi2-container"
+              ><LinkBig variant="Normal" link="/about/" text="ABOUT"></LinkBig
+            ></div
+            ><div class="m-xegkc9-container"
+              ><LinkBig variant="Normal" link="/cases/" text="CASES"></LinkBig
+            ></div
+            ><div class="m-1xtgotn-container"
+              ><LinkBig variant="Normal" link="/contact/" text="CONTACT"></LinkBig
+            ></div
+          ></div
+          ><div class="m-1jsbkts"></div
+          ><div class="m-k1f444-container"
+            ><SocialIcons variant="Tablet - Phone" style="width:100%" socialIconFillStyle="background-color:var(--color-accent, rgb(0, 255, 161))" socialIconLinkedinIconStyle="--188dmzq:var(--color-accent, rgb(0, 255, 161))"></SocialIcons
+          ></div
+          ><div class="m-1bwqz64"
+            ><PlusSmall class="m-1jdi27c" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusSmall
+            ><div class="m-1uoljd" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+            ><PlusSmall class="m-1y5y404" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusSmall
+          ></div
+        ></div
+      ></nav></Fragment
+    >
+  ) : null
+}

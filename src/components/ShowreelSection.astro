@@ -1,0 +1,100 @@
+---
+// Showreel - Section
+import HeadingsVertical from './HeadingsVertical.astro';
+import Play from './Play.astro';
+import PlusMedium from './PlusMedium.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Wide" | "Phone";
+  headingsVerticalVariant?: string;
+  headingsVerticalVariant2?: string;
+}
+
+const { variant = "Desktop", headingsVerticalVariant, headingsVerticalVariant2 } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-1hcz3so",
+  "Tablet": "v-zootfu",
+  "Wide": "v-1k1kicf",
+  "Phone": "v-3lc1ch",
+};
+---
+
+{
+  variant === "Desktop" || variant === "Tablet" || variant === "Wide" ? (
+    <Fragment
+      ><section class:list={["m-VTBBD m-dS8v4 m-xbhBc m-1hcz3so", VARIANTS[variant]]} style="background-color:var(--color-accent, rgb(0, 255, 161));height:100%;width:100%"
+        ><div class="m-1r33my"
+          ><div class="m-1tz1scp"></div
+          ><div class="m-dvd6tq"
+            ><PlusMedium class="m-slcdqb" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><PlusMedium class="m-ziolja" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><PlusMedium class="m-1n0w50d" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><PlusMedium class="m-j3bx7i" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><div class="m-un4bs9" tabindex="0"
+              ><div class="m-4nog24-container"
+                ><video src="/videos/B8GBXZ5pB2RlnKxoMbm3LbIj7E.mp4" loop="" preload="none" poster="/images/8MaIoD2Q5lGAg1IeSYvsCMyxnE.14vr76p.jpg" muted="" playsinline="" style="cursor:auto;width:100%;height:100%;border-radius:0px;display:block;object-fit:cover;background-color:rgba(0, 0, 0, 0);object-position:50% 50%" data-autoplay=""></video
+              ></div
+              ><div class="m-1wy9gsw-container"
+                ><Play></Play
+              ></div
+            ></div
+          ></div
+          ><div class="m-1vk2obh-container"
+            ><HeadingsVertical first="/Show" variant={headingsVerticalVariant}></HeadingsVertical
+          ></div
+          ><div class="m-7a0jed-container"
+            ><HeadingsVertical first="Reel" variant={headingsVerticalVariant2}></HeadingsVertical
+          ></div
+        ></div
+        ><div class="m-16dxncv"
+          ><div class="m-1rmno7x" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.9"></div
+          ><div class="m-1uq1i3t" style="--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+            ><h6 class="rt type-1xxob9n" dir="auto">CLOSE</h6
+            ><p class="rt type-y2tuor" dir="auto" data-show="phone">CLOSE</p
+          ></div
+          ><div class="m-pzfydp-container"
+            ><div class="vimeo-host" data-vimeo="1111619951" style="--background-rgb:rgba(0, 0, 0, 0);background:var(--vimeo-background, rgba(0, 0, 0, 0));height:100%;width:100%;position:relative;display:flex;justify-content:center;align-items:center;overflow:hidden;border-radius:0px"></div
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><section class:list={["m-VTBBD m-dS8v4 m-xbhBc m-1hcz3so", VARIANTS[variant]]} style="background-color:var(--color-accent, rgb(0, 255, 161));height:100%;width:100%"
+        ><div class="m-1r33my"
+          ><div class="m-dvd6tq"
+            ><PlusMedium class="m-slcdqb" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><PlusMedium class="m-ziolja" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><PlusMedium class="m-1n0w50d" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><PlusMedium class="m-j3bx7i" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><div class="m-un4bs9" tabindex="0"
+              ><div class="m-4nog24-container"
+                ><video src="/videos/B8GBXZ5pB2RlnKxoMbm3LbIj7E.mp4" loop="" preload="none" poster="/images/8MaIoD2Q5lGAg1IeSYvsCMyxnE.14vr76p.jpg" muted="" playsinline="" style="cursor:auto;width:100%;height:100%;border-radius:0px;display:block;object-fit:cover;background-color:rgba(0, 0, 0, 0);object-position:50% 50%" data-autoplay=""></video
+              ></div
+              ><div class="m-1wy9gsw-container"
+                ><Play></Play
+              ></div
+            ></div
+          ></div
+          ><div class="m-1vk2obh-container"
+            ><HeadingsVertical variant="/Show - H3 Light Back" first="/Show"></HeadingsVertical
+          ></div
+          ><div class="m-7a0jed-container"
+            ><HeadingsVertical variant="Reel - H3 Light Back" style="width:100%" first="Reel"></HeadingsVertical
+          ></div
+        ></div
+        ><div class="m-16dxncv"
+          ><div class="m-1rmno7x" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.9"></div
+          ><div class="m-1uq1i3t" style="--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+            ><h6 class="rt type-1xxob9n" dir="auto">CLOSE</h6
+            ><p class="rt type-y2tuor" dir="auto" data-show="phone">CLOSE</p
+          ></div
+          ><div class="m-pzfydp-container"
+            ><div class="vimeo-host" data-vimeo="1111619951" style="--background-rgb:rgba(0, 0, 0, 0);background:var(--vimeo-background, rgba(0, 0, 0, 0));height:100%;width:100%;position:relative;display:flex;justify-content:center;align-items:center;overflow:hidden;border-radius:0px"></div
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : null
+}

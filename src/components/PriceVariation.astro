@@ -1,0 +1,32 @@
+---
+// Price - Variation
+interface Props {
+  variant?: "Variant 1" | "v-zy2794";
+  style: string;
+  style2: string;
+  style3: string;
+  text: string;
+  periodStyle?: string;
+  periodStyle2: string;
+  periodStyle3: string;
+  period: string;
+}
+
+const { variant = "Variant 1", style, style2, style3, text, periodStyle, periodStyle2, periodStyle3, period } = Astro.props;
+
+const VARIANTS = {
+  "Variant 1": "v-kv7wg6",
+  "v-zy2794": "v-zy2794",
+};
+---
+
+<div class:list={["m-2ACuh m-OjHb3 m-xbhBc m-kv7wg6", VARIANTS[variant]]} style={style}
+  ><div class="m-7v25h5" style={style2}
+    ><h4 class="rt type-9iwysc" dir="auto" style={style3}>{text}</h4
+  ></div
+  ><div class="m-hn6l5s" style={periodStyle}
+    ><div class="m-e63qqy" style={periodStyle2}
+      ><p class="rt type-y2tuor" dir="auto" style={periodStyle3}>{period}</p
+    ></div
+  ></div
+></div>

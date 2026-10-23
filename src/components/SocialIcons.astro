@@ -1,0 +1,36 @@
+---
+// Social Icons
+import SocialIcon from './SocialIcon.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet - Phone" | "Medium - White" | "Desktop - Black" | "Tablet - Phone - Black";
+  style?: string;
+  socialIconFillStyle: string;
+  socialIconLinkedinIconStyle: string;
+}
+
+const { variant = "Desktop", style, socialIconFillStyle, socialIconLinkedinIconStyle } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-14knpt7",
+  "Tablet - Phone": "v-6myx7v",
+  "Medium - White": "v-1e433w3",
+  "Desktop - Black": "v-14zvudb",
+  "Tablet - Phone - Black": "v-13pbftj",
+};
+---
+
+<div class:list={["m-FaA1Q m-14knpt7", VARIANTS[variant]]} style={style}
+  ><div class="m-s7v4u9-container"
+    ><SocialIcon link="https://www.linkedin.com/" hasLinkedinIcon fillStyle={socialIconFillStyle} linkedinIconStyle={socialIconLinkedinIconStyle}></SocialIcon
+  ></div
+  ><div class="m-7309c3-container"
+    ><SocialIcon link="https://x.com/" hasXIcon fillStyle={socialIconFillStyle} xIconStyle={socialIconLinkedinIconStyle}></SocialIcon
+  ></div
+  ><div class="m-1gtc44b-container"
+    ><SocialIcon link="https://www.behance.net/" hasBehanceIcon fillStyle={socialIconFillStyle} behanceIconStyle={socialIconLinkedinIconStyle}></SocialIcon
+  ></div
+  ><div class="m-1f8pnln-container"
+    ><SocialIcon link="https://www.instagram.com/" hasInstagramIcon fillStyle={socialIconFillStyle} instagramIconStyle={socialIconLinkedinIconStyle}></SocialIcon
+  ></div
+></div>

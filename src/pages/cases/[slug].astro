@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CasePage from '../../components/CasePage.astro';
+import { cases, type CaseEntry } from '../../data/cases';
+
+export function getStaticPaths() {
+  return cases.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CaseEntry };
+---
+
+<BaseLayout title={`${entry.title} — Magiapix`} description={entry.description}>
+  <div id="main"
+    ><CasePage {...entry.props}></CasePage
+    ><div id="template-overlay"></div
+  ></div>
+</BaseLayout>

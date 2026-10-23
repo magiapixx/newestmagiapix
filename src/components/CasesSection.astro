@@ -1,0 +1,63 @@
+---
+// Cases - Section
+import CaseCardVariations from './CaseCardVariations.astro';
+import HeadingsVertical from './HeadingsVertical.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Phone" | "Wide";
+  style?: string;
+  headingsVerticalVariant?: string;
+  caseCardVariationsVariant?: string;
+  caseCardVariationsCaseCardVariant?: string;
+  caseCardVariationsVariant2?: string;
+}
+
+const { variant = "Desktop", style, headingsVerticalVariant, caseCardVariationsVariant, caseCardVariationsCaseCardVariant, caseCardVariationsVariant2 } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-1k1ayt7",
+  "Tablet": "v-lxxhnt",
+  "Phone": "v-1lfkbql",
+  "Wide": "v-r4268e",
+};
+---
+
+{
+  variant === "Desktop" || variant === "Tablet" || variant === "Wide" ? (
+    <Fragment
+      ><section class:list={["m-weXSv m-zNzez m-1k1ayt7", VARIANTS[variant]]} style={style}
+        ><div class="m-uz3sqo-container"
+          ><HeadingsVertical first="/Cases" variant={headingsVerticalVariant}></HeadingsVertical
+        ></div
+        ><div class="m-1srncvd-container"
+          ><CaseCardVariations caseCardLink="/cases/armada/" caseCardDataSrc="/images/nPXcfgWdT5K8JbvlDs4VQhhws.jpg" caseCardText="Armada" caseCardText2="/26" variant={caseCardVariationsVariant} caseCardVariant={caseCardVariationsCaseCardVariant}></CaseCardVariations
+        ></div
+        ><div class="m-1nggddo-container"
+          ><CaseCardVariations caseCardLink="/cases/montana/" caseCardDataSrc="/images/RFdcBAQsIqs2cwSENiDPQN8xt8.jpg" caseCardText="Montana" caseCardText2="/26" variant={caseCardVariationsVariant2} caseCardVariant={caseCardVariationsCaseCardVariant}></CaseCardVariations
+        ></div
+        ><div class="m-144syev-container"
+          ><CaseCardVariations caseCardLink="/cases/pirate-hub/" caseCardDataSrc="/images/bLvotkjf6dFGxyiS1gfV2zCoAI.jpg" caseCardText="Pirate Hub" caseCardText2="/26" variant={caseCardVariationsVariant} caseCardVariant={caseCardVariationsCaseCardVariant}></CaseCardVariations
+        ></div
+      ></section></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><section class:list={["m-weXSv m-zNzez m-1k1ayt7", VARIANTS[variant]]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+        ><div class="m-1nxje1u"
+          ><div class="m-y1ngfg" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+            ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))">/Cases</h3
+          ></div
+        ></div
+        ><div class="m-1srncvd-container"
+          ><CaseCardVariations variant="Phone" caseCardLink="/cases/armada/" caseCardDataSrc="/images/nPXcfgWdT5K8JbvlDs4VQhhws.jpg" caseCardText="Armada" caseCardText2="/26"></CaseCardVariations
+        ></div
+        ><div class="m-1nggddo-container"
+          ><CaseCardVariations variant="Phone" caseCardLink="/cases/montana/" caseCardDataSrc="/images/RFdcBAQsIqs2cwSENiDPQN8xt8.jpg" caseCardText="Montana" caseCardText2="/26"></CaseCardVariations
+        ></div
+        ><div class="m-144syev-container"
+          ><CaseCardVariations variant="Phone" caseCardLink="/cases/pirate-hub/" caseCardDataSrc="/images/bLvotkjf6dFGxyiS1gfV2zCoAI.jpg" caseCardText="Pirate Hub" caseCardText2="/26"></CaseCardVariations
+        ></div
+      ></section></Fragment
+    >
+  ) : null
+}

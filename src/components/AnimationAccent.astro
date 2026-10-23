@@ -1,0 +1,23 @@
+---
+// Animation Accent
+interface Props {
+  variant?: "v-1ejt96b" | "v-12el1mb" | "v-1hn00ti" | "v-zdic29" | "Load 1 - Fill" | "Load and Fill - End";
+  style: string;
+  style2: string;
+}
+
+const { variant = "v-1ejt96b", style, style2 } = Astro.props;
+
+const VARIANTS = {
+  "v-1ejt96b": "v-1ejt96b",
+  "v-12el1mb": "v-12el1mb",
+  "v-1hn00ti": "v-1hn00ti",
+  "v-zdic29": "v-zdic29",
+  "Load 1 - Fill": "v-1ejt96b",
+  "Load and Fill - End": "v-1jdsta",
+};
+---
+
+<div class:list={["m-toAcB m-1ejt96b", VARIANTS[variant]]} style={style}
+  ><div class="m-zef4p" style={style2}></div
+></div>

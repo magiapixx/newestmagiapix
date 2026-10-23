@@ -1,5 +1,5 @@
 {
-  "name": "mondragon-astro",
+  "name": "magiapix-web",
   "type": "module",
   "version": "1.0.0",
   "private": true,
@@ -7,7 +7,6 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "extract": "node scripts/extract-pages.mjs ../mondragon-site .",
     "astro": "astro"
   },
   "dependencies": {

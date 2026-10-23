@@ -1,16 +1,16 @@
 /**
- * Clients ticker: the logo row scrolls left at a steady speed and loops
- * seamlessly. It can also be dragged sideways.
+ * Tickers (clients logos, team cards): the row (or column, on phones) scrolls
+ * at a steady speed and loops seamlessly. It can also be dragged.
+ *
+ * Host: <… data-ticker="<px per second>"> with the items in a direct child <ul>.
  */
-const SPEED = 70; // px per second
-const GAP: Record<string, number> = { 'v-18ui4wc': 20 }; // phone uses a tighter gap
-
 export function initTickers() {
-  for (const section of document.querySelectorAll<HTMLElement>('section.m-UkImT')) {
-    const list = section.querySelector<HTMLUListElement>(':scope > ul');
+  for (const host of document.querySelectorAll<HTMLElement>('[data-ticker]')) {
+    const list = host.querySelector<HTMLUListElement>(':scope > ul');
     if (!list) continue;
-    const gap = Object.entries(GAP).find(([v]) => section.classList.contains(v))?.[1] ?? 30;
+    const speed = Number(host.dataset.ticker) || 70;
     const items = [...list.children] as HTMLElement[];
+    let vertical = false;
     let loopLength = 0;
     let offset = 0;
     let visible = false;
@@ -19,14 +19,17 @@ export function initTickers() {
     let last = 0;
 
     const measure = () => {
-      if (!section.getClientRects().length) return;
+      if (!host.getClientRects().length) return;
       list.querySelectorAll('.clone-item').forEach((c) => c.remove());
+      const style = getComputedStyle(list);
+      vertical = style.flexDirection.startsWith('column');
+      const gap = parseFloat(vertical ? style.rowGap : style.columnGap) || 0;
       const first = items[0].getBoundingClientRect();
       const lastItem = items[items.length - 1].getBoundingClientRect();
-      const total = lastItem.right - first.left;
-      loopLength = total + gap;
+      loopLength = (vertical ? lastItem.bottom - first.top : lastItem.right - first.left) + gap;
       // enough copies to keep the row full while one copy scrolls out
-      const copies = Math.max(1, Math.ceil(section.clientWidth / loopLength));
+      const size = vertical ? host.clientHeight : host.clientWidth;
+      const copies = Math.max(1, Math.ceil(size / loopLength));
       for (let c = 0; c < copies; c++) {
         for (const item of items) {
           const clone = item.cloneNode(true) as HTMLElement;
@@ -41,15 +44,15 @@ export function initTickers() {
       render();
     };
     const render = () => {
-      if (loopLength > 0) offset = (((offset % loopLength) - loopLength) % loopLength);
-      list.style.transform = `translateX(${offset}px)`;
+      if (loopLength > 0) offset = ((offset % loopLength) - loopLength) % loopLength;
+      list.style.transform = vertical ? `translateY(${offset}px)` : `translateX(${offset}px)`;
     };
     const tick = (now: number) => {
       raf = 0;
       if (!visible) return;
       const dt = last ? (now - last) / 1000 : 0;
       last = now;
-      if (!dragging) offset -= SPEED * dt;
+      if (!dragging) offset -= speed * dt;
       render();
       raf = requestAnimationFrame(tick);
     };
@@ -64,25 +67,26 @@ export function initTickers() {
         }
       },
       { rootMargin: '100px' },
-    ).observe(section);
-    new ResizeObserver(() => loopLength && measure()).observe(section);
+    ).observe(host);
+    new ResizeObserver(() => loopLength && measure()).observe(host);
 
     // drag to scrub
-    let startX = 0;
+    let start = 0;
     let startOffset = 0;
-    section.addEventListener('pointerdown', (e) => {
+    const pos = (e: PointerEvent) => (vertical ? e.clientY : e.clientX);
+    host.addEventListener('pointerdown', (e) => {
       dragging = true;
-      startX = e.clientX;
+      start = pos(e);
       startOffset = offset;
-      section.setPointerCapture(e.pointerId);
+      host.setPointerCapture(e.pointerId);
     });
-    section.addEventListener('pointermove', (e) => {
+    host.addEventListener('pointermove', (e) => {
       if (!dragging) return;
-      offset = startOffset + (e.clientX - startX);
+      offset = startOffset + (pos(e) - start);
       render();
     });
     const end = () => (dragging = false);
-    section.addEventListener('pointerup', end);
-    section.addEventListener('pointercancel', end);
+    host.addEventListener('pointerup', end);
+    host.addEventListener('pointercancel', end);
   }
 }

@@ -1,0 +1,110 @@
+---
+// Service - Inverse
+import ImageOpening from './ImageOpening.astro';
+import MinusBig from './MinusBig.astro';
+import PlusBig from './PlusBig.astro';
+
+interface Props {
+  variant?: "Collapsed All" | "Phone";
+  hasBlock?: boolean;
+  hasBlock2?: boolean;
+  style?: string;
+}
+
+const { variant = "Collapsed All", hasBlock, hasBlock2, style } = Astro.props;
+
+const VARIANTS = {
+  "Collapsed All": "v-1ull6da",
+  "Phone": "v-1c178mz",
+};
+---
+
+{
+  variant === "Collapsed All" ? (
+    <Fragment
+      ><div class:list={["m-rBPIz m-zNzez m-pQ5hH m-lhYZM m-alehh m-xbhBc m-1ull6da", VARIANTS[variant]]} tabindex="0" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%">{hasBlock && (<Fragment><div class="m-1enbied"></div></Fragment>)}<div class="m-fl6124" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}">{hasBlock && (<Fragment><div class="m-gn0l23" style="--extracted-1k2zljd:var(--color-black, rgb(0, 0, 0));--extracted-7519bk:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+            ><h3 class="rt type-wc4xhu" dir="auto"
+              ><span class="rt" style="--m-text-color:var(--extracted-1k2zljd, var(--color-black, rgb(0, 0, 0)))">Interaction
+Design </span
+            ></h3
+          ></div></Fragment>)}{hasBlock2 && (<Fragment><div class="m-17nhjvj" style="--extracted-as4nhg:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+            ><h5 class="rt type-1e97z2c" dir="auto"
+              ><span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-black, rgb(0, 0, 0)))">Interaction
+Design </span
+            ></h5
+          ></div></Fragment>)}<div class="m-17lswsh"></div
+          ><div class="m-vwg42d"
+            ><div class="m-1aix4mh" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Intuitive digital interfaces crafted to drive engagement and deliver seamless user interactions.</p
+            ></div
+            ><div class="m-svkicw" style="--extracted-1a3g3q6:var(--color-black, rgb(0, 0, 0));--extracted-1o9v4yh:var(--color-black, rgb(0, 0, 0));--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--extracted-6komju:var(--color-black, rgb(0, 0, 0));--extracted-9fz5vb:var(--color-black, rgb(0, 0, 0));--extracted-bnc66o:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+              ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">UI/UX Architecture &amp; Prototyping
+Component-Driven Design Systems
+Immersive 3D &amp; WebGL Concepts
+Micro-Interactions &amp; Motion Design
+Cross-Platform Interface Design
+Wireframing &amp; User Flows</h6
+            ></div
+          ></div
+          ><div class="m-pxgw82"></div
+          ><div class="m-rwxte3"
+            ><PlusBig class="m-r6rste" dataShow="collapsed"></PlusBig
+            ><MinusBig class="m-r6rste" dataShow="expanded"></MinusBig
+            ><div class="m-1hwtu0e" style="--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))" data-show="collapsed">Expand</p
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))" data-show="expanded">Collapse</p
+            ></div
+          ></div
+        ></div
+        ><div class="m-1hcjegr"></div
+        ><div class="m-1y4p6tq" style={style}
+          ><div class="m-c00048-container"
+            ><ImageOpening image={{"src":"/images/7SWcXf9HWpOEThOGJFqR2lEdkBA.1jho6uz.jpg","srcset":"/images/7SWcXf9HWpOEThOGJFqR2lEdkBA.19oy1pt.jpg 512w, /images/7SWcXf9HWpOEThOGJFqR2lEdkBA.1jho6uz.jpg 710w"}}></ImageOpening
+          ></div
+        ></div
+      ></div></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><div class:list={["m-rBPIz m-zNzez m-pQ5hH m-lhYZM m-alehh m-xbhBc m-1ull6da", VARIANTS[variant]]} tabindex="0" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+        ><div class="m-1enbied"></div
+        ><div class="m-fl6124" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+          ><div class="m-17nhjvj" style="--extracted-as4nhg:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+            ><h5 class="rt type-1e97z2c" dir="auto"
+              ><span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-black, rgb(0, 0, 0)))">Interaction
+Design </span
+            ></h5
+          ></div
+          ><div class="m-17lswsh"></div
+          ><div class="m-vwg42d"
+            ><div class="m-1aix4mh" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Intuitive digital interfaces crafted to drive engagement and deliver seamless user interactions.</p
+            ></div
+            ><div class="m-svkicw" style="--extracted-1a3g3q6:var(--color-black, rgb(0, 0, 0));--extracted-1o9v4yh:var(--color-black, rgb(0, 0, 0));--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--extracted-6komju:var(--color-black, rgb(0, 0, 0));--extracted-9fz5vb:var(--color-black, rgb(0, 0, 0));--extracted-bnc66o:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+              ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">UI/UX Architecture &amp; Prototyping
+Component-Driven Design Systems
+Immersive 3D &amp; WebGL Concepts
+Micro-Interactions &amp; Motion Design
+Cross-Platform Interface Design
+Wireframing &amp; User Flows</h6
+            ></div
+          ></div
+          ><div class="m-pxgw82"></div
+          ><div class="m-rwxte3"
+            ><PlusBig class="m-r6rste" dataShow="collapsed"></PlusBig
+            ><MinusBig class="m-r6rste" dataShow="expanded"></MinusBig
+            ><div class="m-1hwtu0e" style="--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))" data-show="collapsed">Expand</p
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))" data-show="expanded">Collapse</p
+            ></div
+          ></div
+        ></div
+        ><div class="m-1y4p6tq" style="--1ijwx7z:0px 0px 0px 0px"
+          ><div class="m-c00048-container"
+            ><ImageOpening image={{"src":"/images/7SWcXf9HWpOEThOGJFqR2lEdkBA.1jho6uz.jpg","srcset":"/images/7SWcXf9HWpOEThOGJFqR2lEdkBA.19oy1pt.jpg 512w, /images/7SWcXf9HWpOEThOGJFqR2lEdkBA.1jho6uz.jpg 710w"}}></ImageOpening
+          ></div
+        ></div
+      ></div></Fragment
+    >
+  ) : null
+}

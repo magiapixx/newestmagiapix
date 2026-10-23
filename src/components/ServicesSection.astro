@@ -1,0 +1,79 @@
+---
+// Services - Section
+import HeadingsVertical from './HeadingsVertical.astro';
+import Service from './Service.astro';
+import ServiceInverse from './ServiceInverse.astro';
+
+interface Props {
+  variant?: "Desktop" | "Tablet" | "Wide" | "Phone";
+  headingsVerticalVariant?: string;
+  serviceStyle?: string;
+  serviceText?: string;
+  serviceHasBlock?: boolean;
+  serviceText2?: string;
+  serviceHasBlock2?: boolean;
+  serviceInverseStyle?: string;
+  serviceText3?: string;
+  serviceText22?: string;
+}
+
+const { variant = "Desktop", headingsVerticalVariant, serviceStyle, serviceText, serviceHasBlock, serviceText2, serviceHasBlock2, serviceInverseStyle, serviceText3, serviceText22 } = Astro.props;
+
+const VARIANTS = {
+  "Desktop": "v-u0yc4s",
+  "Tablet": "v-1am04ek",
+  "Wide": "v-1pgmsng",
+  "Phone": "v-lnij44",
+};
+---
+
+{
+  variant === "Desktop" || variant === "Tablet" || variant === "Wide" ? (
+    <Fragment
+      ><section class:list={["m-6PHDL m-zNzez m-u0yc4s", VARIANTS[variant]]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+        ><div class="m-1xqczjh"
+          ><div class="m-hovxvo-container"
+            ><HeadingsVertical first="/Services" variant={headingsVerticalVariant}></HeadingsVertical
+          ></div
+          ><div class="m-m6opcn"></div
+          ><div class="m-ib6mbz"
+            ><div class="m-16emozq-container"
+              ><Service variant="Collapsed All" imageOpeningImage={{"src":"/images/sNX4v4guRNKdvbFGCpco3q3NZc.1jho6uz.jpg","srcset":"/images/sNX4v4guRNKdvbFGCpco3q3NZc.19oy1pt.jpg 512w, /images/sNX4v4guRNKdvbFGCpco3q3NZc.1jho6uz.jpg 710w"}} text3="Foundational visual systems built for clear positioning, market distinction, and scalable growth." text4={"Visual Identity \nArchitecture\nCreative Direction & Concepting\nCustom Typography & Grid Systems\n3D Brand Assets & Iconography\nDesign Tokens & Guidelines\nMotion Identity & Kinetic Type"} style={serviceStyle} text={serviceText} hasBlock={serviceHasBlock} text2={serviceText2} hasBlock2={serviceHasBlock2}></Service
+            ></div
+            ><div class="m-14vwtuv" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.1"></div
+            ><div class="m-1t53ujn-container"
+              ><ServiceInverse variant="Collapsed All" hasBlock={serviceHasBlock} style={serviceInverseStyle} hasBlock2={serviceHasBlock2}></ServiceInverse
+            ></div
+            ><div class="m-4w9396" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.1"></div
+            ><div class="m-xlnbf4-container"
+              ><Service variant="Collapsed All" imageOpeningImage={{"src":"/images/PrB3f1nJR6JL9XDrCZXnUSgU.1jho6uz.jpg","srcset":"/images/PrB3f1nJR6JL9XDrCZXnUSgU.19oy1pt.jpg 512w, /images/PrB3f1nJR6JL9XDrCZXnUSgU.1jho6uz.jpg 710w"}} text3="Robust, high-performance web architecture engineered for speed, adaptability, and future scale." text4={"High-Performance Framer Builds\nCustom React & WebGL Integration\nCreative Coding & GLSL Shaders\nAdvanced CMS & Architecture\nInteractive 3D Environments\nPerformance & SEO Optimization"} style={serviceStyle} text={serviceText3} hasBlock={serviceHasBlock} text2={serviceText22} hasBlock2={serviceHasBlock2}></Service
+            ></div
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : variant === "Phone" ? (
+    <Fragment
+      ><section class:list={["m-6PHDL m-zNzez m-u0yc4s", VARIANTS[variant]]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+        ><div class="m-1xqczjh"
+          ><div class="m-ib6mbz"
+            ><div class="m-16emozq-container"
+              ><Service variant="Phone" style="--sezid2:0px 0px 0px 0px" imageOpeningImage={{"src":"/images/sNX4v4guRNKdvbFGCpco3q3NZc.1jho6uz.jpg","srcset":"/images/sNX4v4guRNKdvbFGCpco3q3NZc.19oy1pt.jpg 512w, /images/sNX4v4guRNKdvbFGCpco3q3NZc.1jho6uz.jpg 710w"}} text2={"Visual\nIdentity"} hasBlock2 text3="Foundational visual systems built for clear positioning, market distinction, and scalable growth." text4={"Visual Identity \nArchitecture\nCreative Direction & Concepting\nCustom Typography & Grid Systems\n3D Brand Assets & Iconography\nDesign Tokens & Guidelines\nMotion Identity & Kinetic Type"}></Service
+            ></div
+            ><div class="m-wh3zam" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+              ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))">/Services</h3
+            ></div
+            ><div class="m-14vwtuv" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.1"></div
+            ><div class="m-1t53ujn-container"
+              ><ServiceInverse variant="Phone"></ServiceInverse
+            ></div
+            ><div class="m-4w9396" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.1"></div
+            ><div class="m-xlnbf4-container"
+              ><Service variant="Phone" style="--sezid2:0px 0px 0px 0px" imageOpeningImage={{"src":"/images/PrB3f1nJR6JL9XDrCZXnUSgU.1jho6uz.jpg","srcset":"/images/PrB3f1nJR6JL9XDrCZXnUSgU.19oy1pt.jpg 512w, /images/PrB3f1nJR6JL9XDrCZXnUSgU.1jho6uz.jpg 710w"}} text2={"Creative\nDevelopment "} hasBlock2 text3="Robust, high-performance web architecture engineered for speed, adaptability, and future scale." text4={"High-Performance Framer Builds\nCustom React & WebGL Integration\nCreative Coding & GLSL Shaders\nAdvanced CMS & Architecture\nInteractive 3D Environments\nPerformance & SEO Optimization"}></Service
+            ></div
+          ></div
+        ></div
+      ></section></Fragment
+    >
+  ) : null
+}

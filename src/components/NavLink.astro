@@ -1,0 +1,16 @@
+---
+// Link
+interface Props {
+  link: string;
+  text: string;
+}
+
+const { link, text } = Astro.props;
+---
+
+<a class="m-GMBhV m-dS8v4 m-13g9tl4 v-13g9tl4 m-ldnkmh" href={link} style="height:100%"
+  ><div class="m-10bgdt0" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+  ><div class="m-6in8ye" style="--extracted-1w1cjl5:var(--prop-dDeNEndC5);--m-paragraph-spacing:0px;--prop-dDeNEndC5:var(--color-white, rgb(255, 255, 255));transform:none"
+    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--prop-dDeNEndC5))">{text}</h6
+  ></div
+></a>
