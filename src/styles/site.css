@@ -1215,3 +1215,5 @@ html body { background: rgb(94, 94, 94); }/* About section copy: font size follo
 @media (max-width:809.98px){.m-mIo8f{--footer-icon:min(8.46vw,48px);--footer-icon-gap:min(3.846vw,22px)}.m-mIo8f .m-xfrdtw .rt.type-1qeok15{--m-font-size:min(9.23vw,56px)}}
 @media (min-width:810px) and (max-width:1199.98px){.m-mIo8f{--footer-icon:min(4.074vw,6vh);--footer-icon-gap:1.852vw}.m-mIo8f .m-xfrdtw .rt.type-1qeok15{--m-font-size:min(4.444vw,6vh)}}
 @media (min-width:1200px){.m-mIo8f{--footer-icon:min(2.75vw,6vh,45px);--footer-icon-gap:min(1.25vw,20px)}.m-mIo8f .m-xfrdtw .rt.type-9iwysc{--m-font-size:min(3.917vw,6vh,64px)}}
+/* desktop footer: start the icons level with the email (the contact card that set the old 118px offset is gone) */
+.m-mIo8f.v-90dfpr .m-d98quu{padding-top:91px}
