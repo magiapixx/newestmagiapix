@@ -123,7 +123,7 @@ export function inView(el: Element, cb: (visible: boolean) => void, { amount = 0
 
 const LAYOUT_PROPS = ['opacity', 'transform', 'backgroundColor', 'color', 'borderTopColor', 'borderRadius', 'filter', 'fill', 'stroke'] as const;
 
-type Snapshot = { el: HTMLElement; w: number; h: number; x: number; y: number; abs: boolean; style: Record<string, string>; shown: boolean };
+type Snapshot = { el: HTMLElement; w: number; h: number; x: number; y: number; abs: boolean; clips: boolean; style: Record<string, string>; shown: boolean };
 
 function snapshot(el: HTMLElement): Snapshot {
   const cs = getComputedStyle(el);
@@ -136,6 +136,7 @@ function snapshot(el: HTMLElement): Snapshot {
     x: el.offsetLeft,
     y: el.offsetTop,
     abs: cs.position === 'absolute' || cs.position === 'fixed',
+    clips: cs.overflow !== 'visible',
     style,
     shown: cs.display !== 'none',
   };
@@ -159,11 +160,18 @@ export function transitionState(root: HTMLElement, mutate: () => void, tr: Trans
     if (!a.shown || !b.shown) return;
     const from: Keyframe = {};
     const to: Keyframe = {};
-    if (a.w !== b.w) ((from.width = a.w + 'px'), (to.width = b.w + 'px'));
-    if (a.h !== b.h) ((from.height = a.h + 'px'), (to.height = b.h + 'px'));
+    // a clipping box that grows in the flow would hide its new content while it
+    // animates, so those just take their new size (their neighbours still slide)
+    const resize = b.abs || !b.clips;
+    if (resize && a.w !== b.w) ((from.width = a.w + 'px'), (to.width = b.w + 'px'));
+    if (resize && a.h !== b.h) ((from.height = a.h + 'px'), (to.height = b.h + 'px'));
     if (b.abs && (a.x !== b.x || a.y !== b.y)) {
       Object.assign(from, { left: a.x + 'px', top: a.y + 'px', right: 'auto', bottom: 'auto' });
       Object.assign(to, { left: b.x + 'px', top: b.y + 'px', right: 'auto', bottom: 'auto' });
+    } else if (!b.abs && (a.x !== b.x || a.y !== b.y)) {
+      // in-flow element pushed around by its siblings: slide it from where it was
+      from.translate = `${a.x - b.x}px ${a.y - b.y}px`;
+      to.translate = '0px 0px';
     }
     for (const p of LAYOUT_PROPS) if (a.style[p] !== b.style[p]) ((from[p] = a.style[p]), (to[p] = b.style[p]));
     if (!Object.keys(to).length) return;

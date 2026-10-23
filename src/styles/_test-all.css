@@ -163,7 +163,7 @@ td.rt,th.rt{overflow-wrap:anywhere;vertical-align:top;min-width:16ch}
 [data-framer-cursor=grab]:active{cursor:grabbing}
 [data-kind=Frame] *,[data-kind=Stack] *{pointer-events:auto}
 [data-framer-generated] *{pointer-events:unset}
-.svgContainer svg{display:block}
+.svg-box svg{display:block}
 [data-reset=button]{background:0 0;border-width:0;padding:0}
 [data-hide-scrollbars=true]::-webkit-scrollbar{width:0;height:0}
 [data-hide-scrollbars=true]::-webkit-scrollbar-thumb{background:0 0}
