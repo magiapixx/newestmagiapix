@@ -1224,3 +1224,8 @@ html body { background: rgb(94, 94, 94); }/* About section copy: font size follo
 /* hero tagline: live text at weight 400 (matches the original logo), sized from the box height (MAGIAPIX is ~4.81em long) so it fills it without being cut off */
 .m-y5R0E .m-ing148.hero-tagline{aspect-ratio:.5135;width:auto;container-type:size}
 .hero-tagline p{margin:0;height:100%;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;font-family:"Zalando Sans Variable","Zalando Sans Variable Placeholder",sans-serif;font-weight:400;font-variation-settings:"wght" 400;font-size:calc(100cqh / 4.82);line-height:.825;letter-spacing:0;color:var(--color-accent,#00ffa1)}
+/* phone /SUBSCRIPTION heading: 47px is ~7.72em wide, so shrink it to the screen width (minus the 15px side margins) on narrow phones */
+.m-5AYrz .m-1knpvj9 .rt.type-9iwysc{--m-font-size:min(47px, calc((100vw - 30px) / 7.8));--m-line-height:.979em;--m-letter-spacing:-.0213em}
+/* phone /Services heading (61px, ~5.23em wide) and the $50M metric (120px, ~2.57em wide): shrink to the screen width minus the 15px side margins */
+.m-wh3zam .rt.type-wc4xhu{--m-font-size:min(61px, calc((100vw - 30px) / 5.3));--m-line-height:.918em;--m-letter-spacing:-.0328em}
+.m-1mytt4s .rt.type-ove1mv{--m-font-size:min(120px, calc((100vw - 30px) / 2.62));--m-line-height:.917em;--m-letter-spacing:-.0667em}
