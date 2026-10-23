@@ -73,7 +73,7 @@ Effects are attached to markup through `data-*` attributes (`data-reveal`, `data
 
 ## Contact form
 
-The form posts to the URL in `PUBLIC_CONTACT_ENDPOINT` (see `.env.example`), as `FormData` with `Accept: application/json`, and shows "Thank you!" or "Error!" on the button. Without an endpoint it falls back to opening a `mailto:` link to the address on the contact page.
+The form posts to the URL in `PUBLIC_CONTACT_ENDPOINT` (see `.env.example`), as `FormData` with `Accept: application/json`, and shows "Thank you!" or "Error!" on the button. When the variable isn't set it uses [FormSubmit](https://formsubmit.co) to deliver to `magiapixx@gmail.com` (temporary; FormSubmit emails that inbox an activation link on the first message, which has to be clicked once). If the variable is set to an empty value, the form opens a `mailto:` link to the address on the contact page instead.
 
 ## External services
 
