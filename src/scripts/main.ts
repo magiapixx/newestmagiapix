@@ -16,6 +16,7 @@ import { initContactForms } from './components/contact-form';
 import { initFaqs } from './components/faq';
 import { initTickers } from './components/ticker';
 import { initScramble } from './components/scramble';
+import { initFitTitles } from './components/fit-titles';
 
 initSmoothScroll();
 initIntro();
@@ -35,6 +36,7 @@ initContactForms();
 initFaqs();
 initTickers();
 initScramble();
+initFitTitles();
 
 // three.js is only loaded on pages that have WebGL effects
 if (document.querySelector('[data-gl]')) import('./webgl').then((m) => m.initWebgl());
