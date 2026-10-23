@@ -14,6 +14,8 @@ import { initAwards } from './components/award';
 import { initUnderlineSweeps } from './components/underline-sweep';
 import { initContactForms } from './components/contact-form';
 import { initFaqs } from './components/faq';
+import { initTickers } from './components/ticker';
+import { initScramble } from './components/scramble';
 
 initSmoothScroll();
 initIntro();
@@ -31,6 +33,8 @@ initAwards();
 initUnderlineSweeps();
 initContactForms();
 initFaqs();
+initTickers();
+initScramble();
 
 // three.js is only loaded on pages that have WebGL effects
 if (document.querySelector('[data-gl]')) import('./webgl').then((m) => m.initWebgl());
