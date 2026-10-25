@@ -3,3 +3,5 @@
 @media (min-width: 1200px) { .hide-desktop { display: none !important; } }
 @media (min-width: 810px) and (max-width: 1199.98px) { .hide-tablet { display: none !important; } }
 @media (max-width: 809.98px) { .hide-phone { display: none !important; } }
+/* stands in for an inline width:100% that only one breakpoint's copy had (see HeadingsVertical extraClass) */
+@media (max-width: 809.98px) { .fill-width-phone { width: 100% !important; } }

@@ -1,196 +1,98 @@
 ---
-// Form - Section
+// Form - Section: one markup for every breakpoint (lib/rv)
 import Avatar from './Avatar.astro';
 import FormButton from './FormButton.astro';
 import PlusMedium from './PlusMedium.astro';
+import { rv } from '../lib/rv';
 
-interface Props {
-  variant?: "Desktop" | "Tablet" | "Phone";
-}
-
-const { variant = "Desktop" } = Astro.props;
-
-const VARIANTS = {
-  "Desktop": "v-wnk2ar",
-  "Tablet": "v-9qb9ge",
-  "Phone": "v-8ygiii",
-};
+const look = rv({ lg: 'v-wnk2ar', xl: 'v-wnk2ar', t: 'v-9qb9ge', p: 'v-8ygiii' });
+const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p: 'type-1ff3dg' });
 ---
 
-{
-  variant === "Desktop" || variant === "Tablet" ? (
-    <Fragment
-      ><section class:list={["m-6P4Yt m-pQ5hH m-alehh m-3UBND m-wnk2ar", VARIANTS[variant]]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
-        ><div class="m-1g5a6kz"
-          ><div class="m-1a8c5bg"></div
-          ><div class="m-i4yyrr"
-            ><div class="m-v6ymhu"
-              ><div class="m-u46838"
-                ><div class="m-1q2erbf"
-                  ><div class="m-1o6rsix" style="--extracted-as4nhg:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                    ><h5 class="rt type-1e97z2c" dir="auto"
-                      ><span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-black, rgb(0, 0, 0)))">Get in touch with OUr Manager.   If you have a project idea, wish to collaborate, or just want to say hi, feel free to reach out.</span
-                    ></h5
-                  ></div
-                  ><PlusMedium class="m-1v0cttb" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                ></div
+<section class:list={["m-6P4Yt m-pQ5hH m-alehh m-3UBND m-wnk2ar", look]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+  ><div class="m-1g5a6kz"
+    ><div class="m-1a8c5bg hide-phone"></div
+    ><div class="m-i4yyrr"
+      ><div class="m-v6ymhu"
+        ><div class="m-u46838"
+          ><div class="m-1q2erbf"
+            ><div class="m-1o6rsix" style="--extracted-as4nhg:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
+              ><h5 class={`rt ${intro}`} dir="auto"
+                ><span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-black, rgb(0, 0, 0)))">Get in touch with OUr Manager.   If you have a project idea, wish to collaborate, or just want to say hi, feel free to reach out.</span
+              ></h5
+            ></div
+            ><PlusMedium class="m-1v0cttb" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+          ></div
+        ></div
+        ><div class="m-12vn2q8"
+          ><div class="m-1taxlxw hide-phone"></div
+          ><div class="m-129n0mg"
+            ><div class="m-1nnbqpo"
+              ><div class="m-1dv4ui3-container"
+                ><Avatar></Avatar
               ></div
-              ><div class="m-12vn2q8"
-                ><div class="m-1taxlxw"></div
-                ><div class="m-129n0mg"
-                  ><div class="m-1nnbqpo"
-                    ><div class="m-1dv4ui3-container"
-                      ><Avatar></Avatar
-                    ></div
-                    ><div class="m-v5rut1"
-                      ><div class="m-11pnn0c" style="--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                        ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">Mellisa Johnson</h6
-                      ></div
-                      ><div class="m-rsdpmv" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                        ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Clients Manager</p
-                      ></div
-                    ></div
-                  ></div
+              ><div class="m-v5rut1"
+                ><div class="m-11pnn0c" style="--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                  ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">Mellisa Johnson</h6
                 ></div
-                ><PlusMedium class="m-1haedc0" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+                ><div class="m-rsdpmv" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+                  ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Clients Manager</p
+                ></div
               ></div
             ></div
           ></div
-          ><div class="m-x4xyua" style="background-color:rgb(255, 255, 255)"></div
-          ><div class="m-1mf0yr9" style="background-color:rgb(255, 255, 255)"></div
-          ><div class="m-11ub111" style="background-color:rgb(255, 255, 255)"
-            ><form class="m-vil12t" method="post"
-              ><label class="m-1jsjyws" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-text-input form-input-wrapper m-n7pdvm form-text-input-type" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
-                  ><input type="text" name="Name" placeholder="NAME" class="form-input form-input-empty" value=""
-                ></div
-              ></label
-              ><label class="m-1nr0tav" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-text-input form-input-wrapper m-1w9if6u" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
-                  ><input type="email" name="Email" placeholder="EMAIL" class="form-input form-input-empty" value=""
-                ></div
-              ></label
-              ><label class="m-qxodul" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-text-input form-input-wrapper m-4xrrow" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
-                  ><input type="tel" name="Phone" placeholder="PHONE" class="form-input form-input-empty" value=""
-                ></div
-              ></label
-              ><label class="m-144jg61" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-input-wrapper form-select-wrapper m-1ppk7qq" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-color:var(--color-black, rgb(0, 0, 0));--m-input-invalid-text-color:var(--color-black, rgb(0, 0, 0))"
-                  ><select name="Location" required="" class="form-input"
-                    ><option value="" disabled="" selected="">YOUR BUDGET</option
-                    ><option value="5000-10000">5000-10000</option
-                    ><option value="10000-20000">10000-20000</option
-                  ></select
-                ></div
-              ></label
-              ><label class="m-1yjal4q" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-text-input form-input-wrapper m-11a74ul form-textarea-input-type" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
-                  ><textarea name="Message" placeholder="MESSAGE" class="form-input"></textarea
-                ></div
-              ></label
-              ><div class="m-1ttehmg-container"
-                ><FormButton></FormButton
-              ></div
-              ><input type="text" name="website" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="company" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="message" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="subject" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="title" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="description" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="feedback" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="notes" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="details" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="remarks" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="comments" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-            ></form
-          ></div
+          ><PlusMedium class="m-1haedc0" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
         ></div
-      ></section></Fragment
-    >
-  ) : variant === "Phone" ? (
-    <Fragment
-      ><section class:list={["m-6P4Yt m-pQ5hH m-alehh m-3UBND m-wnk2ar", VARIANTS[variant]]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
-        ><div class="m-1g5a6kz"
-          ><div class="m-i4yyrr"
-            ><div class="m-v6ymhu"
-              ><div class="m-u46838"
-                ><div class="m-1q2erbf"
-                  ><div class="m-1o6rsix" style="--extracted-as4nhg:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
-                    ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">Get in touch with OUr Manager.   If you have a project idea, wish to collaborate, or just want to say hi, feel free to reach out.</h6
-                  ></div
-                  ><PlusMedium class="m-1v0cttb" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                ></div
-              ></div
-              ><div class="m-12vn2q8"
-                ><div class="m-129n0mg"
-                  ><div class="m-1nnbqpo"
-                    ><div class="m-1dv4ui3-container"
-                      ><Avatar></Avatar
-                    ></div
-                    ><div class="m-v5rut1"
-                      ><div class="m-11pnn0c" style="--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                        ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">Mellisa Johnson</h6
-                      ></div
-                      ><div class="m-rsdpmv" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                        ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Clients Manager</p
-                      ></div
-                    ></div
-                  ></div
-                ></div
-                ><PlusMedium class="m-1haedc0" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-              ></div
-            ></div
+      ></div
+    ></div
+    ><div class="m-x4xyua hide-phone" style="background-color:rgb(255, 255, 255)"></div
+    ><div class="m-1mf0yr9 hide-phone" style="background-color:rgb(255, 255, 255)"></div
+    ><div class="m-11ub111" style="background-color:rgb(255, 255, 255)"
+      ><form class="m-vil12t" method="post"
+        ><label class="m-1jsjyws" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
+          ><div class="form-text-input form-input-wrapper m-n7pdvm form-text-input-type" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
+            ><input type="text" name="Name" placeholder="NAME" class="form-input form-input-empty" value=""
           ></div
-          ><div class="m-11ub111" style="background-color:rgb(255, 255, 255)"
-            ><form class="m-vil12t" method="post"
-              ><label class="m-1jsjyws" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-text-input form-input-wrapper m-n7pdvm form-text-input-type" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
-                  ><input type="text" name="Name" placeholder="NAME" class="form-input form-input-empty" value=""
-                ></div
-              ></label
-              ><label class="m-1nr0tav" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-text-input form-input-wrapper m-1w9if6u" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
-                  ><input type="email" name="Email" placeholder="EMAIL" class="form-input form-input-empty" value=""
-                ></div
-              ></label
-              ><label class="m-qxodul" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-text-input form-input-wrapper m-4xrrow" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
-                  ><input type="tel" name="Phone" placeholder="PHONE" class="form-input form-input-empty" value=""
-                ></div
-              ></label
-              ><label class="m-144jg61" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-input-wrapper form-select-wrapper m-1ppk7qq" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-color:var(--color-black, rgb(0, 0, 0));--m-input-invalid-text-color:var(--color-black, rgb(0, 0, 0))"
-                  ><select name="Location" required="" class="form-input"
-                    ><option value="" disabled="" selected="">YOUR BUDGET</option
-                    ><option value="5000-10000">5000-10000</option
-                    ><option value="10000-20000">10000-20000</option
-                  ></select
-                ></div
-              ></label
-              ><label class="m-1yjal4q" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-                ><div class="form-text-input form-input-wrapper m-11a74ul form-textarea-input-type" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
-                  ><textarea name="Message" placeholder="MESSAGE" class="form-input"></textarea
-                ></div
-              ></label
-              ><div class="m-1ttehmg-container"
-                ><FormButton></FormButton
-              ></div
-              ><input type="text" name="website" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="company" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="message" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="subject" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="title" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="description" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="feedback" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="notes" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="details" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="remarks" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-              ><input type="text" name="comments" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
-            ></form
+        ></label
+        ><label class="m-1nr0tav" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
+          ><div class="form-text-input form-input-wrapper m-1w9if6u" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
+            ><input type="email" name="Email" placeholder="EMAIL" class="form-input form-input-empty" value=""
           ></div
+        ></label
+        ><label class="m-qxodul" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
+          ><div class="form-text-input form-input-wrapper m-4xrrow" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
+            ><input type="tel" name="Phone" placeholder="PHONE" class="form-input form-input-empty" value=""
+          ></div
+        ></label
+        ><label class="m-144jg61" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
+          ><div class="form-input-wrapper form-select-wrapper m-1ppk7qq" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-color:var(--color-black, rgb(0, 0, 0));--m-input-invalid-text-color:var(--color-black, rgb(0, 0, 0))"
+            ><select name="Location" required="" class="form-input"
+              ><option value="" disabled="" selected="">YOUR BUDGET</option
+              ><option value="5000-10000">5000-10000</option
+              ><option value="10000-20000">10000-20000</option
+            ></select
+          ></div
+        ></label
+        ><label class="m-1yjal4q" style="will-change:transform;opacity:0.2;transform:translateY(150px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.2,&quot;y&quot;:150},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
+          ><div class="form-text-input form-input-wrapper m-11a74ul form-textarea-input-type" style="--m-input-border-bottom-width:1px;--m-input-border-color:var(--color-black, rgb(0, 0, 0));--m-input-border-left-width:0px;--m-input-border-right-width:0px;--m-input-border-style:solid;--m-input-border-top-width:0px;--m-input-font-color:var(--color-black, rgb(0, 0, 0));--m-input-icon-mask-image:none;--m-input-placeholder-color:var(--color-black, rgb(0, 0, 0))"
+            ><textarea name="Message" placeholder="MESSAGE" class="form-input"></textarea
+          ></div
+        ></label
+        ><div class="m-1ttehmg-container"
+          ><FormButton></FormButton
         ></div
-      ></section></Fragment
-    >
-  ) : null
-}
+        ><input type="text" name="website" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="company" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="message" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="subject" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="title" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="description" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="feedback" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="notes" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="details" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="remarks" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+        ><input type="text" name="comments" tabindex="-1" autocomplete="one-time-code" aria-hidden="true" style="position:absolute;transform:scale(0)" data-1p-ignore="true" value=""
+      ></form
+    ></div
+  ></div
+></section>

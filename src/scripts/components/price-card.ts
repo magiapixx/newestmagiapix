@@ -2,8 +2,9 @@
 import { setVariant, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
 import { accentsIn, playAccent, resetAccent } from './accent';
+import { lookSlots } from '../lib/rv';
 
-// open look <-> closed look, per breakpoint copy
+// open look <-> closed look, per breakpoint
 const PAIRS = [
   { open: 'v-3kxegu', closed: 'v-1en70zz' }, // desktop
   { open: 'v-y977ge', closed: 'v-1i8jsh1' }, // tablet
@@ -12,11 +13,13 @@ const PAIRS = [
 const SPRING: Transition = { type: 'spring', duration: 0.5, bounce: 0 };
 
 export function initPriceCards() {
+  const table = Object.fromEntries(PAIRS.flatMap((p) => [[p.open, p], [p.closed, p]]));
   for (const card of document.querySelectorAll<HTMLElement>('.m-GJSAG')) {
-    const looks = PAIRS.find((p) => card.classList.contains(p.open) || card.classList.contains(p.closed));
-    if (!looks) continue;
+    const looks = lookSlots(card, table);
+    if (!looks.length) continue;
+    const isOpen = () => card.classList.contains(looks[0].prefix + looks[0].looks.open);
     card.style.cursor = 'pointer';
-    card.addEventListener('click', () => setVariant(card, looks, card.classList.contains(looks.open) ? 'closed' : 'open', SPRING));
+    card.addEventListener('click', () => setVariant(card, looks, isOpen() ? 'closed' : 'open', SPRING));
     // hovering a closed card sweeps an accent bar across its header
     hoverClass(card, SPRING, { enter: () => accentsIn(card).forEach((a) => (resetAccent(a, 'load'), playAccent(a))) });
   }

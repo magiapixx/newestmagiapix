@@ -1,98 +1,47 @@
 ---
-// Prices - Section
+// Prices - Section: one markup for every breakpoint (lib/rv)
 import HeadingsVertical from './HeadingsVertical.astro';
 import PlusSmall from './PlusSmall.astro';
 import PriceCard from './PriceCard.astro';
+import { rv } from '../lib/rv';
 
-interface Props {
-  variant?: "Desktop" | "Tablet" | "Wide" | "Phone";
-  headingsVerticalVariant?: string;
-  priceCardVariant?: string;
-  priceCardVariant2?: string;
-}
-
-const { variant = "Desktop", headingsVerticalVariant, priceCardVariant, priceCardVariant2 } = Astro.props;
-
-const VARIANTS = {
-  "Desktop": "v-7nmgl9",
-  "Tablet": "v-8657lb",
-  "Wide": "v-yof8x4",
-  "Phone": "v-19wxf9a",
-};
+const look = rv({ lg: 'v-7nmgl9', xl: 'v-yof8x4', t: 'v-8657lb', p: 'v-19wxf9a' });
 ---
 
-{
-  variant === "Desktop" || variant === "Tablet" || variant === "Wide" ? (
-    <Fragment
-      ><section class:list={["m-3R9yn m-kXq9A m-7nmgl9", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
-        ><div class="m-1gl2vdr"
-          ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
-            ><img decoding="async" loading="lazy" width="3840" height="2160" sizes="(min-width: 1200px) and (max-width: 1599.98px) 100vw, (min-width: 810px) and (max-width: 1199.98px) 100vw, (min-width: 1600px) 100vw, (max-width: 809.98px) 100vw" srcset="/images/6xGiwso5yyR8KrBNN4ef2qnu7mI.07j9gi5.jpg 512w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.14sj5om.jpg 1024w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.1ujkpaj.jpg 2048w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.0b2p83v.jpg 3840w" src="/images/6xGiwso5yyR8KrBNN4ef2qnu7mI.0b2p83v.jpg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
-          ></div
+<section class:list={["m-3R9yn m-kXq9A m-7nmgl9", look]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
+  ><div class="m-1gl2vdr"
+    ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+      ><img decoding="async" loading="lazy" width="3840" height="2160" sizes="(min-width: 1200px) and (max-width: 1599.98px) 100vw, (min-width: 810px) and (max-width: 1199.98px) 100vw, (min-width: 1600px) 100vw, (max-width: 809.98px) 100vw" srcset="/images/6xGiwso5yyR8KrBNN4ef2qnu7mI.07j9gi5.jpg 512w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.14sj5om.jpg 1024w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.1ujkpaj.jpg 2048w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.0b2p83v.jpg 3840w" src="/images/6xGiwso5yyR8KrBNN4ef2qnu7mI.0b2p83v.jpg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+    ></div
+  ></div
+  ><div class="m-13sagw7-container"
+    ><div style="width:100%;height:100%;overflow:hidden;opacity:0.04;pointer-events:none"
+      ><canvas style="width:100%;height:100%;image-rendering:pixelated" data-gl="noise"></canvas
+    ></div
+  ></div
+  ><div class="m-1lur3i6"
+    ><div class="m-mpy07n-container hide-phone"
+      ><HeadingsVertical first="/Prices" variants={{ lg: "/Prices - H2", xl: "/Prices - H1", t: "/Prices - H2", p: "/Prices - H2" }}></HeadingsVertical
+    ></div
+    ><div class="m-a4iadk hide-phone"></div
+    ><div class="m-1rwo6qr"
+      ><div class="m-hcyrer-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><PriceCard card="partnership"></PriceCard
+      ></div
+      ><div class="m-2fldc8-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><div class="m-7ygz5 m-xm2wi3 v-xm2wi3" style="height:100%;width:100%"
+          ><PlusSmall class="m-sehlle" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+          ><div class="m-ktclx4" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+          ><PlusSmall class="m-1qktt0u" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
         ></div
-        ><div class="m-13sagw7-container"
-          ><div style="width:100%;height:100%;overflow:hidden;opacity:0.04;pointer-events:none"
-            ><canvas style="width:100%;height:100%;image-rendering:pixelated" data-gl="noise"></canvas
-          ></div
-        ></div
-        ><div class="m-1lur3i6"
-          ><div class="m-mpy07n-container"
-            ><HeadingsVertical first="/Prices" variant={headingsVerticalVariant}></HeadingsVertical
-          ></div
-          ><div class="m-a4iadk"></div
-          ><div class="m-1rwo6qr"
-            ><div class="m-hcyrer-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PriceCard variant={priceCardVariant}></PriceCard
-            ></div
-            ><div class="m-2fldc8-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-7ygz5 m-xm2wi3 v-xm2wi3" style="height:100%;width:100%"
-                ><PlusSmall class="m-sehlle" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-                ><div class="m-ktclx4" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-                ><PlusSmall class="m-1qktt0u" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ></div
-            ></div
-            ><div class="m-jaxlce-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PriceCard variant={priceCardVariant2}></PriceCard
-            ></div
-          ></div
-          ><div class="m-u35vmu"></div
-        ></div
-      ></section></Fragment
-    >
-  ) : variant === "Phone" ? (
-    <Fragment
-      ><section class:list={["m-3R9yn m-kXq9A m-7nmgl9", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
-        ><div class="m-1gl2vdr"
-          ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
-            ><img decoding="async" loading="lazy" width="3840" height="2160" sizes="(min-width: 1200px) and (max-width: 1599.98px) 100vw, (min-width: 810px) and (max-width: 1199.98px) 100vw, (min-width: 1600px) 100vw, (max-width: 809.98px) 100vw" srcset="/images/6xGiwso5yyR8KrBNN4ef2qnu7mI.07j9gi5.jpg 512w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.14sj5om.jpg 1024w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.1ujkpaj.jpg 2048w, /images/6xGiwso5yyR8KrBNN4ef2qnu7mI.0b2p83v.jpg 3840w" src="/images/6xGiwso5yyR8KrBNN4ef2qnu7mI.0b2p83v.jpg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
-          ></div
-        ></div
-        ><div class="m-13sagw7-container"
-          ><div style="width:100%;height:100%;overflow:hidden;opacity:0.04;pointer-events:none"
-            ><canvas style="width:100%;height:100%;image-rendering:pixelated" data-gl="noise"></canvas
-          ></div
-        ></div
-        ><div class="m-1lur3i6"
-          ><div class="m-1rwo6qr"
-            ><div class="m-hcyrer-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PriceCard variant="Phone"></PriceCard
-            ></div
-            ><div class="m-2fldc8-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-7ygz5 m-xm2wi3 v-xm2wi3" style="height:100%;width:100%"
-                ><PlusSmall class="m-sehlle" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-                ><div class="m-ktclx4" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-                ><PlusSmall class="m-1qktt0u" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ></div
-            ></div
-            ><div class="m-jaxlce-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PriceCard variant="Phone - Closed"></PriceCard
-            ></div
-            ><div class="m-1e9h1h2" style="--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
-              ><h3 class="rt type-4dgq3i" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/Prices</h3
-            ></div
-          ></div
-        ></div
-      ></section></Fragment
-    >
-  ) : null
-}
+      ></div
+      ><div class="m-jaxlce-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><PriceCard card="perProject"></PriceCard
+      ></div
+      ><div class="m-1e9h1h2 hide-tablet hide-lg hide-xl" style="--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+        ><h3 class="rt type-4dgq3i" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/Prices</h3
+      ></div
+    ></div
+    ><div class="m-u35vmu hide-phone"></div
+  ></div
+></section>

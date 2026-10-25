@@ -7,6 +7,7 @@
  * Springs are converted to a CSS `linear()` easing so they can run on the
  * Web Animations API without a JS animation loop.
  */
+import type { Slot } from './rv';
 
 export type Spring = { type?: 'spring'; duration?: number; bounce?: number; delay?: number };
 export type Tween = { type: 'tween'; duration?: number; ease?: [number, number, number, number]; delay?: number };
@@ -181,12 +182,19 @@ export function transitionState(root: HTMLElement, mutate: () => void, tr: Trans
 }
 
 /** Swap one variant class for another on a component root. */
-export function setVariant(root: HTMLElement, variants: Record<string, string>, name: string, tr?: Transition) {
-  const next = variants[name];
-  if (!next || root.classList.contains(next)) return;
+/**
+ * Switch an element to the look `name`. `variants` is one state name -> class map, or one per breakpoint
+ * slot (lib/rv `lookSlots`) for an element that carries a look per breakpoint.
+ */
+export function setVariant(root: HTMLElement, variants: Record<string, string> | Slot[], name: string, tr?: Transition) {
+  const slots: Slot[] = Array.isArray(variants) ? variants : [{ prefix: '', looks: variants }];
+  const todo = slots.filter((s) => s.looks[name] && !root.classList.contains(s.prefix + s.looks[name]));
+  if (!todo.length) return;
   const apply = () => {
-    for (const c of Object.values(variants)) root.classList.remove(c);
-    root.classList.add(next);
+    for (const { prefix, looks } of todo) {
+      for (const c of Object.values(looks)) root.classList.remove(prefix + c);
+      root.classList.add(prefix + looks[name]);
+    }
     root.dataset.variant = name;
   };
   if (tr) transitionState(root, apply, tr);

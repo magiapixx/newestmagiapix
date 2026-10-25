@@ -1,31 +1,24 @@
 ---
-// Service
+// Service: one markup for every breakpoint (lib/rv). The title has a desktop block (h3) and a tablet/phone
+// block (h5); the image inset (--sezid2) per breakpoint is set in site.css.
 import ImageOpening from './ImageOpening.astro';
 import MinusBig from './MinusBig.astro';
 import PlusBig from './PlusBig.astro';
+import { rv } from '../lib/rv';
 
 interface Props {
-  variant?: "Collapsed All" | "Phone";
-  style: string;
   imageOpeningImage: any;
-  text?: string;
-  hasBlock?: boolean;
-  text2?: string;
-  hasBlock2?: boolean;
+  text: string;
   text3: string;
   text4: string;
 }
 
-const { variant = "Collapsed All", style, imageOpeningImage, text, hasBlock, text2, hasBlock2, text3, text4 } = Astro.props;
-
-const VARIANTS = {
-  "Collapsed All": "v-15zdchv",
-  "Phone": "v-1gx16xq",
-};
+const { imageOpeningImage, text, text3, text4 } = Astro.props;
+const look = rv({ lg: 'v-15zdchv', xl: 'v-15zdchv', t: 'v-15zdchv', p: 'v-1gx16xq' });
 ---
 
-<div class:list={["m-Fsg4m m-zNzez m-pQ5hH m-lhYZM m-alehh m-xbhBc m-15zdchv", VARIANTS[variant]]} tabindex="0" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
-  ><div class="m-113k14r" style={style}
+<div class:list={["m-Fsg4m m-zNzez m-pQ5hH m-lhYZM m-alehh m-xbhBc m-15zdchv", look]} tabindex="0" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+  ><div class="m-113k14r"
     ><div class="m-10m0ylc"
       ><div class="m-1q569jd-container"
         ><ImageOpening image={imageOpeningImage}></ImageOpening
@@ -33,15 +26,15 @@ const VARIANTS = {
     ></div
   ></div
   ><div class="m-1pb3ux9"></div
-  ><div class="m-2nvnk6" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}">{hasBlock && (<Fragment><div class="m-1lpn2f3" style="--extracted-1k2zljd:var(--color-black, rgb(0, 0, 0));--extracted-7519bk:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+  ><div class="m-2nvnk6" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"><div class="m-1lpn2f3 hide-tablet hide-phone" style="--extracted-1k2zljd:var(--color-black, rgb(0, 0, 0));--extracted-7519bk:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
       ><h3 class="rt type-wc4xhu" dir="auto"
         ><span class="rt" style="--m-text-color:var(--extracted-1k2zljd, var(--color-black, rgb(0, 0, 0)))">{text}</span
       ></h3
-    ></div></Fragment>)}{hasBlock2 && (<Fragment><div class="m-wbsxxy" style="--extracted-as4nhg:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+    ></div><div class="m-wbsxxy hide-lg hide-xl" style="--extracted-as4nhg:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
       ><h5 class="rt type-1e97z2c" dir="auto"
-        ><span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-black, rgb(0, 0, 0)))">{text2}</span
+        ><span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-black, rgb(0, 0, 0)))">{text}</span
       ></h5
-    ></div></Fragment>)}<div class="m-7l2x8u"></div
+    ></div><div class="m-7l2x8u"></div
     ><div class="m-12wev4a"
       ><div class="m-1km02il" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
         ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">{text3}</p

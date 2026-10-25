@@ -5,6 +5,7 @@
  */
 import { animate, setVariant, transitionState, type Transition } from '../lib/motion';
 import { accentsIn, playAccent, resetAccent } from './accent';
+import { hasActiveClass, lookSlots } from '../lib/rv';
 
 // closed look -> opened look, per layout
 const LOOKS: [closed: string, open: string][] = [
@@ -18,10 +19,12 @@ const SPRING: Transition = { type: 'spring', duration: 0.4, bounce: 0 };
 
 export function initFaqs() {
   for (const item of document.querySelectorAll<HTMLElement>('.m-y6iPh')) {
-    const pair = LOOKS.find(([closed]) => item.classList.contains(closed));
-    if (!pair) continue;
-    const looks = { closed: pair[0], open: pair[1] };
-    const hoverable = item.querySelector('.m-kn5kpf-container') !== null;
+    // one look per breakpoint on an item merged across breakpoints (lib/rv)
+    const looks = lookSlots(item, Object.fromEntries(LOOKS.map(([closed, open]) => [closed, { closed, open }])));
+    if (!looks.length) continue;
+    // the hover accent only exists in the desktop looks: hover while one of them applies
+    const accent = item.querySelector('.m-kn5kpf-container');
+    const hoverable = () => LOOKS.slice(0, 2).some(([closed, open]) => hasActiveClass(item, closed) || hasActiveClass(item, open));
     item.style.cursor = 'pointer';
 
     item.addEventListener('click', () => {
@@ -35,9 +38,9 @@ export function initFaqs() {
       if (opening && answer) animate(answer, [{ opacity: 0 }, { opacity: 1 }], SPRING);
     });
 
-    if (!hoverable) continue;
+    if (!accent) continue;
     item.addEventListener('mouseenter', () => {
-      if (item.hasAttribute('data-open')) return;
+      if (!hoverable() || item.hasAttribute('data-open')) return;
       transitionState(item, () => item.classList.add('hover'), SPRING);
       accentsIn(item).forEach((a) => (resetAccent(a, 'load'), playAccent(a)));
     });

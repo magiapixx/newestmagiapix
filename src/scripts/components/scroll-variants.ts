@@ -3,6 +3,7 @@
  * least half visible, and start their accent sweeps.
  */
 import { inView, transitionState, type Transition } from '../lib/motion';
+import { hasClass, swapClass } from '../lib/rv';
 import { accentsIn, playAccent } from './accent';
 
 const ONCE_AT_HALF: [selector: string, from: string, to: string, transition?: Transition][] = [
@@ -16,18 +17,27 @@ const ONCE_AT_HALF: [selector: string, from: string, to: string, transition?: Tr
 ];
 
 export function initScrollVariants() {
+  // an element merged across breakpoints can carry several of these looks (one per breakpoint, lib/rv):
+  // collect them so it swaps all of them and plays its accents once
+  const swaps = new Map<HTMLElement, { pairs: [string, string][]; transition?: Transition }>();
   for (const [sel, from, to, transition] of ONCE_AT_HALF) {
-    for (const el of document.querySelectorAll<HTMLElement>(`${sel}.${from}`)) {
-      inView(
-        el.parentElement ?? el,
-        () => {
-          const swap = () => el.classList.replace(from, to);
-          if (transition) transitionState(el, swap, transition);
-          else swap();
-          accentsIn(el).forEach(playAccent);
-        },
-        { amount: 0.5 },
-      );
+    for (const el of document.querySelectorAll<HTMLElement>(sel)) {
+      if (!hasClass(el, from)) continue;
+      const entry = swaps.get(el) ?? { pairs: [], transition };
+      entry.pairs.push([from, to]);
+      swaps.set(el, entry);
     }
+  }
+  for (const [el, { pairs, transition }] of swaps) {
+    inView(
+      el.parentElement ?? el,
+      () => {
+        const swap = () => pairs.forEach(([from, to]) => swapClass(el, from, to));
+        if (transition) transitionState(el, swap, transition);
+        else swap();
+        accentsIn(el).forEach(playAccent);
+      },
+      { amount: 0.5 },
+    );
   }
 }

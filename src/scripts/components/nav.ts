@@ -6,7 +6,8 @@
 import { transitionState, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
 
-// One navigation copy is rendered per breakpoint; each has its own set of looks.
+// Each breakpoint has its own set of looks. The bar carries one per breakpoint as a responsive class
+// (`rv-<bp>-<look>`, lib/rv) or, unprefixed, a single look.
 const LOOKS: Record<string, { open: string; dark: string; darkOpen: string }> = {
   'v-ykxwx9': { open: 'v-5saxcr', dark: 'v-10ycspi', darkOpen: 'v-1h3wqfx' }, // desktop
   'v-224r0t': { open: 'v-1gzagu0', dark: 'v-1kjzjgh', darkOpen: 'v-6l4m8f' }, // tablet
@@ -18,24 +19,30 @@ const HOVER: Transition = { type: 'spring', duration: 0.4, bounce: 0.2 };
 const WHITE = 'var(--color-white, rgb(255, 255, 255))';
 const BLACK = 'var(--color-black, rgb(0, 0, 0))';
 
-type Nav = { el: HTMLElement; base: string };
+type Slot = { prefix: string; base: string };
+type Nav = { el: HTMLElement; slots: Slot[] };
 
 export function initNav() {
   const navs: Nav[] = [...document.querySelectorAll<HTMLElement>('.m-dG6qZ')].flatMap((el) => {
-    const base = Object.keys(LOOKS).find((v) => el.classList.contains(v));
-    return base ? [{ el, base }] : [];
+    const slots = [...el.classList].flatMap((c) => {
+      const m = c.match(/^(rv-[a-z]+-)?(v-[a-z0-9]+)$/);
+      return m && LOOKS[m[2]] ? [{ prefix: m[1] ?? '', base: m[2] }] : [];
+    });
+    return slots.length ? [{ el, slots }] : [];
   });
   if (!navs.length) return;
   let open = false;
   let dark = false;
 
   const render = (animated: boolean) => {
-    for (const { el, base } of navs) {
-      const look = LOOKS[base];
-      const next = open ? (dark ? look.darkOpen : look.open) : dark ? look.dark : base;
+    for (const { el, slots } of navs) {
       const apply = () => {
-        el.classList.remove(base, look.open, look.dark, look.darkOpen);
-        el.classList.add(next);
+        for (const { prefix, base } of slots) {
+          const look = LOOKS[base];
+          const next = open ? (dark ? look.darkOpen : look.open) : dark ? look.dark : base;
+          el.classList.remove(...[base, look.open, look.dark, look.darkOpen].map((c) => prefix + c));
+          el.classList.add(prefix + next);
+        }
         const burger = el.querySelector<HTMLElement>('.m-u7pBX');
         if (burger) {
           burger.classList.remove(...Object.values(BURGER));

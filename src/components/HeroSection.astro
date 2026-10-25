@@ -1,88 +1,40 @@
 ---
-// Hero - Section
+// Hero - Section: one markup for every breakpoint (lib/rv)
 import HeadingsVertical from './HeadingsVertical.astro';
 import LinkWithLine from './LinkWithLine.astro';
 import PlusMedium from './PlusMedium.astro';
+import { rv } from '../lib/rv';
 
-interface Props {
-  variant?: "Desktop" | "Tablet" | "Wide" | "Phone";
-  headingsVerticalVariant?: string;
-}
-
-const { variant = "Desktop", headingsVerticalVariant } = Astro.props;
-
-const VARIANTS = {
-  "Desktop": "v-4wrg1e",
-  "Tablet": "v-1c80epy",
-  "Wide": "v-n3a0um",
-  "Phone": "v-1m0gzn2",
-};
+const look = rv({ lg: 'v-4wrg1e', xl: 'v-n3a0um', t: 'v-1c80epy', p: 'v-1m0gzn2' });
+const place = rv({ lg: 'type-1xxob9n', xl: 'type-1xxob9n', t: 'type-1xxob9n', p: 'type-y2tuor' });
 ---
 
-{
-  variant === "Desktop" || variant === "Tablet" || variant === "Wide" ? (
-    <Fragment
-      ><header class:list={["m-y5R0E m-dS8v4 m-xbhBc m-4wrg1e", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
-        ><div class="m-19xt6zm"
-          ><div class="m-1j63tim-container"
-            ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
-              ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/5gMUXzRRZxsmlENTTK2s3rjnT4w.jpg,/images/vmz1ajV938137DnPkPij67zvESQ.jpg" data-pause="0.8"></canvas
-            ></div
-          ></div
-        ></div
-        ><div class="m-2ci4v1"
-          ><div class="m-1i2t8fo"
-            ><div class="m-ing148 hero-tagline"><p>MAGIAPIX<br />DIGITAL<br />AGENCY</p></div
-          ></div
-          ><div class="m-vb32lr"
-            ><PlusMedium class="m-1iatanp" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-            ><div class="m-1ngrm4v" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">LONDON, UK</h6
-            ></div
-          ></div
-          ><div class="m-bmj6r9"
-            ><div class="m-7uvji5-container"
-              ><HeadingsVertical variant={headingsVerticalVariant}></HeadingsVertical
-            ></div
-            ><PlusMedium class="m-h48qdb" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-            ><div class="m-10mfzsy-container"
-              ><LinkWithLine link="/contact/" text="START PROJECT"></LinkWithLine
-            ></div
-          ></div
-        ></div
-      ></header></Fragment
-    >
-  ) : variant === "Phone" ? (
-    <Fragment
-      ><header class:list={["m-y5R0E m-dS8v4 m-xbhBc m-4wrg1e", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
-        ><div class="m-19xt6zm"
-          ><div class="m-1j63tim-container"
-            ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
-              ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/5gMUXzRRZxsmlENTTK2s3rjnT4w.jpg,/images/vmz1ajV938137DnPkPij67zvESQ.jpg" data-pause="0.8"></canvas
-            ></div
-          ></div
-        ></div
-        ><div class="m-2ci4v1"
-          ><div class="m-1i2t8fo"
-            ><div class="m-ing148 hero-tagline"><p>MAGIAPIX<br />DIGITAL<br />AGENCY</p></div
-          ></div
-          ><div class="m-vb32lr"
-            ><PlusMedium class="m-1iatanp" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-            ><div class="m-1ngrm4v" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));transform:none"
-              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">LONDON, UK</p
-            ></div
-          ></div
-          ><div class="m-bmj6r9"
-            ><div class="m-7uvji5-container"
-              ><HeadingsVertical variant="Scroll Down - H6 - Smaller"></HeadingsVertical
-            ></div
-            ><PlusMedium class="m-h48qdb" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-            ><div class="m-10mfzsy-container"
-              ><LinkWithLine link="/contact/" text="START PROJECT"></LinkWithLine
-            ></div
-          ></div
-        ></div
-      ></header></Fragment
-    >
-  ) : null
-}
+<header class:list={["m-y5R0E m-dS8v4 m-xbhBc m-4wrg1e", look]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
+  ><div class="m-19xt6zm"
+    ><div class="m-1j63tim-container"
+      ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
+        ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/5gMUXzRRZxsmlENTTK2s3rjnT4w.jpg,/images/vmz1ajV938137DnPkPij67zvESQ.jpg" data-pause="0.8"></canvas
+      ></div
+    ></div
+  ></div
+  ><div class="m-2ci4v1"
+    ><div class="m-1i2t8fo"
+      ><div class="m-ing148 hero-tagline"><p>MAGIAPIX<br />DIGITAL<br />AGENCY</p></div
+    ></div
+    ><div class="m-vb32lr"
+      ><PlusMedium class="m-1iatanp" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+      ><div class="m-1ngrm4v" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+        ><h6 class={`rt ${place}`} dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">LONDON, UK</h6
+      ></div
+    ></div
+    ><div class="m-bmj6r9"
+      ><div class="m-7uvji5-container"
+        ><HeadingsVertical variants={{ lg: "Scroll Down - H6", xl: "Scroll Down - H6", t: "Scroll Down - H6 - Smaller", p: "Scroll Down - H6 - Smaller" }}></HeadingsVertical
+      ></div
+      ><PlusMedium class="m-h48qdb" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+      ><div class="m-10mfzsy-container"
+        ><LinkWithLine link="/contact/" text="START PROJECT"></LinkWithLine
+      ></div
+    ></div
+  ></div
+></header>

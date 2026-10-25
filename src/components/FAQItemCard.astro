@@ -1,17 +1,10 @@
 ---
-// FAQ Item - Card
+// FAQ Item - Card: one markup that takes a look per breakpoint (lib/rv). The question colour/alignment each copy
+// set inline are in site.css; the hover accent exists only in the desktop looks.
 import AnimationAccent from './AnimationAccent.astro';
 import MinusBig from './MinusBig.astro';
 import PlusBig from './PlusBig.astro';
-
-interface Props {
-  variant?: "Desktop - Left" | "Desktop - Right" | "Tablet" | "Tablet - Right" | "Phone";
-  partnershipStyle: string;
-  partnership: string;
-  text: string;
-}
-
-const { variant = "Desktop - Left", partnershipStyle, partnership, text } = Astro.props;
+import { BPS, rv, type PerBp } from '../lib/rv';
 
 const VARIANTS = {
   "Desktop - Left": "v-13ofslm",
@@ -20,47 +13,34 @@ const VARIANTS = {
   "Tablet - Right": "v-8yuvk1",
   "Phone": "v-1e9xkcu",
 };
+type Name = keyof typeof VARIANTS;
+
+interface Props {
+  variants: PerBp<Name>;
+  partnership: string;
+  text: string;
+}
+
+const { variants, partnership, text } = Astro.props;
+const look = rv(Object.fromEntries(BPS.map((b) => [b, VARIANTS[variants[b]]])) as PerBp<string>);
+const question = rv(Object.fromEntries(BPS.map((b) => [b, variants[b].startsWith("Desktop") ? "type-1xxob9n" : "type-y2tuor"])) as PerBp<string>);
 ---
 
-{
-  variant === "Desktop - Left" || variant === "Desktop - Right" ? (
-    <Fragment
-      ><div class:list={["m-y6iPh m-dS8v4 m-xbhBc m-lhYZM m-13ofslm", VARIANTS[variant]]} tabindex="0" style="width:100%"
-        ><div class="m-gj732i"
-          ><MinusBig class="m-16dccor" dataShow="open" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></MinusBig
-          ><PlusBig class="m-16dccor" dataShow="closed" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusBig
-          ><div class="m-nh3uw0" style="--m-paragraph-spacing:0px;transform:none"
-            ><h6 class="rt type-1xxob9n" dir="auto" style={partnershipStyle}>{partnership}</h6
-          ></div
-        ></div
-        ><div class="m-87bpnj" data-show="open"
-          ><div class="m-vze69p"></div
-          ><div class="m-1kb9yme" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
-            ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">{text}</p
-          ></div
-        ></div
-        ><div class="m-kn5kpf-container" data-show="hover"
-          ><AnimationAccent variant="v-1ejt96b" style="height:100%;width:100%" style2="background-color:var(--color-accent, rgb(0, 255, 161))"></AnimationAccent
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "Tablet" || variant === "Tablet - Right" || variant === "Phone" ? (
-    <Fragment
-      ><div class:list={["m-y6iPh m-dS8v4 m-xbhBc m-lhYZM m-13ofslm", VARIANTS[variant]]} tabindex="0" style="width:100%"
-        ><div class="m-gj732i"
-          ><MinusBig class="m-16dccor" dataShow="open" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></MinusBig
-          ><PlusBig class="m-16dccor" dataShow="closed" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusBig
-          ><div class="m-nh3uw0" style="--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));transform:none"
-            ><p class="rt type-y2tuor" dir="auto" style={partnershipStyle}>{partnership}</p
-          ></div
-        ></div
-        ><div class="m-87bpnj" data-show="open"
-          ><div class="m-vze69p"></div
-          ><div class="m-1kb9yme" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
-            ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">{text}</p
-          ></div
-        ></div
-      ></div></Fragment
-    >
-  ) : null
-}
+<div class:list={["m-y6iPh m-dS8v4 m-xbhBc m-lhYZM m-13ofslm", look]} tabindex="0" style="width:100%"
+  ><div class="m-gj732i"
+    ><MinusBig class="m-16dccor" dataShow="open" style="--mucckr: var(--color-accent, rgb(0, 255, 161))"></MinusBig
+    ><PlusBig class="m-16dccor" dataShow="closed" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusBig
+    ><div class="m-nh3uw0" style="--m-paragraph-spacing:0px;transform:none"
+      ><h6 class={`rt ${question}`} dir="auto">{partnership}</h6
+    ></div
+  ></div
+  ><div class="m-87bpnj" data-show="open"
+    ><div class="m-vze69p"></div
+    ><div class="m-1kb9yme" style="--extracted-r6o4lv: var(--color-white, rgb(255, 255, 255));--m-link-text-color: rgb(0, 153, 255);--m-link-text-decoration: underline"
+      ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color: var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">{text}</p
+    ></div
+  ></div
+  ><div class="m-kn5kpf-container hide-tablet hide-phone" data-show="hover"
+    ><AnimationAccent variant="v-1ejt96b" style="height:100%;width:100%" style2="background-color:var(--color-accent, rgb(0, 255, 161))"></AnimationAccent
+  ></div
+></div>

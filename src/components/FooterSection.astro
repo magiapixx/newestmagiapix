@@ -1,288 +1,100 @@
 ---
-// Footer - Section
+// Footer - Section: one markup for every breakpoint; tablet and phone differences live in site.css media queries
 import LinkBig from './LinkBig.astro';
 import LinkWithLineSmall from './LinkWithLineSmall.astro';
 import LogoVerticalAccent from './LogoVerticalAccent.astro';
 import PlusMedium from './PlusMedium.astro';
-import PlusSmall from './PlusSmall.astro';
 import SocialIcons from './SocialIcons.astro';
 
 interface Props {
-  variant?: "Desktop" | "Tablet" | "Phone";
-  avaImage: { src?: string };
   linkWithLineSmallLink: string;
 }
 
-const { variant = "Desktop", avaImage, linkWithLineSmallLink } = Astro.props;
-
-const VARIANTS = {
-  "Desktop": "v-90dfpr",
-  "Tablet": "v-djiy2p",
-  "Phone": "v-rni54s",
-};
+const { linkWithLineSmallLink } = Astro.props;
 ---
 
-{
-  variant === "Desktop" ? (
-    <Fragment
-      ><footer class:list={["m-mIo8f m-AXeYw m-kXq9A m-dS8v4 m-xbhBc m-3UBND m-5Lmeh m-90dfpr", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
-        ><div class="m-j5g3px"
-          ><div class="m-kuauvf-container"
-            ><div style="height:100%;width:100%;position:relative;min-width:1px;min-height:1px;overflow:hidden;background:rgb(0, 0, 0);contain:paint"
-              ><canvas aria-hidden="true" style="display:block;width:100%;height:100%;pointer-events:none" data-gl="light-beams"></canvas
-            ></div
-          ></div
+<footer class="m-mIo8f m-AXeYw m-kXq9A m-dS8v4 m-xbhBc m-3UBND m-5Lmeh m-90dfpr" style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
+    ><div class="m-j5g3px"
+      ><div class="m-kuauvf-container"
+        ><div style="height:100%;width:100%;position:relative;min-width:1px;min-height:1px;overflow:hidden;background:rgb(0, 0, 0);contain:paint"
+          ><canvas aria-hidden="true" style="display:block;width:100%;height:100%;pointer-events:none" data-gl="light-beams"></canvas
         ></div
-        ><div class="m-3p74ea" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.52"></div
-        ><div class="m-1ji6nwx"
-          ><div class="m-kjefze"
-            ><LogoVerticalAccent class="m-opr81c"></LogoVerticalAccent
+      ></div
+    ></div
+    ><div class="m-3p74ea" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.52"></div
+    ><div class="m-1ji6nwx"
+      ><div class="m-kjefze"
+        ><LogoVerticalAccent class="m-opr81c"></LogoVerticalAccent
+      ></div
+      ><div class="m-kybxlh"
+        ><div class="m-111g1dv"></div
+        ><div class="m-1nmkd9o"></div
+        ><div class="m-tn5pwz" style="--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+          ><h2 class="rt type-mjfb1z" dir="auto" style="--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))">/Let's Talk</h2
+        ></div
+        ><div class="m-1cegp00"
+          ><div class="m-18konxk"
+            ><div class="m-u1f54x"
+              ><div class="m-1j2a935-container"
+                ><LinkWithLineSmall style="--extracted-r6o4lv:var(--prop-GffgxLMr6);--m-paragraph-spacing:0px;--prop-GffgxLMr6:var(--color-accent, rgb(0, 255, 161));transform:none" link={linkWithLineSmallLink}></LinkWithLineSmall
+              ></div
+            ></div
+            ><div class="m-o6tazd"
+              ><div class="m-s66vrs"></div
+              ><div class="m-hthyfm" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"
+                  ><a class="rt type-1d9ibcd" href="mailto:magiapixx@gmail.com" target="_blank" rel="">magiapixx@gmail.com</a
+                ></p
+              ></div
+              ><div class="m-15sg6gp" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"
+                  ><a class="rt type-1d9ibcd" href="tel:+44 20 7946 0142" target="_blank" rel="">+44 20 7946 0142</a
+                ></p
+              ></div
+              ><div class="m-12p2cxx" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                ><p class="rt type-54rzwz" dir="auto" style="--m-text-alignment:left;--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">18-22 Corsham St, Hoxton, London N1 6DR, UK </p
+              ></div
+            ></div
           ></div
-          ><div class="m-kybxlh"
-            ><div class="m-111g1dv"></div
-            ><div class="m-1nmkd9o"></div
-            ><div class="m-tn5pwz" style="--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><h2 class="rt type-mjfb1z" dir="auto" style="--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))">/Let's Talk</h2
-            ></div
-            ><div class="m-1cegp00"
-              ><div class="m-18konxk"
-                ><div class="m-u1f54x"
-                  ><div class="m-1j2a935-container"
-                    ><LinkWithLineSmall style="--extracted-r6o4lv:var(--prop-GffgxLMr6);--m-paragraph-spacing:0px;--prop-GffgxLMr6:var(--color-accent, rgb(0, 255, 161));transform:none" link={linkWithLineSmallLink}></LinkWithLineSmall
-                  ></div
-                ></div
-                ><div class="m-o6tazd"
-                  ><div class="m-s66vrs"></div
-                  ><div class="m-hthyfm" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"
-                      ><a class="rt type-1d9ibcd" href="mailto:magiapixx@gmail.com" target="_blank" rel="">magiapixx@gmail.com</a
-                    ></p
-                  ></div
-                  ><div class="m-15sg6gp" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"
-                      ><a class="rt type-1d9ibcd" href="tel:+44 20 7946 0142" target="_blank" rel="">+44 20 7946 0142</a
-                    ></p
-                  ></div
-                  ><div class="m-12p2cxx" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-54rzwz" dir="auto" style="--m-text-alignment:left;--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">18-22 Corsham St, Hoxton, London N1 6DR, UK </p
-                  ></div
-                ></div
-              ></div
-              ><div class="m-d98quu"
-                ><div class="m-1iuglrq"
-                  ><div class="m-12mer3l-container"
-                    ><SocialIcons variant="Medium - White" socialIconFillStyle="background-color:var(--color-accent, rgb(0, 255, 161))" socialIconLinkedinIconStyle="--188dmzq:var(--color-white, rgb(255, 255, 255))"></SocialIcons
-                  ></div
-                ></div
-                ><div class="m-xfrdtw"
-                  ><div class="m-pjwf9n-container"
-                    ><LinkBig variant="Normal" link="/" text="HOME"></LinkBig
-                  ></div
-                  ><div class="m-sdz14p-container"
-                    ><LinkBig variant="Normal" link="/about/" text="ABOUT"></LinkBig
-                  ></div
-                  ><div class="m-f64ku3-container"
-                    ><LinkBig variant="Normal" link="/cases/" text="CASES"></LinkBig
-                  ></div
-                  ><div class="m-r871uv-container"
-                    ><LinkBig variant="Normal" link="/contact/" text="CONTACT"></LinkBig
-                  ></div
-                ></div
+          ><div class="m-d98quu"
+            ><div class="m-1iuglrq"
+              ><div class="m-12mer3l-container"
+                ><SocialIcons variant="Medium - White" socialIconFillStyle="background-color:var(--color-accent, rgb(0, 255, 161))" socialIconLinkedinIconStyle="--188dmzq:var(--color-white, rgb(255, 255, 255))"></SocialIcons
               ></div
             ></div
-            ><div class="m-i9n2yn"
-              ><div class="m-wfjqr0"
-                ><div class="m-zk3bqh"
-                  ><PlusMedium class="m-1937mny" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                  ><PlusMedium class="m-1xzww2i" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                  ><PlusMedium class="m-jgkiba" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                ></div
+            ><div class="m-xfrdtw"
+              ><div class="m-pjwf9n-container"
+                ><LinkBig variant="Normal" link="/" text="HOME"></LinkBig
               ></div
-              ><div class="m-cmzq0i"
-                ><div class="m-15styoo"></div
-                ><div class="m-1gbyer3"
-                  ><div class="m-1ocpmvu" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">© 2026 Magiapix Agency.</p
-                  ></div
-                ></div
+              ><div class="m-sdz14p-container"
+                ><LinkBig variant="Normal" link="/about/" text="ABOUT"></LinkBig
+              ></div
+              ><div class="m-f64ku3-container"
+                ><LinkBig variant="Normal" link="/cases/" text="CASES"></LinkBig
+              ></div
+              ><div class="m-r871uv-container"
+                ><LinkBig variant="Normal" link="/contact/" text="CONTACT"></LinkBig
               ></div
             ></div
           ></div
         ></div
-      ></footer></Fragment
-    >
-  ) : variant === "Tablet" ? (
-    <Fragment
-      ><footer class:list={["m-mIo8f m-AXeYw m-kXq9A m-dS8v4 m-xbhBc m-3UBND m-5Lmeh m-90dfpr", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
-        ><div class="m-j5g3px"
-          ><div class="m-kuauvf-container"
-            ><div style="height:100%;width:100%;position:relative;min-width:1px;min-height:1px;overflow:hidden;background:rgb(0, 0, 0);contain:paint"
-              ><canvas aria-hidden="true" style="display:block;width:100%;height:100%;pointer-events:none" data-gl="light-beams"></canvas
+        ><div class="m-i9n2yn"
+          ><div class="m-wfjqr0"
+            ><div class="m-zk3bqh"
+              ><PlusMedium class="m-1937mny" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+              ><PlusMedium class="m-1xzww2i" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+              ><PlusMedium class="m-jgkiba" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
             ></div
           ></div
-        ></div
-        ><div class="m-3p74ea" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.52"></div
-        ><div class="m-1ji6nwx"
-          ><div class="m-kjefze"
-            ><LogoVerticalAccent class="m-opr81c"></LogoVerticalAccent
-          ></div
-          ><div class="m-kybxlh"
-            ><div class="m-111g1dv"></div
-            ><div class="m-1nmkd9o"></div
-            ><div class="m-tn5pwz" style="--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));transform:none"
-              ><h3 class="rt type-4dgq3i" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/Let's Talk</h3
-            ></div
-            ><div class="m-1cegp00"
-              ><div class="m-18konxk"
-                ><div class="m-u1f54x"
-                  ><div class="m-1j2a935-container"
-                    ><LinkWithLineSmall style="--extracted-r6o4lv:var(--prop-GffgxLMr6);--m-paragraph-spacing:0px;--prop-GffgxLMr6:var(--color-accent, rgb(0, 255, 161));transform:none" link={linkWithLineSmallLink}></LinkWithLineSmall
-                  ></div
-                ></div
-                ><div class="m-o6tazd"
-                  ><div class="m-s66vrs"></div
-                  ><div class="m-hthyfm" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"
-                      ><a class="rt type-1d9ibcd" href="mailto:magiapixx@gmail.com" target="_blank" rel="">magiapixx@gmail.com</a
-                    ></p
-                  ></div
-                  ><div class="m-15sg6gp" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"
-                      ><a class="rt type-1d9ibcd" href="tel:+44 20 7946 0142" target="_blank" rel="">+44 20 7946 0142</a
-                    ></p
-                  ></div
-                  ><div class="m-12p2cxx" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-54rzwz" dir="auto" style="--m-text-alignment:left;--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">18-22 Corsham St, Hoxton, London N1 6DR, UK </p
-                  ></div
-                ></div
-              ></div
-              ><div class="m-d98quu"
-                ><div class="m-1iuglrq"
-                  ><div class="m-12mer3l-container"
-                    ><SocialIcons variant="Medium - White" socialIconFillStyle="background-color:var(--color-accent, rgb(0, 255, 161))" socialIconLinkedinIconStyle="--188dmzq:var(--color-white, rgb(255, 255, 255))"></SocialIcons
-                  ></div
-                ></div
-                ><div class="m-xfrdtw"
-                  ><div class="m-pjwf9n-container"
-                    ><LinkBig variant="Smaller" link="/" text="HOME"></LinkBig
-                  ></div
-                  ><div class="m-sdz14p-container"
-                    ><LinkBig variant="Smaller" link="/about/" text="ABOUT"></LinkBig
-                  ></div
-                  ><div class="m-f64ku3-container"
-                    ><LinkBig variant="Smaller" link="/cases/" text="CASES"></LinkBig
-                  ></div
-                  ><div class="m-r871uv-container"
-                    ><LinkBig variant="Smaller" link="/contact/" text="CONTACT"></LinkBig
-                  ></div
-                ></div
-              ></div
-            ></div
-            ><div class="m-i9n2yn"
-              ><div class="m-wfjqr0"
-                ><div class="m-zk3bqh"
-                  ><PlusMedium class="m-1937mny" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                  ><PlusMedium class="m-1xzww2i" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                  ><PlusMedium class="m-jgkiba" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                ></div
-              ></div
-              ><div class="m-cmzq0i"
-                ><div class="m-15styoo"></div
-                ><div class="m-1gbyer3"
-                  ><div class="m-1ocpmvu" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">© 2026 Magiapix Agency.</p
-                  ></div
-                ></div
+          ><div class="m-cmzq0i"
+            ><div class="m-15styoo"></div
+            ><div class="m-1gbyer3"
+              ><div class="m-1ocpmvu" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
+                ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">© 2026 Magiapix Agency.</p
               ></div
             ></div
           ></div
         ></div
-      ></footer></Fragment
-    >
-  ) : variant === "Phone" ? (
-    <Fragment
-      ><footer class:list={["m-mIo8f m-AXeYw m-kXq9A m-dS8v4 m-xbhBc m-3UBND m-5Lmeh m-90dfpr", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
-        ><div class="m-j5g3px"
-          ><div class="m-kuauvf-container"
-            ><div style="height:100%;width:100%;position:relative;min-width:1px;min-height:1px;overflow:hidden;background:rgb(0, 0, 0);contain:paint"
-              ><canvas aria-hidden="true" style="display:block;width:100%;height:100%;pointer-events:none" data-gl="light-beams"></canvas
-            ></div
-          ></div
-        ></div
-        ><div class="m-3p74ea" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.52"></div
-        ><div class="m-1ji6nwx"
-          ><div class="m-kybxlh"
-            ><div class="m-111g1dv"></div
-            ><div class="m-1nmkd9o"></div
-            ><div class="m-tn5pwz" style="--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));transform:none"
-              ><h3 class="rt type-4dgq3i" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/Let's Talk</h3
-            ></div
-            ><div class="m-1cegp00"
-              ><div class="m-18konxk"
-                ><div class="m-u1f54x"
-                  ><div class="m-1j2a935-container"
-                    ><LinkWithLineSmall style="--extracted-r6o4lv:var(--prop-GffgxLMr6);--m-paragraph-spacing:0px;--prop-GffgxLMr6:var(--color-accent, rgb(0, 255, 161));transform:none" link={linkWithLineSmallLink}></LinkWithLineSmall
-                  ></div
-                ></div
-                ><div class="m-o6tazd"
-                  ><div class="m-s66vrs"></div
-                  ><div class="m-hthyfm" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"
-                      ><a class="rt type-1d9ibcd" href="mailto:magiapixx@gmail.com" target="_blank" rel="">magiapixx@gmail.com</a
-                    ></p
-                  ></div
-                  ><div class="m-15sg6gp" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))"
-                      ><a class="rt type-1d9ibcd" href="tel:+44 20 7946 0142" target="_blank" rel="">+44 20 7946 0142</a
-                    ></p
-                  ></div
-                  ><div class="m-12p2cxx" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-54rzwz" dir="auto" style="--m-text-alignment:left;--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">18-22 Corsham St, Hoxton, London N1 6DR, UK </p
-                  ></div
-                ></div
-              ></div
-              ><div class="m-d98quu"
-                ><div class="m-1iuglrq"
-                  ><div class="m-12mer3l-container"
-                    ><SocialIcons variant="Medium - White" socialIconFillStyle="background-color:var(--color-accent, rgb(0, 255, 161))" socialIconLinkedinIconStyle="--188dmzq:var(--color-white, rgb(255, 255, 255))"></SocialIcons
-                  ></div
-                ></div
-                ><div class="m-xfrdtw"
-                  ><div class="m-pjwf9n-container"
-                    ><LinkBig variant="Smaller" link="/" text="HOME"></LinkBig
-                  ></div
-                  ><div class="m-sdz14p-container"
-                    ><LinkBig variant="Smaller" link="/about/" text="ABOUT"></LinkBig
-                  ></div
-                  ><div class="m-f64ku3-container"
-                    ><LinkBig variant="Smaller" link="/cases/" text="CASES"></LinkBig
-                  ></div
-                  ><div class="m-r871uv-container"
-                    ><LinkBig variant="Smaller" link="/contact/" text="CONTACT"></LinkBig
-                  ></div
-                ></div
-              ></div
-            ></div
-            ><div class="m-i9n2yn"
-              ><div class="m-wfjqr0"
-                ><div class="m-zk3bqh"
-                  ><PlusMedium class="m-1937mny" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                  ><PlusMedium class="m-1xzww2i" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                  ><PlusMedium class="m-jgkiba" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-                ></div
-              ></div
-              ><div class="m-cmzq0i"
-                ><div class="m-15styoo"></div
-                ><div class="m-1gbyer3"
-                  ><div class="m-1ocpmvu" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">© 2026 Magiapix Agency.</p
-                  ></div
-                ></div
-              ></div
-            ></div
-          ></div
-        ></div
-      ></footer></Fragment
-    >
-  ) : null
-}
+      ></div
+    ></div
+  ></footer>

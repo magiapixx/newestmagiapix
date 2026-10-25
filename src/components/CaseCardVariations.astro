@@ -1,17 +1,7 @@
 ---
-// Case - Variations of Cards
+// Case - Variations of Cards: one markup that takes a look per breakpoint (lib/rv)
 import CaseCard from './CaseCard.astro';
-
-interface Props {
-  variant?: "Desktop - Left" | "Desktop - Right" | "Tablet - Left" | "Tablet - Right" | "Phone" | "Desktop - Left - Wide" | "Desktop - Right - Wide";
-  caseCardVariant?: string;
-  caseCardLink: string;
-  caseCardDataSrc: string;
-  caseCardText: string;
-  caseCardText2: string;
-}
-
-const { variant = "Desktop - Left", caseCardVariant, caseCardLink, caseCardDataSrc, caseCardText, caseCardText2 } = Astro.props;
+import { BPS, hideWhere, rv, type PerBp } from '../lib/rv';
 
 const VARIANTS = {
   "Desktop - Left": "v-1oh8u3v",
@@ -22,33 +12,33 @@ const VARIANTS = {
   "Desktop - Left - Wide": "v-1dzmlo0",
   "Desktop - Right - Wide": "v-16rbpz",
 };
+type Name = keyof typeof VARIANTS;
+type Card = "Desktop" | "Tablet" | "Phone";
+
+interface Props {
+  variants: PerBp<Name>;
+  /** the card's own look per breakpoint (Phone wherever this is Phone) */
+  caseCardVariants: PerBp<Card>;
+  caseCardLink: string;
+  caseCardDataSrc: string;
+  caseCardText: string;
+  caseCardText2: string;
+}
+
+const { variants, caseCardVariants, caseCardLink, caseCardDataSrc, caseCardText, caseCardText2 } = Astro.props;
+const look = rv(Object.fromEntries(BPS.map((b) => [b, VARIANTS[variants[b]]])) as PerBp<string>);
+// the spacer after the card is not in the phone look
+const spacer = hideWhere(Object.fromEntries(BPS.map((b) => [b, variants[b] !== "Phone"])) as PerBp<boolean>);
+const cards = Object.fromEntries(BPS.map((b) => [b, variants[b] === "Phone" ? "Phone" : caseCardVariants[b]])) as PerBp<Card>;
 ---
 
-{
-  variant === "Desktop - Left" || variant === "Desktop - Right" || variant === "Tablet - Left" || variant === "Tablet - Right" || variant === "Desktop - Left - Wide" || variant === "Desktop - Right - Wide" ? (
-    <Fragment
-      ><div class:list={["m-BLVcM m-1oh8u3v", VARIANTS[variant]]} style="max-width:100%;width:100%"
-        ><div class="m-1d3epex"
-          ><div class="m-f08an4"
-            ><div class="m-l58ndi-container" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8},&quot;threshold&quot;:0}"
-              ><CaseCard variant={caseCardVariant} link={caseCardLink} dataSrc={caseCardDataSrc} text={caseCardText} text2={caseCardText2}></CaseCard
-            ></div
-          ></div
-        ></div
-        ><div class="m-fd41wu"></div
-      ></div></Fragment
-    >
-  ) : variant === "Phone" ? (
-    <Fragment
-      ><div class:list={["m-BLVcM m-1oh8u3v", VARIANTS[variant]]} style="max-width:100%;width:100%"
-        ><div class="m-1d3epex"
-          ><div class="m-f08an4"
-            ><div class="m-l58ndi-container" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8},&quot;threshold&quot;:0}"
-              ><CaseCard variant="Phone" link={caseCardLink} dataSrc={caseCardDataSrc} text={caseCardText} text2={caseCardText2}></CaseCard
-            ></div
-          ></div
-        ></div
-      ></div></Fragment
-    >
-  ) : null
-}
+<div class:list={["m-BLVcM m-1oh8u3v", look]} style="max-width:100%;width:100%"
+  ><div class="m-1d3epex"
+    ><div class="m-f08an4"
+      ><div class="m-l58ndi-container" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8},&quot;threshold&quot;:0}"
+        ><CaseCard variants={cards} link={caseCardLink} dataSrc={caseCardDataSrc} text={caseCardText} text2={caseCardText2}></CaseCard
+      ></div
+    ></div
+  ></div
+  ><div class:list={["m-fd41wu", spacer]}></div
+></div>

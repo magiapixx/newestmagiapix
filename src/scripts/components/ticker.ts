@@ -2,13 +2,16 @@
  * Tickers (clients logos, team cards): the row (or column, on phones) scrolls
  * at a steady speed and loops seamlessly. It can also be dragged.
  *
- * Host: <… data-ticker="<px per second>"> with the items in a direct child <ul>.
+ * Host: <… data-ticker="<px per second>"> with the items in a direct child <ul>; an optional
+ * data-ticker-phone sets the speed below 810px (where the row may turn into a column).
  */
+const phone = matchMedia('(max-width: 809.98px)');
+
 export function initTickers() {
   for (const host of document.querySelectorAll<HTMLElement>('[data-ticker]')) {
     const list = host.querySelector<HTMLUListElement>(':scope > ul');
     if (!list) continue;
-    const speed = Number(host.dataset.ticker) || 70;
+    const speedOf = () => Number((phone.matches && host.dataset.tickerPhone) || host.dataset.ticker) || 70;
     const items = [...list.children] as HTMLElement[];
     let vertical = false;
     let loopLength = 0;
@@ -52,7 +55,7 @@ export function initTickers() {
       if (!visible) return;
       const dt = last ? (now - last) / 1000 : 0;
       last = now;
-      if (!dragging) offset -= speed * dt;
+      if (!dragging) offset -= speedOf() * dt;
       render();
       raf = requestAnimationFrame(tick);
     };

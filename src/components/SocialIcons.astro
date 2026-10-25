@@ -1,15 +1,7 @@
 ---
 // Social Icons
 import SocialIcon from './SocialIcon.astro';
-
-interface Props {
-  variant?: "Desktop" | "Tablet - Phone" | "Medium - White" | "Desktop - Black" | "Tablet - Phone - Black";
-  style?: string;
-  socialIconFillStyle: string;
-  socialIconLinkedinIconStyle: string;
-}
-
-const { variant = "Desktop", style, socialIconFillStyle, socialIconLinkedinIconStyle } = Astro.props;
+import { BPS, rv, type PerBp } from '../lib/rv';
 
 const VARIANTS = {
   "Desktop": "v-14knpt7",
@@ -18,9 +10,23 @@ const VARIANTS = {
   "Desktop - Black": "v-14zvudb",
   "Tablet - Phone - Black": "v-13pbftj",
 };
+type Name = keyof typeof VARIANTS;
+
+interface Props {
+  variant?: Name;
+  /** a variant per breakpoint, for one element that switches look (lib/rv) */
+  variants?: PerBp<Name>;
+  style?: string;
+  socialIconFillStyle: string;
+  socialIconLinkedinIconStyle: string;
+}
+
+const { variant = "Desktop", variants, style, socialIconFillStyle, socialIconLinkedinIconStyle } = Astro.props;
+const map: PerBp<Name> = variants ?? { p: variant, t: variant, lg: variant, xl: variant };
+const look = rv(Object.fromEntries(BPS.map((b) => [b, VARIANTS[map[b]]])) as PerBp<string>);
 ---
 
-<div class:list={["m-FaA1Q m-14knpt7", VARIANTS[variant]]} style={style}
+<div class:list={["m-FaA1Q m-14knpt7", look]} style={style}
   ><div class="m-s7v4u9-container"
     ><SocialIcon link="https://www.linkedin.com/" hasLinkedinIcon fillStyle={socialIconFillStyle} linkedinIconStyle={socialIconLinkedinIconStyle}></SocialIcon
   ></div

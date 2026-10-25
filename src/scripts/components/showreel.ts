@@ -4,8 +4,9 @@
  */
 import { setVariant, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
+import { lookSlots } from '../lib/rv';
 
-// closed look -> playing look, per breakpoint copy
+// closed look -> playing look, per breakpoint
 const PLAYED: Record<string, string> = {
   'v-1hcz3so': 'v-1pk481p', // desktop
   'v-1k1kicf': 'v-1cpdap7', // wide
@@ -29,9 +30,8 @@ function vimeo(host: HTMLElement) {
 
 export function initShowreel() {
   for (const section of document.querySelectorAll<HTMLElement>('.m-VTBBD')) {
-    const closed = Object.keys(PLAYED).find((c) => section.classList.contains(c));
-    if (!closed) continue;
-    const looks = { closed, played: PLAYED[closed] };
+    const looks = lookSlots(section, Object.fromEntries(Object.entries(PLAYED).map(([closed, played]) => [closed, { closed, played }])));
+    if (!looks.length) continue;
     const host = section.querySelector<HTMLElement>('[data-vimeo]');
     const play = () => {
       if (host) vimeo(host);

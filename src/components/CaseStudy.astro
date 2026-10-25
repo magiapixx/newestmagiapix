@@ -5,6 +5,7 @@ import LinkWithLine from './LinkWithLine.astro';
 import Navigation from './Navigation.astro';
 import PlusSmall from './PlusSmall.astro';
 import PrevNext from './PrevNext.astro';
+import { rv } from '../lib/rv';
 
 interface Props {
   dataSrc: string;
@@ -32,6 +33,10 @@ interface Props {
 }
 
 const { dataSrc, text, image1Image, hasMainInfo, mainInfoClass, client, yearDatetime, year, services, image2Style, image2Image, image3Image, image4Image, hasBlock, hasImages, prevNextLink, prevNextDataSrc, prevNextText, prevNextLink2, prevNextDataSrc2, prevNextText2, hasImages2 } = Astro.props;
+// the text styles each breakpoint copy used (lib/rv)
+const titleType = rv({ lg: 'type-1m33n2m', xl: 'type-1m33n2m', t: 'type-4dgq3i', p: 'type-9iwysc' });
+const detailType = rv({ lg: 'type-1qeok15', xl: 'type-1qeok15', t: 'type-1qeok15', p: 'type-1xxob9n' });
+const labelType = rv({ lg: 'type-1xxob9n', xl: 'type-1xxob9n', t: 'type-y2tuor', p: 'type-y2tuor' });
 ---
 
 <div class="m-WvFza m-go5UE m-kXq9A m-OjHb3 m-xbhBc m-3UBND m-5BKxZ m-dS8v4 m-lfu50q" style="min-height:100vh;width:auto;display:contents"
@@ -41,32 +46,13 @@ const { dataSrc, text, image1Image, hasMainInfo, mainInfoClass, client, yearDate
     ></div
     ><div class="m-1twt0io"
       ><div class="m-hmh9nl"
-        ><div class="bp hide-phone hide-tablet"
-          ><div class="m-123yh8n" style="transform:none"
-            ><h1 class="rt type-1m33n2m" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{text}</h1
-          ></div
-        ></div
-        ><div class="bp hide-desktop hide-tablet"
-          ><div class="m-123yh8n" style="transform:none"
-            ><h4 class="rt type-9iwysc" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{text}</h4
-          ></div
-        ></div
-        ><div class="bp hide-phone hide-desktop"
-          ><div class="m-123yh8n" style="transform:none"
-            ><h3 class="rt type-4dgq3i" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{text}</h3
-          ></div
+        ><div class="m-123yh8n" style="transform:none"
+          ><h1 class={`rt ${titleType}`} dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{text}</h1
         ></div
       ></div
       ><div class="m-1fchig9"
-        ><div class="bp hide-phone"
-          ><div class="m-154um70-container"
-            ><HeadingsVertical variant="Scroll Down - H6"></HeadingsVertical
-          ></div
-        ></div
-        ><div class="bp hide-desktop hide-tablet"
-          ><div class="m-154um70-container"
-            ><HeadingsVertical variant="Scroll Down - H6 - Smaller"></HeadingsVertical
-          ></div
+        ><div class="m-154um70-container"
+          ><HeadingsVertical variants={{ lg: "Scroll Down - H6", xl: "Scroll Down - H6", t: "Scroll Down - H6", p: "Scroll Down - H6 - Smaller" }}></HeadingsVertical
         ></div
       ></div
     ></div
@@ -98,49 +84,26 @@ const { dataSrc, text, image1Image, hasMainInfo, mainInfoClass, client, yearDate
                 ><div class="m-wbazjm" style="transform:none"
                   ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">Client</p
                 ></div
-                ><div class="bp hide-phone"
-                  ><div class="m-1na3axd" style="transform:none"
-                    ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{client}</h5
-                  ></div
-                ></div
-                ><div class="bp hide-desktop hide-tablet"
-                  ><div class="m-1na3axd" style="transform:none"
-                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{client}</h6
-                  ></div
+                ><div class="m-1na3axd" style="transform:none"
+                  ><h5 class={`rt ${detailType}`} dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{client}</h5
                 ></div
               ></div
               ><div class="m-4l438k"
                 ><div class="m-mxblt9" style="transform:none"
                   ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">Year</p
                 ></div
-                ><div class="bp hide-phone"
-                  ><div class="m-1tqx27" style="transform:none"
-                    ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))"
-                      ><time datetime={yearDatetime}>{year}</time
-                    ></h5
-                  ></div
-                ></div
-                ><div class="bp hide-desktop hide-tablet"
-                  ><div class="m-1tqx27" style="transform:none"
-                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))"
-                      ><time datetime={yearDatetime}>{year}</time
-                    ></h6
-                  ></div
+                ><div class="m-1tqx27" style="transform:none"
+                  ><h5 class={`rt ${detailType}`} dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))"
+                  ><time datetime={yearDatetime}>{year}</time
+                  ></h5
                 ></div
               ></div
               ><div class="m-oxo67f"
                 ><div class="m-lq9scr" style="transform:none"
                   ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">Services</p
                 ></div
-                ><div class="bp hide-phone"
-                  ><div class="m-404fjv" style="transform:none"
-                    ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{services}</h5
-                  ></div
-                ></div
-                ><div class="bp hide-desktop hide-tablet"
-                  ><div class="m-404fjv" style="transform:none"
-                    ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{services}</h6
-                  ></div
+                ><div class="m-404fjv" style="transform:none"
+                  ><h5 class={`rt ${detailType}`} dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{services}</h5
                 ></div
               ></div
             ></div
@@ -174,54 +137,21 @@ const { dataSrc, text, image1Image, hasMainInfo, mainInfoClass, client, yearDate
   ></section
   ><section class="m-igg6lz"
     ><div class="m-1y2qua1"
-      ><div class="m-1yu9zek">{hasBlock && (<Fragment><div class="bp hide-phone hide-tablet"
-          ><div class="m-d55x9t" style="transform:none"
-            ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--color-accent, rgb(0, 255, 161))">Previous</h6
-          ></div
-        ></div></Fragment>)}{hasBlock && (<Fragment><div class="bp hide-desktop"
-          ><div class="m-d55x9t" style="transform:none"
-            ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--color-accent, rgb(0, 255, 161))">Previous</p
-          ></div
+      ><div class="m-1yu9zek">{hasBlock && (<Fragment><div class="m-d55x9t" style="transform:none"
+          ><h6 class={`rt ${labelType}`} dir="auto" style="--m-text-color:var(--color-accent, rgb(0, 255, 161))">Previous</h6
         ></div></Fragment>)}<div class="m-12s4iep"
           ><PlusSmall class="m-4m1mf3"></PlusSmall
           ><div class="m-7a12bb"></div
           ><PlusSmall class="m-1qvmej5"></PlusSmall
-        ></div>{hasMainInfo && (<Fragment><div class="bp hide-phone hide-tablet"
-          ><div class="m-zv5j4s" style="transform:none"
-            ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--color-accent, rgb(0, 255, 161))">Next</h6
-          ></div
-        ></div></Fragment>)}{hasMainInfo && (<Fragment><div class="bp hide-desktop"
-          ><div class="m-zv5j4s" style="transform:none"
-            ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--color-accent, rgb(0, 255, 161))">Next</p
-          ></div
+        ></div>{hasMainInfo && (<Fragment><div class="m-zv5j4s" style="transform:none"
+          ><h6 class={`rt ${labelType}`} dir="auto" style="--m-text-color:var(--color-accent, rgb(0, 255, 161))">Next</h6
         ></div></Fragment>)}</div
-      ><div class="m-v5e3d6"
-        ><div class="bp hide-phone hide-tablet">{hasImages && (<Fragment><div class="m-13j8s5i-container"
-            ><PrevNext variant="Right" link="/cases/montana/" dataSrc="/images/RFdcBAQsIqs2cwSENiDPQN8xt8.jpg" style="--m-text-alignment:right;--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))" text="Montana"></PrevNext
-          ></div></Fragment>)}{hasBlock && (<Fragment><div class="m-1pni8x8-container"
-            ><PrevNext variant="Left" style="--m-text-alignment:left;--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))" link={prevNextLink} dataSrc={prevNextDataSrc} text={prevNextText}></PrevNext
-          ></div></Fragment>)}</div
-        ><div class="bp hide-desktop hide-tablet">{hasImages && (<Fragment><div class="m-13j8s5i-container"
-            ><PrevNext variant="Phone - Right" link="/cases/montana/" dataSrc="/images/RFdcBAQsIqs2cwSENiDPQN8xt8.jpg" style="--m-text-alignment:right;--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" text="Montana"></PrevNext
-          ></div></Fragment>)}{hasBlock && (<Fragment><div class="m-1pni8x8-container"
-            ><PrevNext variant="Phone - Left" style="--m-text-alignment:left;--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" link={prevNextLink} dataSrc={prevNextDataSrc} text={prevNextText}></PrevNext
-          ></div></Fragment>)}</div
-        ><div class="bp hide-phone hide-desktop">{hasImages && (<Fragment><div class="m-13j8s5i-container"
-            ><PrevNext variant="Tablet - Right" link="/cases/montana/" dataSrc="/images/RFdcBAQsIqs2cwSENiDPQN8xt8.jpg" style="--m-text-alignment:right;--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))" text="Montana"></PrevNext
-          ></div></Fragment>)}{hasBlock && (<Fragment><div class="m-1pni8x8-container"
-            ><PrevNext variant="Tablet - Left" style="--m-text-alignment:left;--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))" link={prevNextLink} dataSrc={prevNextDataSrc} text={prevNextText}></PrevNext
-          ></div></Fragment>)}</div>{hasImages2 && (<Fragment><div class="bp hide-phone hide-tablet"
-          ><div class="m-13j8s5i-container"
-            ><PrevNext variant="Right" style="--m-text-alignment:right;--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))" link={prevNextLink2} dataSrc={prevNextDataSrc2} text={prevNextText2}></PrevNext
-          ></div
-        ></div></Fragment>)}{hasImages2 && (<Fragment><div class="bp hide-desktop hide-tablet"
-          ><div class="m-13j8s5i-container"
-            ><PrevNext variant="Phone - Right" style="--m-text-alignment:right;--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" link={prevNextLink2} dataSrc={prevNextDataSrc2} text={prevNextText2}></PrevNext
-          ></div
-        ></div></Fragment>)}{hasImages2 && (<Fragment><div class="bp hide-phone hide-desktop"
-          ><div class="m-13j8s5i-container"
-            ><PrevNext variant="Tablet - Right" style="--m-text-alignment:right;--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))" link={prevNextLink2} dataSrc={prevNextDataSrc2} text={prevNextText2}></PrevNext
-          ></div
+      ><div class="m-v5e3d6">{hasImages && (<Fragment><div class="m-13j8s5i-container"
+          ><PrevNext side="Right" link="/cases/montana/" dataSrc="/images/RFdcBAQsIqs2cwSENiDPQN8xt8.jpg" text="Montana"></PrevNext
+        ></div></Fragment>)}{hasBlock && (<Fragment><div class="m-1pni8x8-container"
+          ><PrevNext side="Left" link={prevNextLink} dataSrc={prevNextDataSrc} text={prevNextText}></PrevNext
+        ></div></Fragment>)}{hasImages2 && (<Fragment><div class="m-13j8s5i-container"
+          ><PrevNext side="Right" link={prevNextLink2} dataSrc={prevNextDataSrc2} text={prevNextText2}></PrevNext
         ></div></Fragment>)}</div
       ><div class="m-1wau23p"
         ><div class="m-nm3ux0"
@@ -233,14 +163,6 @@ const { dataSrc, text, image1Image, hasMainInfo, mainInfoClass, client, yearDate
     ></div
   ></section
   ><div class="m-nmewqx-container"
-    ><div class="bp hide-phone hide-tablet"
-      ><Navigation variant="Desktop"></Navigation
-    ></div
-    ><div class="bp hide-desktop hide-tablet"
-      ><Navigation variant="Phone"></Navigation
-    ></div
-    ><div class="bp hide-phone hide-desktop"
-      ><Navigation variant="Tablet"></Navigation
-    ></div
+    ><Navigation></Navigation
   ></div
 ></div>

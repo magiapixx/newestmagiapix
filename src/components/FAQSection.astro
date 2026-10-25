@@ -1,148 +1,72 @@
 ---
-// FAQ - Section
+// FAQ - Section: one markup for every breakpoint (lib/rv)
 import FAQItemCard from './FAQItemCard.astro';
 import HeadingsVertical from './HeadingsVertical.astro';
 import PlusSmall from './PlusSmall.astro';
+import { rv } from '../lib/rv';
 
-interface Props {
-  variant?: "Desktop" | "Tablet" | "Phone";
-  headingsVerticalVariant?: string;
-  fAQItemCardVariant?: string;
-  fAQItemCardPartnershipStyle?: string;
-  fAQItemCardVariant2?: string;
-  fAQItemCardPartnershipStyle2?: string;
-}
-
-const { variant = "Desktop", headingsVerticalVariant, fAQItemCardVariant, fAQItemCardPartnershipStyle, fAQItemCardVariant2, fAQItemCardPartnershipStyle2 } = Astro.props;
-
-const VARIANTS = {
-  "Desktop": "v-llodmm",
-  "Tablet": "v-vvyqma",
-  "Phone": "v-1of2dsp",
-};
+const look = rv({ lg: 'v-llodmm', xl: 'v-llodmm', t: 'v-vvyqma', p: 'v-1of2dsp' });
 ---
 
-{
-  variant === "Desktop" || variant === "Tablet" ? (
-    <Fragment
-      ><section class:list={["m-ylPhP m-kXq9A m-llodmm", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
-        ><div class="m-1te4u2k" style="filter:brightness(0.52);-webkit-filter:brightness(0.52)"
-          ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
-            ><img decoding="async" loading="lazy" width="3840" height="2414" sizes="(min-width: 1600px) 100vw, (min-width: 1200px) and (max-width: 1599.98px) 100vw, (min-width: 810px) and (max-width: 1199.98px) 100vw, (max-width: 809.98px) 100vw" srcset="/images/rbFY3DOHFAO8J1SkkM4HG7Ws.0lcc661.jpg 512w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1j97o96.jpg 1024w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1i14k9v.jpg 2048w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1xld52b.jpg 3840w" src="/images/rbFY3DOHFAO8J1SkkM4HG7Ws.1xld52b.jpg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
-          ></div
-        ></div
-        ><div class="m-in6fqj-container"
-          ><div style="width:100%;height:100%;overflow:hidden;opacity:0.04;pointer-events:none"
-            ><canvas style="width:100%;height:100%;image-rendering:pixelated" data-gl="noise"></canvas
-          ></div
-        ></div
-        ><div class="m-4v0l95"
-          ><div class="m-wuqle4-container"
-            ><HeadingsVertical first="/FAQ" variant={headingsVerticalVariant}></HeadingsVertical
-          ></div
-          ><div class="m-6az3w7"></div
-          ><div class="m-t7nlil"
-            ><div class="m-1698us4" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-pyxb3e" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-l52utf" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-12b03h3" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-2rewh5-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><FAQItemCard partnership="What is your typical project timeline?" text="Timelines vary depending on the scope and complexity of the project. A standard digital product or website redesign typically takes 6 to 8 weeks, while comprehensive branding and custom web applications can take 12 weeks or more. We always provide a detailed schedule after our initial discovery phase." variant={fAQItemCardVariant} partnershipStyle={fAQItemCardPartnershipStyle}></FAQItemCard
-            ></div
-            ><div class="m-qoc8vi" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-a0ygnz" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-15lumai" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-lr6oap" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-vnbfml-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><FAQItemCard partnership="Do you work with clients internationally?" text="Absolutely. While our physical studios are based in New York and London, we collaborate with ambitious brands worldwide. We are highly accustomed to navigating different time zones and ensure seamless communication through asynchronous tools and regular video syncs." variant={fAQItemCardVariant2} partnershipStyle={fAQItemCardPartnershipStyle2}></FAQItemCard
-            ></div
-            ><div class="m-oo56h2" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-1cb2md9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-1mmnv7h" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-1jpirxx" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-fkdqw4-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><FAQItemCard partnership="What is your pricing structure?" text="We approach pricing on a project-by-project basis, tailored to your specific business needs and goals. For highly defined scopes, we offer clear, fixed-rate pricing. For ongoing design support or evolving digital platforms, we provide flexible monthly retainer models." variant={fAQItemCardVariant} partnershipStyle={fAQItemCardPartnershipStyle}></FAQItemCard
-            ></div
-            ><div class="m-sua1ys" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-ys4yzt" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-1bzzgue" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-1m41wwa" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-1ap7oj3-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><FAQItemCard partnership="Do you handle both design and development?" text="Yes, we are an end-to-end digital studio. Our workflow tightly integrates visual design, UX architecture, and advanced front-end engineering. This ensures that the final product looks exactly like the approved design and performs flawlessly across all devices." variant={fAQItemCardVariant2} partnershipStyle={fAQItemCardPartnershipStyle2}></FAQItemCard
-            ></div
-            ><div class="m-nhyy2m" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-xa3tgl" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-agpic" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-3e0wc6" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-          ></div
-          ><div class="m-1yzzz0j"></div
-        ></div
-      ></section></Fragment
-    >
-  ) : variant === "Phone" ? (
-    <Fragment
-      ><section class:list={["m-ylPhP m-kXq9A m-llodmm", VARIANTS[variant]]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
-        ><div class="m-1te4u2k" style="filter:brightness(0.52);-webkit-filter:brightness(0.52)"
-          ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
-            ><img decoding="async" loading="lazy" width="3840" height="2414" sizes="(min-width: 1600px) 100vw, (min-width: 1200px) and (max-width: 1599.98px) 100vw, (min-width: 810px) and (max-width: 1199.98px) 100vw, (max-width: 809.98px) 100vw" srcset="/images/rbFY3DOHFAO8J1SkkM4HG7Ws.0lcc661.jpg 512w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1j97o96.jpg 1024w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1i14k9v.jpg 2048w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1xld52b.jpg 3840w" src="/images/rbFY3DOHFAO8J1SkkM4HG7Ws.1xld52b.jpg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
-          ></div
-        ></div
-        ><div class="m-in6fqj-container"
-          ><div style="width:100%;height:100%;overflow:hidden;opacity:0.04;pointer-events:none"
-            ><canvas style="width:100%;height:100%;image-rendering:pixelated" data-gl="noise"></canvas
-          ></div
-        ></div
-        ><div class="m-4v0l95"
-          ><div class="m-t7nlil"
-            ><div class="m-1698us4" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-pyxb3e" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-l52utf" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-12b03h3" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-2rewh5-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><FAQItemCard variant="Phone" partnershipStyle="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" partnership="What is your typical project timeline?" text="Timelines vary depending on the scope and complexity of the project. A standard digital product or website redesign typically takes 6 to 8 weeks, while comprehensive branding and custom web applications can take 12 weeks or more. We always provide a detailed schedule after our initial discovery phase."></FAQItemCard
-            ></div
-            ><div class="m-qoc8vi" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-a0ygnz" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-15lumai" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-lr6oap" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-vnbfml-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><FAQItemCard variant="Phone" partnershipStyle="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" partnership="Do you work with clients internationally?" text="Absolutely. While our physical studios are based in New York and London, we collaborate with ambitious brands worldwide. We are highly accustomed to navigating different time zones and ensure seamless communication through asynchronous tools and regular video syncs."></FAQItemCard
-            ></div
-            ><div class="m-oo56h2" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-1cb2md9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-1mmnv7h" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-1jpirxx" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-fkdqw4-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><FAQItemCard variant="Phone" partnershipStyle="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" partnership="What is your pricing structure?" text="We approach pricing on a project-by-project basis, tailored to your specific business needs and goals. For highly defined scopes, we offer clear, fixed-rate pricing. For ongoing design support or evolving digital platforms, we provide flexible monthly retainer models."></FAQItemCard
-            ></div
-            ><div class="m-sua1ys" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-ys4yzt" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-1bzzgue" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-1m41wwa" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-1ap7oj3-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><FAQItemCard variant="Phone" partnershipStyle="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))" partnership="Do you handle both design and development?" text="Yes, we are an end-to-end digital studio. Our workflow tightly integrates visual design, UX architecture, and advanced front-end engineering. This ensures that the final product looks exactly like the approved design and performs flawlessly across all devices."></FAQItemCard
-            ></div
-            ><div class="m-nhyy2m" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><PlusSmall class="m-xa3tgl" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-              ><div class="m-agpic" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-              ><PlusSmall class="m-3e0wc6" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-            ></div
-            ><div class="m-ocz9dn" style="--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
-              ><h3 class="rt type-4dgq3i" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/FAQ</h3
-            ></div
-            ><div class="m-qseiqm"></div
-          ></div
-        ></div
-      ></section></Fragment
-    >
-  ) : null
-}
+<section class:list={["m-ylPhP m-kXq9A m-llodmm", look]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
+  ><div class="m-1te4u2k" style="filter:brightness(0.52);-webkit-filter:brightness(0.52)"
+    ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
+      ><img decoding="async" loading="lazy" width="3840" height="2414" sizes="(min-width: 1600px) 100vw, (min-width: 1200px) and (max-width: 1599.98px) 100vw, (min-width: 810px) and (max-width: 1199.98px) 100vw, (max-width: 809.98px) 100vw" srcset="/images/rbFY3DOHFAO8J1SkkM4HG7Ws.0lcc661.jpg 512w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1j97o96.jpg 1024w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1i14k9v.jpg 2048w, /images/rbFY3DOHFAO8J1SkkM4HG7Ws.1xld52b.jpg 3840w" src="/images/rbFY3DOHFAO8J1SkkM4HG7Ws.1xld52b.jpg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
+    ></div
+  ></div
+  ><div class="m-in6fqj-container"
+    ><div style="width:100%;height:100%;overflow:hidden;opacity:0.04;pointer-events:none"
+      ><canvas style="width:100%;height:100%;image-rendering:pixelated" data-gl="noise"></canvas
+    ></div
+  ></div
+  ><div class="m-4v0l95"
+    ><div class="m-wuqle4-container hide-phone"
+      ><HeadingsVertical first="/FAQ" variants={{ lg: "/FAQ - H1", xl: "/FAQ - H1", t: "/FAQ - H2", p: "/FAQ - H2" }}></HeadingsVertical
+    ></div
+    ><div class="m-6az3w7 hide-phone"></div
+    ><div class="m-t7nlil"
+      ><div class="m-1698us4" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><PlusSmall class="m-pyxb3e" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+        ><div class="m-l52utf" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+        ><PlusSmall class="m-12b03h3" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+      ></div
+      ><div class="m-2rewh5-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><FAQItemCard partnership="What is your typical project timeline?" text="Timelines vary depending on the scope and complexity of the project. A standard digital product or website redesign typically takes 6 to 8 weeks, while comprehensive branding and custom web applications can take 12 weeks or more. We always provide a detailed schedule after our initial discovery phase." variants={{ lg: "Desktop - Left", xl: "Desktop - Left", t: "Tablet", p: "Phone" }}></FAQItemCard
+      ></div
+      ><div class="m-qoc8vi" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><PlusSmall class="m-a0ygnz" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+        ><div class="m-15lumai" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+        ><PlusSmall class="m-lr6oap" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+      ></div
+      ><div class="m-vnbfml-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><FAQItemCard partnership="Do you work with clients internationally?" text="Absolutely. While our physical studios are based in New York and London, we collaborate with ambitious brands worldwide. We are highly accustomed to navigating different time zones and ensure seamless communication through asynchronous tools and regular video syncs." variants={{ lg: "Desktop - Right", xl: "Desktop - Right", t: "Tablet - Right", p: "Phone" }}></FAQItemCard
+      ></div
+      ><div class="m-oo56h2" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><PlusSmall class="m-1cb2md9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+        ><div class="m-1mmnv7h" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+        ><PlusSmall class="m-1jpirxx" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+      ></div
+      ><div class="m-fkdqw4-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><FAQItemCard partnership="What is your pricing structure?" text="We approach pricing on a project-by-project basis, tailored to your specific business needs and goals. For highly defined scopes, we offer clear, fixed-rate pricing. For ongoing design support or evolving digital platforms, we provide flexible monthly retainer models." variants={{ lg: "Desktop - Left", xl: "Desktop - Left", t: "Tablet", p: "Phone" }}></FAQItemCard
+      ></div
+      ><div class="m-sua1ys" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><PlusSmall class="m-ys4yzt" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+        ><div class="m-1bzzgue" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+        ><PlusSmall class="m-1m41wwa" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+      ></div
+      ><div class="m-1ap7oj3-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><FAQItemCard partnership="Do you handle both design and development?" text="Yes, we are an end-to-end digital studio. Our workflow tightly integrates visual design, UX architecture, and advanced front-end engineering. This ensures that the final product looks exactly like the approved design and performs flawlessly across all devices." variants={{ lg: "Desktop - Right", xl: "Desktop - Right", t: "Tablet - Right", p: "Phone" }}></FAQItemCard
+      ></div
+      ><div class="m-nhyy2m" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><PlusSmall class="m-xa3tgl" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+        ><div class="m-agpic" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
+        ><PlusSmall class="m-3e0wc6" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+      ></div
+      ><div class="m-ocz9dn hide-tablet hide-lg hide-xl" style="--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+        ><h3 class="rt type-4dgq3i" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/FAQ</h3
+      ></div
+      ><div class="m-qseiqm hide-tablet hide-lg hide-xl"></div
+    ></div
+    ><div class="m-1yzzz0j hide-phone"></div
+  ></div
+></section>

@@ -1,159 +1,174 @@
 ---
 // Headings - Vertical
+// Each variant is a rotated heading (one or two lines). Pass `variant` for one look, or `variants` with a
+// variant per breakpoint to render a single element that switches look via responsive classes (lib/rv).
+import { BPS, groups, hideWhere, rv, type Bp, type PerBp } from "../lib/rv";
+
+type Line = { cls: string; style: string; tag: string; type: string; hStyle: string; text: string | null };
+type Def = { cls: string; acceptsStyle: boolean; lines: Line[] };
+
+const ROOT = "m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec";
+const DEFS = {
+  "Scroll Down - H6": { cls: "v-z0egc4", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h6", type: "type-1xxob9n", hStyle: "--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))", text: "Scroll Down" },
+  ] },
+  "Scroll Down - H6 - Smaller": { cls: "v-1pddrbe", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "p", type: "type-y2tuor", hStyle: "--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))", text: "Scroll Down" },
+  ] },
+  "/About - H1": { cls: "v-1x5ktt0", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1m33n2m", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "/Subscription - H1": { cls: "v-1baw538", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1m33n2m", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "/Prices - H1": { cls: "v-85cdm9", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1m33n2m", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "/FAQ - H1": { cls: "v-1iv2tes", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1m33n2m", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "Cases - H1": { cls: "v-hd6ie4", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1m33n2m", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "Contact - H1": { cls: "v-4babmt", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1m33n2m", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "/About - H2": { cls: "v-d6lb71", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h2", type: "type-mjfb1z", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "/Subscription - H2": { cls: "v-3wl16t", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h2", type: "type-mjfb1z", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "/Prices - H2": { cls: "v-c0uci1", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h2", type: "type-mjfb1z", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "/FAQ - H2": { cls: "v-o34as7", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h2", type: "type-mjfb1z", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "Cases - H2": { cls: "v-1mhedez", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h2", type: "type-mjfb1z", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "Contact - H2": { cls: "v-1enfwkn", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h2", type: "type-mjfb1z", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))", text: null },
+  ] },
+  "/About - H3": { cls: "v-19zqpeg", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h3", type: "type-4dgq3i", hStyle: "--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))", text: "/About" },
+  ] },
+  "/Services - H1 Light Back": { cls: "v-yqai71", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-ycg3sk", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Cases - H1 Light Back": { cls: "v-ngm37p", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-ycg3sk", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Show - H1 Light Back": { cls: "v-1q142pd", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-ycg3sk", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "Reel - H1 Light Back": { cls: "v-1uqkw3p", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-ycg3sk", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Team - H1 Light Back": { cls: "v-v8lrhv", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-ycg3sk", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Awards - H1 Light Back": { cls: "v-s9meue", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-ycg3sk", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/London - H1 Light Back": { cls: "v-dt9pwl", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-ycg3sk", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Services - H2 Light Back": { cls: "v-cel7ts", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h2", type: "type-v4pagy", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Cases - H2 Light Back": { cls: "v-11vtilh", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h2", type: "type-v4pagy", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Show - H2 Light Back": { cls: "v-1inaa1p", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h2", type: "type-v4pagy", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "Reel - H2 Light Back": { cls: "v-1ytlcr4", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h2", type: "type-v4pagy", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Team - H2 Light Back": { cls: "v-101n9lk", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h2", type: "type-v4pagy", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Awards - H2 Light Back": { cls: "v-1gy57e8", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h2", type: "type-v4pagy", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/London - H2 Light Back": { cls: "v-emeo8h", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h2", type: "type-v4pagy", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Show - H3 Light Back": { cls: "v-l2xbff", acceptsStyle: true, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h3", type: "type-wc4xhu", hStyle: "--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "Reel - H3 Light Back": { cls: "v-igdqgy", acceptsStyle: true, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h3", type: "type-wc4xhu", hStyle: "--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/Team - H3 Light Back": { cls: "v-wdv08f", acceptsStyle: true, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h3", type: "type-wc4xhu", hStyle: "--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "/2012-2026 - H3 Light Back": { cls: "v-1wr3grp", acceptsStyle: true, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)", tag: "h3", type: "type-wc4xhu", hStyle: "--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))", text: null },
+  ] },
+  "About Agency - H1": { cls: "v-41m5mn", acceptsStyle: false, lines: [
+    { cls: "m-1bsq9mr", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1m33n2m", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: "Agency" },
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1m33n2m", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: "About" },
+  ] },
+  "About Agency - H1 Big": { cls: "v-10z0kec", acceptsStyle: false, lines: [
+    { cls: "m-1bsq9mr", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1917ytu", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: "Agency" },
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1917ytu", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: "About" },
+  ] },
+  "About Agency - H2": { cls: "v-20gvbs", acceptsStyle: false, lines: [
+    { cls: "m-1bsq9mr", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h2", type: "type-mjfb1z", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))", text: "Agency" },
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)", tag: "h2", type: "type-mjfb1z", hStyle: "--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))", text: "About" },
+  ] },
+  "Cases - H1 Big": { cls: "v-jabjdj", acceptsStyle: false, lines: [
+    { cls: "m-8vqn4n", style: "--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)", tag: "h1", type: "type-1917ytu", hStyle: "--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))", text: "Cases" },
+  ] },
+} satisfies Record<string, Def>;
+type Name = keyof typeof DEFS;
+
 interface Props {
-  variant?: "Scroll Down - H6" | "Scroll Down - H6 - Smaller" | "/About - H1" | "/About - H2" | "/About - H3" | "/Services - H1 Light Back" | "/Services - H2 Light Back" | "/Cases - H1 Light Back" | "/Cases - H2 Light Back" | "/Show - H1 Light Back" | "Reel - H1 Light Back" | "/Show - H2 Light Back" | "Reel - H2 Light Back" | "/Show - H3 Light Back" | "Reel - H3 Light Back" | "/Subscription - H1" | "/Subscription - H2" | "/Prices - H2" | "/Prices - H1" | "About Agency - H1" | "About Agency - H1 Big" | "About Agency - H2" | "/Team - H1 Light Back" | "/Team - H2 Light Back" | "/Team - H3 Light Back" | "/Awards - H1 Light Back" | "/Awards - H2 Light Back" | "/FAQ - H1" | "/FAQ - H2" | "Cases - H1" | "Cases - H1 Big" | "Cases - H2" | "/2012-2026 - H3 Light Back" | "Contact - H1" | "Contact - H2" | "/London - H1 Light Back" | "/London - H2 Light Back";
+  variant?: Name;
+  variants?: PerBp<Name>;
   first?: string;
   style?: string;
+  /** extra classes on the root, e.g. a breakpoint-only utility like fill-width-phone */
+  extraClass?: string;
 }
 
-const { variant = "Scroll Down - H6", first, style } = Astro.props;
+const { variant = "Scroll Down - H6", variants, first, style, extraClass } = Astro.props;
+const map: PerBp<Name> = variants ?? { p: variant, t: variant, lg: variant, xl: variant };
 
-const VARIANTS = {
-  "Scroll Down - H6": "v-z0egc4",
-  "Scroll Down - H6 - Smaller": "v-1pddrbe",
-  "/About - H1": "v-1x5ktt0",
-  "/About - H2": "v-d6lb71",
-  "/About - H3": "v-19zqpeg",
-  "/Services - H1 Light Back": "v-yqai71",
-  "/Services - H2 Light Back": "v-cel7ts",
-  "/Cases - H1 Light Back": "v-ngm37p",
-  "/Cases - H2 Light Back": "v-11vtilh",
-  "/Show - H1 Light Back": "v-1q142pd",
-  "Reel - H1 Light Back": "v-1uqkw3p",
-  "/Show - H2 Light Back": "v-1inaa1p",
-  "Reel - H2 Light Back": "v-1ytlcr4",
-  "/Show - H3 Light Back": "v-l2xbff",
-  "Reel - H3 Light Back": "v-igdqgy",
-  "/Subscription - H1": "v-1baw538",
-  "/Subscription - H2": "v-3wl16t",
-  "/Prices - H2": "v-c0uci1",
-  "/Prices - H1": "v-85cdm9",
-  "About Agency - H1": "v-41m5mn",
-  "About Agency - H1 Big": "v-10z0kec",
-  "About Agency - H2": "v-20gvbs",
-  "/Team - H1 Light Back": "v-v8lrhv",
-  "/Team - H2 Light Back": "v-101n9lk",
-  "/Team - H3 Light Back": "v-wdv08f",
-  "/Awards - H1 Light Back": "v-s9meue",
-  "/Awards - H2 Light Back": "v-1gy57e8",
-  "/FAQ - H1": "v-1iv2tes",
-  "/FAQ - H2": "v-o34as7",
-  "Cases - H1": "v-hd6ie4",
-  "Cases - H1 Big": "v-jabjdj",
-  "Cases - H2": "v-1mhedez",
-  "/2012-2026 - H3 Light Back": "v-1wr3grp",
-  "Contact - H1": "v-4babmt",
-  "Contact - H2": "v-1enfwkn",
-  "/London - H1 Light Back": "v-dt9pwl",
-  "/London - H2 Light Back": "v-emeo8h",
+// the colour a line resolves to: its --m-text-color points at a custom property its wrapper sets
+const color = (l: Line) => {
+  const m = l.hStyle.match(/--m-text-color:var\((--[\w-]+), (.*)\)$/);
+  if (!m) return l.hStyle;
+  const own = l.style.match(new RegExp(m[1] + ":([^;]+)"));
+  return own ? own[1] : m[2];
 };
+const shape = (n: Name) => {
+  const def: Def = DEFS[n];
+  return JSON.stringify([style !== undefined && def.acceptsStyle, def.lines.map((l) => [l.cls, l.text ?? first, color(l)])]);
+};
+// one element is enough when every breakpoint has the same lines, text and colours (only sizes differ)
+const merged = BPS.every((b) => shape(map[b]) === shape(map.lg));
+const base: Def = DEFS[map.lg];
+const typeAt = (i: number) => rv(Object.fromEntries(BPS.map((b) => [b, (DEFS[map[b]] as Def).lines[i].type])) as PerBp<string>);
+const copies = merged
+  ? []
+  : [...new Set(groups(map).map(([, name]) => name))].map((name) => ({
+      def: DEFS[name] as Def,
+      hide: hideWhere(Object.fromEntries(BPS.map((b) => [b, map[b] === name])) as PerBp<boolean>),
+    }));
 ---
 
 {
-  variant === "Scroll Down - H6" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)"
-          ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Scroll Down</h6
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "Scroll Down - H6 - Smaller" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)"
-          ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">Scroll Down</p
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "/About - H1" || variant === "/Subscription - H1" || variant === "/Prices - H1" || variant === "/FAQ - H1" || variant === "Cases - H1" || variant === "Contact - H1" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)"
-          ><h1 class="rt type-1m33n2m" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))">{first}</h1
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "/About - H2" || variant === "/Subscription - H2" || variant === "/Prices - H2" || variant === "/FAQ - H2" || variant === "Cases - H2" || variant === "Contact - H2" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)"
-          ><h2 class="rt type-mjfb1z" dir="auto" style="--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))">{first}</h2
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "/About - H3" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)"
-          ><h3 class="rt type-4dgq3i" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/About</h3
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "/Services - H1 Light Back" || variant === "/Cases - H1 Light Back" || variant === "/Show - H1 Light Back" || variant === "Reel - H1 Light Back" || variant === "/Team - H1 Light Back" || variant === "/Awards - H1 Light Back" || variant === "/London - H1 Light Back" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:rotate(-90deg)"
-          ><h1 class="rt type-ycg3sk" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-black, rgb(0, 0, 0)))">{first}</h1
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "/Services - H2 Light Back" || variant === "/Cases - H2 Light Back" || variant === "/Show - H2 Light Back" || variant === "Reel - H2 Light Back" || variant === "/Team - H2 Light Back" || variant === "/Awards - H2 Light Back" || variant === "/London - H2 Light Back" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)"
-          ><h2 class="rt type-v4pagy" dir="auto" style="--m-text-color:var(--extracted-1of0zx5, var(--color-black, rgb(0, 0, 0)))">{first}</h2
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "/Show - H3 Light Back" || variant === "Reel - H3 Light Back" || variant === "/Team - H3 Light Back" || variant === "/2012-2026 - H3 Light Back" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]} style={style}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));transform:rotate(-90deg)"
-          ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))">{first}</h3
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "About Agency - H1" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-1bsq9mr" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)"
-          ><h1 class="rt type-1m33n2m" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))">Agency</h1
-        ></div
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)"
-          ><h1 class="rt type-1m33n2m" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))">About</h1
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "About Agency - H1 Big" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-1bsq9mr" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)"
-          ><h1 class="rt type-1917ytu" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))">Agency</h1
-        ></div
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)"
-          ><h1 class="rt type-1917ytu" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))">About</h1
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "About Agency - H2" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-1bsq9mr" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)"
-          ><h2 class="rt type-mjfb1z" dir="auto" style="--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))">Agency</h2
-        ></div
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1of0zx5:var(--color-white, rgb(255, 255, 255));transform:rotate(-90deg)"
-          ><h2 class="rt type-mjfb1z" dir="auto" style="--m-text-color:var(--extracted-1of0zx5, var(--color-white, rgb(255, 255, 255)))">About</h2
-        ></div
-      ></div></Fragment
-    >
-  ) : variant === "Cases - H1 Big" ? (
-    <Fragment
-      ><div class:list={["m-v0AUC m-Dvox5 m-go5UE m-AXeYw m-Rr3NO m-zNzez m-dS8v4 m-OLvVc m-PLMhr m-xbhBc m-kXq9A m-10z0kec", VARIANTS[variant]]}
-        ><div class="m-8vqn4n" style="--extracted-gdpscs:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:rotate(-90deg)"
-          ><h1 class="rt type-1917ytu" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-white, rgb(255, 255, 255)))">Cases</h1
-        ></div
-      ></div></Fragment
-    >
-  ) : null
+  merged ? (
+    <div class:list={[ROOT, extraClass, rv(Object.fromEntries(BPS.map((b) => [b, (DEFS[map[b]] as Def).cls])) as PerBp<string>)]} style={base.acceptsStyle ? style : undefined}
+      >{base.lines.map((l, i) => { const Tag = l.tag; return (<div class={l.cls} style={l.style}><Tag class={`rt ${typeAt(i)}`} dir="auto" style={l.hStyle}>{l.text ?? first}</Tag></div>); })}</div>
+  ) : (
+    copies.map(({ def, hide }) => (
+      <div class:list={[ROOT, def.cls, extraClass, hide]} style={def.acceptsStyle ? style : undefined}
+        >{def.lines.map((l) => { const Tag = l.tag; return (<div class={l.cls} style={l.style}><Tag class={`rt ${l.type}`} dir="auto" style={l.hStyle}>{l.text ?? first}</Tag></div>); })}</div>
+    ))
+  )
 }

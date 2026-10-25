@@ -1,222 +1,76 @@
 ---
-// About and Metrics - Section
+// About & Metrics - Section: one markup for every breakpoint (lib/rv)
 import PlusMedium from './PlusMedium.astro';
+import { rv } from '../lib/rv';
 
-interface Props {
-  variant?: "Desktop" | "Tablet" | "Phone";
-}
-
-const { variant = "Desktop" } = Astro.props;
-
-const VARIANTS = {
-  "Desktop": "v-10bq4t4",
-  "Tablet": "v-1h8crqs",
-  "Phone": "v-4h3r5s",
-};
+const look = rv({ lg: 'v-10bq4t4', xl: 'v-10bq4t4', t: 'v-1h8crqs', p: 'v-4h3r5s' });
+const label = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p: 'type-1ff3dg' });
 ---
 
-{
-  variant === "Desktop" ? (
-    <Fragment
-      ><section class:list={["m-Gt8mL m-pQ5hH m-alehh m-xbhBc m-DHf04 m-lhYZM m-10bq4t4", VARIANTS[variant]]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
-        ><div class="m-1tb7341"
-          ><div class="m-ur4m5i"></div
-          ><div class="m-1rv1xv0"
-            ><div class="m-1fikk4v"
-              ><div class="m-hhnlyq" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-                ><div class="m-1dhey6s"
-                  ><div class="m-jx0wkh" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                    ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Fusing structural precision, modern 3D visuals, and forward-thinking digital strategy. A unique visual expression driven by the Magiapix aesthetic.</h5
-                  ></div
-                  ><PlusMedium class="m-wp3mpd" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
-                ></div
-              ></div
-              ><div class="m-t2u5wb" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-                ><div class="m-1thub8u"></div
-                ><div class="m-kio01b"
-                  ><div class="m-8qqfur" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">A MODERN APPROACH TO CREATIVE WORK. OUR SUBSCRIPTION MODEL PROVIDES SEAMLESS ACCESS TO PREMIUM DESIGN — EXECUTED WITH SPEED, CONTINUOUSLY REFINED, AND PERFECTLY ALIGNED WITH YOUR BRAND'S DNA.</p
-                  ></div
-                ></div
-                ><PlusMedium class="m-1p4k0nx" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
-              ></div
+<section class:list={["m-Gt8mL m-pQ5hH m-alehh m-xbhBc m-DHf04 m-lhYZM m-10bq4t4", look]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+  ><div class="m-1tb7341"
+    ><div class="m-ur4m5i hide-tablet hide-phone"></div
+    ><div class="m-1rv1xv0"
+      ><div class="m-1fikk4v"
+        ><div class="m-hhnlyq" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+          ><div class="m-1dhey6s"
+            ><div class="m-jx0wkh" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
+              ><h5 class={`rt ${label}`} dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Fusing structural precision, modern 3D visuals, and forward-thinking digital strategy. A unique visual expression driven by the Magiapix aesthetic.</h5
             ></div
-          ></div
-          ><div class="m-1bh8pwn" style="background-color:rgb(255, 255, 255)"></div
-          ><div class="m-gstrfy" style="background-color:rgb(255, 255, 255)"></div
-          ><div class="m-mqao08" style="background-color:rgb(255, 255, 255)"
-            ><div class="m-jkqwmt" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-tnemzt" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Revenue for clients affected</h5
-              ></div
-              ><div class="m-1mytt4s" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">$50M</h1
-              ></div
-              ><div class="m-10yubtn" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Increased in client revenue following redesign &amp; optimized funnel.</p
-              ></div
-            ></div
-            ><div class="m-alv4wo" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-1bzwqew" style="background-color:rgb(255, 255, 255)"></div
-              ><div class="m-1qswhaw"
-                ><div class="m-dldxdr" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                  ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Captured leads with high intent</h5
-                ></div
-                ><div class="m-1rxvjiw" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                  ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">20K</h1
-                ></div
-                ><div class="m-effqqr" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                  ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Growth in captured leads from organic and paid sources.</p
-                ></div
-              ></div
-            ></div
-            ><div class="m-1pad2yn" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-4qlm61" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Brands we've partnered</h5
-              ></div
-              ><div class="m-15cdxah" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">100+</h1
-              ></div
-              ><div class="m-1nr0fmd" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">From London to New York.</p
-              ></div
-            ></div
-            ><PlusMedium class="m-te7f7k" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+            ><PlusMedium class="m-wp3mpd" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
           ></div
         ></div
-      ></section></Fragment
-    >
-  ) : variant === "Tablet" ? (
-    <Fragment
-      ><section class:list={["m-Gt8mL m-pQ5hH m-alehh m-xbhBc m-DHf04 m-lhYZM m-10bq4t4", VARIANTS[variant]]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
-        ><div class="m-1tb7341"
-          ><div class="m-1rv1xv0"
-            ><div class="m-1fikk4v"
-              ><div class="m-hhnlyq" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-                ><div class="m-1dhey6s"
-                  ><div class="m-jx0wkh" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                    ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Fusing structural precision, modern 3D visuals, and forward-thinking digital strategy. A unique visual expression driven by the Magiapix aesthetic.</h5
-                  ></div
-                  ><PlusMedium class="m-wp3mpd" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
-                ></div
-              ></div
-              ><div class="m-t2u5wb" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-                ><div class="m-1thub8u"></div
-                ><div class="m-kio01b"
-                  ><div class="m-8qqfur" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">A MODERN APPROACH TO CREATIVE WORK. OUR SUBSCRIPTION MODEL PROVIDES SEAMLESS ACCESS TO PREMIUM DESIGN — EXECUTED WITH SPEED, CONTINUOUSLY REFINED, AND PERFECTLY ALIGNED WITH YOUR BRAND'S DNA.</p
-                  ></div
-                ></div
-                ><PlusMedium class="m-1p4k0nx" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
-              ></div
+        ><div class="m-t2u5wb" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+          ><div class="m-1thub8u hide-phone"></div
+          ><div class="m-kio01b"
+            ><div class="m-8qqfur" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+              ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">A MODERN APPROACH TO CREATIVE WORK. OUR SUBSCRIPTION MODEL PROVIDES SEAMLESS ACCESS TO PREMIUM DESIGN — EXECUTED WITH SPEED, CONTINUOUSLY REFINED, AND PERFECTLY ALIGNED WITH YOUR BRAND'S DNA.</p
             ></div
           ></div
-          ><div class="m-mqao08" style="background-color:rgb(255, 255, 255)"
-            ><div class="m-jkqwmt" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-tnemzt" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Revenue for clients affected</h5
-              ></div
-              ><div class="m-1mytt4s" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">$50M</h1
-              ></div
-              ><div class="m-10yubtn" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Increased in client revenue following redesign &amp; optimized funnel.</p
-              ></div
-            ></div
-            ><div class="m-alv4wo" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-1bzwqew" style="background-color:rgb(255, 255, 255)"></div
-              ><div class="m-1qswhaw"
-                ><div class="m-dldxdr" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                  ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Captured leads with high intent</h5
-                ></div
-                ><div class="m-1rxvjiw" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                  ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">20K</h1
-                ></div
-                ><div class="m-effqqr" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                  ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Growth in captured leads from organic and paid sources.</p
-                ></div
-              ></div
-            ></div
-            ><div class="m-1pad2yn" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-4qlm61" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><h5 class="rt type-1e97z2c" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Brands we've partnered</h5
-              ></div
-              ><div class="m-15cdxah" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">100+</h1
-              ></div
-              ><div class="m-1nr0fmd" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">From London to New York.</p
-              ></div
-            ></div
-            ><PlusMedium class="m-te7f7k" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+          ><PlusMedium class="m-1p4k0nx" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+        ></div
+      ></div
+    ></div
+    ><div class="m-1bh8pwn hide-tablet hide-phone" style="background-color:rgb(255, 255, 255)"></div
+    ><div class="m-gstrfy hide-tablet hide-phone" style="background-color:rgb(255, 255, 255)"></div
+    ><div class="m-mqao08" style="background-color:rgb(255, 255, 255)"
+      ><div class="m-jkqwmt" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><div class="m-tnemzt" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
+          ><h5 class={`rt ${label}`} dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Revenue for clients affected</h5
+        ></div
+        ><div class="m-1mytt4s" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
+          ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">$50M</h1
+        ></div
+        ><div class="m-10yubtn" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+          ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Increased in client revenue following redesign &amp; optimized funnel.</p
+        ></div
+      ></div
+      ><div class="m-alv4wo" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><div class="m-1bzwqew hide-phone" style="background-color:rgb(255, 255, 255)"></div
+        ><div class="m-1qswhaw"
+          ><div class="m-dldxdr" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
+            ><h5 class={`rt ${label}`} dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Captured leads with high intent</h5
+          ></div
+          ><div class="m-1rxvjiw" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
+            ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">20K</h1
+          ></div
+          ><div class="m-effqqr" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+            ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Growth in captured leads from organic and paid sources.</p
           ></div
         ></div
-      ></section></Fragment
-    >
-  ) : variant === "Phone" ? (
-    <Fragment
-      ><section class:list={["m-Gt8mL m-pQ5hH m-alehh m-xbhBc m-DHf04 m-lhYZM m-10bq4t4", VARIANTS[variant]]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
-        ><div class="m-1tb7341"
-          ><div class="m-1rv1xv0"
-            ><div class="m-1fikk4v"
-              ><div class="m-hhnlyq" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-                ><div class="m-1dhey6s"
-                  ><div class="m-jx0wkh" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
-                    ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">Fusing structural precision, modern 3D visuals, and forward-thinking digital strategy. A unique visual expression driven by the Magiapix aesthetic.</h6
-                  ></div
-                  ><PlusMedium class="m-wp3mpd" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
-                ></div
-              ></div
-              ><div class="m-t2u5wb" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-                ><div class="m-kio01b"
-                  ><div class="m-8qqfur" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                    ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">A MODERN APPROACH TO CREATIVE WORK. OUR SUBSCRIPTION MODEL PROVIDES SEAMLESS ACCESS TO PREMIUM DESIGN — EXECUTED WITH SPEED, CONTINUOUSLY REFINED, AND PERFECTLY ALIGNED WITH YOUR BRAND'S DNA.</p
-                  ></div
-                ></div
-                ><PlusMedium class="m-1p4k0nx" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
-              ></div
-            ></div
-          ></div
-          ><div class="m-mqao08" style="background-color:rgb(255, 255, 255)"
-            ><div class="m-jkqwmt" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-tnemzt" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
-                ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">Revenue for clients affected</h6
-              ></div
-              ><div class="m-1mytt4s" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">$50M</h1
-              ></div
-              ><div class="m-10yubtn" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Increased in client revenue following redesign &amp; optimized funnel.</p
-              ></div
-            ></div
-            ><div class="m-alv4wo" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-1qswhaw"
-                ><div class="m-dldxdr" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
-                  ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">Captured leads with high intent</h6
-                ></div
-                ><div class="m-1rxvjiw" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                  ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">20K</h1
-                ></div
-                ><div class="m-effqqr" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                  ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">Growth in captured leads from organic and paid sources.</p
-                ></div
-              ></div
-            ></div
-            ><div class="m-1pad2yn" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-              ><div class="m-4qlm61" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
-                ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">Brands we've partnered</h6
-              ></div
-              ><div class="m-15cdxah" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
-                ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">100+</h1
-              ></div
-              ><div class="m-1nr0fmd" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-                ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">From London to New York.</p
-              ></div
-            ></div
-            ><PlusMedium class="m-te7f7k" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
-          ></div
+      ></div
+      ><div class="m-1pad2yn" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+        ><div class="m-4qlm61" style="--extracted-1lwpl3i:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
+          ><h5 class={`rt ${label}`} dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-black, rgb(0, 0, 0)))">Brands we've partnered</h5
         ></div
-      ></section></Fragment
-    >
-  ) : null
-}
+        ><div class="m-15cdxah" style="--extracted-gdpscs:var(--color-accent, rgb(0, 255, 161));--m-paragraph-spacing:0px;transform:none"
+          ><h1 class="rt type-ove1mv" dir="auto" style="--m-text-color:var(--extracted-gdpscs, var(--color-accent, rgb(0, 255, 161)))">100+</h1
+        ></div
+        ><div class="m-1nr0fmd" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
+          ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">From London to New York.</p
+        ></div
+      ></div
+      ><PlusMedium class="m-te7f7k" style="--mucckr:var(--color-black, rgb(0, 0, 0))"></PlusMedium
+    ></div
+  ></div
+></section>
