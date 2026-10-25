@@ -38,5 +38,5 @@ initTickers();
 initScramble();
 initFitTitles();
 
-// three.js is only loaded on pages that have WebGL effects
+// the effects are only loaded on pages that have them
 if (document.querySelector('[data-gl]')) import('./webgl').then((m) => m.initWebgl());

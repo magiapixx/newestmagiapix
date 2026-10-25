@@ -1,11 +1,12 @@
 /**
  * Elastic image: a finely subdivided plane that stretches towards the
  * pointer's movement, with a little colour split while it moves.
- * Used for the hero image of each case study.
+ * Used for the hero image of each case study. It only redraws while the image is still settling after the
+ * pointer moved, and never while it is off screen or the tab is hidden.
  *
  * Host: <div data-gl="distortion" data-src="/images/…">
  */
-import * as THREE from 'three';
+import { bindTexture, clear, createContext, createProgram, drawState, imageTexture, loadImage, loseContext, modelView, orthographic, plane as planeMesh, rgb, setSize } from './gl';
 import { fragment, vertex } from './distortion.glsl';
 
 const SETTINGS = {
@@ -22,152 +23,183 @@ const SETTINGS = {
   dpr: 1.5,
 };
 
+type Vec = { x: number; y: number };
+const lerp = (v: Vec, to: Vec, k: number) => {
+  v.x += (to.x - v.x) * k;
+  v.y += (to.y - v.y) * k;
+};
+
 export function mountDistortion(host: HTMLElement) {
   const src = host.dataset.src;
   const s = SETTINGS;
   let disposed = false;
   let raf = 0;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 10);
-  camera.position.z = 2;
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  const canvas = renderer.domElement;
+  // a canvas of its own, styled as three.js styled its renderer's canvas
+  const canvas = document.createElement('canvas');
   canvas.style.display = 'block';
   canvas.style.width = '100%';
   canvas.style.height = '100%';
   canvas.style.touchAction = 'none';
+  const gl = createContext(canvas, { alpha: true, depth: true, antialias: true, premultipliedAlpha: true });
+  if (!gl) return;
   host.appendChild(canvas);
+  const background = rgb(s.background);
+  gl.clearColor(background[0], background[1], background[2], 1);
 
-  const placeholder = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1, THREE.RGBAFormat);
-  placeholder.needsUpdate = true;
-  placeholder.minFilter = THREE.NearestFilter;
-  placeholder.magFilter = THREE.NearestFilter;
-  placeholder.generateMipmaps = false;
-  let texture: THREE.Texture | null = null;
+  const program = createProgram(gl, vertex, fragment);
+  // black until the image has loaded
+  const placeholder = gl.createTexture()!;
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, placeholder);
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+  gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+  gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, gl.NONE);
+  gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+  gl.texStorage2D(gl.TEXTURE_2D, 1, gl.RGBA8, 1, 1);
+  gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 255]));
+  let texture: WebGLTexture = placeholder;
 
-  const uniforms = {
-    uTexture: { value: placeholder as THREE.Texture },
-    uHasTexture: { value: 0 },
-    uImageSize: { value: new THREE.Vector2(1, 1) },
-    uBackgroundColor: { value: new THREE.Color(s.background) },
-    uPlaneAspect: { value: 1.6 },
-    uPointer: { value: new THREE.Vector2(0, 0) },
-    uVelocity: { value: new THREE.Vector2(0, 0) },
-    uRadius: { value: s.effectRadius },
-    uSoftness: { value: s.softness },
-    uPullStrength: { value: s.pullStrength },
-    uTextureWarp: { value: s.textureWarp },
-    uChromatic: { value: s.chromatic },
-  };
-  const geometry = new THREE.PlaneGeometry(1, 1, 220, 140);
-  const material = new THREE.ShaderMaterial({ uniforms, transparent: false, depthWrite: false, depthTest: false, side: THREE.DoubleSide, vertexShader: vertex, fragmentShader: fragment });
-  const plane = new THREE.Mesh(geometry, material);
-  plane.frustumCulled = false;
-  scene.add(plane);
-  renderer.setClearColor(s.background, 1);
+  program.set({
+    uTexture: 0,
+    uHasTexture: 0,
+    uImageSize: [1, 1],
+    uBackgroundColor: background,
+    uPlaneAspect: 1.6,
+    uPointer: [0, 0],
+    uVelocity: [0, 0],
+    uRadius: s.effectRadius,
+    uSoftness: s.softness,
+    uPullStrength: s.pullStrength,
+    uTextureWarp: s.textureWarp,
+    uChromatic: s.chromatic,
+  });
+  const mesh = planeMesh(gl, program, 1, 1, 220, 140);
+  const scale = { x: 1, y: 1 };
 
-  const target = new THREE.Vector2();
-  const follow = new THREE.Vector2();
-  const velocity = new THREE.Vector2();
-  const delta = new THREE.Vector2();
-  const ndc = new THREE.Vector2();
-  const world = new THREE.Vector2();
+  const target = { x: 0, y: 0 };
+  const follow = { x: 0, y: 0 };
+  const velocity = { x: 0, y: 0 };
+  const delta = { x: 0, y: 0 };
   let tracking = false;
   let last = performance.now();
+  let inView = true;
+  let pageVisible = document.visibilityState !== 'hidden';
+  // start the loop (if it is not running) when something changed the picture
+  const wake = () => {
+    if (disposed || raf || !inView || !pageVisible) return;
+    last = performance.now();
+    raf = requestAnimationFrame(frame);
+  };
 
   const resize = () => {
     const r = host.getBoundingClientRect();
     const w = Math.max(1, Math.round(r.width));
     const h = Math.max(1, Math.round(r.height));
     const aspect = w / h;
-    camera.left = -aspect;
-    camera.right = aspect;
-    camera.top = 1;
-    camera.bottom = -1;
-    camera.updateProjectionMatrix();
     const sx = aspect * 2 * s.fillZoom;
     const sy = 2 * s.fillZoom;
-    plane.scale.set(sx, sy, 1);
-    uniforms.uPlaneAspect.value = sx / sy;
-    renderer.setPixelRatio(THREE.MathUtils.clamp(s.dpr, 0.5, 2));
-    renderer.setSize(w, h, false);
+    scale.x = sx;
+    scale.y = sy;
+    program.set({
+      projectionMatrix: orthographic(-aspect, aspect, 1, -1, 0.01, 10),
+      modelViewMatrix: modelView(2, sx, sy),
+      uPlaneAspect: sx / sy,
+    });
+    setSize(gl, w, h, Math.min(2, Math.max(0.5, s.dpr)));
+    wake();
   };
 
   const track = (e: PointerEvent, snap: boolean) => {
     const r = canvas.getBoundingClientRect();
     if (r.width <= 0 || r.height <= 0) return;
-    ndc.x = ((e.clientX - r.left) / r.width) * 2 - 1;
-    ndc.y = -((e.clientY - r.top) / r.height) * 2 + 1;
-    world.set(ndc.x * (r.width / r.height), ndc.y);
-    target.set((world.x - plane.position.x) / plane.scale.x, (world.y - plane.position.y) / plane.scale.y);
+    const nx = ((e.clientX - r.left) / r.width) * 2 - 1;
+    const ny = -((e.clientY - r.top) / r.height) * 2 + 1;
+    target.x = (nx * (r.width / r.height)) / scale.x;
+    target.y = ny / scale.y;
     if (!tracking || snap) {
-      follow.copy(target);
-      velocity.set(0, 0);
+      follow.x = target.x;
+      follow.y = target.y;
+      velocity.x = velocity.y = 0;
       tracking = true;
     }
+    wake();
   };
   const onEnter = (e: PointerEvent) => track(e, true);
   const onMove = (e: PointerEvent) => track(e, false);
   canvas.addEventListener('pointerenter', onEnter);
   canvas.addEventListener('pointermove', onMove, { passive: true });
   canvas.addEventListener('pointerdown', onEnter);
+  const frame = (now: number) => {
+    raf = 0;
+    if (disposed || !inView || !pageVisible) return;
+    const dt = Math.min((now - last) / 1000, 1 / 30);
+    last = now;
+    lerp(follow, target, 1 - Math.exp(-s.followSpeed * dt));
+    delta.x = target.x - follow.x;
+    delta.y = target.y - follow.y;
+    const len = Math.sqrt(delta.x * delta.x + delta.y * delta.y);
+    if (len > s.maxMotion && len > 0) {
+      delta.x *= s.maxMotion / len;
+      delta.y *= s.maxMotion / len;
+    }
+    lerp(velocity, delta, 1 - Math.exp(-s.returnSpeed * dt));
+    if (velocity.x * velocity.x + velocity.y * velocity.y < 1e-7) velocity.x = velocity.y = 0;
+    program.set({ uPointer: [follow.x, follow.y], uVelocity: [velocity.x, velocity.y] });
+    clear(gl);
+    bindTexture(gl, texture);
+    drawState(gl, { depth: false, doubleSide: true });
+    gl.bindVertexArray(mesh.vao);
+    gl.drawElements(gl.TRIANGLES, mesh.count, gl.UNSIGNED_SHORT, 0);
+    // keep going until the pull has died out and the follow point has reached the pointer
+    const dx = follow.x - target.x;
+    const dy = follow.y - target.y;
+    if (velocity.x * velocity.x + velocity.y * velocity.y > 0 || dx * dx + dy * dy > 1e-10) raf = requestAnimationFrame(frame);
+  };
   const resizeObserver = new ResizeObserver(resize);
   resizeObserver.observe(host);
   resize();
-
-  const frame = (now: number) => {
-    if (disposed) return;
-    raf = requestAnimationFrame(frame);
-    const dt = Math.min((now - last) / 1000, 1 / 30);
-    last = now;
-    follow.lerp(target, 1 - Math.exp(-s.followSpeed * dt));
-    delta.copy(target).sub(follow);
-    const len = delta.length();
-    if (len > s.maxMotion && len > 0) delta.multiplyScalar(s.maxMotion / len);
-    velocity.lerp(delta, 1 - Math.exp(-s.returnSpeed * dt));
-    if (velocity.lengthSq() < 1e-7) velocity.set(0, 0);
-    uniforms.uPointer.value.copy(follow);
-    uniforms.uVelocity.value.copy(velocity);
-    renderer.render(scene, camera);
+  const intersectionObserver = new IntersectionObserver((entries) => {
+    const e = entries[entries.length - 1];
+    if (!e) return;
+    inView = e.isIntersecting;
+    wake();
+  });
+  intersectionObserver.observe(host);
+  const onVisibility = () => {
+    pageVisible = document.visibilityState !== 'hidden';
+    wake();
   };
-  raf = requestAnimationFrame(frame);
+  document.addEventListener('visibilitychange', onVisibility);
+  wake();
 
   if (src) {
-    const loader = new THREE.TextureLoader();
-    loader.setCrossOrigin('anonymous');
-    loader.load(src, (t) => {
-      if (disposed) return t.dispose();
-      t.colorSpace = THREE.SRGBColorSpace;
-      t.minFilter = THREE.LinearFilter;
-      t.magFilter = THREE.LinearFilter;
-      t.wrapS = THREE.ClampToEdgeWrapping;
-      t.wrapT = THREE.ClampToEdgeWrapping;
-      t.generateMipmaps = true;
-      t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
-      t.needsUpdate = true;
-      const img = t.image as HTMLImageElement;
-      texture = t;
-      uniforms.uTexture.value = t;
-      uniforms.uHasTexture.value = 1;
-      uniforms.uImageSize.value.set(img.naturalWidth || img.width || 1, img.naturalHeight || img.height || 1);
-    });
+    loadImage(src).then((img) => {
+      if (disposed) return;
+      texture = imageTexture(gl, img);
+      program.set({ uHasTexture: 1, uImageSize: [img.naturalWidth || img.width || 1, img.naturalHeight || img.height || 1] });
+      wake();
+    }, () => {});
   }
 
   return () => {
     disposed = true;
     cancelAnimationFrame(raf);
     resizeObserver.disconnect();
+    intersectionObserver.disconnect();
+    document.removeEventListener('visibilitychange', onVisibility);
     canvas.removeEventListener('pointerenter', onEnter);
     canvas.removeEventListener('pointermove', onMove);
     canvas.removeEventListener('pointerdown', onEnter);
-    texture?.dispose();
-    placeholder.dispose();
-    geometry.dispose();
-    material.dispose();
-    renderer.dispose();
-    renderer.forceContextLoss();
+    if (texture !== placeholder) gl.deleteTexture(texture);
+    gl.deleteTexture(placeholder);
+    mesh.dispose();
+    program.dispose();
+    loseContext(gl);
     canvas.remove();
   };
 }

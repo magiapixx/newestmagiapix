@@ -5,7 +5,7 @@
  *
  * Host: <canvas data-gl="luma" data-images="/images/a.jpg,/images/b.jpg" data-pause="0.8">
  */
-import * as THREE from 'three';
+import { bindTexture, clear, createContext, createProgram, drawState, imageTexture, loadImage, plane, rgb, setSize, type GL, type Mesh, type Program } from './gl';
 import { fragment, vertex } from './luma.glsl';
 
 const SETTINGS = {
@@ -21,10 +21,7 @@ const SETTINGS = {
   dpr: 1,
 };
 
-const sizeOf = (t: THREE.Texture) => {
-  const img = t.image as HTMLImageElement;
-  return { width: Math.max(1, img?.naturalWidth || img?.width || 1), height: Math.max(1, img?.naturalHeight || img?.height || 1) };
-};
+const sizeOf = (img: HTMLImageElement) => ({ width: Math.max(1, img?.naturalWidth || img?.width || 1), height: Math.max(1, img?.naturalHeight || img?.height || 1) });
 
 export function mountLuma(canvas: HTMLCanvasElement) {
   const urls = (canvas.dataset.images ?? '').split(',').filter(Boolean).slice(0, 3);
@@ -35,61 +32,60 @@ export function mountLuma(canvas: HTMLCanvasElement) {
 
   let disposed = false;
   let raf = 0;
-  let renderer: THREE.WebGLRenderer | null = null;
-  let material: THREE.ShaderMaterial | null = null;
-  let geometry: THREE.PlaneGeometry | null = null;
+  let gl: GL | null = null;
+  let program: Program | null = null;
+  let mesh: Mesh | null = null;
   let resizeObserver: ResizeObserver | null = null;
   let intersectionObserver: IntersectionObserver | null = null;
-  let textures: THREE.Texture[] = [];
+  let images: HTMLImageElement[] = [];
+  let textures: WebGLTexture[] = [];
 
   (async () => {
-    const loader = new THREE.TextureLoader();
-    loader.setCrossOrigin('anonymous');
-    textures = await Promise.all(urls.map((u) => loader.loadAsync(u)));
-    if (disposed) return textures.forEach((t) => t.dispose());
-    for (const t of textures) {
-      t.generateMipmaps = false;
-      t.minFilter = THREE.LinearFilter;
-      t.magFilter = THREE.LinearFilter;
-      t.wrapS = THREE.ClampToEdgeWrapping;
-      t.wrapT = THREE.ClampToEdgeWrapping;
-      t.colorSpace = THREE.SRGBColorSpace;
-      t.needsUpdate = true;
-    }
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance' });
-    renderer.setPixelRatio(Math.max(0.25, Math.min(3, s.dpr)));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const a = sizeOf(textures[0]);
-    const b = sizeOf(textures[1]);
-    const uniforms = {
-      uTex1: { value: textures[0] },
-      uTex2: { value: textures[1] },
-      uProgress: { value: 0 },
-      uResolution: { value: new THREE.Vector2(1, 1) },
-      uTex1Res: { value: new THREE.Vector2(a.width, a.height) },
-      uTex2Res: { value: new THREE.Vector2(b.width, b.height) },
-      uTime: { value: 0 },
-      uLumaTolerance: { value: s.lumaTolerance },
-      uZoomStrength: { value: s.zoomStrength },
-      uChromaStrength: { value: s.chromaStrength },
-      uGlowColor: { value: new THREE.Color(s.glowColor) },
-      uFeather: { value: s.feather },
-      uGlitchStrength: { value: s.glitchStrength },
-      uGlitchFrequency: { value: s.glitchFrequency },
-      uGlitchNarrowness: { value: s.glitchNarrowness },
+    images = await Promise.all(urls.map(loadImage));
+    if (disposed) return;
+    gl = createContext(canvas, { alpha: true, depth: true, antialias: false, premultipliedAlpha: true });
+    if (!gl) return;
+    const ratio = Math.max(0.25, Math.min(3, s.dpr));
+    const a = sizeOf(images[0]);
+    const b = sizeOf(images[1]);
+    program = createProgram(gl, vertex, fragment);
+    program.set({
+      uProgress: 0,
+      uResolution: [1, 1],
+      uTex1Res: [a.width, a.height],
+      uTex2Res: [b.width, b.height],
+      uTime: 0,
+      uLumaTolerance: s.lumaTolerance,
+      uZoomStrength: s.zoomStrength,
+      uChromaStrength: s.chromaStrength,
+      uGlowColor: rgb(s.glowColor),
+      uFeather: s.feather,
+      uGlitchStrength: s.glitchStrength,
+      uGlitchFrequency: s.glitchFrequency,
+      uGlitchNarrowness: s.glitchNarrowness,
+      uTex1: 0,
+      uTex2: 1,
+    });
+    mesh = plane(gl, program, 2, 2);
+    // unit 0 and 1 hold the "from" and "to" images of the running cross-fade
+    textures = images.map((img, i) => imageTexture(gl!, img, Math.min(i, 1)));
+    let slots = [0, 1];
+    const render = () => {
+      const g = gl!;
+      clear(g);
+      g.useProgram(program!.program);
+      slots.forEach((t, unit) => bindTexture(g, textures[t], unit));
+      drawState(g, { depth: false, doubleSide: false });
+      g.bindVertexArray(mesh!.vao);
+      g.drawElements(g.TRIANGLES, mesh!.count, g.UNSIGNED_SHORT, 0);
     };
-    material = new THREE.ShaderMaterial({ vertexShader: vertex, fragmentShader: fragment, uniforms, depthTest: false, depthWrite: false, toneMapped: false });
-    geometry = new THREE.PlaneGeometry(2, 2);
-    scene.add(new THREE.Mesh(geometry, material));
 
     const resize = () => {
       const r = host.getBoundingClientRect();
       const w = Math.max(1, Math.round(r.width));
       const h = Math.max(1, Math.round(r.height));
-      renderer!.setSize(w, h, false);
-      uniforms.uResolution.value.set(w, h);
+      setSize(gl!, w, h, ratio);
+      program!.set({ uResolution: [w, h] });
     };
     resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(host);
@@ -104,31 +100,29 @@ export function mountLuma(canvas: HTMLCanvasElement) {
 
     const swap = () => {
       const next = (current + 1) % textures.length;
-      const from = sizeOf(textures[current]);
-      const to = sizeOf(textures[next]);
-      uniforms.uTex1.value = textures[current];
-      uniforms.uTex2.value = textures[next];
-      uniforms.uTex1Res.value.set(from.width, from.height);
-      uniforms.uTex2Res.value.set(to.width, to.height);
+      const from = sizeOf(images[current]);
+      const to = sizeOf(images[next]);
+      slots = [current, next];
+      program!.set({ uTex1Res: [from.width, from.height], uTex2Res: [to.width, to.height] });
     };
 
     const frame = (now: number) => {
       raf = 0;
       if (disposed || !visible) return;
       const elapsed = (now - cycleStart) / 1000;
-      uniforms.uTime.value = (now - clockStart) / 1000;
-      if (elapsed < pauseTime) uniforms.uProgress.value = 0;
-      else {
+      let progress = 0;
+      if (elapsed >= pauseTime) {
         const p = (elapsed - pauseTime) / Math.max(0.001, s.transitionTime);
-        uniforms.uProgress.value = Math.min(1, Math.max(0, p));
+        progress = Math.min(1, Math.max(0, p));
         if (p >= 1) {
           current = (current + 1) % textures.length;
           swap();
-          uniforms.uProgress.value = 0;
+          progress = 0;
           cycleStart = now;
         }
       }
-      renderer!.render(scene, camera);
+      program!.set({ uTime: (now - clockStart) / 1000, uProgress: progress });
+      render();
       raf = requestAnimationFrame(frame);
     };
     const resume = () => {
@@ -163,9 +157,10 @@ export function mountLuma(canvas: HTMLCanvasElement) {
     cancelAnimationFrame(raf);
     resizeObserver?.disconnect();
     intersectionObserver?.disconnect();
-    material?.dispose();
-    geometry?.dispose();
-    textures.forEach((t) => t.dispose());
-    renderer?.dispose();
+    if (gl) {
+      textures.forEach((t) => gl!.deleteTexture(t));
+      mesh?.dispose();
+      program?.dispose();
+    }
   };
 }

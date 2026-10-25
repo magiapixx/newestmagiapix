@@ -3,7 +3,7 @@
  *
  * Host: <canvas data-gl="light-beams">
  */
-import * as THREE from 'three';
+import { attribute, clear, createContext, createProgram, loseContext, rgb, setSize } from './gl';
 import { fragment, vertex } from './light-beams.glsl';
 
 const SETTINGS = {
@@ -22,42 +22,29 @@ const SETTINGS = {
 export function mountLightBeams(canvas: HTMLCanvasElement) {
   const host = canvas.parentElement!;
   const s = SETTINGS;
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: false,
-    alpha: false,
-    depth: false,
-    stencil: false,
-    premultipliedAlpha: false,
-    preserveDrawingBuffer: false,
-    powerPreference: 'high-performance',
-  });
-  renderer.setPixelRatio(s.dpr);
-  const scene = new THREE.Scene();
-  scene.matrixAutoUpdate = false;
-  const camera = new THREE.Camera();
+  const gl = createContext(canvas, { alpha: true, depth: false, antialias: false, premultipliedAlpha: false });
+  if (!gl) return;
+  const program = createProgram(gl, vertex, fragment);
   const uniforms = {
-    iTime: { value: 0 },
-    iResolution: { value: new THREE.Vector2(1, 1) },
-    uSpeed: { value: s.speed },
-    uSpread: { value: s.spread },
-    uThickness: { value: s.thickness },
-    uIntensityFactor: { value: s.intensity },
-    uCameraX: { value: s.cameraX },
-    uBgIntensity: { value: s.backgroundIntensity },
-    uColor1: { value: new THREE.Color(s.primaryColor) },
-    uColor2: { value: new THREE.Color(s.secondaryColor) },
-    uBgColor: { value: new THREE.Color(s.backgroundColor) },
+    iTime: 0,
+    iResolution: [1, 1],
+    uSpeed: s.speed,
+    uSpread: s.spread,
+    uThickness: s.thickness,
+    uIntensityFactor: s.intensity,
+    uCameraX: s.cameraX,
+    uBgIntensity: s.backgroundIntensity,
+    uColor1: rgb(s.primaryColor),
+    uColor2: rgb(s.secondaryColor),
+    uBgColor: rgb(s.backgroundColor),
   };
+  program.set(uniforms);
   // one triangle that covers the whole viewport
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3));
-  const material = new THREE.ShaderMaterial({ vertexShader: vertex, fragmentShader: fragment, uniforms, depthTest: false, depthWrite: false, transparent: false });
-  const mesh = new THREE.Mesh(geometry, material);
-  mesh.frustumCulled = false;
-  mesh.matrixAutoUpdate = false;
-  mesh.updateMatrix();
-  scene.add(mesh);
+  const vao = gl.createVertexArray()!;
+  gl.bindVertexArray(vao);
+  const buffer = attribute(gl, program.attrib('position'), new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3);
+  gl.disable(gl.DEPTH_TEST);
+  gl.depthMask(false);
 
   let disposed = false;
   let raf = 0;
@@ -70,7 +57,11 @@ export function mountLightBeams(canvas: HTMLCanvasElement) {
   let height = 0;
 
   const draw = () => {
-    if (!disposed) renderer.render(scene, camera);
+    if (disposed) return;
+    clear(gl);
+    gl.useProgram(program.program);
+    gl.bindVertexArray(vao);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
   const resize = () => {
     resizeRaf = 0;
@@ -81,13 +72,12 @@ export function mountLightBeams(canvas: HTMLCanvasElement) {
     if (w !== width || h !== height) {
       width = w;
       height = h;
-      renderer.setSize(w, h, false);
+      setSize(gl, w, h, s.dpr);
     }
-    const ratio = renderer.getPixelRatio();
-    uniforms.iResolution.value.set(w * ratio, h * ratio);
+    program.set({ iResolution: [w * s.dpr, h * s.dpr] });
     if (raf === 0) draw();
   };
-  const shouldRun = () => inView && pageVisible && Math.abs(uniforms.uSpeed.value) > 1e-6;
+  const shouldRun = () => inView && pageVisible && Math.abs(s.speed) > 1e-6;
   const stop = () => {
     if (raf !== 0) cancelAnimationFrame(raf);
     raf = 0;
@@ -101,8 +91,8 @@ export function mountLightBeams(canvas: HTMLCanvasElement) {
     }
     if (last !== 0) time += Math.min((now - last) * 0.001, 0.1);
     last = now;
-    uniforms.iTime.value = time;
-    renderer.render(scene, camera);
+    program.set({ iTime: time });
+    draw();
     raf = requestAnimationFrame(frame);
   };
   const update = () => {
@@ -143,9 +133,9 @@ export function mountLightBeams(canvas: HTMLCanvasElement) {
     resizeObserver.disconnect();
     intersectionObserver.disconnect();
     document.removeEventListener('visibilitychange', onVisibility);
-    geometry.dispose();
-    material.dispose();
-    renderer.dispose();
-    renderer.forceContextLoss();
+    gl.deleteBuffer(buffer);
+    gl.deleteVertexArray(vao);
+    program.dispose();
+    loseContext(gl);
   };
 }

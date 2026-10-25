@@ -1,7 +1,7 @@
 /**
- * Starts the WebGL/canvas effects. Each breakpoint has its own copy of the
- * markup, so an effect only runs while its copy is actually rendered; this
- * also keeps the page well under the browser's limit on WebGL contexts.
+ * Starts the WebGL/canvas effects. An effect only runs while its host is
+ * actually rendered (some hosts only exist at some breakpoints); this also
+ * keeps the page well under the browser's limit on WebGL contexts.
  */
 import { mountDistortion } from './distortion';
 import { mountLightBeams } from './light-beams';
