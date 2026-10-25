@@ -69,3 +69,11 @@ export function resetAccent(el: HTMLElement, state: State) {
 }
 
 export const accentsIn = (root: ParentNode) => [...root.querySelectorAll<HTMLElement>('.m-toAcB')];
+
+/** Where an accent is in its sweep: still waiting at the left, coming in, or leaving to the right. */
+export function accentPhase(el: HTMLElement): 'waiting' | 'in' | 'out' {
+  const state = stateOf(el);
+  if (state === 'loadAndFill' || state?.startsWith('fill')) return 'in';
+  if (state === 'loadAndFillEnd' || state?.startsWith('empty')) return 'out';
+  return 'waiting';
+}
