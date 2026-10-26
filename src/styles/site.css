@@ -1293,3 +1293,6 @@ html body { background: rgb(94, 94, 94); }
 .m-VTBBD .m-dvd6tq > :is(.m-j3bx7i,.m-1n0w50d){right:calc(-1 * var(--plus-gap) - 7px)}
 /* phone: the column runs to 15px from the screen edge, so keep the marks inside it */
 @media (max-width:809.98px){.m-VTBBD .m-dvd6tq{--plus-gap:8px;overflow-clip-margin:15px}}
+/* the video loads with preload="none", so until its poster arrives it would be 150px tall: hold it at
+   16:9 from the start (the plus marks above and the desktop scroll motion both measure it) */
+.m-VTBBD .m-4nog24-container{aspect-ratio:16/9}
