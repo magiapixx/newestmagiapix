@@ -1277,3 +1277,6 @@ html body { background: rgb(94, 94, 94); }
 .m-5AYrz .m-7fgkm7-container .m-v0AUC{position:sticky;top:20px}
 .m-5AYrz .m-7fgkm7-container .m-v0AUC .rt{--m-font-size:min(180px, calc((100vh - 40px) / 4.1))!important}
 }
+
+/* vertical /Services and /Cases headings: faded so they sit behind the content */
+.heading-faded .rt{opacity:.2}
