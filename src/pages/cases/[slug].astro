@@ -11,7 +11,7 @@ const { entry } = Astro.props as { entry: CaseEntry };
 ---
 
 <BaseLayout title={`${entry.title} — Magiapix`} description={entry.description}>
-  <div id="main"
+  <div id="main" data-smooth-scroll="12"
     ><CasePage {...entry.props}></CasePage
     ><div id="template-overlay"></div
   ></div>
