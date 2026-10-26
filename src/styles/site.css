@@ -1250,3 +1250,30 @@ html body { background: rgb(94, 94, 94); }
    title out vertically in flow instead, so the box takes the size of whatever it says, top-aligned like the others */
 .m-5AYrz .m-v0AUC.m-10z0kec{width:auto!important;height:auto!important}
 .m-5AYrz .m-v0AUC .m-8vqn4n{position:relative!important;inset:auto!important;writing-mode:vertical-rl;transform:rotate(180deg)!important}
+/* Home about: 200px above and below its content on desktop (100px on tablet) like the sections after it. The
+   section was exactly one viewport tall with the content centred, which clipped the text on short screens; it now
+   grows with its content and padding and stays at least one viewport tall */
+@media (min-width:810px){
+.m-ho6gy .m-wkn3iw-container,.m-faSoo.m-1qz6qus{height:auto!important;min-height:100vh}
+.m-faSoo .m-91mlgc{height:auto;flex:1 0 auto}
+.m-faSoo .m-1j7sbv4,.m-faSoo .m-1dqc4is{height:auto}
+.m-faSoo .m-1j7sbv4{align-self:center}
+}
+@media (min-width:1200px){.m-faSoo .m-1dqc4is{padding:200px 0}}
+/* Home showreel: one viewport tall with 200px above and below the video on desktop (100px on tablet), like the
+   sections around it. On screens too short for video and padding together it grows rather than clipping */
+@media (min-width:810px){
+.m-ho6gy .m-cfbga4-container,.m-VTBBD.m-1hcz3so{height:auto!important;min-height:100vh}
+.m-VTBBD .m-1r33my{height:auto;flex:1 0 auto}
+.m-VTBBD .m-dvd6tq{height:auto;align-self:stretch;padding:100px 0}
+}
+@media (min-width:1200px){.m-VTBBD .m-dvd6tq{padding:200px 0}}
+/* Why Us vertical heading on desktop: stays in view while the section scrolls past and leaves with its bottom edge.
+   Its container runs down to the bottom of the section so the heading has room to stick. On viewports shorter
+   than the heading (733px at 180px type, about 4.1x the font size) the type shrinks so it fits with 20px to spare
+   above and below */
+@media (min-width:1200px){
+.m-5AYrz .m-7fgkm7-container{bottom:20px}
+.m-5AYrz .m-7fgkm7-container .m-v0AUC{position:sticky;top:20px}
+.m-5AYrz .m-7fgkm7-container .m-v0AUC .rt{--m-font-size:min(180px, calc((100vh - 40px) / 4.1))!important}
+}
