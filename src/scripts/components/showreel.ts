@@ -1,6 +1,6 @@
 /**
  * Showreel: the play button opens a full-section video popup (Vimeo);
- * the backdrop or CLOSE dismisses it. The two headings follow the scroll: while
+ * the backdrop or CLOSE dismisses it. On desktop (1200px and up) the two headings follow the scroll: while
  * the section scrolls into view "/Show" comes in from the top edge and "Reel"
  * from the bottom edge, reaching their places as the section's middle reaches
  * the middle of the screen. The section then pins in place for one screen of
@@ -20,6 +20,8 @@ const PLAYED: Record<string, string> = {
 };
 const SPRING: Transition = { type: 'spring', duration: 0.5, bounce: 0 };
 const HOVER: Transition = { type: 'spring', duration: 0.4, bounce: 0.2 };
+// the heading motion runs on desktop only; tablet and phone keep the section as designed
+const desktop = matchMedia('(min-width: 1200px)');
 
 // scroll the two headings in from just past the section's top / bottom edge,
 // then pin the section and let the scroll push each one on through the opposite edge
@@ -47,8 +49,16 @@ function enterHeadings(section: HTMLElement) {
     Object.assign(section.style, { position: 'sticky', top: `${top}px` });
   };
 
+  // undo everything layout() and update() set inline
+  const reset = () => {
+    track.style.removeProperty('min-height');
+    for (const p of ['position', 'top']) section.style.removeProperty(p);
+    for (const el of [show, reel]) for (const p of ['translate', 'opacity']) el.style.removeProperty(p);
+  };
+
   const clamp = (n: number) => Math.min(1, Math.max(0, n));
   const update = () => {
+    if (!desktop.matches) return;
     const at = track.getBoundingClientRect().top;
     // entering: 0 when the section's top reaches the screen's bottom, 1 when it pins
     const q = clamp((window.innerHeight - at) / (window.innerHeight - top));
@@ -59,13 +69,14 @@ function enterHeadings(section: HTMLElement) {
       Object.assign(el.style, { translate: `0 ${y}px`, opacity: String(opacity) });
     }
   };
-  layout();
-  update();
-  addEventListener('scroll', update, { passive: true });
-  addEventListener('resize', () => {
+  const refresh = () => {
+    if (!desktop.matches) return reset();
     layout();
     update();
-  });
+  };
+  refresh();
+  addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', refresh);
 }
 
 function vimeo(host: HTMLElement) {
