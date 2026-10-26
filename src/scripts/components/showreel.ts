@@ -1,9 +1,10 @@
 /**
  * Showreel: the play button opens a full-section video popup (Vimeo);
- * the backdrop or CLOSE dismisses it. When the section scrolls into view,
- * "/Show" slides in from the top edge and "Reel" from the bottom edge.
+ * the backdrop or CLOSE dismisses it. While the section scrolls past, "/Show"
+ * travels down from above its top edge to below its bottom edge and "Reel"
+ * travels the other way, both resting in place when the section fills the screen.
  */
-import { animate, inView, reducedMotion, setVariant, type Transition } from '../lib/motion';
+import { reducedMotion, setVariant, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
 import { lookSlots } from '../lib/rv';
 
@@ -16,25 +17,39 @@ const PLAYED: Record<string, string> = {
 };
 const SPRING: Transition = { type: 'spring', duration: 0.5, bounce: 0 };
 const HOVER: Transition = { type: 'spring', duration: 0.4, bounce: 0.2 };
-const ENTER: Transition = { type: 'spring', duration: 1.2, bounce: 0 };
+// share of the scroll at each end where the headings fade (the phone layout does not clip them at the edges)
+const FADE = 0.15;
 
-// park the two headings just past the section's top / bottom edge, then slide them in together
-function enterHeadings(section: HTMLElement) {
+// tie the two headings to the section's scroll progress: 0 = section top at the screen bottom, 1 = section bottom at the screen top
+function scrollHeadings(section: HTMLElement) {
   const show = section.querySelector<HTMLElement>('.m-1vk2obh-container');
   const reel = section.querySelector<HTMLElement>('.m-7a0jed-container');
   if (!show || !reel || reducedMotion()) return;
-  const offsets = () => [
-    [show, -(show.offsetTop + show.offsetHeight)],
-    [reel, ((reel.offsetParent as HTMLElement | null)?.clientHeight ?? 0) - reel.offsetTop],
-  ] as const;
-  for (const [el, y] of offsets()) Object.assign(el.style, { translate: `0 ${y}px`, opacity: '0' });
-  inView(
-    section,
-    () => {
-      for (const [el, y] of offsets()) animate(el, [{ translate: `0 ${y}px`, opacity: 0 }, { translate: '0 0', opacity: 1 }], ENTER);
-    },
-    { amount: 0.3 },
-  );
+  // offsets that put a heading just past the top / bottom edge of the area that clips it
+  const edges = (el: HTMLElement) => ({
+    above: -(el.offsetTop + el.offsetHeight),
+    below: ((el.offsetParent as HTMLElement | null)?.clientHeight ?? 0) - el.offsetTop,
+  });
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const r = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+    const opacity = String(Math.min(1, p / FADE, (1 - p) / FADE));
+    for (const [el, down] of [[show, true], [reel, false]] as const) {
+      const { above, below } = edges(el);
+      const [from, to] = down ? [above, below] : [below, above];
+      const y = p < 0.5 ? from * (1 - p * 2) : to * (p * 2 - 1);
+      Object.assign(el.style, { translate: `0 ${y}px`, opacity });
+    }
+  };
+  const queue = () => {
+    if (!frame) frame = requestAnimationFrame(update);
+  };
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  update();
 }
 
 function vimeo(host: HTMLElement) {
@@ -51,7 +66,7 @@ function vimeo(host: HTMLElement) {
 
 export function initShowreel() {
   for (const section of document.querySelectorAll<HTMLElement>('.m-VTBBD')) {
-    enterHeadings(section);
+    scrollHeadings(section);
     const looks = lookSlots(section, Object.fromEntries(Object.entries(PLAYED).map(([closed, played]) => [closed, { closed, played }])));
     if (!looks.length) continue;
     const host = section.querySelector<HTMLElement>('[data-vimeo]');
