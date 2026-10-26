@@ -1,9 +1,13 @@
 /**
  * Showreel: the play button opens a full-section video popup (Vimeo);
- * the backdrop or CLOSE dismisses it. When the section scrolls into view,
- * "/Show" slides in from the top edge and "Reel" from the bottom edge.
+ * the backdrop or CLOSE dismisses it. The two headings follow the scroll: while
+ * the section scrolls into view "/Show" comes in from the top edge and "Reel"
+ * from the bottom edge, reaching their places as the section's middle reaches
+ * the middle of the screen. The section then pins in place for one screen of
+ * scrolling, and that scroll carries them on out of the section ("/Show" out
+ * the bottom, "Reel" out the top).
  */
-import { animate, inView, reducedMotion, setVariant, type Transition } from '../lib/motion';
+import { reducedMotion, setVariant, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
 import { lookSlots } from '../lib/rv';
 
@@ -16,25 +20,52 @@ const PLAYED: Record<string, string> = {
 };
 const SPRING: Transition = { type: 'spring', duration: 0.5, bounce: 0 };
 const HOVER: Transition = { type: 'spring', duration: 0.4, bounce: 0.2 };
-const ENTER: Transition = { type: 'spring', duration: 1.2, bounce: 0 };
 
-// park the two headings just past the section's top / bottom edge, then slide them in together
+// scroll the two headings in from just past the section's top / bottom edge,
+// then pin the section and let the scroll push each one on through the opposite edge
 function enterHeadings(section: HTMLElement) {
   const show = section.querySelector<HTMLElement>('.m-1vk2obh-container');
   const reel = section.querySelector<HTMLElement>('.m-7a0jed-container');
   if (!show || !reel || reducedMotion()) return;
+  // offsets that put a heading just past the top / bottom edge of the area that clips it
+  const above = (el: HTMLElement) => -(el.offsetTop + el.offsetHeight);
+  const below = (el: HTMLElement) => ((el.offsetParent as HTMLElement | null)?.clientHeight ?? 0) - el.offsetTop;
   const offsets = () => [
-    [show, -(show.offsetTop + show.offsetHeight)],
-    [reel, ((reel.offsetParent as HTMLElement | null)?.clientHeight ?? 0) - reel.offsetTop],
+    [show, above(show), below(show)],
+    [reel, below(reel), above(reel)],
   ] as const;
-  for (const [el, y] of offsets()) Object.assign(el.style, { translate: `0 ${y}px`, opacity: '0' });
-  inView(
-    section,
-    () => {
-      for (const [el, y] of offsets()) animate(el, [{ translate: `0 ${y}px`, opacity: 0 }, { translate: '0 0', opacity: 1 }], ENTER);
-    },
-    { amount: 0.3 },
-  );
+  // pin: the wrapper grows by one screen and the section sticks with its middle on the screen's middle
+  const track = section.parentElement;
+  if (!track) return;
+  let top = 0;
+  let distance = 0;
+  const layout = () => {
+    distance = window.innerHeight;
+    top = (window.innerHeight - section.offsetHeight) / 2;
+    // min-height: site.css forces this wrapper's height to auto
+    track.style.minHeight = `${section.offsetHeight + distance}px`;
+    Object.assign(section.style, { position: 'sticky', top: `${top}px` });
+  };
+
+  const clamp = (n: number) => Math.min(1, Math.max(0, n));
+  const update = () => {
+    const at = track.getBoundingClientRect().top;
+    // entering: 0 when the section's top reaches the screen's bottom, 1 when it pins
+    const q = clamp((window.innerHeight - at) / (window.innerHeight - top));
+    // leaving: 0 when the section pins, 1 when it lets go
+    const p = clamp((top - at) / distance);
+    for (const [el, from, to] of offsets()) {
+      const [y, opacity] = p > 0 ? [to * p, 1 - p] : [from * (1 - q), q];
+      Object.assign(el.style, { translate: `0 ${y}px`, opacity: String(opacity) });
+    }
+  };
+  layout();
+  update();
+  addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', () => {
+    layout();
+    update();
+  });
 }
 
 function vimeo(host: HTMLElement) {
