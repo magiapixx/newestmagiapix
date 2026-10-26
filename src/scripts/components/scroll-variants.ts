@@ -1,6 +1,7 @@
 /**
  * Components that switch to an "animated" look the first time they are at
- * least half visible, and start their accent sweeps.
+ * least half visible, and start their accent sweeps. Accent Sweep bars
+ * (components/AccentSweep.astro) start the same way.
  */
 import { inView, transitionState, type Transition } from '../lib/motion';
 import { hasClass, swapClass } from '../lib/rv';
@@ -39,5 +40,9 @@ export function initScrollVariants() {
       },
       { amount: 0.5 },
     );
+  }
+  // Accent Sweep: bars over a text block, no look to swap
+  for (const el of document.querySelectorAll<HTMLElement>('.sweep-bars')) {
+    inView(el.parentElement ?? el, () => accentsIn(el).forEach(playAccent), { amount: 0.5 });
   }
 }

@@ -21,7 +21,7 @@ import { accentPhase, accentsIn } from './accent';
 const TARGETS = [
   '[data-scramble=""]',
   '.m-fyyctf, .m-2z319, .m-1mr26j2, .m-meosom', // contact details
-  '.m-jx0wkh, .m-8qqfur', // about intro texts
+  '.m-8qqfur', // about intro text
   '.m-1o6rsix', // contact form intro
   '.m-faSoo div[aria-label]', // home about blurb
   '.m-y6iPh .m-nh3uw0', // FAQ questions
