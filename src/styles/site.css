@@ -1246,3 +1246,7 @@ html body { background: rgb(94, 94, 94); }
 /* merged contacts section: values the tablet/phone copies set inline */
 @media (max-width:1199.98px){.m-tKC5s .m-csvvva-container .m-1ceni24{background-color:var(--color-black, rgb(0, 0, 0))!important}}
 @media (max-width:809.98px){.m-tKC5s .m-1mwg5vu > p{--m-text-alignment:left!important}}
+/* Why Us vertical heading: the fixed box and offsets of the heading variants fit one text length only. Lay the
+   title out vertically in flow instead, so the box takes the size of whatever it says, top-aligned like the others */
+.m-5AYrz .m-v0AUC.m-10z0kec{width:auto!important;height:auto!important}
+.m-5AYrz .m-v0AUC .m-8vqn4n{position:relative!important;inset:auto!important;writing-mode:vertical-rl;transform:rotate(180deg)!important}
