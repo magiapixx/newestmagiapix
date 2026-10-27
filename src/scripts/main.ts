@@ -17,6 +17,7 @@ import { initFaqs } from './components/faq';
 import { initTickers } from './components/ticker';
 import { initScramble } from './components/scramble';
 import { initFitTitles } from './components/fit-titles';
+import { initCountUps } from './components/count-up';
 
 initSmoothScroll();
 initIntro();
@@ -37,6 +38,7 @@ initFaqs();
 initTickers();
 initScramble();
 initFitTitles();
+initCountUps();
 
 // the effects are only loaded on pages that have them
 if (document.querySelector('[data-gl]')) import('./webgl').then((m) => m.initWebgl());

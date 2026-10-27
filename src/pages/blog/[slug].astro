@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FooterSection from '../../components/FooterSection.astro';
+import Navigation from '../../components/Navigation.astro';
+import PlusMedium from '../../components/PlusMedium.astro';
+import { formatDate, posts, type Post } from '../../data/posts';
+import '../../styles/blog.css';
+
+export function getStaticPaths() {
+  return posts.map((post, i) => ({
+    params: { slug: post.slug },
+    // the two posts after this one, wrapping round to the newest
+    props: { post, more: [posts[(i + 1) % posts.length], posts[(i + 2) % posts.length]] },
+  }));
+}
+
+const { post, more } = Astro.props as { post: Post; more: Post[] };
+const reveal = '{"from":{"opacity":0.3,"y":100},"transition":{"bounce":0,"delay":0,"duration":0.8,"type":"spring"},"threshold":0}';
+const revealStyle = 'will-change:transform;opacity:0.3;transform:translateY(100px)';
+---
+
+<BaseLayout title={`${post.title} — Magiapix`} description={post.excerpt}>
+  <div id="main" data-smooth-scroll="12"
+    ><div class="m-VOZrd m-1p7p7oi" style="min-height:100vh;width:auto"
+      ><div class="m-2bT3N m-alehh m-bf5jqr" style="min-height:100vh;width:auto;display:contents"
+        ><div class="m-7rk94s-container" style="transform:translateX(-50%)"
+          ><Navigation></Navigation
+        ></div
+        ><header class="post-head" data-nav-theme="light"
+          ><a class="post-back" href="/blog/">/Back to blog</a
+          ><p class="blog-meta"><span>/{post.category}</span><span>{formatDate(post.date)}</span><span>{post.readTime} min read</span></p
+          ><h1 class="post-title">{post.title}</h1
+          ><div class="post-lead"
+            ><p class="blog-excerpt" data-scramble="">{post.excerpt}</p
+            ><PlusMedium class="blog-plus" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusMedium
+          ></div
+          ><div class="post-cover"><img src={post.cover} alt=""></div
+        ></header
+        ><section class="post-body" data-nav-theme="dark"
+          ><aside class="post-aside"
+            ><dl
+              ><div><dt>Author</dt><dd>{post.author}</dd></div
+              ><div><dt>Published</dt><dd><time datetime={post.date}>{formatDate(post.date)}</time></dd></div
+              ><div><dt>Category</dt><dd>{post.category}</dd></div
+              ><div><dt>Reading</dt><dd>{post.readTime} min</dd></div
+            ></dl
+          ></aside
+          ><article class="post-article"
+            >{post.body.map((block) =>
+              block.type === 'h2' ? <h2>{block.text}</h2>
+              : block.type === 'quote' ? <blockquote>{block.text}</blockquote>
+              : block.type === 'list' ? <ul>{block.items.map((item) => <li>{item}</li>)}</ul>
+              : <p>{block.text}</p>
+            )}</article
+          ></section
+        ><section class="post-more" data-nav-theme="light"
+          ><h3 class="post-more-title">/More articles</h3
+          ><div class="post-more-grid"
+            >{more.map((p) => (
+              <a class="blog-card" href={`/blog/${p.slug}/`} style={revealStyle} data-reveal={reveal}
+                ><div class="blog-img"><img src={p.cover} alt="" loading="lazy"></div
+                ><p class="blog-meta"><span>/{p.category}</span><span>{formatDate(p.date)}</span></p
+                ><h4 class="blog-card-title">{p.title}</h4
+              ></a
+            >))}</div
+        ></section
+        ><div class="m-18j1oea" id="end" data-nav-theme="light" style="background-color:var(--color-black, rgb(0, 0, 0))"></div
+      ></div
+      ><div id="overlay"></div
+      ><div class="m-h650cb"></div
+      ><div class="m-vouzml-container"
+        ><FooterSection linkWithLineSmallLink="/about/#contact"></FooterSection
+      ></div
+    ></div
+    ><div id="template-overlay"></div
+  ></div>
+</BaseLayout>

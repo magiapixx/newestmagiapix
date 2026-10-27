@@ -1,0 +1,30 @@
+---
+// Pageheader - Section (Blog), same look as the Cases header: one markup for every breakpoint (lib/rv)
+import HeadingsVertical from './HeadingsVertical.astro';
+import { rv } from '../lib/rv';
+
+const root = rv({ lg: 'v-rlzhcv', xl: 'v-gzk4hp', t: 'v-10yn8j3', p: 'v-bdsxbs' });
+---
+
+<header class:list={["m-JHNch m-rlzhcv", root]} style="background-color:var(--color-black, rgb(0, 0, 0));height:100%;width:100%"
+  ><div class="m-4vg42g"
+    ><div class="m-1vf98m7-container"
+      ><div style="position:relative;width:100%;height:100%;overflow:hidden;background:#050505"
+        ><canvas style="position:absolute;inset:0;width:100%;height:100%;display:block" data-gl="luma" data-images="/images/83asOi3fwykzrvHg1eZXJiySeHc.jpg,/images/ZQqfSSYOzv1ENV9pRRJHAAy691Y.jpg"></canvas
+      ></div
+    ></div
+  ></div
+  ><div class="m-ktpkvy"
+    ><div class="m-9l4w1o"
+      ><div class="m-1dwph83-container" data-fit-title
+        ><HeadingsVertical variants={{ lg: "Cases - H1", xl: "Cases - H1 Big", t: "Cases - H1", p: "Cases - H2" }} first="Blog"></HeadingsVertical
+      ></div
+    ></div
+    ><div class="m-1cpnmm7 hide-phone"></div
+    ><div class="m-dqakio"
+      ><div class="m-1cuvaoo-container"
+        ><HeadingsVertical variants={{ lg: "Scroll Down - H6", xl: "Scroll Down - H6", t: "Scroll Down - H6", p: "Scroll Down - H6 - Smaller" }}></HeadingsVertical
+      ></div
+    ></div
+  ></div
+></header>

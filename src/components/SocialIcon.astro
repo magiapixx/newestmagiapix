@@ -4,6 +4,7 @@ import BehanceIcon from './BehanceIcon.astro';
 import InstagramIcon from './InstagramIcon.astro';
 import LinkedinIcon from './LinkedinIcon.astro';
 import XIcon from './XIcon.astro';
+import WhatsappIcon from './WhatsappIcon.astro';
 
 interface Props {
   link: string;
@@ -16,10 +17,12 @@ interface Props {
   hasBehanceIcon?: boolean;
   instagramIconStyle?: string;
   hasInstagramIcon?: boolean;
+  whatsappIconStyle?: string;
+  hasWhatsappIcon?: boolean;
 }
 
-const { link, fillStyle, linkedinIconStyle, hasLinkedinIcon, xIconStyle, hasXIcon, behanceIconStyle, hasBehanceIcon, instagramIconStyle, hasInstagramIcon } = Astro.props;
+const { link, fillStyle, linkedinIconStyle, hasLinkedinIcon, xIconStyle, hasXIcon, behanceIconStyle, hasBehanceIcon, instagramIconStyle, hasInstagramIcon, whatsappIconStyle, hasWhatsappIcon } = Astro.props;
 ---
 
 <a class="m-MQsLv m-1in1jcz v-1in1jcz m-94pb3s" href={link} target="_blank" style="height:100%;width:100%"
-  ><div class="m-1ceni24" style={fillStyle}></div>{hasLinkedinIcon && (<Fragment><LinkedinIcon style={linkedinIconStyle}></LinkedinIcon></Fragment>)}{hasXIcon && (<Fragment><XIcon style={xIconStyle}></XIcon></Fragment>)}{hasBehanceIcon && (<Fragment><BehanceIcon style={behanceIconStyle}></BehanceIcon></Fragment>)}{hasInstagramIcon && (<Fragment><InstagramIcon style={instagramIconStyle}></InstagramIcon></Fragment>)}</a>
+  ><div class="m-1ceni24" style={fillStyle}></div>{hasLinkedinIcon && (<Fragment><LinkedinIcon style={linkedinIconStyle}></LinkedinIcon></Fragment>)}{hasXIcon && (<Fragment><XIcon style={xIconStyle}></XIcon></Fragment>)}{hasBehanceIcon && (<Fragment><BehanceIcon style={behanceIconStyle}></BehanceIcon></Fragment>)}{hasInstagramIcon && (<Fragment><InstagramIcon style={instagramIconStyle}></InstagramIcon></Fragment>)}{hasWhatsappIcon && (<Fragment><WhatsappIcon style={whatsappIconStyle}></WhatsappIcon></Fragment>)}</a>

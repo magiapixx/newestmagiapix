@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPageHeader from '../../components/BlogPageHeader.astro';
+import FooterSection from '../../components/FooterSection.astro';
+import Navigation from '../../components/Navigation.astro';
+import PlusMedium from '../../components/PlusMedium.astro';
+import { formatDate, posts } from '../../data/posts';
+import '../../styles/blog.css';
+
+const [featured, ...rest] = posts;
+const categories = [...new Set(posts.map((p) => p.category))];
+const reveal = '{"from":{"opacity":0.3,"y":100},"transition":{"bounce":0,"delay":0,"duration":0.8,"type":"spring"},"threshold":0}';
+const revealStyle = 'will-change:transform;opacity:0.3;transform:translateY(100px)';
+---
+
+<BaseLayout title="Blog — Magiapix" description="Notes on design, 3D and digital strategy from the Magiapix studio.">
+  <div id="main" data-smooth-scroll="12"
+    ><div class="m-VOZrd m-1p7p7oi" style="min-height:100vh;width:auto"
+      ><div class="m-2bT3N m-alehh m-bf5jqr" style="min-height:100vh;width:auto;display:contents"
+        ><div class="m-7rk94s-container" style="transform:translateX(-50%)"
+          ><Navigation></Navigation
+        ></div
+        ><div class="m-z3ycm0-container"
+          ><BlogPageHeader></BlogPageHeader
+        ></div
+        ><section class="blog" id="articles" data-nav-theme="light"
+          ><div class="blog-top"
+            ><h2 class="blog-big" data-scramble="">/Journal</h2
+            ><div class="blog-top-side"
+              ><p class="blog-lead">Notes on design, 3D and digital strategy from the Magiapix studio.</p
+              ><div class="blog-filter" role="group" aria-label="Filter by category"
+                ><button type="button" class="is-active" data-filter="all">All <sup>{posts.length}</sup></button
+                >{categories.map((c) => (<button type="button" data-filter={c}>{c} <sup>{posts.filter((p) => p.category === c).length}</sup></button>))}</div
+            ></div
+          ></div
+          ><a class="blog-hero" href={`/blog/${featured.slug}/`} data-category={featured.category}
+            ><div class="blog-img"><img src={featured.cover} alt="" loading="lazy"></div
+            ><PlusMedium class="blog-plus blog-plus-tl" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+            ><PlusMedium class="blog-plus blog-plus-br" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+            ><div class="blog-hero-text"
+              ><p class="blog-meta"><span>/Latest</span><span>{featured.category}</span><span>{formatDate(featured.date)}</span><span>{featured.readTime} min read</span></p
+              ><h3 class="blog-hero-title">{featured.title}</h3
+              ><span class="blog-more">Read article</span
+            ></div
+          ></a
+          ><div class="blog-grid"
+            >{rest.map((post, i) => (
+              <a class="blog-card" href={`/blog/${post.slug}/`} data-category={post.category} style={revealStyle} data-reveal={reveal}
+                ><div class="blog-img"><img src={post.cover} alt="" loading="lazy"><span class="blog-num">/{String(i + 2).padStart(2, '0')}</span></div
+                ><p class="blog-meta"><span>/{post.category}</span><span>{formatDate(post.date)}</span><span>{post.readTime} min</span></p
+                ><h4 class="blog-card-title"><span>{post.title}</span></h4
+                ><p class="blog-excerpt">{post.excerpt}</p
+              ></a
+            >))}</div
+          ><p class="blog-empty" hidden>No articles in this category yet.</p
+          ><a class="blog-cta" href="/about/#contact"
+            ><span class="blog-meta"><span>/Have a project in mind?</span></span
+            ><span class="blog-cta-title">Let's build it together</span
+            ><span class="blog-more">Start a project</span
+          ></a
+        ></section
+        ><div class="m-18j1oea" id="end" data-nav-theme="light" style="background-color:var(--color-black, rgb(0, 0, 0))"></div
+      ></div
+      ><div id="overlay"></div
+      ><div class="m-h650cb"></div
+      ><div class="m-vouzml-container"
+        ><FooterSection linkWithLineSmallLink="/about/#contact"></FooterSection
+      ></div
+    ></div
+    ><div id="template-overlay"></div
+  ></div>
+</BaseLayout>
+
+<script>
+  // category filter: show only the posts of the chosen category (the latest post too)
+  const root = document.querySelector<HTMLElement>('.blog');
+  if (root) {
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const items = [...root.querySelectorAll<HTMLElement>('[data-category]')];
+    const grid = root.querySelector('.blog-grid');
+    const empty = root.querySelector<HTMLElement>('.blog-empty');
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        for (const b of buttons) b.classList.toggle('is-active', b === button);
+        for (const item of items) item.hidden = filter !== 'all' && item.dataset.category !== filter;
+        grid?.classList.toggle('is-filtered', filter !== 'all');
+        if (empty) empty.hidden = items.some((item) => !item.hidden);
+      });
+    }
+  }
+</script>
