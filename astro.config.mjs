@@ -15,4 +15,10 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  vite: {
+    resolve: {
+      // three's WebGPU build contains its whole core: point the loaders' `three` imports at it so it ships once
+      alias: [{ find: /^three$/, replacement: 'three/webgpu' }],
+    },
+  },
 });

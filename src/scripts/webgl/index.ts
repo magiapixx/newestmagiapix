@@ -11,12 +11,28 @@ import { mountPixelFlip } from './pixel-flip';
 
 type Mount = (el: any) => (() => void) | undefined;
 
+/** An effect loaded on demand: blocks needs three.js, which only the pages that use it should download. */
+const lazy =
+  (load: () => Promise<Mount>): Mount =>
+  (el) => {
+    let dispose: (() => void) | undefined;
+    let stopped = false;
+    load().then((mount) => {
+      if (!stopped) dispose = mount(el);
+    });
+    return () => {
+      stopped = true;
+      dispose?.();
+    };
+  };
+
 const MOUNTS: Record<string, Mount> = {
   'pixel-flip': mountPixelFlip,
   luma: mountLuma,
   'light-beams': mountLightBeams,
   noise: mountNoise,
   distortion: mountDistortion,
+  blocks: lazy(() => import('./blocks').then((m) => m.mountBlocks)),
 };
 
 export function initWebgl() {
