@@ -149,7 +149,9 @@ function snapshot(el: HTMLElement): Snapshot {
  */
 export function transitionState(root: HTMLElement, mutate: () => void, tr: Transition = {}) {
   const els = [root, ...root.querySelectorAll<HTMLElement>('*')].filter((e) => e instanceof HTMLElement);
-  for (const el of els) for (const a of el.getAnimations()) if ((a as any).__state) a.cancel();
+  // only restart this root's own transition: one started by a nested component (e.g. an image
+  // reveal inside a service row that gets hovered) keeps playing instead of jumping to its end
+  for (const el of els) for (const a of el.getAnimations()) if ((a as any).__state === root) a.cancel();
   const before = els.map(snapshot);
   mutate();
   if (reducedMotion()) return;
@@ -177,7 +179,7 @@ export function transitionState(root: HTMLElement, mutate: () => void, tr: Trans
     for (const p of LAYOUT_PROPS) if (a.style[p] !== b.style[p]) ((from[p] = a.style[p]), (to[p] = b.style[p]));
     if (!Object.keys(to).length) return;
     const anim = el.animate([from, to], { ...t, fill: 'none' });
-    (anim as any).__state = true;
+    (anim as any).__state = root;
   });
 }
 
