@@ -1,5 +1,6 @@
-/* type scale: a perfect fourth (x4/3) on an 18px base; every font size in this file is one of these steps */
-:root{--fs--1:13.5px;--fs-0:18px;--fs-1:24px;--fs-2:32px;--fs-3:42.67px;--fs-4:56.89px;--fs-5:75.85px;--fs-6:101.13px;--fs-7:134.84px;--fs-8:179.79px;--fs-9:239.72px}
+/* fluid type scale: each step grows with the viewport from a major third (x1.25) on a 16px base at 390px wide
+   to a perfect fourth (x4/3) on an 18px base at 1440px and up; every font size in this file is one of these steps */
+:root{--fs--1:clamp(12.8px, 12.54px + 0.07vw, 13.5px);--fs-0:clamp(16px, 15.26px + 0.19vw, 18px);--fs-1:clamp(20px, 18.51px + 0.38vw, 24px);--fs-2:clamp(25px, 22.4px + 0.67vw, 32px);--fs-3:clamp(31.25px, 27.01px + 1.09vw, 42.67px);--fs-4:clamp(39.06px, 32.44px + 1.7vw, 56.89px);--fs-5:clamp(48.83px, 38.79px + 2.57vw, 75.85px);--fs-6:clamp(61.04px, 46.14px + 3.82vw, 101.14px);--fs-7:clamp(76.29px, 54.55px + 5.58vw, 134.85px);--fs-8:clamp(95.37px, 64.01px + 8.04vw, 179.8px);--fs-9:clamp(119.21px, 74.44px + 11.48vw, 239.73px)}
 html,body,#main{box-sizing:border-box;margin:0;padding:0}
 :root{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 *{box-sizing:border-box;-webkit-font-smoothing:inherit}
@@ -1341,3 +1342,59 @@ html body { background: rgb(94, 94, 94); }
 
 /* Projects page: the /2012-2026 label (vertical on tablet and desktop, at the bottom on phones) recedes like the Industries title */
 .m-1ccnly2 .m-wn2izs-container,.m-1ccnly2 .m-bhbrs5{opacity:.15}
+
+/* Two-line vertical titles (About / Agency): lay the second line out in flow too, beside the first, both
+   reading bottom to top from the same baseline, instead of the old absolute box that now overlaps */
+.m-v0AUC.m-10z0kec:has(> .m-1bsq9mr){display:flex!important;flex-direction:row;align-items:flex-end}
+.m-v0AUC.m-10z0kec > .m-1bsq9mr{position:relative!important;inset:auto!important;writing-mode:vertical-rl;transform:rotate(180deg)!important;order:1}
+
+/* Hero layout: everything stands on one rail along the bottom edge. The vertical tagline rises from its left
+   end, LONDON, UK sits beside it, START PROJECT and SCROLL DOWN close it on the right, and the two accent plus
+   marks cap the rail's ends (the + ---- + divider used elsewhere on the site). Phone: the tagline fills the
+   screen above, the location and the link share one row on the rail. */
+.m-y5R0E .hero-layout{position:relative;z-index:1;box-sizing:border-box;flex:1 0 0;min-height:0;width:100%;max-width:1920px;padding:20px;display:grid;grid-template-columns:auto 1fr auto auto;grid-template-rows:minmax(0,1fr) auto auto;grid-template-areas:"title . . scroll" "title meta cta scroll" "rail rail rail rail";column-gap:40px}
+.m-y5R0E .hero-title{grid-area:title;min-height:0;padding-top:60px;display:flex;align-items:flex-end}
+.m-y5R0E .hero-title .m-ing148.hero-tagline{height:min(100%, calc((100vw - 40px) / .5135 * .45))}
+.m-y5R0E .hero-meta{grid-area:meta;align-self:end}
+.m-y5R0E .hero-cta{grid-area:cta;align-self:end}
+.m-y5R0E .hero-scroll{grid-area:scroll;align-self:end}
+.m-y5R0E .hero-rail{grid-area:rail;display:flex;align-items:center;gap:10px;margin-top:20px}
+.m-y5R0E .hero-rail-line{flex:1;height:1px;background-color:var(--color-white, rgb(255, 255, 255));opacity:.3}
+.m-y5R0E .hero-plus{flex:none;width:14px;height:14px;position:relative}
+@media(max-width:809.98px){
+  .m-y5R0E .hero-layout{padding:15px;grid-template-columns:1fr 1fr auto;grid-template-areas:"title title scroll" "meta cta cta" "rail rail rail";row-gap:30px;column-gap:15px}
+  .m-y5R0E .hero-title{padding-top:70px}
+  .m-y5R0E .hero-title .m-ing148.hero-tagline{height:min(100%, calc((100vw - 75px) / .5135))}
+  .m-y5R0E .hero-cta{justify-self:end}
+  .m-y5R0E .hero-rail{margin-top:0}
+}
+@media(min-width:810px) and (max-width:1199.98px){.m-y5R0E .hero-layout{column-gap:20px}}
+
+/* CTA above the footer (home): a black band whose giant line, START A PROJECT + LET'S TALK +, runs to the left
+   between two + ---- + rails. The whole band is one link to the contact form; on hover the line turns accent
+   (the script in CtaSection.astro also slows it down). */
+.cta-container{flex:none;width:100%;position:relative}
+.cta{width:100%;display:flex;justify-content:center;overflow:hidden}
+.cta-band{box-sizing:border-box;width:100%;max-width:1920px;padding:160px 20px;display:flex;flex-direction:column;gap:30px;color:var(--color-white, rgb(255, 255, 255));text-decoration:none;font-family:"Zalando Sans Variable","Zalando Sans Variable Placeholder",sans-serif;font-variation-settings:"wdth" 100,"wght" 535;cursor:pointer}
+.cta-meta{display:flex;justify-content:space-between;gap:20px;font-size:var(--fs--1);letter-spacing:.04em;text-transform:uppercase}
+.cta-meta > span:first-child{opacity:.5}
+.cta-meta > span:last-child{flex:none;white-space:nowrap;color:var(--color-accent, rgb(0, 255, 161))}
+.cta-rail{display:flex;align-items:center;gap:8px}
+.cta-plus{flex:none;width:7px;height:7px;position:relative}
+.cta-line{flex:1;height:1px;background-color:var(--color-white, rgb(255, 255, 255));opacity:.2}
+.cta-track{display:block;margin:0 -20px;overflow:hidden}
+.cta-row{display:flex;width:max-content;will-change:transform}
+.cta-set{display:flex;align-items:center;flex:none}
+.cta-word{padding:0 .28em;font-size:min(var(--fs-8), 12vw);line-height:1;letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap;transition:color .4s}
+.cta-sep{flex:none;width:.32em;height:.32em;font-size:min(var(--fs-8), 12vw);position:relative;transition:transform .6s cubic-bezier(.7, 0, .2, 1)}
+.cta-band:hover .cta-word,.cta-band:focus-visible .cta-word{color:var(--color-accent, rgb(0, 255, 161))}
+.cta-band:hover .cta-sep,.cta-band:focus-visible .cta-sep{transform:rotate(90deg)}
+.cta-band:focus-visible{outline:2px solid var(--color-accent, rgb(0, 255, 161));outline-offset:-2px}
+@media(min-width:810px) and (max-width:1199.98px){
+  .cta-band{padding:100px 20px}
+}
+@media(max-width:809.98px){
+  .cta-band{padding:100px 15px;gap:24px}
+  .cta-track{margin:0 -15px}
+  .cta-word,.cta-sep{font-size:calc((100vw - 30px) / 4.2)}
+}
