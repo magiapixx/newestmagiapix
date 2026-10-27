@@ -1338,3 +1338,6 @@ html body { background: rgb(94, 94, 94); }
 .nav-contact:hover,.nav-contact:focus-visible{background-color:var(--color-white, rgb(255, 255, 255))}
 .m-k1f444-container:has(.nav-contact){height:auto!important}
 @media(max-width:1199.98px){.nav-contact{height:44px;font-size:var(--fs--1)}}
+
+/* Projects page: the /2012-2026 label (vertical on tablet and desktop, at the bottom on phones) recedes like the Industries title */
+.m-1ccnly2 .m-wn2izs-container,.m-1ccnly2 .m-bhbrs5{opacity:.15}
