@@ -221,6 +221,8 @@ a:hover .blog-more::after { transform: scaleX(.3); }
   .post-head { padding-top: 200px; }
   .post-title { font-size: min(var(--fs-7), 7.6vw); }
 }
+/* below the Blog page header the menu no longer sits over it, so the usual section padding is enough */
+.m-z3ycm0-container + .post-head { padding-top: var(--blog-pad); }
 
 .post-body { background: var(--color-white, #fff); color: var(--color-black, #000); display: grid; gap: 50px; }
 .post-aside dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid currentColor; padding-top: 20px; }

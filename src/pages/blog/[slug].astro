@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPageHeader from '../../components/BlogPageHeader.astro';
 import FooterSection from '../../components/FooterSection.astro';
 import Navigation from '../../components/Navigation.astro';
 import PlusMedium from '../../components/PlusMedium.astro';
@@ -25,6 +26,9 @@ const revealStyle = 'will-change:transform;opacity:0.3;transform:translateY(100p
       ><div class="m-2bT3N m-alehh m-bf5jqr" style="min-height:100vh;width:auto;display:contents"
         ><div class="m-7rk94s-container" style="transform:translateX(-50%)"
           ><Navigation></Navigation
+        ></div
+        ><div class="m-z3ycm0-container"
+          ><BlogPageHeader></BlogPageHeader
         ></div
         ><header class="post-head" data-nav-theme="light"
           ><a class="post-back" href="/blog/">/Back to blog</a
