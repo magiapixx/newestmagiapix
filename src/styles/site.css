@@ -1296,3 +1296,12 @@ html body { background: rgb(94, 94, 94); }
 /* the video loads with preload="none", so until its poster arrives it would be 150px tall: hold it at
    16:9 from the start (the plus marks above and the desktop scroll motion both measure it) */
 .m-VTBBD .m-4nog24-container{aspect-ratio:16/9}
+/* Industries (about page) vertical heading: the heading variants' fixed box and offsets fit "/Awards" only. Lay
+   the title out vertically in flow so the box takes the size of "/Industries", top-aligned at the right edge */
+.m-S9Yzj .m-v0AUC.m-10z0kec{width:auto!important;height:auto!important}
+.m-S9Yzj .m-v0AUC .m-8vqn4n{position:relative!important;inset:auto!important;writing-mode:vertical-rl;transform:rotate(180deg)!important}
+/* the heading reads as a quiet backdrop to the industry rows */
+.m-S9Yzj .m-11fsg2y-container{opacity:.15}
+/* Industries title on phones: "/Industries" runs about 6.2x its font size, wider than "/Awards" was; shrink it so it
+   fits between the 15px gutters */
+@media (max-width:809.98px){.m-S9Yzj .m-1bwefjk .rt{--m-font-size:min(61px, calc((100vw - 30px) / 6.3))!important}}

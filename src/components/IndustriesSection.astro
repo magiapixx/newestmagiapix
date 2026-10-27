@@ -1,6 +1,6 @@
 ---
-// Awards - Section: one markup for every breakpoint (lib/rv)
-import AwardCard from './AwardCard.astro';
+// Industries - Section (was Awards): one markup for every breakpoint (lib/rv)
+import IndustryCard from './IndustryCard.astro';
 import HeadingsVertical from './HeadingsVertical.astro';
 import PlusSmall from './PlusSmall.astro';
 import { rv } from '../lib/rv';
@@ -12,17 +12,17 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
 <section class:list={["m-S9Yzj m-pQ5hH m-alehh m-zNzez m-g0zw4n", look]} style="width:100%"
   ><div class="m-xpytne"
     ><div class="m-11fsg2y-container hide-phone"
-      ><HeadingsVertical first="/Awards" variants={{ lg: "/Awards - H1 Light Back", xl: "/Awards - H1 Light Back", t: "/Awards - H2 Light Back", p: "/Awards - H2 Light Back" }}></HeadingsVertical
+      ><HeadingsVertical first="/Industries" variants={{ lg: "/Awards - H1 Light Back", xl: "/Awards - H1 Light Back", t: "/Awards - H2 Light Back", p: "/Awards - H2 Light Back" }}></HeadingsVertical
     ></div
     ><div class="m-163t7tm hide-phone"></div
     ><div class="m-bvf4f"
       ><div class="m-pcx3hh" style="--extracted-as4nhg:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));transform:none"
         ><h5 class={`rt ${intro}`} dir="auto"
-          ><span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-black, rgb(0, 0, 0)))">Award-winning digital experiences powered by advanced creative engineering</span
+          ><span class="rt" style="--m-text-color:var(--extracted-as4nhg, var(--color-black, rgb(0, 0, 0)))">Digital experiences built for the industries we know best</span
         ></h5
       ></div
       ><div class="m-1bwefjk hide-tablet hide-lg hide-xl" style="--extracted-a0htzi:var(--color-black, rgb(0, 0, 0));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
-        ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))">/Awards</h3
+        ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-black, rgb(0, 0, 0)))">/Industries</h3
       ></div
       ><div class="m-wa505x"
         ><div class="m-1szn170"
@@ -31,7 +31,7 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
           ><PlusSmall class="m-mn3z02" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
         ></div
         ><div class="m-m2dqmj-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-          ><AwardCard name="Awwwards" client="Loreal" type="Website of the day" year="2026"></AwardCard
+          ><IndustryCard name="Art" client="Galleries & artists" type="Portfolios & exhibitions" year="01"></IndustryCard
         ></div
         ><div class="m-imshwh"
           ><PlusSmall class="m-rsjw50" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
@@ -39,7 +39,7 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
           ><PlusSmall class="m-ye2ote" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
         ></div
         ><div class="m-13w6fer-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-          ><AwardCard name="CSS Awards" client="Nike" type="Website of the month" year="2026"></AwardCard
+          ><IndustryCard name="Legal" client="Law firms & practices" type="Trust-led brand & web" year="02"></IndustryCard
         ></div
         ><div class="m-kx6no0"
           ><PlusSmall class="m-lebito" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
@@ -47,7 +47,7 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
           ><PlusSmall class="m-1w10uxp" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
         ></div
         ><div class="m-1nmrptr-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-          ><AwardCard name="Behance" client="Mont Blanc" type="Featured design of the month" year="2025"></AwardCard
+          ><IndustryCard name="Property" client="Developers & agents" type="Listings & 3D visuals" year="03"></IndustryCard
         ></div
         ><div class="m-1nqeb7u"
           ><PlusSmall class="m-1rnf3sl" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
@@ -55,7 +55,15 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
           ><PlusSmall class="m-1q2qbs" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
         ></div
         ><div class="m-cd5x2l-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-          ><AwardCard name="Dribbble" client="Toyota" type="Best design of the week" year="2025"></AwardCard
+          ><IndustryCard name="Manufacturing" client="Industrial makers" type="Product & B2B platforms" year="04"></IndustryCard
+        ></div
+        ><div class="m-povfv3"
+          ><PlusSmall class="m-lcrax5" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+          ><div class="m-x2wsb7" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0.2"></div
+          ><PlusSmall class="m-1kv5gh1" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
+        ></div
+        ><div class="m-cd5x2l-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
+          ><IndustryCard name="Others" client="Startups, retail & more" type="Tailored to your sector" year="05"></IndustryCard
         ></div
         ><div class="m-povfv3"
           ><PlusSmall class="m-lcrax5" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall

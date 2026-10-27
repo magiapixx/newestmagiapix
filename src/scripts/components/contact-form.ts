@@ -8,7 +8,7 @@
 import { setVariant } from '../lib/motion';
 
 // temporary default: FormSubmit forwards to this address (it asks the inbox to confirm once)
-const ENDPOINT: string = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? 'https://formsubmit.co/ajax/magiapixx@gmail.com';
+const ENDPOINT: string = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? 'https://formsubmit.co/ajax/hello@magiapix.com';
 const LOOKS = { default: 'v-ts31mo', loading: 'v-kqxjfx', success: 'v-12oxvwd', error: 'v-7tr97' };
 const ACCENT = 'var(--color-accent, rgb(0, 255, 161))';
 

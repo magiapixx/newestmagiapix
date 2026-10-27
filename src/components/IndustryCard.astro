@@ -1,5 +1,5 @@
 ---
-// Award - Card: one markup for every breakpoint (lib/rv). Hover (desktop look only) is in scripts/components/award.ts;
+// Industry - Card (was Award - Card): one markup for every breakpoint (lib/rv). Hover (desktop look only) is in scripts/components/award.ts;
 // the tablet/phone text colours that copy set inline are in site.css.
 import AnimationAccent from './AnimationAccent.astro';
 import ExternalLinkIcon from './ExternalLinkIcon.astro';
@@ -14,12 +14,14 @@ interface Props {
   client: string;
   type: string;
   year: string;
+  link?: string;
+  cta?: string;
 }
 
-const { name, client, type, year } = Astro.props;
+const { name, client, type, year, link = "/contact/", cta = "Start a project" } = Astro.props;
 ---
 
-<a class:list={["m-i7kYl m-pQ5hH m-alehh m-lhYZM m-3UBND m-xbhBc m-1ezkko m-4w5ck7", look]} href="https://www.awwwards.com/websites/" target="_blank" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
+<a class:list={["m-i7kYl m-pQ5hH m-alehh m-lhYZM m-3UBND m-xbhBc m-1ezkko m-4w5ck7", look]} href={link} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
   ><div class="m-exb53o"
     ><div class="m-1kk4hg7"
       ><div class="m-8p26xb" style="--m-paragraph-spacing:0px;opacity:1;transform:none"
@@ -48,7 +50,7 @@ const { name, client, type, year } = Astro.props;
   ></div
   ><div class="m-1m661c6 hide-lg hide-xl"
     ><div class="m-1eahvdf" style="--extracted-r6o4lv:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
-      ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">View Award</p
+      ><p class="rt type-54rzwz" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))">{cta}</p
     ></div
     ><LineBold></LineBold
   ></div

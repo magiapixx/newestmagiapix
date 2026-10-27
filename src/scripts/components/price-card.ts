@@ -2,7 +2,7 @@
 import { setVariant, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
 import { accentsIn, playAccent, resetAccent } from './accent';
-import { lookSlots } from '../lib/rv';
+import { hasActiveClass, lookSlots } from '../lib/rv';
 
 // open look <-> closed look, per breakpoint
 const PAIRS = [
@@ -17,7 +17,8 @@ export function initPriceCards() {
   for (const card of document.querySelectorAll<HTMLElement>('.m-GJSAG')) {
     const looks = lookSlots(card, table);
     if (!looks.length) continue;
-    const isOpen = () => card.classList.contains(looks[0].prefix + looks[0].looks.open);
+    // a card can start open on some breakpoints and closed on others: go by the look the current one shows
+    const isOpen = () => PAIRS.some((p) => hasActiveClass(card, p.open));
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => setVariant(card, looks, isOpen() ? 'closed' : 'open', SPRING));
     // hovering a closed card sweeps an accent bar across its header
