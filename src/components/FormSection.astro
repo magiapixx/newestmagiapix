@@ -1,6 +1,7 @@
 ---
 // Form - Section: one markup for every breakpoint (lib/rv)
 import FormButton from './FormButton.astro';
+import HeadingsVertical from './HeadingsVertical.astro';
 import PlusMedium from './PlusMedium.astro';
 import { rv } from '../lib/rv';
 
@@ -10,8 +11,14 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
 
 <section class:list={["m-6P4Yt m-pQ5hH m-alehh m-3UBND m-wnk2ar", look]} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
   ><div class="m-1g5a6kz"
+    ><div class="reach-title hide-phone"
+      ><HeadingsVertical first="/Reach us" variants={{ lg: "/Awards - H1 Light Back", xl: "/Awards - H1 Light Back", t: "/Awards - H2 Light Back", p: "/Awards - H2 Light Back" }}></HeadingsVertical
+    ></div
     ><div class="m-1a8c5bg hide-phone"></div
     ><div class="m-i4yyrr"
+      ><div class="reach-title-phone hide-tablet hide-lg hide-xl"
+        ><h3 class="rt type-wc4xhu" dir="auto" style="--m-text-color:var(--color-black, rgb(0, 0, 0))">/Reach us</h3
+      ></div
       ><div class="m-v6ymhu"
         ><div class="m-u46838"
           ><div class="m-1q2erbf"

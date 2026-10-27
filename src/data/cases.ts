@@ -50,7 +50,7 @@ export const cases: CaseEntry[] = [
       "footerSectionAvaImage": {
         "src": "/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"
       },
-      "footerSectionLinkWithLineSmallLink": "/contact/"
+      "footerSectionLinkWithLineSmallLink": "/about/#contact"
     }
   },
   {
@@ -101,7 +101,7 @@ export const cases: CaseEntry[] = [
       "footerSectionAvaImage": {
         "src": "/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"
       },
-      "footerSectionLinkWithLineSmallLink": "/contact/"
+      "footerSectionLinkWithLineSmallLink": "/about/#contact"
     }
   },
   {
@@ -152,7 +152,7 @@ export const cases: CaseEntry[] = [
       "footerSectionAvaImage": {
         "src": "/images/vYl7EJot0JeKsg3JwZOovIuNwb8.1cn48el.jpg"
       },
-      "footerSectionLinkWithLineSmallLink": "/contact/"
+      "footerSectionLinkWithLineSmallLink": "/about/#contact"
     }
   },
   {
@@ -203,7 +203,7 @@ export const cases: CaseEntry[] = [
       "footerSectionAvaImage": {
         "src": "/images/vYl7EJot0JeKsg3JwZOovIuNwb8.__q31ceee86a7.jpg"
       },
-      "footerSectionLinkWithLineSmallLink": "/contact/#contact"
+      "footerSectionLinkWithLineSmallLink": "/about/#contact"
     }
   },
   {
@@ -250,7 +250,7 @@ export const cases: CaseEntry[] = [
       "footerSectionAvaImage": {
         "src": "/images/vYl7EJot0JeKsg3JwZOovIuNwb8.__q31ceee86a7.jpg"
       },
-      "footerSectionLinkWithLineSmallLink": "/contact/#contact"
+      "footerSectionLinkWithLineSmallLink": "/about/#contact"
     }
   }
 ];

@@ -18,7 +18,7 @@ interface Props {
   cta?: string;
 }
 
-const { name, client, type, year, link = "/contact/", cta = "Start a project" } = Astro.props;
+const { name, client, type, year, link = "/about/#contact", cta = "Start a project" } = Astro.props;
 ---
 
 <a class:list={["m-i7kYl m-pQ5hH m-alehh m-lhYZM m-3UBND m-xbhBc m-1ezkko m-4w5ck7", look]} href={link} style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"

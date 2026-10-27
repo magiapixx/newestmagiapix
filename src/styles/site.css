@@ -1305,3 +1305,13 @@ html body { background: rgb(94, 94, 94); }
 /* Industries title on phones: "/Industries" runs about 6.2x its font size, wider than "/Awards" was; shrink it so it
    fits between the 15px gutters */
 @media (max-width:809.98px){.m-S9Yzj .m-1bwefjk .rt{--m-font-size:min(61px, calc((100vw - 30px) / 6.3))!important}}
+/* vertical section titles in the accent colour: /About (home), /Why Us, /Prices, /FAQ */
+.m-faSoo .m-v0AUC .rt,.m-5AYrz .m-v0AUC .rt,.m-3R9yn .m-v0AUC .rt,.m-ylPhP .m-v0AUC .rt{--m-text-color:var(--color-accent, rgb(0, 255, 161))!important}
+/* Reach us (contact form) title: vertical along the right edge on tablet and desktop, laid out in flow like
+   /Industries so its box fits the text, faint black like that one; a plain heading above the intro on phones */
+.m-6P4Yt .reach-title{z-index:1;position:absolute;top:200px;right:20px;opacity:.15}
+.m-6P4Yt .reach-title .m-v0AUC.m-10z0kec{width:auto!important;height:auto!important}
+.m-6P4Yt .reach-title .m-8vqn4n{position:relative!important;inset:auto!important;writing-mode:vertical-rl;transform:rotate(180deg)!important}
+.m-6P4Yt .reach-title-phone{white-space:pre;width:100%;margin-bottom:40px}
+.m-6P4Yt .reach-title-phone .rt{--m-font-size:min(61px, calc((100vw - 30px) / 5.6))!important}
+@media (min-width:810px) and (max-width:1199.98px){.m-6P4Yt .reach-title{top:100px}}
