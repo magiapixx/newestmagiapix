@@ -4,7 +4,6 @@
  * keeps the page well under the browser's limit on WebGL contexts.
  */
 import { mountDistortion } from './distortion';
-import { mountLightBeams } from './light-beams';
 import { mountLuma } from './luma';
 import { mountNoise } from './noise';
 import { mountPixelFlip } from './pixel-flip';
@@ -14,7 +13,6 @@ type Mount = (el: any) => (() => void) | undefined;
 const MOUNTS: Record<string, Mount> = {
   'pixel-flip': mountPixelFlip,
   luma: mountLuma,
-  'light-beams': mountLightBeams,
   noise: mountNoise,
   distortion: mountDistortion,
 };

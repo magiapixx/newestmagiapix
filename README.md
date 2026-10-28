@@ -67,7 +67,7 @@ Everything that moved in the original site still moves the same way:
 | Link underlines, hover accents, awards, prev/next | `line-link.ts`, `underline-sweep.ts`, `hover-accent.ts`, `award.ts` |
 | Services, price cards, FAQ | `service.ts`, `price-card.ts`, `faq.ts` |
 | Showreel, videos, clients ticker | `showreel.ts`, `video.ts`, `ticker.ts` |
-| Hero image transition, pixel-flip case cards, case hero distortion, footer light beams, film grain | `webgl/luma.ts`, `webgl/pixel-flip.ts`, `webgl/distortion.ts`, `webgl/light-beams.ts`, `webgl/noise.ts` |
+| Hero image transition, pixel-flip case cards, case hero distortion, film grain | `webgl/luma.ts`, `webgl/pixel-flip.ts`, `webgl/distortion.ts`, `webgl/noise.ts` |
 
 Effects are attached to markup through `data-*` attributes (`data-reveal`, `data-gl`, `data-show`, …), so the components stay plain HTML.
 
