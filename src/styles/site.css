@@ -1357,5 +1357,7 @@ html body { background: rgb(94, 94, 94); }
   .cta-word,.cta-sep{font-size:calc((100vw - 30px) / 4.2)}
 }
 
+/* section headings at weight 800: the vertical section titles (not the Scroll Down label, an h6) and their phone-only copies */
+.m-v0AUC :is(h1,h2,h3).rt,.section-heading.rt{--m-font-weight-preview:800;--m-font-variation-axes-preview:"wdth" 100, "wght" 800}
 /* words and marks picked out in the accent colour: key phrases in the about statement and intro */
 .text-accent{color:var(--color-accent, rgb(0, 255, 161))}

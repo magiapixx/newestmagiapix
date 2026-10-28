@@ -76,8 +76,8 @@ a:hover .blog-more::after { transform: scaleX(.3); }
 .blog-top { display: flex; flex-direction: column; gap: 40px; }
 .blog-big {
   margin: 0;
-  font-size: min(var(--fs-9), calc((100vw - 30px) / 4.3));
-  font-variation-settings: "wdth" 100, "wght" 535;
+  font-size: min(var(--fs-9), calc((100vw - 30px) / 4.8));
+  font-variation-settings: "wdth" 100, "wght" 800;
   line-height: .8;
   letter-spacing: -.06em;
   text-transform: uppercase;
