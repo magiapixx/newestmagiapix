@@ -1,13 +1,15 @@
 /**
  * Showreel: the play button opens a full-section video popup (Vimeo);
- * the backdrop or CLOSE dismisses it. On desktop (1200px and up) the two headings follow the scroll: while
+ * the backdrop or CLOSE dismisses it. The two headings follow the scroll: on desktop (1200px and up), while
  * the section scrolls into view "/Show" comes in from the top edge and "Reel"
  * from the bottom edge, reaching their places as the section's middle reaches
  * the middle of the screen. The section then pins in place for two screens of
  * scrolling: the first carries them on out of the section ("/Show" out the
  * bottom, "Reel" out the top), the second grows the video frame until it fills
  * the whole section (at least the full screen), its corners following the four
- * plus marks as they move out to the section's corners.
+ * plus marks as they move out to the section's corners. Tablet and phone run the
+ * same sequence sideways: "/Show" travels left to right (in from the left edge,
+ * out the right) and "Reel" right to left.
  */
 import { reducedMotion, setVariant, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
@@ -23,7 +25,7 @@ const PLAYED: Record<string, string> = {
 };
 const SPRING: Transition = { type: 'spring', duration: 0.5, bounce: 0 };
 const HOVER: Transition = { type: 'spring', duration: 0.4, bounce: 0.2 };
-// the heading motion runs on desktop only; tablet and phone keep the section as designed
+// the headings move vertically on desktop, sideways on tablet and phone
 const desktop = matchMedia('(min-width: 1200px)');
 
 type Rect = { x: number; y: number; w: number; h: number };
@@ -46,10 +48,13 @@ function enterHeadings(section: HTMLElement) {
   // offsets that put a heading just past the top / bottom edge of the area that clips it
   const above = (el: HTMLElement) => -(el.offsetTop + el.offsetHeight);
   const below = (el: HTMLElement) => ((el.offsetParent as HTMLElement | null)?.clientHeight ?? 0) - el.offsetTop;
-  const offsets = () => [
-    [show, above(show), below(show)],
-    [reel, below(reel), above(reel)],
-  ] as const;
+  // and just past its left / right edge (tablet and phone)
+  const leftOf = (el: HTMLElement) => -(el.offsetLeft + el.offsetWidth);
+  const rightOf = (el: HTMLElement) => ((el.offsetParent as HTMLElement | null)?.clientWidth ?? 0) - el.offsetLeft;
+  // [heading, offset it enters from, offset it leaves to]
+  const offsets = () => desktop.matches
+    ? ([[show, above(show), below(show)], [reel, below(reel), above(reel)]] as const)
+    : ([[show, leftOf(show), rightOf(show)], [reel, rightOf(reel), leftOf(reel)]] as const);
   // pin: the wrapper grows by two screens and the section sticks with its middle on the screen's middle
   const track = section.parentElement;
   if (!track) return;
@@ -103,15 +108,14 @@ function enterHeadings(section: HTMLElement) {
 
   const clamp = (n: number) => Math.min(1, Math.max(0, n));
   const update = () => {
-    if (!desktop.matches) return;
     const at = track.getBoundingClientRect().top / zoom;
     // entering: 0 when the section's top reaches the screen's bottom, 1 when it pins
     const q = clamp((distance - at) / (distance - top));
     // leaving: 0 when the section pins, 1 when the headings are gone
     const p = clamp((top - at) / distance);
     for (const [el, start, end] of offsets()) {
-      const [y, opacity] = p > 0 ? [end * p, 1 - p] : [start * (1 - q), q];
-      Object.assign(el.style, { translate: `0 ${y}px`, opacity: String(opacity) });
+      const [d, opacity] = p > 0 ? [end * p, 1 - p] : [start * (1 - q), q];
+      Object.assign(el.style, { translate: desktop.matches ? `0 ${d}px` : `${d}px 0`, opacity: String(opacity) });
     }
     // growing: 0 when the headings are gone, 1 when the frame fills the screen and the section lets go
     const g = clamp((top - at - distance) / distance);
@@ -125,7 +129,7 @@ function enterHeadings(section: HTMLElement) {
     [[dl, dt], [dr, dt], [dl, db], [dr, db]].forEach(([dx, dy], i) => (marks[i]!.style.translate = `${dx}px ${dy}px`));
   };
   const refresh = () => {
-    if (!desktop.matches) return reset();
+    reset();
     layout();
     update();
   };
