@@ -84,7 +84,7 @@ const socials = [
     gap: 14px;
     margin-top: clamp(28px, 2.2vw, 40px);
   }
-  /* buttons match the blog CTA: square, monospace caps, the first solid white and the second outlined */
+  /* square buttons in monospace caps: the first solid accent, the second outlined; both turn white on hover */
   .ft-pill {
     display: inline-flex;
     align-items: center;
@@ -99,9 +99,8 @@ const socials = [
     transition: background-color .25s, color .25s, border-color .25s;
   }
   /* .ft prefix: outranks `.ft a { color: inherit }` */
-  .ft .ft-pill:first-child { background: #fff; border-color: #fff; color: #000; }
+  .ft .ft-pill:first-child { background: var(--color-accent, #9d8cff); border-color: var(--color-accent, #9d8cff); color: #000; }
   .ft .ft-pill:hover, .ft .ft-pill:focus-visible { background: #fff; border-color: #fff; color: #000; }
-  .ft .ft-pill:first-child:hover, .ft .ft-pill:first-child:focus-visible { background: var(--color-accent, #9d8cff); border-color: var(--color-accent, #9d8cff); }
   .ft-pill:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   .ft-pill svg { width: 16px; height: 10px; }
 
@@ -114,6 +113,11 @@ const socials = [
     letter-spacing: -.01em;
   }
   .ft-social a:hover { color: var(--color-accent, #9d8cff); }
+  /* tablet and desktop: start the list where the wordmark's I starts. The I sits ~0.05em in from its box and the
+     wordmark is box width / 6.15em, so that is 0.05 / 6.15 of the width */
+  @media (min-width: 810px) {
+    .ft-social { margin-left: .81%; }
+  }
 
   /* wordmark: ICE 7 is ~2.33em wide at this weight, so box width / 2.36em fills the width with a hair to spare */
   .ft-mark {
