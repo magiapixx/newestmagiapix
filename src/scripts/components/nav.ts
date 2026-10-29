@@ -76,6 +76,18 @@ export function initNav() {
     hoverClass(burger, HOVER);
   }
 
+  // any link in the menu closes it: a link to the page being viewed (or to an anchor on it) would otherwise
+  // leave the menu covering the page, as if the click did nothing
+  for (const { el } of navs) {
+    for (const link of el.querySelectorAll<HTMLAnchorElement>('.m-v1sei0 a[href]')) {
+      link.addEventListener('click', () => {
+        if (!open) return;
+        open = false;
+        render(true);
+      });
+    }
+  }
+
   // menu pictures: the hovered (or focused) link's picture shows, the others hide
   for (const { el } of navs) {
     const pics = [...el.querySelectorAll<HTMLElement>('.nm-pic')];
