@@ -1,6 +1,6 @@
 ---
 // Footer - Section: plain black, no background effects. Headline + two pill buttons and a social column on top,
-// a full-width MAGIAPIX wordmark, then a centred one-line meta bar (copyright, address, email)
+// a full-width MAGIA wordmark, then a centred one-line meta bar (copyright, address, email)
 interface Props {
   linkWithLineSmallLink: string;
 }
@@ -36,7 +36,7 @@ const socials = [
     </ul>
   </div>
 
-  <div class="ft-mark" aria-hidden="true"><span>MAGIAPIX</span></div>
+  <div class="ft-mark" aria-hidden="true"><span>MAGIA</span></div>
 
   <div class="ft-meta">
     <p>© 2026 Magiapix Agency — 18-22 Corsham St, Hoxton, London N1 6DR, UK — <a href="mailto:hello@magiapix.com">hello@magiapix.com</a></p>
@@ -70,10 +70,10 @@ const socials = [
   .ft-head {
     margin: 0;
     font-size: clamp(48px, 6.25vw, 120px);
-    font-weight: 800;
-    font-variation-settings: "wght" 800;
-    line-height: .95;
-    letter-spacing: -.035em;
+    font-weight: 400;
+    font-variation-settings: "wght" 400;
+    line-height: 1;
+    letter-spacing: -.03em;
   }
   .ft-accent { color: var(--color-accent, #9d8cff); }
 
@@ -103,22 +103,21 @@ const socials = [
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: clamp(22px, 1.7vw, 32px);
+    font-size: calc(clamp(22px, 1.7vw, 32px) * .7);
     line-height: 1.15;
     letter-spacing: -.01em;
   }
   .ft-social a:hover { color: var(--color-accent, #9d8cff); }
 
-  /* wordmark: the text is ~4.82em wide, so the font size is the box width over that */
+  /* wordmark: 1.5x the size MAGIAPIX had when it filled the width (box width / 4.82em) */
   .ft-mark {
     margin-top: clamp(0px, 4vw, 80px);
     container-type: inline-size;
     line-height: 0;
-    opacity: .2; /* faded like the vertical section titles (.heading-faded) */
   }
   .ft-mark span {
     display: block;
-    font-size: calc(100cqw / 4.82);
+    font-size: calc(100cqw / 4.82 * 1.5);
     font-weight: 900;
     font-variation-settings: "wght" 900;
     line-height: .78;
@@ -135,12 +134,12 @@ const socials = [
   .ft-meta p { margin: 0; }
   .ft-meta a:hover { color: var(--color-accent, #9d8cff); }
 
-  /* phone: one centred column */
+  /* phone: left-aligned column, pills stacked, socials pushed to the right half; the meta line stays centred */
   @media (max-width: 809.98px) {
-    .ft { text-align: center; }
-    .ft-top { flex-direction: column; align-items: center; }
-    .ft-actions { justify-content: center; }
+    .ft-top { flex-direction: column; align-items: stretch; gap: 50px; }
+    .ft-actions { flex-direction: column; align-items: flex-start; }
     .ft-pill { padding: 16px 20px; font-size: 13px; }
+    .ft-social { align-self: flex-end; width: 42%; }
     .ft-meta { font-size: 12px; }
   }
 </style>

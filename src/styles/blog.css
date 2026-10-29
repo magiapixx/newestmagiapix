@@ -181,7 +181,8 @@ a:hover .blog-more::after { transform: scaleX(.3); }
 /* closing call to action: in the footer's voice (heavy sentence-case headline with an accent full stop, outlined
    pill with an arrow) so it leads into the footer below, at about 60% of the footer headline so the two don't
    compete. Tablet and desktop: headline left, pill at its bottom right; phone: centred, like the footer */
-.blog-cta { display: flex; flex-direction: column; gap: 28px; padding-top: 60px; border-top: 1px solid var(--color-gray-850, #242424); }
+/* no divider; twice the space it had above (60px) and below (the section's bottom padding, added again) */
+.blog-cta { display: flex; flex-direction: column; gap: 28px; padding: 120px 0 var(--blog-pad); }
 .blog-cta-row { display: flex; flex-direction: column; gap: 32px; }
 .blog-cta-title {
   display: block;
