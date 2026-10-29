@@ -3,7 +3,7 @@
 
 .blog, .post-head, .post-body, .post-more {
   --blog-font: "Zalando Sans Variable", "Zalando Sans Variable Placeholder", sans-serif;
-  --blog-accent: var(--color-accent, rgb(0, 255, 161));
+  --blog-accent: var(--color-accent, rgb(157, 140, 255));
   --blog-gutter: 15px;
   --blog-pad: 100px;
   position: relative;

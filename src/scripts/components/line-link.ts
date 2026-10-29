@@ -7,7 +7,7 @@ import { animate, transitionState, type Transition } from '../lib/motion';
 
 const DRAW: Transition = { type: 'tween', duration: 0.55, ease: [0.5, -0.02, 0.72, 0.51] };
 const BUTTON: Transition = { type: 'spring', duration: 0.4, bounce: 0.2 };
-const ACCENT = 'var(--color-accent, rgb(0, 255, 161))';
+const ACCENT = 'var(--color-accent, rgb(157, 140, 255))';
 
 export function initLineLinks() {
   for (const link of document.querySelectorAll<HTMLElement>('.m-4oV3m, .m-bGO9v')) {

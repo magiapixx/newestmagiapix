@@ -17,7 +17,7 @@ const VARIANTS = {
 const trim = (path: string) => path.replace(/\/+$/, "") || "/";
 const here = trim(Astro.url.pathname);
 const active = link === "/" ? here === "/" : here === trim(link) || here.startsWith(trim(link) + "/");
-const color = active ? "var(--color-accent, rgb(0, 255, 161))" : "var(--color-white, rgb(255, 255, 255))";
+const color = active ? "var(--color-accent, rgb(157, 140, 255))" : "var(--color-white, rgb(255, 255, 255))";
 ---
 
 {
@@ -27,7 +27,7 @@ const color = active ? "var(--color-accent, rgb(0, 255, 161))" : "var(--color-wh
         ><div class="m-oa3atu" style={`--extracted-1eung3n:${color};--m-paragraph-spacing:0px;transform:none`}
           ><h4 class="rt type-9iwysc" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">{text}</h4
         ></div
-        ><div class="m-1emisup" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+        ><div class="m-1emisup" style="background-color:var(--color-accent, rgb(157, 140, 255))"></div
       ></a></Fragment
     >
   ) : variant === "Smaller" ? (
@@ -36,7 +36,7 @@ const color = active ? "var(--color-accent, rgb(0, 255, 161))" : "var(--color-wh
         ><div class="m-oa3atu" style={`--extracted-1eung3n:${color};--m-paragraph-spacing:0px;--extracted-1lwpl3i:${color};transform:none`}
           ><h5 class="rt type-1qeok15" dir="auto" style="--m-text-color:var(--extracted-1lwpl3i, var(--color-white, rgb(255, 255, 255)))">{text}</h5
         ></div
-        ><div class="m-1emisup" style="background-color:var(--color-accent, rgb(0, 255, 161))"></div
+        ><div class="m-1emisup" style="background-color:var(--color-accent, rgb(157, 140, 255))"></div
       ></a></Fragment
     >
   ) : null
