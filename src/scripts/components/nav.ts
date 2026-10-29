@@ -1,10 +1,12 @@
 /**
- * Navigation bar: hamburger opens the side menu, and the bar switches to its
+ * Navigation bar: hamburger opens the full-screen menu, and the bar switches to its
  * dark look while a light section sits under it (sections are marked with
- * `data-nav-theme="dark"` / `"light"`).
+ * `data-nav-theme="dark"` / `"light"`). The menu fades in and out with the bar's tween; on opening its links
+ * scramble in, and hovering a link shows its picture.
  */
-import { transitionState, type Transition } from '../lib/motion';
+import { reducedMotion, transitionState, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
+import { scramble } from './scramble';
 
 // Each breakpoint has its own set of looks. The bar carries one per breakpoint as a responsive class
 // (`rv-<bp>-<look>`, lib/rv) or, unprefixed, a single look.
@@ -49,7 +51,12 @@ export function initNav() {
           burger.classList.add(open ? BURGER.close : dark ? BURGER.normalDark : BURGER.normal);
         }
         const menu = el.querySelector<HTMLElement>('.m-v1sei0');
-        if (menu) menu.style.opacity = open ? '1' : '0';
+        if (menu) {
+          menu.style.opacity = open ? '1' : '0';
+          // the closed panel still covers the screen: let clicks and focus through it
+          menu.style.pointerEvents = open ? 'auto' : 'none';
+          menu.inert = !open;
+        }
         for (const label of el.querySelectorAll<HTMLElement>('.m-GMBhV .m-6in8ye')) label.style.setProperty('--prop-dDeNEndC5', dark && !open ? BLACK : WHITE);
       };
       if (animated && el.getClientRects().length) transitionState(el, apply, TWEEN);
@@ -64,8 +71,21 @@ export function initNav() {
     burger.addEventListener('click', () => {
       open = !open;
       render(true);
+      if (open && !reducedMotion()) for (const link of el.querySelectorAll<HTMLElement>('.nm-link')) scramble(link);
     });
     hoverClass(burger, HOVER);
+  }
+
+  // menu pictures: the hovered (or focused) link's picture shows, the others hide
+  for (const { el } of navs) {
+    const pics = [...el.querySelectorAll<HTMLElement>('.nm-pic')];
+    const show = (index?: string) => pics.forEach((p) => p.classList.toggle('is-shown', p.dataset.index === index));
+    for (const link of el.querySelectorAll<HTMLElement>('.nm-link')) {
+      link.addEventListener('mouseenter', () => show(link.dataset.index));
+      link.addEventListener('focus', () => show(link.dataset.index));
+      link.addEventListener('mouseleave', () => show());
+      link.addEventListener('blur', () => show());
+    }
   }
 
   // dark while the top of the viewport is between the first "dark" section and the next "light" one

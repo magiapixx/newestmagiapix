@@ -135,7 +135,7 @@ const sweep = (bars: HTMLElement[]): Plan => (cells, root) => {
   };
 };
 
-function scramble(root: HTMLElement, plan: Plan = stagger) {
+export function scramble(root: HTMLElement, plan: Plan = stagger) {
   const ready = presplit(root);
   const { cells, restore } = ready.length ? { cells: ready, restore: () => {} } : split(root);
   if (!cells.length) return restore();

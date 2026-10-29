@@ -1,10 +1,23 @@
 ---
-// Navigation: one markup for every breakpoint (lib/rv); scripts/components/nav.ts swaps the looks per breakpoint
+// Navigation: one markup for every breakpoint (lib/rv); scripts/components/nav.ts swaps the looks per breakpoint.
+// The menu is a full-screen black panel: big sentence-case links top left (they scramble in when it opens; hovering
+// one dims the others and shows its picture top right on desktop), small info blocks bottom right and the ICE 7
+// mark bottom left. It fades in and out with the bar's own open/close tween.
 import HamburgerIcon from './HamburgerIcon.astro';
-import LinkBig from './LinkBig.astro';
 import { rv } from '../lib/rv';
 
 const look = rv({ lg: 'v-ykxwx9', xl: 'v-ykxwx9', t: 'v-224r0t', p: 'v-1sbst1b' });
+
+const links = [
+  { href: '/', label: 'Home', image: '/images/5gMUXzRRZxsmlENTTK2s3rjnT4w.jpg' },
+  { href: '/cases/', label: 'Projects', image: '/images/PaH9gfXFf1SMEKsGdPR1jFPtkI.jpg' },
+  { href: '/about/', label: 'About', image: '/images/vmz1ajV938137DnPkPij67zvESQ.jpg' },
+  { href: '/blog/', label: 'Blog', image: '/images/RFdcBAQsIqs2cwSENiDPQN8xt8.jpg' },
+];
+// the link for the page being viewed (and Projects on case pages) shows in the accent colour
+const trim = (path: string) => path.replace(/\/+$/, '') || '/';
+const here = trim(Astro.url.pathname);
+const isActive = (href: string) => (href === '/' ? here === '/' : here === trim(href) || here.startsWith(trim(href) + '/'));
 ---
 
 <nav class:list={["m-dG6qZ m-ykxwx9", look]} style="max-width:100%;width:100%"
@@ -13,28 +26,86 @@ const look = rv({ lg: 'v-ykxwx9', xl: 'v-ykxwx9', t: 'v-224r0t', p: 'v-1sbst1b' 
       ><HamburgerIcon></HamburgerIcon
     ></div
   ></div
-  ><div class="m-v1sei0" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0"
-    ><div class="m-k7pk4q"
+  ><div class="m-v1sei0 nm" style="background-color:var(--color-black, rgb(0, 0, 0));opacity:0;pointer-events:none" inert
+    ><ul class="nm-links"
+      >{links.map((l, i) => (
+        <li><a class:list={["nm-link", { "is-active": isActive(l.href) }]} href={l.href} data-index={i} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
+      ))}</ul
+    ><div class="nm-pics" aria-hidden="true"
+      >{links.map((l, i) => <img class="nm-pic" data-index={i} src={l.image} alt="" loading="lazy" decoding="async" />)}</div
+    ><div class="nm-info"
+      ><div class="nm-block"><p class="nm-label">Contact</p><p><a href="mailto:hello@magiapix.com">hello@magiapix.com</a><br />Mon – Fri, 9am – 6pm</p></div
+      ><div class="nm-block"><p class="nm-label">Studio</p><p>18-22 Corsham St, Hoxton<br />London N1 6DR, UK</p></div
+      ><div class="nm-block"><p class="nm-label">New projects</p><p><a href="/about/#contact">Start a project &rarr;</a></p></div
     ></div
-    ><div class="m-1tm8p7r"
-      ><div class="m-bgrjjb-container"
-        ><LinkBig variant="Normal" link="/" text="HOME"></LinkBig
-      ></div
-      ><div class="m-1kiaoi2-container"
-        ><LinkBig variant="Normal" link="/cases/" text="PROJECTS"></LinkBig
-      ></div
-      ><div class="m-xegkc9-container"
-        ><LinkBig variant="Normal" link="/about/" text="ABOUT"></LinkBig
-      ></div
-      ><div class="m-xegkc9-container"
-        ><LinkBig variant="Normal" link="/blog/" text="BLOG"></LinkBig
-      ></div
-    ></div
-    ><div class="m-1jsbkts"></div
-    ><div class="m-k1f444-container"
-      ><a class="nav-contact" href="/about/#contact">Contact us</a
-    ></div
-    ><div class="m-1bwqz64"
-    ></div
+    ><p class="nm-mark" aria-hidden="true">ICE 7</p
+    ><p class="nm-social"><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a></p
   ></div
 ></nav>
+
+<style>
+  /* the panel covers the whole screen; the burger (now a close button) stays on top of it. The bar's wrapper is
+     transformed, so it (not the screen) is the fixed panel's box: size the height explicitly */
+  .m-b3hrfq { position: relative; z-index: 2; }
+  .nm {
+    position: fixed !important;
+    inset: 0 0 auto 0 !important;
+    width: auto !important;
+    height: calc(100dvh / var(--z, 1)) !important;
+    min-height: 0 !important;
+    z-index: 1;
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr auto;
+    gap: 40px;
+    padding: clamp(80px, 9vh, 120px) clamp(15px, 2vw, 40px) clamp(20px, 3vh, 40px);
+    color: var(--color-white, #fff);
+    font-family: "Zalando Sans Variable", "Zalando Sans Variable Placeholder", sans-serif;
+    overflow: hidden;
+  }
+  .nm a { color: inherit; text-decoration: none; }
+
+  .nm-links { grid-column: 1; grid-row: 1; align-self: start; list-style: none; margin: 0; padding: 0; }
+  .nm-link {
+    display: inline-block;
+    font-size: clamp(56px, 7vw, 132px);
+    font-variation-settings: "wdth" 100, "wght" 400;
+    line-height: .98;
+    letter-spacing: -.03em;
+    transition: opacity .35s, color .35s;
+  }
+  .nm .nm-link.is-active { color: var(--color-accent, #9d8cff); }
+  /* hovering a link dims the others */
+  .nm-links:hover .nm-link:not(:hover) { opacity: .3; }
+
+  .nm-pics { grid-column: 2; grid-row: 1; align-self: start; position: relative; width: clamp(160px, 15vw, 280px); aspect-ratio: 4 / 5; }
+  .nm-pic { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s; }
+  .nm-pic.is-shown { opacity: 1; }
+
+  .nm-info { grid-column: 2; grid-row: 2; display: flex; flex-direction: column; gap: 26px; width: clamp(160px, 15vw, 280px); }
+  .nm-block p { margin: 0; font-size: 13px; line-height: 1.45; letter-spacing: .04em; text-transform: uppercase; }
+  .nm-block .nm-label { margin-bottom: 8px; opacity: .45; }
+  .nm .nm-info a:hover, .nm .nm-social a:hover { color: var(--color-accent, #9d8cff); }
+
+  .nm-mark {
+    grid-column: 1; grid-row: 2; align-self: end; margin: 0;
+    font-size: clamp(28px, 2.6vw, 48px);
+    font-variation-settings: "wdth" 100, "wght" 900;
+    line-height: .8; letter-spacing: -.045em;
+    color: var(--color-accent, #9d8cff);
+  }
+  .nm-social { position: absolute; right: clamp(15px, 2vw, 40px); bottom: clamp(20px, 3vh, 40px); margin: 0; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+
+  /* tablet and desktop: the info column sits right with the social links under the mark's line */
+  @media (min-width: 810px) {
+    .nm-info { padding-bottom: 34px; }
+  }
+  /* phone: links on top, then the info blocks, the social links and the mark, no pictures */
+  @media (max-width: 809.98px) {
+    .nm { grid-template-columns: 1fr; grid-template-rows: 1fr auto auto auto; gap: 24px; }
+    .nm-pics { display: none; }
+    .nm-info { grid-column: 1; grid-row: 2; width: auto; gap: 20px; }
+    .nm-social { position: static; grid-column: 1; grid-row: 3; }
+    .nm-mark { grid-column: 1; grid-row: 4; }
+  }
+</style>
