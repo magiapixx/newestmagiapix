@@ -59,8 +59,10 @@ const socials = [
   }
   .ft a { color: inherit; text-decoration: none; }
 
+  /* tablet and desktop: socials on the left, headline and pills on the right (phone keeps headline first) */
   .ft-top {
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
@@ -100,7 +102,7 @@ const socials = [
   .ft-social {
     list-style: none;
     margin: 0;
-    padding: 0 clamp(0px, 12vw, 240px) 0 0;
+    padding: 0;
     font-size: clamp(22px, 1.7vw, 32px);
     line-height: 1.15;
     letter-spacing: -.01em;
@@ -133,17 +135,11 @@ const socials = [
   .ft-meta p { margin: 0; }
   .ft-meta a:hover { color: var(--color-accent, #9d8cff); }
 
-  /* tablet: socials right-aligned at the right edge */
-  @media (min-width: 810px) and (max-width: 1199.98px) {
-    .ft-social { padding: 0; text-align: right; }
-  }
-
   /* phone: one centred column */
   @media (max-width: 809.98px) {
     .ft { text-align: center; }
     .ft-top { flex-direction: column; align-items: center; }
     .ft-actions { justify-content: center; }
-    .ft-social { padding: 0; }
     .ft-pill { padding: 16px 20px; font-size: 13px; }
     .ft-meta { font-size: 12px; }
   }
