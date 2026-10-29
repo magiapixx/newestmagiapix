@@ -1,6 +1,6 @@
 ---
 // Footer - Section: plain black, no background effects. Headline + two pill buttons and a social column on top,
-// a full-width MAGIA wordmark, then a centred one-line meta bar (copyright, address, email)
+// a big ice7 wordmark, then a centred one-line meta bar (copyright, address, email)
 interface Props {
   linkWithLineSmallLink: string;
 }
@@ -36,7 +36,7 @@ const socials = [
     </ul>
   </div>
 
-  <div class="ft-mark" aria-hidden="true"><span>MAGIA</span></div>
+  <div class="ft-mark" aria-hidden="true"><span>ICE 7<span class="ft-mark-tail"> STUDIO</span></span></div>
 
   <div class="ft-meta">
     <p>© 2026 Magiapix Agency — 18-22 Corsham St, Hoxton, London N1 6DR, UK — <a href="mailto:hello@magiapix.com">hello@magiapix.com</a></p>
@@ -109,20 +109,27 @@ const socials = [
   }
   .ft-social a:hover { color: var(--color-accent, #9d8cff); }
 
-  /* wordmark: 1.5x the size MAGIAPIX had when it filled the width (box width / 4.82em) */
+  /* wordmark: ICE 7 is ~2.33em wide at this weight, so box width / 2.36em fills the width with a hair to spare */
   .ft-mark {
     margin-top: clamp(0px, 4vw, 80px);
     container-type: inline-size;
     line-height: 0;
   }
-  .ft-mark span {
+  .ft-mark > span {
     display: block;
-    font-size: calc(100cqw / 4.82 * 1.5);
+    font-size: calc(100cqw / 2.36);
     font-weight: 900;
     font-variation-settings: "wght" 900;
     line-height: .78;
     letter-spacing: -.045em;
     white-space: nowrap;
+  }
+  /* tablet and desktop add the studio name, in the same heavy weight, and the whole line is sized down to fill
+     the width (ICE 7 STUDIO is ~6.09em wide) */
+  .ft-mark-tail { display: none; }
+  @media (min-width: 810px) {
+    .ft-mark-tail { display: inline; }
+    .ft-mark > span { font-size: calc(100cqw / 6.15); }
   }
 
   .ft-meta {
@@ -134,12 +141,13 @@ const socials = [
   .ft-meta p { margin: 0; }
   .ft-meta a:hover { color: var(--color-accent, #9d8cff); }
 
-  /* phone: left-aligned column, pills stacked, socials pushed to the right half; the meta line stays centred */
+  /* phone: left-aligned column, pills stacked, socials centred over the 7 of ICE 7 (its middle sits at ~86.2% of
+     the width at every phone size, since the wordmark scales with it); the meta line stays centred */
   @media (max-width: 809.98px) {
     .ft-top { flex-direction: column; align-items: stretch; gap: 50px; }
     .ft-actions { flex-direction: column; align-items: flex-start; }
     .ft-pill { padding: 16px 20px; font-size: 13px; }
-    .ft-social { align-self: flex-end; width: 42%; }
+    .ft-social { align-self: flex-start; width: max-content; margin-left: 86.2%; transform: translateX(-50%); }
     .ft-meta { font-size: 12px; }
   }
 </style>
