@@ -37,6 +37,24 @@ const ogImage = Astro.site ? new URL('/meta/og-image.jpg', Astro.site).href : '/
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="robots" content="max-image-preview:large" />
+    <script is:inline>
+      // Desktop sizes are fixed px that look right from about 1707x811 up (a 1920x1080 screen at 100%
+      // shows ~1920x950). On smaller desktop screens, e.g. a 15" laptop at 125% scaling (1536x730),
+      // scale the whole page down like browser zoom would: html { zoom: --z }. Full-screen lengths
+      // (vh, 100vw) divide by --z so they still fill the screen; scripts/lib/zoom.ts covers the JS side.
+      (function () {
+        var root = document.documentElement;
+        function fit() {
+          var w = innerWidth, h = innerHeight;
+          var z = w < 1200 ? 1 : Math.min(1, Math.max(0.75, Math.min(w / 1707, h / 811)));
+          z = Math.round(z * 100) / 100;
+          root.style.setProperty('--z', String(z));
+          root.style.zoom = z === 1 ? '' : String(z);
+        }
+        fit();
+        addEventListener('resize', fit);
+      })();
+    </script>
   </head>
   <body>
     <PageIntro />

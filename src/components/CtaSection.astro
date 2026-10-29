@@ -20,6 +20,8 @@ const words = ['Start a project', "Let's talk"];
 ></section>
 
 <script>
+  import { pageZoom } from '../scripts/lib/zoom';
+
   // Loop the row: copy its words until two widths are filled, then slide one set's width at a steady speed.
   // Hovering eases the speed down; offscreen or with reduced motion it stands still.
   const SPEED = 90; // px per second
@@ -39,7 +41,8 @@ const words = ['Start a project', "Let's talk"];
 
     const measure = () => {
       row.querySelectorAll('[data-clone]').forEach((c) => c.remove());
-      loop = sets.reduce((w, s) => w + s.getBoundingClientRect().width, 0);
+      // rects are screen px; the translate below is CSS px
+      loop = sets.reduce((w, s) => w + s.getBoundingClientRect().width, 0) / pageZoom();
       if (!loop) return;
       const copies = Math.ceil((track.clientWidth * 2) / loop);
       for (let c = 0; c < copies; c++) {

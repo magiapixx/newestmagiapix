@@ -5,6 +5,8 @@
  * Host: <… data-ticker="<px per second>"> with the items in a direct child <ul>; an optional
  * data-ticker-phone sets the speed below 810px (where the row may turn into a column).
  */
+import { pageZoom } from '../lib/zoom';
+
 const phone = matchMedia('(max-width: 809.98px)');
 
 export function initTickers() {
@@ -29,7 +31,8 @@ export function initTickers() {
       const gap = parseFloat(vertical ? style.rowGap : style.columnGap) || 0;
       const first = items[0].getBoundingClientRect();
       const lastItem = items[items.length - 1].getBoundingClientRect();
-      loopLength = (vertical ? lastItem.bottom - first.top : lastItem.right - first.left) + gap;
+      // rects are screen px; the transform below is CSS px
+      loopLength = (vertical ? lastItem.bottom - first.top : lastItem.right - first.left) / pageZoom() + gap;
       // enough copies to keep the row full while one copy scrolls out
       const size = vertical ? host.clientHeight : host.clientWidth;
       const copies = Math.max(1, Math.ceil(size / loopLength));
@@ -76,7 +79,7 @@ export function initTickers() {
     // drag to scrub
     let start = 0;
     let startOffset = 0;
-    const pos = (e: PointerEvent) => (vertical ? e.clientY : e.clientX);
+    const pos = (e: PointerEvent) => (vertical ? e.clientY : e.clientX) / pageZoom();
     host.addEventListener('pointerdown', (e) => {
       dragging = true;
       start = pos(e);

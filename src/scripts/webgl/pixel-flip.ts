@@ -198,8 +198,10 @@ export function mountPixelFlip(canvas: HTMLCanvasElement) {
   };
 
   const onMove = (e: PointerEvent) => {
-    pointer.x = e.offsetX - width * 0.5;
-    pointer.y = height * 0.5 - e.offsetY;
+    // width/height come from the canvas rect (screen px), so take the pointer in screen px too
+    const r = canvas.getBoundingClientRect();
+    pointer.x = e.clientX - r.left - width * 0.5;
+    pointer.y = height * 0.5 - (e.clientY - r.top);
     if (pushTrail(pointer.x, pointer.y)) start();
   };
 

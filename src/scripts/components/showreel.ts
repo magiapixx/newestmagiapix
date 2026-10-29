@@ -12,6 +12,7 @@
 import { reducedMotion, setVariant, type Transition } from '../lib/motion';
 import { hoverClass } from '../lib/hover';
 import { lookSlots } from '../lib/rv';
+import { pageZoom } from '../lib/zoom';
 
 // closed look -> playing look, per breakpoint
 const PLAYED: Record<string, string> = {
@@ -66,10 +67,13 @@ function enterHeadings(section: HTMLElement) {
     media.style.removeProperty('height');
     for (const m of marks) m!.style.removeProperty('translate');
   };
+  // everything below is in CSS px: screen px (rects, innerHeight) are divided by the page zoom
+  let zoom = 1;
   const layout = () => {
     resetFrame();
-    distance = window.innerHeight;
-    top = (window.innerHeight - section.offsetHeight) / 2;
+    zoom = pageZoom();
+    distance = window.innerHeight / zoom;
+    top = (distance - section.offsetHeight) / 2;
     // min-height: site.css forces this wrapper's height to auto
     track.style.minHeight = `${section.offsetHeight + distance * 2}px`;
     Object.assign(section.style, { position: 'sticky', top: `${top}px` });
@@ -77,10 +81,10 @@ function enterHeadings(section: HTMLElement) {
     const s = section.getBoundingClientRect();
     const c = column.getBoundingClientRect();
     const f = frame.getBoundingClientRect();
-    from = { x: f.left - c.left, y: f.top - c.top, w: f.width, h: f.height };
+    from = { x: (f.left - c.left) / zoom, y: (f.top - c.top) / zoom, w: f.width / zoom, h: f.height / zoom };
     // the frame grows to the section's own box rather than the screen: the section can be a little
     // taller than the screen, and a screen-sized frame would leave a strip of it showing once it lets go
-    to = { x: s.left - c.left, y: s.top - c.top, w: s.width, h: s.height };
+    to = { x: (s.left - c.left) / zoom, y: (s.top - c.top) / zoom, w: s.width / zoom, h: s.height / zoom };
     // take the frame out of the flow (the column keeps its height) so it can grow past the column;
     // the section itself still clips at its edges
     Object.assign(column.style, { height: getComputedStyle(column).height, overflow: 'visible' });
@@ -100,9 +104,9 @@ function enterHeadings(section: HTMLElement) {
   const clamp = (n: number) => Math.min(1, Math.max(0, n));
   const update = () => {
     if (!desktop.matches) return;
-    const at = track.getBoundingClientRect().top;
+    const at = track.getBoundingClientRect().top / zoom;
     // entering: 0 when the section's top reaches the screen's bottom, 1 when it pins
-    const q = clamp((window.innerHeight - at) / (window.innerHeight - top));
+    const q = clamp((distance - at) / (distance - top));
     // leaving: 0 when the section pins, 1 when the headings are gone
     const p = clamp((top - at) / distance);
     for (const [el, start, end] of offsets()) {
