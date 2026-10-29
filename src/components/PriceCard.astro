@@ -2,8 +2,6 @@
 // Price - Card: the two price cards, each one markup for every breakpoint (lib/rv).
 // scripts/components/price-card.ts toggles each card's look between open and closed per breakpoint.
 import AnimationAccent from './AnimationAccent.astro';
-import MinusBig from './MinusBig.astro';
-import PlusBig from './PlusBig.astro';
 import PriceVariation from './PriceVariation.astro';
 import { rv } from '../lib/rv';
 
@@ -23,8 +21,6 @@ const titleType = rv({ lg: 'type-9iwysc', xl: 'type-9iwysc', t: 'type-1qeok15', 
     <Fragment
       ><div class:list={["m-GJSAG m-OjHb3 m-5BKxZ m-dS8v4 m-xbhBc m-lhYZM m-3kxegu", openLook]} tabindex="0" style="width:100%"
         ><div class="m-9hlph9"
-          ><PlusBig class="m-1eskb38" dataShow="closed" style="--mucckr: var(--color-accent, rgb(157, 140, 255))"></PlusBig
-          ><MinusBig class="m-1eskb38" dataShow="open" style="--mucckr:var(--color-accent, rgb(157, 140, 255))"></MinusBig
           ><div class="m-1lox1kn" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255));--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));transform:none"
             ><h4 class={`rt ${titleType}`} dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">Partnership</h4
           ></div
@@ -100,8 +96,6 @@ const titleType = rv({ lg: 'type-9iwysc', xl: 'type-9iwysc', t: 'type-1qeok15', 
     <Fragment
       ><div class:list={["m-GJSAG m-OjHb3 m-5BKxZ m-dS8v4 m-xbhBc m-lhYZM m-3kxegu", perProjectLook]} tabindex="0" style="width:100%"
         ><div class="m-9hlph9"
-          ><MinusBig class="m-1eskb38" dataShow="open" style="--mucckr: var(--color-accent, rgb(157, 140, 255))"></MinusBig
-          ><PlusBig class="m-1eskb38" dataShow="closed" style="--mucckr:var(--color-accent, rgb(157, 140, 255))"></PlusBig
           ><div class="m-1lox1kn" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-1lwpl3i:var(--color-white, rgb(255, 255, 255));--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));transform:none"
             ><h4 class={`rt ${titleType}`} dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">Per Project</h4
           ></div

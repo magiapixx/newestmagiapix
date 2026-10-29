@@ -59,12 +59,13 @@ const socials = [
   }
   .ft a { color: inherit; text-decoration: none; }
 
-  /* tablet and desktop: socials on the left, headline and pills on the right (phone keeps headline first) */
+  /* tablet and desktop: socials on the left, headline and pills on the right, the socials' last line level with
+     the bottom of the buttons (phone keeps headline first) */
   .ft-top {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 40px;
   }
   .ft-head {
