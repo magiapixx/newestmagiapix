@@ -1,4 +1,4 @@
-/* Blog (/blog/ and /blog/<slug>/): black and white sections, accent green, uppercase type on the site's
+/* Blog (/blog/ and /blog/<slug>/): black and white sections, accent purple, uppercase type on the site's
    perfect fourth scale (--fs-* in site.css). Phone < 810px, tablet 810-1199.98px, desktop >= 1200px. */
 
 .blog, .post-head, .post-body, .post-more {
@@ -178,20 +178,49 @@ a:hover .blog-more::after { transform: scaleX(.3); }
 .blog [hidden] { display: none !important; }
 .blog-empty { margin: 0; opacity: .6; text-transform: uppercase; }
 
-/* closing call to action */
-.blog-cta { display: flex; flex-direction: column; gap: 20px; padding-top: 60px; border-top: 1px solid rgba(255, 255, 255, .3); }
+/* closing call to action: in the footer's voice (heavy sentence-case headline with an accent full stop, outlined
+   pill with an arrow) so it leads into the footer below, at about 60% of the footer headline so the two don't
+   compete. Tablet and desktop: headline left, pill at its bottom right; phone: centred, like the footer */
+.blog-cta { display: flex; flex-direction: column; gap: 28px; padding-top: 60px; border-top: 1px solid var(--color-gray-850, #242424); }
+.blog-cta-row { display: flex; flex-direction: column; gap: 32px; }
 .blog-cta-title {
-  font-size: min(var(--fs-7), calc((calc(100vw / var(--z, 1)) - 30px) / 6));
-  font-variation-settings: "wdth" 100, "wght" 535;
-  line-height: .9;
-  letter-spacing: -.05em;
-  text-transform: uppercase;
-  max-width: 10em;
-  transition: color .4s;
+  display: block;
+  font-size: min(clamp(40px, 3.75vw, 72px), calc((calc(100vw / var(--z, 1)) - 30px) / 7.4));
+  font-weight: 800;
+  font-variation-settings: "wdth" 100, "wght" 800;
+  line-height: .95;
+  letter-spacing: -.035em;
 }
-.blog-cta:hover .blog-cta-title { color: var(--blog-accent); }
+.blog-cta-dot { color: var(--blog-accent); }
+.blog-cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  align-self: flex-start;
+  padding: 20px 26px;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 999px;
+  font-size: 15px;
+  font-variation-settings: "wdth" 100, "wght" 500;
+  line-height: 1;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: border-color .2s, color .2s;
+}
+.blog-cta-pill svg { width: 20px; height: 12px; transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+.blog-cta:hover .blog-cta-pill, .blog-cta:focus-visible .blog-cta-pill { border-color: var(--blog-accent); color: var(--blog-accent); }
+.blog-cta:hover .blog-cta-pill svg, .blog-cta:focus-visible .blog-cta-pill svg { transform: translateX(4px); }
+.blog-cta:focus-visible { outline: 2px solid var(--blog-accent); outline-offset: 8px; }
 @media (min-width: 810px) {
-  .blog-cta-title { font-size: min(var(--fs-7), 9vw); }
+  .blog-cta-row { flex-direction: row; justify-content: space-between; align-items: flex-end; }
+  .blog-cta-pill { align-self: auto; flex: none; }
+}
+@media (max-width: 809.98px) {
+  .blog-cta { align-items: center; text-align: center; }
+  .blog-cta .blog-meta { justify-content: center; }
+  .blog-cta-row { align-items: center; }
+  .blog-cta-pill { align-self: center; padding: 16px 20px; font-size: 13px; }
 }
 
 /* ---------- article page ---------- */
