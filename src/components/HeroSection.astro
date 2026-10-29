@@ -2,7 +2,6 @@
 // Hero - Section: one markup for every breakpoint (lib/rv)
 import HeadingsVertical from './HeadingsVertical.astro';
 import LinkWithLine from './LinkWithLine.astro';
-import PlusMedium from './PlusMedium.astro';
 import { rv } from '../lib/rv';
 
 const look = rv({ lg: 'v-4wrg1e', xl: 'v-n3a0um', t: 'v-1c80epy', p: 'v-1m0gzn2' });
@@ -26,12 +25,7 @@ const look = rv({ lg: 'v-4wrg1e', xl: 'v-n3a0um', t: 'v-1c80epy', p: 'v-1m0gzn2'
       ></div
     ></div
     ><div class="hero-scroll"
-      ><HeadingsVertical variants={{ lg: "Scroll Down - H6", xl: "Scroll Down - H6", t: "Scroll Down - H6 - Smaller", p: "Scroll Down - H6 - Smaller" }}></HeadingsVertical
-    ></div
-    ><div class="hero-rail"
-      ><PlusMedium class="hero-plus" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-      ><span class="hero-rail-line"></span
-      ><PlusMedium class="hero-plus" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
+      ><HeadingsVertical variants={{ lg: "Scroll Down - H6", xl: "Scroll Down - H6", t: "Scroll Down - H6 - Smaller", p: "Scroll Down - H6 - Smaller" }} extraClass="heading-faded"></HeadingsVertical
     ></div
   ></div
 ></header>

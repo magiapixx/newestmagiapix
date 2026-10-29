@@ -21,7 +21,7 @@ const reveal = JSON.stringify({ from: { opacity: 0.3, y: 100 }, transition: { bo
 <section class:list={["m-5AYrz m-5BKxZ m-dS8v4 m-OjHb3 m-lhYZM m-r3folb", look]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
   ><div class="m-19sddme"
     ><div class="m-7fgkm7-container hide-phone"
-      ><HeadingsVertical first="/Why Us" variants={{ lg: "/Prices - H1", xl: "/Prices - H1", t: "/Prices - H2", p: "/Prices - H1" }}></HeadingsVertical
+      ><HeadingsVertical first="/Why Us" variants={{ lg: "/Prices - H1", xl: "/Prices - H1", t: "/Prices - H2", p: "/Prices - H1" }} extraClass="heading-faded"></HeadingsVertical
     ></div
     ><div class="m-199ljbk hide-phone"></div
     ><div class="m-1ljqxg9"
@@ -35,10 +35,6 @@ const reveal = JSON.stringify({ from: { opacity: 0.3, y: 100 }, transition: { bo
       >{cards.map((card, i) => (
         <div class:list={["wy-row", i % 2 ? "wy-right" : "wy-left"]} style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal={reveal}>
           <article class="wy-card">
-            <span class="m-Lul3q wy-plus wy-tl"></span>
-            <span class="m-Lul3q wy-plus wy-tr"></span>
-            <span class="m-Lul3q wy-plus wy-bl"></span>
-            <span class="m-Lul3q wy-plus wy-br"></span>
             <header class="wy-meta">
               <span class="wy-idx">{String(i + 1).padStart(2, '0')}<span class="wy-dim">/{total}</span></span>
               <span class="wy-rule"></span>
@@ -81,21 +77,6 @@ const reveal = JSON.stringify({ from: { opacity: 0.3, y: 100 }, transition: { bo
     border-color: rgba(0, 255, 161, 0.35);
     background: var(--color-gray-900, #171717);
   }
-
-  /* accent plus marks on every corner, same glyph as the rest of the site */
-  .wy-plus {
-    position: absolute;
-    width: 9px;
-    height: 9px;
-    z-index: 1;
-    background-color: var(--color-accent, #00ffa1);
-    transition: transform 0.4s ease;
-  }
-  .wy-tl { top: -5px; left: -5px; }
-  .wy-tr { top: -5px; right: -5px; }
-  .wy-bl { bottom: -5px; left: -5px; }
-  .wy-br { bottom: -5px; right: -5px; }
-  .wy-card:hover .wy-plus { transform: rotate(90deg); }
 
   .wy-meta {
     display: flex;

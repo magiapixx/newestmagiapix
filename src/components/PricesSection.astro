@@ -1,7 +1,6 @@
 ---
 // Prices - Section: one markup for every breakpoint (lib/rv)
 import HeadingsVertical from './HeadingsVertical.astro';
-import PlusSmall from './PlusSmall.astro';
 import PriceCard from './PriceCard.astro';
 import { rv } from '../lib/rv';
 
@@ -11,7 +10,7 @@ const look = rv({ lg: 'v-7nmgl9', xl: 'v-yof8x4', t: 'v-8657lb', p: 'v-19wxf9a' 
 <section class:list={["m-3R9yn m-kXq9A m-7nmgl9", look]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
   ><div class="m-1lur3i6"
     ><div class="m-mpy07n-container hide-phone"
-      ><HeadingsVertical first="/Prices" variants={{ lg: "/Prices - H2", xl: "/Prices - H1", t: "/Prices - H2", p: "/Prices - H2" }}></HeadingsVertical
+      ><HeadingsVertical first="/Prices" variants={{ lg: "/Prices - H2", xl: "/Prices - H1", t: "/Prices - H2", p: "/Prices - H2" }} extraClass="heading-faded"></HeadingsVertical
     ></div
     ><div class="m-a4iadk hide-phone"></div
     ><div class="m-1rwo6qr"
@@ -20,9 +19,6 @@ const look = rv({ lg: 'v-7nmgl9', xl: 'v-yof8x4', t: 'v-8657lb', p: 'v-19wxf9a' 
       ></div
       ><div class="m-2fldc8-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
         ><div class="m-7ygz5 m-xm2wi3 v-xm2wi3" style="height:100%;width:100%"
-          ><PlusSmall class="m-sehlle" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><div class="m-ktclx4" style="background-color:var(--color-white, rgb(255, 255, 255));opacity:0.2"></div
-          ><PlusSmall class="m-1qktt0u" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
         ></div
       ></div
       ><div class="m-jaxlce-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"

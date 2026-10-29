@@ -3,7 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPageHeader from '../../components/BlogPageHeader.astro';
 import FooterSection from '../../components/FooterSection.astro';
 import Navigation from '../../components/Navigation.astro';
-import PlusMedium from '../../components/PlusMedium.astro';
 import { formatDate, posts } from '../../data/posts';
 import '../../styles/blog.css';
 
@@ -35,8 +34,6 @@ const revealStyle = 'will-change:transform;opacity:0.3;transform:translateY(100p
           ></div
           ><a class="blog-hero" href={`/blog/${featured.slug}/`} data-category={featured.category}
             ><div class="blog-img"><img src={featured.cover} alt="" loading="lazy"></div
-            ><PlusMedium class="blog-plus blog-plus-tl" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-            ><PlusMedium class="blog-plus blog-plus-br" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
             ><div class="blog-hero-text"
               ><p class="blog-meta"><span>/Latest</span><span>{featured.category}</span><span>{formatDate(featured.date)}</span><span>{featured.readTime} min read</span></p
               ><h3 class="blog-hero-title">{featured.title}</h3

@@ -3,7 +3,6 @@
 // of the blurb (the scramble splits it into letters while it plays); the wide weight and per-breakpoint inline
 // values are in site.css.
 import HeadingsVertical from './HeadingsVertical.astro';
-import PlusMedium from './PlusMedium.astro';
 import TextBackAnimation from './TextBackAnimation.astro';
 import { rv } from '../lib/rv';
 
@@ -37,15 +36,14 @@ const since = rv({ lg: 'type-1xxob9n', xl: 'type-1xxob9n', t: 'type-1xxob9n', p:
               ></div
             ></div
           ></div
-          ><PlusMedium class="m-1ojg2y" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
         ></div
       ></div
     ></div
     ><div class="m-1b9qf9k-container"
-      ><HeadingsVertical variants={{ lg: "/About - H1", xl: "/About - H1", t: "/About - H2", p: "/About - H3" }} first="/About"></HeadingsVertical
+      ><HeadingsVertical variants={{ lg: "/About - H1", xl: "/About - H1", t: "/About - H2", p: "/About - H3" }} first="/About" extraClass="heading-faded"></HeadingsVertical
     ></div
     ><div class="m-egigc9" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));transform:none"
-      ><h6 class={`rt ${since}`} dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">© Since 2016</h6
+      ><h6 class={`rt ${since}`} dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)));opacity:.2">© Since 2016</h6
     ></div
   ></div
 ></section>

@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FooterSection from '../../components/FooterSection.astro';
 import Navigation from '../../components/Navigation.astro';
-import PlusMedium from '../../components/PlusMedium.astro';
 import { formatDate, posts, type Post } from '../../data/posts';
 import '../../styles/blog.css';
 
@@ -32,7 +31,6 @@ const revealStyle = 'will-change:transform;opacity:0.3;transform:translateY(100p
           ><h1 class="post-title">{post.title}</h1
           ><div class="post-lead"
             ><p class="blog-excerpt" data-scramble="">{post.excerpt}</p
-            ><PlusMedium class="blog-plus" style="--mucckr:var(--color-white, rgb(255, 255, 255))"></PlusMedium
           ></div
           ><div class="post-cover"><img src={post.cover} alt=""></div
         ></header

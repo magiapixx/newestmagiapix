@@ -26,6 +26,9 @@ export function initFaqs() {
     const accent = item.querySelector('.m-kn5kpf-container');
     const hoverable = () => LOOKS.slice(0, 2).some(([closed, open]) => hasActiveClass(item, closed) || hasActiveClass(item, open));
     item.style.cursor = 'pointer';
+    // every item starts open; a tap still closes it
+    item.setAttribute('data-open', '');
+    setVariant(item, looks, 'open');
 
     item.addEventListener('click', () => {
       const opening = !item.hasAttribute('data-open');

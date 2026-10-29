@@ -4,7 +4,6 @@ import AccentSweep from './AccentSweep.astro';
 import HeadingsVertical from './HeadingsVertical.astro';
 import LinkWithLine from './LinkWithLine.astro';
 import Navigation from './Navigation.astro';
-import PlusSmall from './PlusSmall.astro';
 import PrevNext from './PrevNext.astro';
 import { rv } from '../lib/rv';
 
@@ -53,7 +52,7 @@ const labelType = rv({ lg: 'type-1xxob9n', xl: 'type-1xxob9n', t: 'type-y2tuor',
       ></div
       ><div class="m-1fchig9"
         ><div class="m-154um70-container"
-          ><HeadingsVertical variants={{ lg: "Scroll Down - H6", xl: "Scroll Down - H6", t: "Scroll Down - H6", p: "Scroll Down - H6 - Smaller" }}></HeadingsVertical
+          ><HeadingsVertical variants={{ lg: "Scroll Down - H6", xl: "Scroll Down - H6", t: "Scroll Down - H6", p: "Scroll Down - H6 - Smaller" }} extraClass="heading-faded"></HeadingsVertical
         ></div
       ></div
     ></div
@@ -142,9 +141,7 @@ const labelType = rv({ lg: 'type-1xxob9n', xl: 'type-1xxob9n', t: 'type-y2tuor',
       ><div class="m-1yu9zek">{hasBlock && (<Fragment><div class="m-d55x9t" style="transform:none"
           ><h6 class={`rt ${labelType}`} dir="auto" style="--m-text-color:var(--color-accent, rgb(0, 255, 161))">Previous</h6
         ></div></Fragment>)}<div class="m-12s4iep"
-          ><PlusSmall class="m-4m1mf3"></PlusSmall
           ><div class="m-7a12bb"></div
-          ><PlusSmall class="m-1qvmej5"></PlusSmall
         ></div>{hasMainInfo && (<Fragment><div class="m-zv5j4s" style="transform:none"
           ><h6 class={`rt ${labelType}`} dir="auto" style="--m-text-color:var(--color-accent, rgb(0, 255, 161))">Next</h6
         ></div></Fragment>)}</div
@@ -157,9 +154,7 @@ const labelType = rv({ lg: 'type-1xxob9n', xl: 'type-1xxob9n', t: 'type-y2tuor',
         ></div></Fragment>)}</div
       ><div class="m-1wau23p"
         ><div class="m-nm3ux0"
-          ><PlusSmall class="m-m6i7p6"></PlusSmall
           ><div class="m-jt6ftp"></div
-          ><PlusSmall class="m-68ne1c"></PlusSmall
         ></div
       ></div
     ></div

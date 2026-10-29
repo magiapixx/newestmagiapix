@@ -1,9 +1,8 @@
 ---
 // CTA - Section: a black band between Prices and the footer. One giant line, START A PROJECT + LET'S TALK +,
-// runs to the left between two + ---- + rails, and the whole band links to the contact form. Hovering turns the
+// runs to the left, and the whole band links to the contact form. Hovering turns the
 // line accent and slows it down.
 import PlusMedium from './PlusMedium.astro';
-import PlusSmall from './PlusSmall.astro';
 
 const words = ['Start a project', "Let's talk"];
 ---
@@ -11,21 +10,11 @@ const words = ['Start a project', "Let's talk"];
 <section class="cta" style="background-color:var(--color-black, rgb(0, 0, 0))"
   ><a class="cta-band" href="/about/#contact" aria-label="Start a project: get in touch"
     ><span class="cta-meta"><span>/Have a project in mind?</span><span>Get in touch</span></span
-    ><span class="cta-rail" aria-hidden="true"
-      ><PlusSmall class="cta-plus" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-      ><span class="cta-line"></span
-      ><PlusSmall class="cta-plus" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-    ></span
     ><span class="cta-track" aria-hidden="true"
       ><span class="cta-row"
         >{words.map((w) => (
           <span class="cta-set"><span class="cta-word">{w}</span><PlusMedium class="cta-sep" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium></span>
         ))}</span
-    ></span
-    ><span class="cta-rail" aria-hidden="true"
-      ><PlusSmall class="cta-plus" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-      ><span class="cta-line"></span
-      ><PlusSmall class="cta-plus" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
     ></span
   ></a
 ></section>

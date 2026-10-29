@@ -1,6 +1,6 @@
 /**
- * Service rows: hover highlights the "Expand" control, click expands the row
- * to show its description (and collapses it again).
+ * Service rows: always expanded (the markup starts them there and there are no
+ * tap edges out of it); hover still moves between expanded and expandedHover.
  */
 import { bindAll, type Machine } from '../lib/states';
 
@@ -8,10 +8,10 @@ type S = 'collapsed' | 'hover' | 'expanded' | 'expandedHover' | 'phone' | 'phone
 const on: Machine<S>['on'] = {
   collapsed: { enter: 'hover', tap: 'expanded' },
   hover: { leave: 'collapsed', tap: 'expanded' },
-  expanded: { enter: 'expandedHover', tap: 'collapsed' },
-  expandedHover: { leave: 'expanded', tap: 'collapsed' },
+  expanded: { enter: 'expandedHover' },
+  expandedHover: { leave: 'expanded' },
   phone: { tap: 'phoneExpanded' },
-  phoneExpanded: { tap: 'phone' },
+  phoneExpanded: {},
 };
 const transition = { type: 'spring', duration: 0.6, bounce: 0 } as const;
 

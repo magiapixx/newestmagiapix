@@ -821,6 +821,8 @@ td.rt,th.rt{overflow-wrap:anywhere;vertical-align:top;min-width:16ch}
 .m-VTBBD .m-1r33my{max-width:1920px;height:1px;overflow:var(--overflow-clip-fallback,clip);flex:1 0 0;grid-template-rows:repeat(1,minmax(0,1fr));grid-template-columns:repeat(8,minmax(50px,1fr));grid-auto-rows:minmax(0,1fr);justify-content:center;gap:10px;width:100%;padding:20px;display:grid;position:relative}
 .m-VTBBD .m-1tz1scp{height:100%;overflow:var(--overflow-clip-fallback,clip);flex-flow:row;flex:none;grid-column:span 2;place-content:flex-start;place-self:start;align-items:flex-start;gap:10px;width:100%;padding:0;display:flex;position:relative}
 .m-VTBBD .m-dvd6tq{height:100%;overflow:var(--overflow-clip-fallback,clip);flex-flow:column;flex:none;grid-column:span 4;place-content:center;place-self:start;align-items:center;gap:10px;width:100%;padding:0;display:flex;position:relative}
+/* Showreel corner marks: hidden, but kept in the layout because scripts/components/showreel.ts still moves them */
+.m-VTBBD .m-dvd6tq > .m-BIgTb{visibility:hidden}
 .m-VTBBD .m-slcdqb{aspect-ratio:1;z-index:1;flex:none;width:14px;height:auto;position:absolute;bottom:130px;left:0}
 .m-VTBBD .m-ziolja{aspect-ratio:1;z-index:1;flex:none;width:14px;height:auto;position:absolute;top:130px;left:0}
 .m-VTBBD .m-1n0w50d{aspect-ratio:1;z-index:1;flex:none;width:14px;height:auto;position:absolute;bottom:130px;right:0}
@@ -1304,30 +1306,24 @@ html body { background: rgb(94, 94, 94); }
 .m-v0AUC.m-10z0kec:has(> .m-1bsq9mr){display:flex!important;flex-direction:row;align-items:flex-end}
 .m-v0AUC.m-10z0kec > .m-1bsq9mr{position:relative!important;inset:auto!important;writing-mode:vertical-rl;transform:rotate(180deg)!important;order:1}
 
-/* Hero layout: everything stands on one rail along the bottom edge. The vertical tagline rises from its left
-   end, START PROJECT and SCROLL DOWN close it on the right, and the two accent plus marks cap the rail's ends
-   (the + ---- + divider used elsewhere on the site). Phone: the tagline stands above, the link sits on the rail
-   at the right. On phone and tablet the tagline's type matches the page header titles (--fs-7 / --fs-8); its
+/* Hero layout: everything stands on the bottom edge. The vertical tagline rises on the left, START PROJECT and
+   SCROLL DOWN close it on the right. Phone: the tagline stands above, the link sits below it at the right. On phone and tablet the tagline's type matches the page header titles (--fs-7 / --fs-8); its
    box is 5.14x its font size tall (see .hero-tagline p). */
-.m-y5R0E .hero-layout{position:relative;z-index:1;box-sizing:border-box;flex:1 0 0;min-height:0;width:100%;max-width:1920px;padding:20px;display:grid;grid-template-columns:auto 1fr auto auto;grid-template-rows:minmax(0,1fr) auto auto;grid-template-areas:"title . . scroll" "title . cta scroll" "rail rail rail rail";column-gap:40px}
+.m-y5R0E .hero-layout{position:relative;z-index:1;box-sizing:border-box;flex:1 0 0;min-height:0;width:100%;max-width:1920px;padding:20px;display:grid;grid-template-columns:auto 1fr auto auto;grid-template-rows:minmax(0,1fr) auto;grid-template-areas:"title . . scroll" "title . cta scroll";column-gap:40px}
 .m-y5R0E .hero-title{grid-area:title;min-height:0;padding-top:60px;display:flex;align-items:flex-end}
 .m-y5R0E .hero-title .m-ing148.hero-tagline{height:min(100%, calc((100vw - 40px) / .4815 * .45))}
 .m-y5R0E .hero-cta{grid-area:cta;align-self:end}
 .m-y5R0E .hero-scroll{grid-area:scroll;align-self:end}
-.m-y5R0E .hero-rail{grid-area:rail;display:flex;align-items:center;gap:10px;margin-top:20px}
-.m-y5R0E .hero-rail-line{flex:1;height:1px;background-color:var(--color-white, rgb(255, 255, 255));opacity:.3}
-.m-y5R0E .hero-plus{flex:none;width:14px;height:14px;position:relative}
 @media(max-width:809.98px){
-  .m-y5R0E .hero-layout{padding:15px;grid-template-columns:1fr 1fr auto;grid-template-areas:"title title scroll" ". cta cta" "rail rail rail";row-gap:30px;column-gap:15px}
+  .m-y5R0E .hero-layout{padding:15px;grid-template-columns:1fr 1fr auto;grid-template-areas:"title title scroll" ". cta cta";row-gap:30px;column-gap:15px}
   .m-y5R0E .hero-title{padding-top:70px}
   .m-y5R0E .hero-title .m-ing148.hero-tagline{height:min(100%, calc(var(--fs-7) * 5.14))}
   .m-y5R0E .hero-cta{justify-self:end}
-  .m-y5R0E .hero-rail{margin-top:0}
 }
 @media(min-width:810px) and (max-width:1199.98px){.m-y5R0E .hero-layout{column-gap:20px}.m-y5R0E .hero-title .m-ing148.hero-tagline{height:min(100%, calc(var(--fs-8) * 5.14))}}
 
-/* CTA above the footer (home): a black band whose giant line, START A PROJECT + LET'S TALK +, runs to the left
-   between two + ---- + rails. The whole band is one link to the contact form; on hover the line turns accent
+/* CTA above the footer (home): a black band whose giant line, START A PROJECT + LET'S TALK +, runs to the left.
+   The whole band is one link to the contact form; on hover the line turns accent
    (the script in CtaSection.astro also slows it down). */
 .cta-container{flex:none;width:100%;position:relative}
 .cta{width:100%;display:flex;justify-content:center;overflow:hidden}
@@ -1335,9 +1331,6 @@ html body { background: rgb(94, 94, 94); }
 .cta-meta{display:flex;justify-content:space-between;gap:20px;font-size:var(--fs--1);letter-spacing:.04em;text-transform:uppercase}
 .cta-meta > span:first-child{opacity:.5}
 .cta-meta > span:last-child{flex:none;white-space:nowrap;color:var(--color-accent, rgb(0, 255, 161))}
-.cta-rail{display:flex;align-items:center;gap:8px}
-.cta-plus{flex:none;width:7px;height:7px;position:relative}
-.cta-line{flex:1;height:1px;background-color:var(--color-white, rgb(255, 255, 255));opacity:.2}
 .cta-track{display:block;margin:0 -20px;overflow:hidden}
 .cta-row{display:flex;width:max-content;will-change:transform}
 .cta-set{display:flex;align-items:center;flex:none}
