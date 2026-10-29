@@ -13,13 +13,13 @@ body{--color-white:#fff;--color-black:#000;--color-accent:#9d8cff;--color-gray-8
 .m-VOZrd.m-1p7p7oi{--selection-background-color:var(--color-black,#000) ;--selection-color:var(--color-white,#fff) ;-webkit-tap-highlight-color:#0000;background-color:var(--color-white,#fff);height:min-content;overflow:var(--overflow-clip-fallback,clip);flex-flow:column;place-content:center flex-start;align-items:center;gap:0;width:100%;padding:0;display:flex;position:relative}
 .m-VOZrd .m-h650cb{margin:0;background:0 0;flex-grow:1;width:0;height:0;margin-bottom:0;position:relative}
 .m-VOZrd .m-63qbpk-container{flex:none;order:1001;width:100%;height:100px;position:relative}
-.m-VOZrd .m-vouzml-container{flex:none;order:1002;width:100%;height:calc(100vh / var(--z, 1));position:relative}
+.m-VOZrd .m-vouzml-container{flex:none;order:1002;width:100%;height:auto;position:relative}
 .m-VOZrd .m-nab5yf-container{bottom:calc(calc(100% - min(var(--m-viewport-height,100%), 100%)) + 60px);height:auto;position:var(--m-canvas-fixed-position,fixed);z-index:10;flex:none;order:1003;width:auto;right:20px}
 .m-2Kuhf.m-avj57v,.m-2Kuhf .m-avj57v{display:block}
 .m-2Kuhf.m-1tr0fx7{--selection-background-color:var(--color-black,#000) ;--selection-color:var(--color-white,#fff) ;-webkit-tap-highlight-color:#0000;background-color:var(--color-black,#000);height:min-content;overflow:var(--overflow-clip-fallback,clip);flex-flow:column;place-content:center flex-start;align-items:center;gap:0;width:100%;padding:0;display:flex;position:relative}
 .m-2Kuhf .m-143slgo{margin:0;background:0 0;flex-grow:1;width:0;height:0;margin-bottom:0;position:relative}
 .m-2Kuhf .m-vxprtg-container{flex:none;order:1001;width:100%;height:100px;position:relative}
-.m-2Kuhf .m-xez8hd-container{flex:none;order:1002;width:100%;height:calc(100vh / var(--z, 1));position:relative}
+.m-2Kuhf .m-xez8hd-container{flex:none;order:1002;width:100%;height:auto;position:relative}
 .m-2Kuhf .m-i8w2jo-container{bottom:calc(calc(100% - min(var(--m-viewport-height,100%), 100%)) + 60px);height:auto;position:var(--m-canvas-fixed-position,fixed);z-index:10;flex:none;order:1003;width:auto;right:20px}
 [data-layout-template=true]>#overlay{margin-bottom:0}
 .m-VOZrd[data-selection=true] * ::selection{color:var(--selection-color,none);background-color:var(--selection-background-color,none)}
@@ -1101,6 +1101,9 @@ td.rt,th.rt{overflow-wrap:anywhere;vertical-align:top;min-width:16ch}
 .m-6P4Yt .m-u46838{flex-flow:column;flex:none;grid-column:span 2;place-content:center flex-end;place-self:center start;align-items:center;gap:10px;width:100%;height:min-content;padding:0;display:flex;position:relative;overflow:visible}
 .m-6P4Yt .m-1q2erbf{flex-flow:column;flex:none;place-content:flex-start center;align-items:flex-start;gap:10px;width:100%;height:min-content;padding:0 85px 0 0;display:flex;position:relative;overflow:visible}
 .m-6P4Yt .m-1o6rsix{--m-text-wrap-override:balance;flex:none;width:100%;height:auto;position:relative}
+/* contact form headline: centred over the form (the 85px right padding made room for a plus mark that is gone) */
+.m-6P4Yt .m-1q2erbf{padding:0!important;align-items:center!important}
+.m-6P4Yt .m-1o6rsix .rt{--m-text-alignment:center}
 .m-6P4Yt .m-1v0cttb{aspect-ratio:1;height:var(--m-aspect-ratio-supported,14px);z-index:1;flex:none;width:14px;position:absolute;top:0;right:0}
 .m-6P4Yt .m-12vn2q8{flex:none;grid-column:span 2;grid-template-rows:repeat(2,min-content);grid-template-columns:repeat(2,minmax(50px,1fr));grid-auto-rows:min-content;justify-content:center;place-self:start;gap:0 10px;width:100%;height:min-content;padding:0;display:grid;position:relative;overflow:visible}
 .m-6P4Yt .m-1taxlxw{height:150px;overflow:var(--overflow-clip-fallback,clip);flex-flow:column;flex:none;place-content:center flex-start;place-self:start;align-items:center;gap:10px;width:100%;padding:0;display:flex;position:relative}
@@ -1328,32 +1331,6 @@ html body { background: rgb(94, 94, 94); }
   .m-y5R0E .hero-cta{justify-self:end}
 }
 @media(min-width:810px) and (max-width:1199.98px){.m-y5R0E .hero-layout{column-gap:20px}.m-y5R0E .hero-title .m-ing148.hero-tagline{height:min(100%, calc(var(--fs-8) * 5.14))}}
-
-/* CTA above the footer (home): a black band whose giant line, START A PROJECT + LET'S TALK +, runs to the left.
-   The whole band is one link to the contact form; on hover the line turns accent
-   (the script in CtaSection.astro also slows it down). */
-.cta-container{flex:none;width:100%;position:relative}
-.cta{width:100%;display:flex;justify-content:center;overflow:hidden}
-.cta-band{box-sizing:border-box;width:100%;max-width:1920px;padding:160px 20px;display:flex;flex-direction:column;gap:30px;color:var(--color-white, rgb(255, 255, 255));text-decoration:none;font-family:"Zalando Sans Variable","Zalando Sans Variable Placeholder",sans-serif;font-variation-settings:"wdth" 100,"wght" 535;cursor:pointer}
-.cta-meta{display:flex;justify-content:space-between;gap:20px;font-size:var(--fs--1);letter-spacing:.04em;text-transform:uppercase}
-.cta-meta > span:first-child{opacity:.5}
-.cta-meta > span:last-child{flex:none;white-space:nowrap;color:var(--color-accent, rgb(157, 140, 255))}
-.cta-track{display:block;margin:0 -20px;overflow:hidden}
-.cta-row{display:flex;width:max-content;will-change:transform}
-.cta-set{display:flex;align-items:center;flex:none}
-.cta-word{padding:0 .28em;font-size:min(var(--fs-8), 12vw);line-height:1;letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap;transition:color .4s}
-.cta-sep{flex:none;width:.32em;height:.32em;font-size:min(var(--fs-8), 12vw);position:relative;transition:transform .6s cubic-bezier(.7, 0, .2, 1)}
-.cta-band:hover .cta-word,.cta-band:focus-visible .cta-word{color:var(--color-accent, rgb(157, 140, 255))}
-.cta-band:hover .cta-sep,.cta-band:focus-visible .cta-sep{transform:rotate(90deg)}
-.cta-band:focus-visible{outline:2px solid var(--color-accent, rgb(157, 140, 255));outline-offset:-2px}
-@media(min-width:810px) and (max-width:1199.98px){
-  .cta-band{padding:100px 20px}
-}
-@media(max-width:809.98px){
-  .cta-band{padding:100px 15px;gap:24px}
-  .cta-track{margin:0 -15px}
-  .cta-word,.cta-sep{font-size:calc((calc(100vw / var(--z, 1)) - 30px) / 4.2)}
-}
 
 /* section headings at weight 800: the vertical section titles (not the Scroll Down label, an h6) and their phone-only copies */
 .m-v0AUC :is(h1,h2,h3).rt,.section-heading.rt{--m-font-weight-preview:800;--m-font-variation-axes-preview:"wdth" 100, "wght" 800}

@@ -1,6 +1,6 @@
 ---
 // Footer - Section: plain black, no background effects. Headline + two pill buttons and a social column on top,
-// a full-width MAGIAPIX wordmark, then a one-line meta bar (copyright, address, email, nav)
+// a full-width MAGIAPIX wordmark, then a centred one-line meta bar (copyright, address, email)
 interface Props {
   linkWithLineSmallLink: string;
 }
@@ -13,13 +13,6 @@ const socials = [
   { label: 'Behance', href: 'https://www.behance.net/' },
   { label: 'X', href: 'https://x.com/' },
   { label: 'WhatsApp', href: 'https://wa.me/' },
-];
-
-const nav = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/cases/' },
-  { label: 'About', href: '/about/' },
-  { label: 'Blog', href: '/blog/' },
 ];
 ---
 
@@ -47,9 +40,6 @@ const nav = [
 
   <div class="ft-meta">
     <p>© 2026 Magiapix Agency — 18-22 Corsham St, Hoxton, London N1 6DR, UK — <a href="mailto:hello@magiapix.com">hello@magiapix.com</a></p>
-    <nav aria-label="Footer">
-      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-    </nav>
   </div>
 </footer>
 
@@ -61,7 +51,7 @@ const nav = [
     flex-direction: column;
     gap: clamp(40px, 6vw, 120px);
     width: 100%;
-    min-height: calc(100vh / var(--z, 1));
+    /* height follows the content: a full-screen min-height left a screen-tall gap above the wordmark on tall screens */
     padding: clamp(90px, 7vw, 130px) var(--ft-pad) var(--ft-pad);
     background: #000;
     color: #fff;
@@ -72,7 +62,7 @@ const nav = [
   .ft-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 40px;
   }
   .ft-head {
@@ -119,7 +109,7 @@ const nav = [
 
   /* wordmark: the text is ~4.82em wide, so the font size is the box width over that */
   .ft-mark {
-    margin-top: auto;
+    margin-top: clamp(0px, 4vw, 80px);
     container-type: inline-size;
     line-height: 0;
     opacity: .2; /* faded like the vertical section titles (.heading-faded) */
@@ -136,32 +126,25 @@ const nav = [
 
   .ft-meta {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 10px 30px;
+    justify-content: center;
+    text-align: center;
     font-size: 14px;
   }
   .ft-meta p { margin: 0; }
   .ft-meta a:hover { color: var(--color-accent, #9d8cff); }
-  .ft-meta nav { display: flex; gap: 22px; font-weight: 600; text-transform: uppercase; letter-spacing: .02em; }
 
-  /* tablet: no full-screen height (it left a screen-tall gap above the wordmark), socials top-right and
-     right-aligned, the meta bar stacked so the address keeps to one line */
+  /* tablet: socials right-aligned at the right edge */
   @media (min-width: 810px) and (max-width: 1199.98px) {
-    .ft { min-height: 0; }
-    .ft-top { align-items: flex-start; }
     .ft-social { padding: 0; text-align: right; }
-    .ft-meta { flex-direction: column; align-items: flex-start; gap: 14px; }
   }
 
   /* phone: one centred column */
   @media (max-width: 809.98px) {
-    .ft { min-height: 0; text-align: center; }
+    .ft { text-align: center; }
     .ft-top { flex-direction: column; align-items: center; }
     .ft-actions { justify-content: center; }
     .ft-social { padding: 0; }
     .ft-pill { padding: 16px 20px; font-size: 13px; }
-    .ft-meta { flex-direction: column; align-items: center; gap: 14px; font-size: 12px; }
-    .ft-meta nav { flex-wrap: wrap; justify-content: center; }
+    .ft-meta { font-size: 12px; }
   }
 </style>
