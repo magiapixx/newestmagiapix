@@ -2,12 +2,20 @@
 // Why Us - Section (was Subscription): one markup for every breakpoint (lib/rv)
 import AccentSweep from './AccentSweep.astro';
 import HeadingsVertical from './HeadingsVertical.astro';
-import PlusMedium from './PlusMedium.astro';
-import PlusSmall from './PlusSmall.astro';
 import { rv } from '../lib/rv';
 
 const look = rv({ lg: 'v-r3folb', xl: 'v-ffyfvy', t: 'v-14dwyd8', p: 'v-vz0dz5' });
 const intro = rv({ lg: 'type-1qeok15', xl: 'type-1qeok15', t: 'type-1qeok15', p: 'type-1xxob9n' });
+
+// Cards alternate left / right down the column, like the original zigzag
+const cards = [
+  { tag: 'Pricing', title: 'Transparent Pricing', text: 'One monthly rate. The number you see is the number you pay.', icon: '/images/xlnhAUAgwVLAHsDEHaP3Ekg9GCw.19j17m1.svg' },
+  { tag: 'Process', title: 'Refined Until Right', text: "We revise until it's right, not until the hours run out.", icon: '/images/rnOcaRBsZ0SaJdqUEdnGXgS0es.19j17m1.svg' },
+  { tag: 'Speed', title: 'Fast Delivery', text: 'First designs in days, not weeks. Speed comes from focus, never from shortcuts.', icon: '/images/qwlHpkDerF2goQGHVw22KCquy0.19j17m1.svg' },
+  { tag: 'Team', title: 'Senior Expertise', text: 'The people you meet are the people who design. No hand-offs to juniors.', icon: '/images/2GhbTUuLsZiZnefO07P0cTksQ.19j17m1.svg' },
+];
+const total = String(cards.length).padStart(2, '0');
+const reveal = JSON.stringify({ from: { opacity: 0.3, y: 100 }, transition: { bounce: 0, delay: 0, duration: 1, type: 'spring' }, threshold: 0 });
 ---
 
 <section class:list={["m-5AYrz m-5BKxZ m-dS8v4 m-OjHb3 m-lhYZM m-r3folb", look]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
@@ -24,110 +32,136 @@ const intro = rv({ lg: 'type-1qeok15', xl: 'type-1qeok15', t: 'type-1qeok15', p:
       ><div class="m-1knpvj9 hide-tablet hide-lg hide-xl" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
         ><h4 class="rt type-9iwysc" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">/Why Us</h4
       ></div
-      ><div class="m-1oau65x" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-        ><div class="m-1yddm3j" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
-          ><PlusSmall class="m-gav0po" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><PlusSmall class="m-zfwdjk" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><PlusSmall class="m-mm2qhr" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><PlusSmall class="m-sggsoj" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><div class="m-1ljjzn"
-            ><div class="m-18zy2x4"
-              ><div class="m-1swiug9"
-                ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
-                  ><img decoding="async" loading="lazy" width="80" height="80" src="/images/xlnhAUAgwVLAHsDEHaP3Ekg9GCw.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
-                ></div
-              ></div
-            ></div
-            ><div class="m-f0d2mo" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Transparent Pricing</h6
-            ></div
-          ></div
-          ><div class="m-10rl7bg"
-            ><div class="m-ig9bcw hide-phone"></div
-            ><div class="m-c75x7w" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">One monthly rate. The number you see is the number you pay.</p
-            ></div
-          ></div
-        ></div
-      ></div
-      ><div class="m-xl0g2l" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-        ><div class="m-1ga40su" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
-          ><PlusMedium class="m-107yjz7" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-          ><PlusMedium class="m-5otuky" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-          ><PlusMedium class="m-1stak7a" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-          ><PlusMedium class="m-j4j69h" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-          ><div class="m-1qvz932"
-            ><div class="m-10a7xwb"
-              ><div class="m-zfvz69"
-                ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
-                  ><img decoding="async" loading="lazy" width="80" height="80" src="/images/rnOcaRBsZ0SaJdqUEdnGXgS0es.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
-                ></div
-              ></div
-            ></div
-            ><div class="m-14lhafj" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Refined Until Right</h6
-            ></div
-          ></div
-          ><div class="m-5kqlef"
-            ><div class="m-bxdm8y hide-phone"></div
-            ><div class="m-a1chrp" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">We revise until it's right, not until the hours run out.</p
-            ></div
-          ></div
-        ></div
-      ></div
-      ><div class="m-1dgrrs7" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-        ><div class="m-1q35lh6" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
-          ><PlusSmall class="m-1p89llp" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><PlusSmall class="m-1fu03ki" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><PlusSmall class="m-1rap3x9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><PlusSmall class="m-12z6u13" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusSmall
-          ><div class="m-1c42ioy"
-            ><div class="m-3u6ojj"
-              ><div class="m-1w6fbub"
-                ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
-                  ><img decoding="async" loading="lazy" width="80" height="80" src="/images/qwlHpkDerF2goQGHVw22KCquy0.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
-                ></div
-              ></div
-            ></div
-            ><div class="m-17pobs5" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Fast Delivery</h6
-            ></div
-          ></div
-          ><div class="m-10e4ikb"
-            ><div class="m-121pz8z hide-phone"></div
-            ><div class="m-1e7l0mo" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">First designs in days, not weeks. Speed comes from focus, never from shortcuts.</p
-            ></div
-          ></div
-        ></div
-      ></div
-      ><div class="m-1xh93l8" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.3,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:1,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-        ><div class="m-1q4s76e" data-border="true" style="--border-bottom-width:1px;--border-color:var(--color-gray-850, rgb(36, 36, 36));--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--color-black, rgb(0, 0, 0))"
-          ><PlusMedium class="m-16k3a85" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-          ><PlusMedium class="m-16i6jx6" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-          ><PlusMedium class="m-e7x6k9" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-          ><PlusMedium class="m-1nqy3im" style="--mucckr:var(--color-accent, rgb(0, 255, 161))"></PlusMedium
-          ><div class="m-15um66v"
-            ><div class="m-1j4ghat"
-              ><div class="m-14llluh"
-                ><div style="position:absolute;border-radius:inherit;corner-shape:inherit;top:0;right:0;bottom:0;left:0"
-                  ><img decoding="async" loading="lazy" width="80" height="80" src="/images/2GhbTUuLsZiZnefO07P0cTksQ.19j17m1.svg" alt="" style="display:block;width:100%;height:100%;border-radius:inherit;corner-shape:inherit;object-position:center;object-fit:cover"
-                ></div
-              ></div
-            ></div
-            ><div class="m-n80e5u" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)))">Senior Expertise</h6
-            ></div
-          ></div
-          ><div class="m-i2e976"
-            ><div class="m-1ycmtau hide-phone"></div
-            ><div class="m-1no94tj" style="--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;transform:none"
-              ><p class="rt type-m3s7sn" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-white, rgb(255, 255, 255)))">The people you meet are the people who design. No hand-offs to juniors.</p
-            ></div
-          ></div
-        ></div
-      ></div
-    ></div
+      >{cards.map((card, i) => (
+        <div class:list={["wy-row", i % 2 ? "wy-right" : "wy-left"]} style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal={reveal}>
+          <article class="wy-card">
+            <span class="m-Lul3q wy-plus wy-tl"></span>
+            <span class="m-Lul3q wy-plus wy-tr"></span>
+            <span class="m-Lul3q wy-plus wy-bl"></span>
+            <span class="m-Lul3q wy-plus wy-br"></span>
+            <header class="wy-meta">
+              <span class="wy-idx">{String(i + 1).padStart(2, '0')}<span class="wy-dim">/{total}</span></span>
+              <span class="wy-rule"></span>
+              <span class="wy-tag">/{card.tag}</span>
+            </header>
+            <div class="wy-body">
+              <div class="wy-icon">
+                <img decoding="async" loading="lazy" width="80" height="80" src={card.icon} alt="" />
+              </div>
+              <div class="wy-text" style="--m-paragraph-spacing:0px">
+                <h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{card.title}</h6>
+                <p class="rt type-m3s7sn" dir="auto" style="--m-text-color:rgba(255, 255, 255, 0.6)">{card.text}</p>
+              </div>
+            </div>
+            <footer class="wy-foot"><span class="wy-bar"></span></footer>
+          </article>
+        </div>
+      ))}</div
   ></div
 ></section>
+
+<style>
+  .wy-row { display: flex; width: 100%; }
+  .wy-left { justify-content: flex-start; }
+  .wy-right { justify-content: flex-end; }
+
+  .wy-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    width: 75%;
+    max-width: 600px;
+    padding: 28px 32px 32px;
+    background: var(--color-black, #000);
+    border: 1px solid var(--color-gray-850, #242424);
+    transition: border-color 0.4s ease, background-color 0.4s ease;
+  }
+  .wy-card:hover {
+    border-color: rgba(0, 255, 161, 0.35);
+    background: var(--color-gray-900, #171717);
+  }
+
+  /* accent plus marks on every corner, same glyph as the rest of the site */
+  .wy-plus {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    z-index: 1;
+    background-color: var(--color-accent, #00ffa1);
+    transition: transform 0.4s ease;
+  }
+  .wy-tl { top: -5px; left: -5px; }
+  .wy-tr { top: -5px; right: -5px; }
+  .wy-bl { bottom: -5px; left: -5px; }
+  .wy-br { bottom: -5px; right: -5px; }
+  .wy-card:hover .wy-plus { transform: rotate(90deg); }
+
+  .wy-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  .wy-idx { color: var(--color-accent, #00ffa1); }
+  .wy-dim { color: rgba(255, 255, 255, 0.35); }
+  .wy-tag { color: rgba(255, 255, 255, 0.6); }
+  .wy-rule { flex: 1; height: 1px; background: var(--color-gray-850, #242424); }
+
+  .wy-body { display: flex; align-items: flex-start; gap: 32px; }
+
+  .wy-icon {
+    position: relative;
+    flex: none;
+    width: 80px;
+    height: 80px;
+    background: var(--color-gray-900, #171717);
+    border: 1px solid var(--color-gray-850, #242424);
+    transition: border-color 0.4s ease, background-color 0.4s ease;
+  }
+  .wy-icon img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .wy-card:hover .wy-icon { border-color: var(--color-accent, #00ffa1); background: var(--color-black, #000); }
+
+  .wy-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+    padding-top: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .wy-text h6 { text-transform: uppercase; }
+
+  /* progress line: accent segment fills the full width on hover */
+  .wy-foot { position: relative; height: 1px; background: var(--color-gray-850, #242424); }
+  .wy-bar {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 15%;
+    background: var(--color-accent, #00ffa1);
+    transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .wy-card:hover .wy-bar { width: 100%; }
+
+  @media (min-width: 1600px) {
+    .wy-card { padding: 36px 44px 44px; gap: 60px; }
+  }
+  @media (min-width: 810px) and (max-width: 1199.98px) {
+    .wy-card { width: 85%; max-width: 515px; padding: 24px 28px 28px; gap: 40px; }
+  }
+  @media (max-width: 809.98px) {
+    .wy-card { width: 100%; max-width: none; padding: 20px 20px 24px; gap: 32px; }
+    .wy-body { flex-direction: column; gap: 20px; }
+    .wy-icon { width: 64px; height: 64px; }
+    .wy-text { padding-top: 0; }
+  }
+  @media (hover: none) {
+    .wy-bar { width: 100%; }
+  }
+</style>
