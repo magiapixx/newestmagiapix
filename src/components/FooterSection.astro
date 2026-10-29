@@ -145,11 +145,23 @@ const nav = [
   .ft-meta a:hover { color: var(--color-accent, #9d8cff); }
   .ft-meta nav { display: flex; gap: 22px; font-weight: 600; text-transform: uppercase; letter-spacing: .02em; }
 
-  @media (max-width: 809.98px) {
+  /* tablet: no full-screen height (it left a screen-tall gap above the wordmark), socials top-right and
+     right-aligned, the meta bar stacked so the address keeps to one line */
+  @media (min-width: 810px) and (max-width: 1199.98px) {
     .ft { min-height: 0; }
-    .ft-top { flex-direction: column; align-items: flex-start; }
+    .ft-top { align-items: flex-start; }
+    .ft-social { padding: 0; text-align: right; }
+    .ft-meta { flex-direction: column; align-items: flex-start; gap: 14px; }
+  }
+
+  /* phone: one centred column */
+  @media (max-width: 809.98px) {
+    .ft { min-height: 0; text-align: center; }
+    .ft-top { flex-direction: column; align-items: center; }
+    .ft-actions { justify-content: center; }
     .ft-social { padding: 0; }
     .ft-pill { padding: 16px 20px; font-size: 13px; }
-    .ft-meta { flex-direction: column; font-size: 12px; }
+    .ft-meta { flex-direction: column; align-items: center; gap: 14px; font-size: 12px; }
+    .ft-meta nav { flex-wrap: wrap; justify-content: center; }
   }
 </style>
