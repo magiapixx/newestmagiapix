@@ -2,8 +2,6 @@
 // FAQ Item - Card: one markup that takes a look per breakpoint (lib/rv). The question colour/alignment each copy
 // set inline are in site.css; the hover accent exists only in the desktop looks.
 import AnimationAccent from './AnimationAccent.astro';
-import MinusBig from './MinusBig.astro';
-import PlusBig from './PlusBig.astro';
 import { BPS, rv, type PerBp } from '../lib/rv';
 
 const VARIANTS = {
@@ -28,8 +26,6 @@ const question = rv(Object.fromEntries(BPS.map((b) => [b, variants[b].startsWith
 
 <div class:list={["m-y6iPh m-dS8v4 m-xbhBc m-lhYZM m-13ofslm", look]} tabindex="0" style="width:100%"
   ><div class="m-gj732i"
-    ><MinusBig class="m-16dccor" dataShow="open" style="--mucckr: var(--color-accent, rgb(157, 140, 255))"></MinusBig
-    ><PlusBig class="m-16dccor" dataShow="closed" style="--mucckr:var(--color-accent, rgb(157, 140, 255))"></PlusBig
     ><div class="m-nh3uw0" style="--m-paragraph-spacing:0px;transform:none"
       ><h6 class={`rt ${question}`} dir="auto">{partnership}</h6
     ></div

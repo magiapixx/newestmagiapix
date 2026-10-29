@@ -116,6 +116,7 @@ const socials = [
 
   /* wordmark: ICE 7 is ~2.33em wide at this weight, so box width / 2.36em fills the width with a hair to spare */
   .ft-mark {
+    color: var(--color-accent, #9d8cff);
     margin-top: clamp(0px, 4vw, 80px);
     container-type: inline-size;
     line-height: 0;
@@ -131,7 +132,8 @@ const socials = [
   }
   /* tablet and desktop add the studio name, in the same heavy weight, and the whole line is sized down to fill
      the width (ICE 7 STUDIO is ~6.09em wide) */
-  .ft-mark-tail { display: none; }
+  /* ICE 7 in the accent, STUDIO in white */
+  .ft-mark-tail { display: none; color: #fff; }
   @media (min-width: 810px) {
     .ft-mark-tail { display: inline; }
     .ft-mark > span { font-size: calc(100cqw / 6.15); }
@@ -143,6 +145,8 @@ const socials = [
     text-align: center;
     font-size: 14px;
   }
+  /* sits close under the wordmark: cancel most of the footer's column gap */
+  .ft-mark + .ft-meta { margin-top: calc(24px - clamp(40px, 6vw, 120px)); }
   .ft-meta p { margin: 0; }
   .ft-meta a:hover { color: var(--color-accent, #9d8cff); }
 
