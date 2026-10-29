@@ -2,6 +2,8 @@
 // Service: one markup for every breakpoint (lib/rv). The title has a desktop block (h3) and a tablet/phone
 // block (h5); the image inset (--sezid2) per breakpoint is set in site.css.
 import ImageOpening from './ImageOpening.astro';
+import MinusBig from './MinusBig.astro';
+import PlusBig from './PlusBig.astro';
 import { rv } from '../lib/rv';
 
 interface Props {
@@ -12,8 +14,8 @@ interface Props {
 }
 
 const { imageOpeningImage, text, text3, text4 } = Astro.props;
-// rows are always expanded; there is no expand/collapse control
-const look = rv({ lg: 'v-uy9ec9', xl: 'v-uy9ec9', t: 'v-uy9ec9', p: 'v-41hfpv' });
+// desktop and tablet rows are always expanded; on phone they start collapsed behind an Expand control
+const look = rv({ lg: 'v-uy9ec9', xl: 'v-uy9ec9', t: 'v-uy9ec9', p: 'v-1gx16xq' });
 ---
 
 <div class:list={["m-Fsg4m m-zNzez m-pQ5hH m-lhYZM m-alehh m-xbhBc m-15zdchv", look]} tabindex="0" style="background-color:var(--color-white, rgb(255, 255, 255));width:100%"
@@ -40,6 +42,15 @@ const look = rv({ lg: 'v-uy9ec9', xl: 'v-uy9ec9', t: 'v-uy9ec9', p: 'v-41hfpv' }
       ></div
       ><div class="m-sst7c" style="--extracted-1a3g3q6:var(--color-black, rgb(0, 0, 0));--extracted-1o9v4yh:var(--color-black, rgb(0, 0, 0));--extracted-1w1cjl5:var(--color-black, rgb(0, 0, 0));--extracted-6komju:var(--color-black, rgb(0, 0, 0));--extracted-9fz5vb:var(--color-black, rgb(0, 0, 0));--extracted-bnc66o:var(--color-black, rgb(0, 0, 0));--m-paragraph-spacing:0px;transform:none"
         ><h6 class="rt type-1ff3dg" dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-black, rgb(0, 0, 0)))">{text4}</h6
+      ></div
+    ></div
+    ><div class="m-yrv5cr hide-tablet hide-lg hide-xl"></div
+    ><div class="m-1i16ot3 hide-tablet hide-lg hide-xl"
+      ><PlusBig class="m-1x4g6uc" dataShow="collapsed"></PlusBig
+      ><MinusBig class="m-1x4g6uc" dataShow="expanded"></MinusBig
+      ><div class="m-1p4no3v" style="--m-paragraph-spacing:0px;transform:none"
+        ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))" data-show="collapsed">Expand</p
+        ><p class="rt type-y2tuor" dir="auto" style="--m-text-color:var(--extracted-r6o4lv, var(--color-black, rgb(0, 0, 0)))" data-show="expanded">Collapse</p
       ></div
     ></div
   ></div

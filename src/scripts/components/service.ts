@@ -1,6 +1,7 @@
 /**
- * Service rows: always expanded (the markup starts them there and there are no
- * tap edges out of it); hover still moves between expanded and expandedHover.
+ * Service rows: on desktop and tablet always expanded (the markup starts them there and there are no
+ * tap edges out of it); hover still moves between expanded and expandedHover. On phone they start
+ * collapsed and the Expand / Collapse control (phone only) toggles them.
  */
 import { bindAll, type Machine } from '../lib/states';
 
@@ -11,7 +12,7 @@ const on: Machine<S>['on'] = {
   expanded: { enter: 'expandedHover' },
   expandedHover: { leave: 'expanded' },
   phone: { tap: 'phoneExpanded' },
-  phoneExpanded: {},
+  phoneExpanded: { tap: 'phone' },
 };
 const transition = { type: 'spring', duration: 0.6, bounce: 0 } as const;
 
