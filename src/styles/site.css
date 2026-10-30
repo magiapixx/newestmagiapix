@@ -1331,8 +1331,15 @@ html body { background: rgb(94, 94, 94); }
   .m-y5R0E .hero-cta{justify-self:end}
 }
 @media(min-width:810px) and (max-width:1199.98px){.m-y5R0E .hero-layout{column-gap:20px}.m-y5R0E .hero-title .m-ing148.hero-tagline{height:min(100%, calc(var(--fs-8) * 5.14))}}
+/* light black layer over the hero photo, a little heavier on the left where the purple tagline stands */
+.m-y5R0E .hero-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.25) 50%,rgba(0,0,0,.15) 100%)}
 
 /* section headings at weight 800: the vertical section titles (not the Scroll Down label, an h6) and their phone-only copies */
 .m-v0AUC :is(h1,h2,h3).rt,.section-heading.rt{--m-font-weight-preview:800;--m-font-variation-axes-preview:"wdth" 100, "wght" 800}
+/* service rows (phone): the Expand / Collapse plus and minus at half size, the icon mask scaled to the box */
+.m-Fsg4m .m-1x4g6uc,.m-rBPIz .m-r6rste{width:27px;height:var(--m-aspect-ratio-supported,27px)}
+:is(.m-Fsg4m .m-1x4g6uc,.m-rBPIz .m-r6rste):is(.m-zYiez,.m-nvw0L){-webkit-mask-size:100% 100%;mask-size:100% 100%}
+/* phone-only horizontal section titles (/Services, /Prices, /Why Us, /FAQ…): one look everywhere, the /Services one */
+.section-heading.rt{margin:0;font-family:"Zalando Sans Variable","Zalando Sans Variable Placeholder",sans-serif;font-size:var(--fs-4);font-weight:800;font-variation-settings:"wdth" 100,"wght" 800;line-height:.92;letter-spacing:-.033em;text-transform:uppercase}
 /* words and marks picked out in the accent colour: key phrases in the about statement and intro */
 .text-accent{color:var(--color-accent, rgb(157, 140, 255))}

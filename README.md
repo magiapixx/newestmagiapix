@@ -65,7 +65,7 @@ Everything that moved in the original site still moves the same way:
 | Smooth scrolling | `smooth-scroll.ts` (Lenis) |
 | Navigation, nav links, menu | `nav.ts`, `nav-link.ts` |
 | Link underlines, hover accents, awards, prev/next | `line-link.ts`, `underline-sweep.ts`, `hover-accent.ts`, `award.ts` |
-| Services, price cards, FAQ | `service.ts`, `price-card.ts`, `faq.ts` |
+| Services, stacking price cards, FAQ | `service.ts`, `price-stack.ts`, `faq.ts` |
 | Showreel, videos, clients ticker | `showreel.ts`, `video.ts`, `ticker.ts` |
 | Hero image transition, pixel-flip case cards, case hero distortion, film grain | `webgl/luma.ts`, `webgl/pixel-flip.ts`, `webgl/distortion.ts`, `webgl/noise.ts` |
 

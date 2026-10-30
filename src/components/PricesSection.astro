@@ -1,33 +1,238 @@
 ---
-// Prices - Section: one markup for every breakpoint (lib/rv)
+// Prices - Section: three website packages as stacked cards, after the Vucko services list. Each card has a big
+// number, the bracketed package name, a one-line pitch, the price, an example case study and the feature list.
+// On tall desktop screens the cards are sticky: each one stays at the top while the next slides over it, and it
+// recedes as it gets covered (scripts/components/price-stack.ts sets --cover from 0 to 1 and slides the numbers
+// in). The faded vertical "/Prices" heading the other sections use stays pinned on the right; phones get the
+// horizontal heading on top instead. Phone < 810px, tablet 810-1199.98px, desktop >= 1200px.
 import HeadingsVertical from './HeadingsVertical.astro';
-import PriceCard from './PriceCard.astro';
-import { rv } from '../lib/rv';
+import { cases } from '../data/cases';
 
-const look = rv({ lg: 'v-7nmgl9', xl: 'v-yof8x4', t: 'v-8657lb', p: 'v-19wxf9a' });
+// each package shows one case study as an example of what that budget gets: set `example` to a slug from data/cases.ts.
+// `accent` is the part of `intro` shown in purple; `featureAccents` lists the key words of the features (each one
+// is coloured in the feature that contains it)
+// splits text into [segment, isAccent] pairs for the template to wrap
+const mark = (text: string, accents: string[] = []): [string, boolean][] => {
+  const accent = accents.find((a) => text.includes(a));
+  return accent
+    ? text.split(accent).flatMap((part, j): [string, boolean][] => (j ? [[accent, true], [part, false]] : [[part, false]]))
+    : [[text, false]];
+};
+const caseBySlug = Object.fromEntries(cases.map((c) => [c.slug, c]));
+
+const plans = [
+  {
+    title: 'Basic Website',
+    intro: 'A clean, credible site for small businesses that need to get online fast.',
+    accent: 'clean, credible site',
+    featureAccents: ['5 pages', 'tailored', 'Responsive', 'Webflow or Framer', 'SEO', '2 rounds'],
+    features: [
+      'Up to 5 pages',
+      'Layout tailored to your brand',
+      'Responsive on desktop, tablet and phone',
+      'CMS setup in Webflow or Framer',
+      'Basic SEO setup',
+      '2 rounds of revisions',
+    ],
+    price: '$2,500',
+    example: 'montana',
+  },
+  {
+    title: 'Premium Website',
+    intro: 'A fully custom site for growing brands that want to stand out and convert.',
+    accent: 'fully custom site',
+    featureAccents: ['12 pages', 'Design system', 'Motion', 'CMS collections', 'performance optimisation', 'Launch support'],
+    features: [
+      'Custom UI/UX design, up to 12 pages',
+      'Design system and reusable components',
+      'Motion and micro-interactions',
+      'CMS collections and blog',
+      'SEO and performance optimisation',
+      'Launch support and documentation',
+    ],
+    price: '$6,000',
+    example: 'armada',
+  },
+  {
+    title: 'Awards Website',
+    intro: 'An artistic, award-level experience for brands that want to be remembered.',
+    accent: 'award-level experience',
+    featureAccents: ['Art direction', 'WebGL, 3D', 'Custom front-end', 'Sound, motion', 'Award submissions', 'Priority support'],
+    features: [
+      'Art direction and creative concept',
+      'Bespoke WebGL, 3D and scroll storytelling',
+      'Custom front-end development',
+      'Sound, motion and transition design',
+      'Award submissions (Awwwards, FWA, CSSDA)',
+      'Priority support after launch',
+    ],
+    price: '$12,000',
+    example: 'calderone',
+  },
+];
 ---
 
-<section class:list={["m-3R9yn m-kXq9A m-7nmgl9", look]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
-  ><div class="m-1lur3i6"
-    ><div class="m-mpy07n-container hide-phone"
+<section class="prices"
+  ><div class="prices-heading hide-phone"
+    ><div class="prices-heading-pin"
       ><HeadingsVertical first="/Prices" variants={{ lg: "/Prices - H2", xl: "/Prices - H1", t: "/Prices - H2", p: "/Prices - H2" }} extraClass="heading-faded"></HeadingsVertical
     ></div
-    ><div class="m-a4iadk hide-phone"></div
-    ><div class="m-1rwo6qr"
-      ><div class="m-hcyrer-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-        ><PriceCard card="partnership"></PriceCard
-      ></div
-      ><div class="m-2fldc8-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-        ><div class="m-7ygz5 m-xm2wi3 v-xm2wi3" style="height:100%;width:100%"
-        ></div
-      ></div
-      ><div class="m-jaxlce-container" style="will-change:transform;opacity:0.5;transform:translateY(100px)" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0.5,&quot;y&quot;:100},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0,&quot;duration&quot;:0.8,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0}"
-        ><PriceCard card="perProject"></PriceCard
-      ></div
-      ><div class="m-1e9h1h2 hide-tablet hide-lg hide-xl" style="--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
-        ><h3 class="rt type-4dgq3i section-heading" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/Prices</h3
-      ></div
-    ></div
-    ><div class="m-u35vmu hide-phone"></div
   ></div
+  ><div class="m-1e9h1h2 prices-heading-phone hide-tablet hide-lg hide-xl" style="--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
+    ><h3 class="rt type-wc4xhu section-heading" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/Prices</h3
+  ></div
+  ><div class="prices-rows"
+    >{plans.map((plan, i) => { const ex = caseBySlug[plan.example]; const img = ex?.props.caseStudyImage1Image; return (
+      <article class="prices-card" data-price-card
+        ><div class="prices-card-inner"
+          ><div class="prices-num-mask" aria-hidden="true"
+            ><span class="prices-num" data-price-num>{String(i + 1).padStart(2, '0')}</span></div
+          ><div class="prices-detail"
+            >{ex && img && (
+              <a class="prices-example" href={`/cases/${ex.slug}/`} aria-label={`Example: ${ex.title} case study`}
+                ><span class="prices-example-img"
+                  ><img src={img.src} srcset={img.srcset} sizes="(min-width: 1200px) 55vw, 90vw" width={img.width} height={img.height} alt={`${ex.title} website`} loading="lazy" decoding="async" /></span
+              ></a>
+            )}<div class="prices-offer"
+              ><p class="prices-headline">{mark(plan.intro, [plan.accent]).map(([t, on]) => on ? <span class="prices-accent">{t}</span> : t)}</p
+              ><h3 class="prices-price">{plan.title}, starting at {plan.price}.</h3
+              ><ul class="prices-list">{plan.features.map((f) => <li>{mark(f, plan.featureAccents).map(([t, on]) => on ? <span class="prices-accent">{t}</span> : t)}</li>)}</ul
+            ></div
+          ></div
+        ></div
+      ></article
+    >); })}</div
 ></section>
+
+<style>
+  .prices {
+    --gutter: 15px;
+    --pad: 100px;
+    --muted: rgba(255, 255, 255, .6);
+    position: relative;
+    display: grid;
+    gap: 60px;
+    width: 100%;
+    padding: var(--pad) var(--gutter);
+    background: var(--color-black, #000);
+    color: var(--color-white, #fff);
+    font-family: "Zalando Sans Variable", "Zalando Sans Variable Placeholder", sans-serif;
+    font-variation-settings: "wdth" 100, "wght" 350;
+    font-size: var(--fs-0);
+    line-height: 1.45;
+  }
+  .prices :is(h3, p, ul) { margin: 0; }
+
+  /* cards: no borders and no visible background, only air. --cover (0-1) is how far the next card has slid over
+     this one while it is stuck: it tints the card and fades its content */
+  .prices-card {
+    --cover: 0;
+    position: relative;
+    padding: 60px 0;
+    background: var(--color-black, #000);
+    background: color-mix(in srgb, #181818 calc(min(1, var(--cover) * 4) * 100%), var(--color-black, #000));
+  }
+  .prices-card-inner {
+    display: grid;
+    grid-template-areas: "num" "detail";
+    gap: 24px;
+    opacity: calc(1 - var(--cover) * .7);
+  }
+
+  /* big number, slides up out of its mask */
+  .prices-num-mask { grid-area: num; overflow: hidden; }
+  .prices-num {
+    display: block;
+    font-size: calc(var(--fs-8) / 2);
+    color: var(--muted); /* 60% white, like the price line */
+    font-weight: 800;
+    font-variation-settings: "wdth" 100, "wght" 800;
+    line-height: .85;
+    letter-spacing: -.06em;
+  }
+  /* the key words of each headline (`accent` in plans) in the brand purple */
+  .prices-accent { color: var(--color-accent, rgb(157, 140, 255)); }
+  .prices-headline {
+    max-width: 24em;
+    font-size: var(--fs-3);
+    font-weight: 700;
+    font-variation-settings: "wdth" 100, "wght" 700;
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+  }
+  .prices-offer { display: grid; gap: 40px; align-content: start; }
+  /* plain sentence, like the intro line above the service lists */
+  .prices-price { color: var(--muted); font-size: var(--fs-0); font-weight: inherit; line-height: 1.6; }
+
+  /* example image beside the price and feature list, laid out like a service item */
+  .prices-detail { grid-area: detail; display: grid; gap: 40px; align-items: start; }
+  /* bold uppercase stack, like the service lists */
+  .prices-list {
+    display: grid;
+    gap: 8px; /* phones: items wrap, so keep them apart */
+    padding: 0;
+    list-style: none;
+    font-size: var(--fs-1);
+    font-variation-settings: "wdth" 100, "wght" 580;
+    line-height: 1.17;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+
+  .prices-example { display: block; color: inherit; text-decoration: none; }
+  .prices-example-img { display: block; overflow: hidden; aspect-ratio: 4 / 3; background: #111; }
+  .prices-example-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .9s cubic-bezier(.2, .7, .2, 1);
+  }
+  .prices-example:hover img, .prices-example:focus-visible img { transform: scale(1.04); }
+
+  @media (min-width: 810px) {
+    .prices { --gutter: 20px; --pad: 160px; grid-template-columns: 1fr auto; column-gap: 40px; }
+    .prices-rows { grid-column: 1; grid-row: 1; }
+    .prices-heading { grid-column: 2; grid-row: 1; }
+    .prices-heading-pin { position: sticky; top: 100px; }
+    .prices-card { padding: 80px 0; }
+    .prices-card-inner {
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "num ." "detail detail";
+      gap: 30px 40px;
+    }
+    /* tablet: wide image on top, text under it (side by side the text column gets too narrow) */
+    .prices-example { max-width: 720px; }
+    .prices-list { gap: 0; }
+    .prices-example-img { aspect-ratio: 16 / 9; }
+  }
+
+  @media (min-width: 1200px) {
+    .prices { --pad: 240px; }
+    /* the card reaches the left edge of the screen, so its tint does too */
+    .prices-card { margin-left: calc(-1 * var(--gutter)); padding: 100px 4vw 100px var(--gutter); }
+    .prices-card-inner {
+      grid-template-columns: 3fr 3fr 6fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "num . ." "detail detail detail";
+      gap: 50px 40px;
+    }
+    /* 16:9 image, never taller than the screen leaves room for (card padding, number and gaps take ~330px) and
+       never more than 68% of the row, so the text beside it keeps a usable width; headline, price and features beside it */
+    .prices-detail {
+      grid-template-columns: min(calc((100% - 40px) * .68), calc((100vh / var(--z, 1) - 330px) * 16 / 9)) 1fr;
+      column-gap: 40px;
+    }
+    .prices-example { max-width: none; }
+    .prices-example-img { aspect-ratio: 16 / 9; }
+    /* starts on the top edge of the image */
+    .prices-offer { align-self: start; }
+  }
+
+  /* tall desktop screens: the cards stick and stack, each one a full screen tall */
+  @media (min-width: 1200px) and (min-height: 700px) {
+    .prices-card { position: sticky; top: 0; min-height: calc(100vh / var(--z, 1)); }
+  }
+</style>
