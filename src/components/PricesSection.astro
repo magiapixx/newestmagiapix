@@ -96,7 +96,13 @@ const plans = [
             )}<div class="prices-offer"
               ><p class="prices-headline">{mark(plan.intro, [plan.accent]).map(([t, on]) => on ? <span class="prices-accent">{t}</span> : t)}</p
               ><h3 class="prices-price">{plan.title}, starting at {plan.price}.</h3
-              ><ul class="prices-list">{plan.features.map((f) => <li>{mark(f, plan.featureAccents).map(([t, on]) => on ? <span class="prices-accent">{t}</span> : t)}</li>)}</ul
+              ><button class="prices-toggle" type="button" aria-expanded="true" aria-controls={`prices-more-${i}`} data-price-toggle
+                ><span class="prices-toggle-icon" aria-hidden="true"></span
+                ><span class="prices-toggle-label" data-show="collapsed">Expand</span
+                ><span class="prices-toggle-label" data-show="expanded">Collapse</span></button
+              ><div class="prices-more" id={`prices-more-${i}`}
+                ><ul class="prices-list">{plan.features.map((f) => <li>{mark(f, plan.featureAccents).map(([t, on]) => on ? <span class="prices-accent">{t}</span> : t)}</li>)}</ul
+              ></div
             ></div
           ></div
         ></div
@@ -161,7 +167,56 @@ const plans = [
     letter-spacing: -.03em;
     text-transform: uppercase;
   }
-  .prices-offer { display: grid; gap: 40px; align-content: start; }
+  /* flex, not grid: a grid row keeps its gap even when the folded list's negative margin should cancel it */
+  .prices-offer { display: flex; flex-direction: column; gap: 40px; }
+
+  /* Expand / Collapse (like the phone service rows): a thin plus that turns into a minus, and the feature list
+     folding open below it. The markup starts open; scripts/components/price-stack.ts closes it, so without JS
+     the list stays visible */
+  .prices-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    align-self: flex-start;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: var(--fs--1);
+    font-variation-settings: "wdth" 100, "wght" 600;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .prices-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  .prices-toggle-icon { position: relative; flex: none; width: 27px; height: 27px; }
+  .prices-toggle-icon::before, .prices-toggle-icon::after {
+    content: "";
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 2px;
+    margin-top: -1px;
+    background: currentColor;
+    transition: transform .4s cubic-bezier(.2, .7, .2, 1);
+  }
+  .prices-toggle-icon::after { transform: rotate(90deg); }
+  .prices-toggle[aria-expanded="true"] .prices-toggle-icon::after { transform: rotate(90deg) scaleX(0); }
+  .prices-toggle[aria-expanded="true"] [data-show="collapsed"],
+  .prices-toggle[aria-expanded="false"] [data-show="expanded"] { display: none; }
+  .prices-more {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows .5s cubic-bezier(.2, .7, .2, 1), margin-top .5s cubic-bezier(.2, .7, .2, 1);
+  }
+  .prices-more > * { min-height: 0; overflow: hidden; }
+  /* folded away; the negative margin cancels the offer's gap so no space is left under the button */
+  .prices-more.is-closed { grid-template-rows: 0fr; margin-top: -40px; }
+  /* phone only: tablet and desktop hide the button and always show the list */
+  @media (min-width: 810px) {
+    .prices-toggle { display: none; }
+    .prices-more.is-closed { grid-template-rows: 1fr; margin-top: 0; }
+  }
   /* plain sentence, like the intro line above the service lists */
   .prices-price { color: var(--muted); font-size: var(--fs-0); font-weight: inherit; line-height: 1.6; }
 

@@ -1,7 +1,8 @@
 /**
  * Price cards (components/PricesSection.astro). The big number of each card slides up out of its mask the first
  * time it comes into view. Where the cards are sticky (tall desktop screens) they stack: while a card is stuck at
- * the top, --cover on it goes from 0 to 1 as the next card slides over it, so it can recede.
+ * the top, --cover on it goes from 0 to 1 as the next card slides over it, so it can recede. Each card's feature
+ * list starts folded and its Expand / Collapse button opens and closes it.
  */
 import { animate, inView } from '../lib/motion';
 import { pageZoom } from '../lib/zoom';
@@ -9,6 +10,17 @@ import { pageZoom } from '../lib/zoom';
 export function initPriceStack() {
   const cards = [...document.querySelectorAll<HTMLElement>('[data-price-card]')];
   if (!cards.length) return;
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-price-toggle]')) {
+    const list = document.getElementById(button.getAttribute('aria-controls') ?? '');
+    if (!list) continue;
+    const set = (open: boolean) => {
+      button.setAttribute('aria-expanded', String(open));
+      list.classList.toggle('is-closed', !open);
+    };
+    set(false);
+    button.addEventListener('click', () => set(button.getAttribute('aria-expanded') !== 'true'));
+  }
 
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     for (const num of document.querySelectorAll<HTMLElement>('[data-price-num]')) {
