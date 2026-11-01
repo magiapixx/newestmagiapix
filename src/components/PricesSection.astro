@@ -94,8 +94,9 @@ const plans = [
                   ><img src={img.src} srcset={img.srcset} sizes="(min-width: 1200px) 55vw, 90vw" width={img.width} height={img.height} alt={`${ex.title} website`} loading="lazy" decoding="async" /></span
               ></a>
             )}<div class="prices-offer"
+              ><h3 class="prices-meta"><span class="prices-name">/{plan.title}</span><span class="prices-rule" aria-hidden="true"></span><span>Starting at</span></h3
+              ><p class="prices-amount">{plan.price}</p
               ><p class="prices-headline">{mark(plan.intro, [plan.accent]).map(([t, on]) => on ? <span class="prices-accent">{t}</span> : t)}</p
-              ><h3 class="prices-price">{plan.title}, starting at {plan.price}.</h3
               ><button class="prices-toggle" type="button" aria-expanded="true" aria-controls={`prices-more-${i}`} data-price-toggle
                 ><span class="prices-toggle-icon" aria-hidden="true"></span
                 ><span class="prices-toggle-label" data-show="collapsed">Expand</span
@@ -136,8 +137,12 @@ const plans = [
     position: relative;
     padding: 60px 0;
     background: var(--color-black, #000);
-    background: color-mix(in srgb, #181818 calc(min(1, var(--cover) * 4) * 100%), var(--color-black, #000));
+    background: color-mix(in srgb, var(--color-gray-900, #171717) calc(min(1, var(--cover) * 4) * 100%), var(--color-black, #000));
   }
+  /* hairline on top of each card with the short purple segment the Why Us rows use */
+  .prices-card::before, .prices-card::after { content: ""; position: absolute; top: 0; left: 0; height: 1px; }
+  .prices-card::before { right: 0; background: var(--color-gray-850, #242424); }
+  .prices-card::after { width: 40px; background: var(--color-accent, rgb(157, 140, 255)); }
   .prices-card-inner {
     display: grid;
     grid-template-areas: "num" "detail";
@@ -217,8 +222,31 @@ const plans = [
     .prices-toggle { display: none; }
     .prices-more.is-closed { grid-template-rows: 1fr; margin-top: 0; }
   }
-  /* plain sentence, like the intro line above the service lists */
-  .prices-price { color: var(--muted); font-size: var(--fs-0); font-weight: inherit; line-height: 1.6; }
+  /* package label: /Name in purple, a hairline, "Starting at", like the Why Us row labels */
+  .prices-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--muted);
+    font-size: var(--fs--1);
+    font-weight: inherit;
+    font-variation-settings: "wdth" 100, "wght" 535;
+    line-height: 1;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .prices-name { color: var(--color-accent, rgb(157, 140, 255)); }
+  .prices-rule { flex: 1; max-width: 120px; height: 1px; background: var(--color-gray-850, #242424); }
+  /* the price itself, sitting tight under its label */
+  .prices .prices-amount {
+    margin-top: -24px;
+    font-size: var(--fs-5);
+    font-weight: 800;
+    font-variation-settings: "wdth" 100, "wght" 800;
+    line-height: .9;
+    letter-spacing: -.04em;
+    font-variant-numeric: tabular-nums;
+  }
 
   /* example image beside the price and feature list, laid out like a service item */
   .prices-detail { grid-area: detail; display: grid; gap: 40px; align-items: start; }
@@ -236,7 +264,7 @@ const plans = [
   }
 
   .prices-example { display: block; color: inherit; text-decoration: none; }
-  .prices-example-img { display: block; overflow: hidden; aspect-ratio: 4 / 3; background: #111; }
+  .prices-example-img { display: block; overflow: hidden; aspect-ratio: 4 / 3; background: var(--color-gray-900, #171717); }
   .prices-example-img img {
     display: block;
     width: 100%;

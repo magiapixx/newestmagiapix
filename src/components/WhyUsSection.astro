@@ -7,12 +7,13 @@ import { rv } from '../lib/rv';
 const look = rv({ lg: 'v-r3folb', xl: 'v-ffyfvy', t: 'v-14dwyd8', p: 'v-vz0dz5' });
 const intro = rv({ lg: 'type-1qeok15', xl: 'type-1qeok15', t: 'type-1qeok15', p: 'type-1xxob9n' });
 
-// Cards alternate left / right down the column, like the original zigzag
+// What a site we build does for the client's business, as a numbered list of full-width rows like the service
+// and price lists: index on the left, uppercase title in the middle, tag and muted text on the right
 const cards = [
-  { tag: 'Pricing', title: 'Transparent Pricing', text: 'One monthly rate. The number you see is the number you pay.', icon: '/images/xlnhAUAgwVLAHsDEHaP3Ekg9GCw.19j17m1.svg' },
-  { tag: 'Process', title: 'Refined Until Right', text: "We revise until it's right, not until the hours run out.", icon: '/images/rnOcaRBsZ0SaJdqUEdnGXgS0es.19j17m1.svg' },
-  { tag: 'Speed', title: 'Fast Delivery', text: 'First designs in days, not weeks. Speed comes from focus, never from shortcuts.', icon: '/images/qwlHpkDerF2goQGHVw22KCquy0.19j17m1.svg' },
-  { tag: 'Team', title: 'Senior Expertise', text: 'The people you meet are the people who design. No hand-offs to juniors.', icon: '/images/2GhbTUuLsZiZnefO07P0cTksQ.19j17m1.svg' },
+  { tag: 'Conversion', title: 'More Visitors Become Clients', text: 'Clear paths, strong calls to action and fast pages turn traffic into enquiries, sign-ups and sales.' },
+  { tag: 'Branding', title: 'A Brand Image That Sticks', text: 'Type, colour and motion built around your identity, so people remember you long after they close the tab.' },
+  { tag: 'Visualisation', title: 'Your Product, Made Visible', text: '3D, motion and imagery that show what you offer in seconds, not paragraphs.' },
+  { tag: 'Trust', title: 'Credibility From First Click', text: 'A polished, responsive site on every screen tells clients you are serious before you say a word.' },
 ];
 const total = String(cards.length).padStart(2, '0');
 const reveal = JSON.stringify({ from: { opacity: 0.3, y: 100 }, transition: { bounce: 0, delay: 0, duration: 1, type: 'spring' }, threshold: 0 });
@@ -32,117 +33,86 @@ const reveal = JSON.stringify({ from: { opacity: 0.3, y: 100 }, transition: { bo
       ><div class="m-1knpvj9 hide-tablet hide-lg hide-xl" style="--extracted-1eung3n:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
         ><h3 class="rt type-wc4xhu section-heading" dir="auto" style="--m-text-color:var(--extracted-1eung3n, var(--color-white, rgb(255, 255, 255)))">/Why Us</h3
       ></div
-      >{cards.map((card, i) => (
-        <div class:list={["wy-row", i % 2 ? "wy-right" : "wy-left"]} style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal={reveal}>
-          <article class="wy-card">
-            <header class="wy-meta">
-              <span class="wy-idx">{String(i + 1).padStart(2, '0')}<span class="wy-dim">/{total}</span></span>
-              <span class="wy-rule"></span>
-              <span class="wy-tag">/{card.tag}</span>
-            </header>
-            <div class="wy-body">
-              <div class="wy-icon">
-                <img decoding="async" loading="lazy" width="80" height="80" src={card.icon} alt="" />
-              </div>
-              <div class="wy-text" style="--m-paragraph-spacing:0px">
-                <h6 class="rt type-1xxob9n" dir="auto" style="--m-text-color:var(--color-white, rgb(255, 255, 255))">{card.title}</h6>
-                <p class="rt type-m3s7sn" dir="auto" style="--m-text-color:rgba(255, 255, 255, 0.6)">{card.text}</p>
-              </div>
-            </div>
-            <footer class="wy-foot"><span class="wy-bar"></span></footer>
-          </article>
-        </div>
-      ))}</div
+      ><ol class="wy-list">{cards.map((card, i) => (
+        <li class="wy-row" style="will-change:transform;opacity:0.3;transform:translateY(100px)" data-reveal={reveal}>
+          <span class="wy-idx">{String(i + 1).padStart(2, '0')}<span class="wy-dim">/{total}</span></span>
+          <span class="wy-tag">/{card.tag}</span>
+          <h4 class="wy-title">{card.title}</h4>
+          <p class="wy-text">{card.text}</p>
+        </li>
+      ))}</ol></div
   ></div
 ></section>
 
 <style>
-  .wy-row { display: flex; width: 100%; }
-  .wy-left { justify-content: flex-start; }
-  .wy-right { justify-content: flex-end; }
-
-  .wy-card {
+  /* only site tokens here: --fs-* type scale, --color-* palette, 40px row rhythm, square corners */
+  .wy-list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--color-white, #fff);
+    font-family: "Zalando Sans Variable", "Zalando Sans Variable Placeholder", sans-serif;
+  }
+  .wy-row {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    width: 75%;
-    max-width: 600px;
-    padding: 28px 32px 32px;
-    background: var(--color-black, #000);
-    border: 1px solid var(--color-gray-850, #242424);
-    transition: border-color 0.4s ease, background-color 0.4s ease;
-  }
-  .wy-card:hover {
-    border-color: rgba(157, 140, 255, 0.35);
-    background: var(--color-gray-900, #171717);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "idx tag" "title title" "text text";
+    gap: 20px 40px;
+    padding: 40px 0;
   }
 
-  .wy-meta {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-size: 12px;
+  /* labels, like the blog meta line */
+  .wy-idx, .wy-tag {
+    font-size: var(--fs--1);
+    font-variation-settings: "wdth" 100, "wght" 535;
     line-height: 1;
-    letter-spacing: 0.08em;
+    letter-spacing: .04em;
     text-transform: uppercase;
     font-variant-numeric: tabular-nums;
   }
-  .wy-idx { color: var(--color-accent, #9d8cff); }
-  .wy-dim { color: rgba(255, 255, 255, 0.35); }
-  .wy-tag { color: rgba(255, 255, 255, 0.6); }
-  .wy-rule { flex: 1; height: 1px; background: var(--color-gray-850, #242424); }
+  .wy-idx { grid-area: idx; color: var(--color-accent, #9d8cff); }
+  .wy-dim { color: rgba(255, 255, 255, .35); }
+  .wy-tag { grid-area: tag; justify-self: end; color: rgba(255, 255, 255, .6); }
 
-  .wy-body { display: flex; align-items: flex-start; gap: 32px; }
-
-  .wy-icon {
-    position: relative;
-    flex: none;
-    width: 80px;
-    height: 80px;
-    background: var(--color-gray-900, #171717);
-    border: 1px solid var(--color-gray-850, #242424);
-    transition: border-color 0.4s ease, background-color 0.4s ease;
+  /* bold uppercase title, like the price headlines */
+  .wy-title {
+    grid-area: title;
+    margin: 0;
+    font-size: var(--fs-3);
+    font-weight: 700;
+    font-variation-settings: "wdth" 100, "wght" 700;
+    line-height: 1.1;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+    transition: color .3s cubic-bezier(.4, 0, .2, 1);
   }
-  .wy-icon img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .wy-card:hover .wy-icon { border-color: var(--color-accent, #9d8cff); background: var(--color-black, #000); }
-
+  .wy-row:hover .wy-title { color: var(--color-accent, #9d8cff); }
   .wy-text {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex: 1;
-    min-width: 0;
-    padding-top: 6px;
-    white-space: pre-wrap;
-    word-break: break-word;
+    grid-area: text;
+    max-width: 32em;
+    margin: 0;
+    color: rgba(255, 255, 255, .6);
+    font-size: var(--fs-0);
+    font-variation-settings: "wdth" 100, "wght" 350;
+    line-height: 1.45;
   }
-  .wy-text h6 { text-transform: uppercase; }
 
-  /* progress line: accent segment fills the full width on hover */
-  .wy-foot { position: relative; height: 1px; background: var(--color-gray-850, #242424); }
-  .wy-bar {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 15%;
-    background: var(--color-accent, #9d8cff);
-    transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* tablet and desktop: index | title | text on one line, tag above the text */
+  @media (min-width: 810px) {
+    .wy-row {
+      grid-template-columns: 2fr 5fr 4fr;
+      grid-template-areas: "idx title tag" "idx title text";
+      grid-template-rows: auto 1fr;
+      gap: 20px 40px;
+    }
+    .wy-tag { justify-self: start; }
   }
-  .wy-card:hover .wy-bar { width: 100%; }
-
-  @media (min-width: 1600px) {
-    .wy-card { padding: 36px 44px 44px; gap: 60px; }
+  @media (min-width: 1200px) {
+    .wy-row { padding: 60px 0; }
   }
-  @media (min-width: 810px) and (max-width: 1199.98px) {
-    .wy-card { width: 85%; max-width: 515px; padding: 24px 28px 28px; gap: 40px; }
-  }
-  @media (max-width: 809.98px) {
-    .wy-card { width: 100%; max-width: none; padding: 20px 20px 24px; gap: 32px; }
-    .wy-body { flex-direction: column; gap: 20px; }
-    .wy-icon { width: 64px; height: 64px; }
-    .wy-text { padding-top: 0; }
-  }
-  @media (hover: none) {
-    .wy-bar { width: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    .wy-title { transition: none; }
   }
 </style>
