@@ -96,12 +96,13 @@ const isActive = (href: string) => (href === '/' ? here === '/' : here === trim(
   }
   .nm-social { position: absolute; right: clamp(15px, 2vw, 40px); bottom: clamp(20px, 3vh, 40px); margin: 0; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
 
-  /* tablet and desktop: the info column sits right with the social links under the mark's line */
-  @media (min-width: 810px) {
+  /* tablet and desktop: the info column sits right with the social links under the mark's line. The menu switches
+     at 600px, not the site's 810px, so tablets in portrait (768-809px) get this layout too */
+  @media (min-width: 600px) {
     .nm-info { padding-bottom: 34px; }
   }
   /* phone: links on top, then the info blocks, the social links and the mark, no pictures */
-  @media (max-width: 809.98px) {
+  @media (max-width: 599.98px) {
     .nm { grid-template-columns: 1fr; grid-template-rows: 1fr auto auto auto; gap: 24px; }
     .nm-pics { display: none; }
     .nm-info { grid-column: 1; grid-row: 2; width: auto; gap: 20px; }

@@ -5,10 +5,10 @@ import CasesSection from '../components/CasesSection.astro';
 import FooterSection from '../components/FooterSection.astro';
 import HeroSection from '../components/HeroSection.astro';
 import Navigation from '../components/Navigation.astro';
-import PricesSection from '../components/PricesSection.astro';
+// import PricesSection from '../components/PricesSection.astro'; (section hidden below)
 import ServicesSection from '../components/ServicesSection.astro';
 import ShowreelSection from '../components/ShowreelSection.astro';
-import WhyUsSection from '../components/WhyUsSection.astro';
+// import WhyUsSection from '../components/WhyUsSection.astro'; (section hidden below)
 ---
 
 <BaseLayout title="Magiapix — Digital & Creative Agency" description="Magiapix is a digital and creative agency for brands, studios and small teams.">
@@ -33,13 +33,14 @@ import WhyUsSection from '../components/WhyUsSection.astro';
         ><div class="m-cfbga4-container" id="showreel"
           ><ShowreelSection></ShowreelSection
         ></div
-        ><div class="m-paz1jq-container" id="why-us" data-nav-theme="light"
+        >{/* Why Us and Prices sections hidden for now; restore by uncommenting (and the two imports above):
+        <div class="m-paz1jq-container" id="why-us" data-nav-theme="light"
           ><WhyUsSection></WhyUsSection
         ></div
         ><div class="m-1bg3m36-container" id="prices"
           ><PricesSection></PricesSection
         ></div
-      ></div
+        */}</div
       ><div id="overlay"></div
       ><div class="m-h650cb"></div
       ><div class="m-vouzml-container"

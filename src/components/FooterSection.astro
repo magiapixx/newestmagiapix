@@ -1,20 +1,11 @@
 ---
-// Footer - Section: dark, no background effects. Top row: studio statement on the left, (Menu) and (Socials)
-// link columns on the right. A hairline, then contact, studio address, a start-a-project link and a back-to-top
-// arrow. Then the big faint MAGIAPIX wordmark and a bottom bar (copyright, privacy and terms).
+// Footer - Section: plain black, no background effects. Headline + two pill buttons and a social column on top,
+// a big MAGIAPIX wordmark, then a centred one-line meta bar (copyright, email)
 interface Props {
   linkWithLineSmallLink: string;
 }
 
 const { linkWithLineSmallLink } = Astro.props;
-
-const menu = [
-  { label: 'Home', href: '/' },
-  { label: 'Cases', href: '/cases/' },
-  { label: 'About', href: '/about/' },
-  { label: 'Blog', href: '/blog/' },
-  { label: 'Contact', href: linkWithLineSmallLink },
-];
 
 const socials = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
@@ -26,177 +17,119 @@ const socials = [
 ---
 
 <footer class="ft">
-  <section class="ft-cta-hero">
-    <p class="ft-label">(New project?)</p>
-    <h2 class="ft-cta-head">Let’s build something legendary</h2>
-    <div class="ft-cta-actions">
-      <a class="ft-btn ft-btn-solid" href={linkWithLineSmallLink}>Start a project</a>
-    </div>
-  </section>
-
   <div class="ft-top">
-    <p class="ft-head">Magiapix is a creative studio in London for brands that would rather be remembered than noticed.</p>
-    <nav class="ft-col" aria-label="Footer">
-      <p class="ft-label">(Menu)</p>
-      <ul>{menu.map((m) => <li><a href={m.href}>{m.label}</a></li>)}</ul>
-    </nav>
-    <div class="ft-col">
-      <p class="ft-label">(Socials)</p>
-      <ul>{socials.map((s) => <li><a href={s.href} target="_blank" rel="noopener">{s.label}</a></li>)}</ul>
+    <div class="ft-lead">
+      <h2 class="ft-head">Come say<br />hello<span class="ft-accent">.</span></h2>
+      <div class="ft-actions">
+        <a class="ft-pill" href={linkWithLineSmallLink}>Start a project</a>
+        <a class="ft-pill" href="mailto:hello@magiapix.com">Drop us an email</a>
+      </div>
     </div>
-  </div>
-
-  <div class="ft-info">
-    <div class="ft-col ft-contact">
-      <p class="ft-label">(Contact)</p>
-      <a class="ft-email" href="mailto:hello@magiapix.com">hello@magiapix.com</a>
-    </div>
-    <div class="ft-col">
-      <p class="ft-label">(London)</p>
-      <p>18-22 Corsham St, Hoxton<br />London N1 6DR, UK<br />GMT — GMT+0</p>
-    </div>
-    <div class="ft-col">
-      <p class="ft-label">(New project)</p>
-      <a class="ft-cta" href={linkWithLineSmallLink}>Start a project →</a>
-    </div>
-    <button class="ft-top-btn" type="button" aria-label="Back to top" data-to-top>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V4M5 11l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" /></svg>
-    </button>
+    <ul class="ft-social">
+      {socials.map((s) => <li><a href={s.href} target="_blank" rel="noopener">{s.label}</a></li>)}
+    </ul>
   </div>
 
   <div class="ft-mark" aria-hidden="true"><span>MAGIAPIX</span></div>
 
-  <div class="ft-bottom">
-    <p>©2026 Magiapix Agency. All rights reserved.</p>
-    <p>18-22 Corsham St, London</p>
+  <div class="ft-meta">
+    <p>© 2026 Magiapix Agency — <a href="mailto:hello@magiapix.com">hello@magiapix.com</a></p>
   </div>
 </footer>
-
-<script>
-  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-to-top]')) {
-    button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
-</script>
 
 <style>
   .ft {
     --ft-pad: clamp(15px, 1.25vw, 24px);
-    --ft-muted: rgba(255, 255, 255, .5);
-    --ft-line: rgba(255, 255, 255, .14);
+    /* dark ink for white surface; accent darkened for readable text, the bright accent stays on the solid pill */
+    /* white ink on black; the bright site accent reads well on black, so no darkened accent is needed */
+    --ft-bg: var(--color-black, #000);
+    --ft-ink: #fff;
+    --ft-accent: var(--color-accent, #9d8cff);
+    --ft-line: rgba(255, 255, 255, .32);
+    --ft-muted: rgba(255, 255, 255, .6);
     position: relative;
     display: flex;
     flex-direction: column;
+    gap: clamp(32px, 3vw, 60px);
     width: 100%;
-    padding: clamp(60px, 4vw, 80px) var(--ft-pad) var(--ft-pad);
-    background: #0b0b0b;
-    color: #fff;
+    padding: clamp(80px, 5vw, 100px) var(--ft-pad) var(--ft-pad);
+    background: var(--ft-bg);
+    color: var(--ft-ink);
     font-family: "Zalando Sans Variable", "Zalando Sans Variable Placeholder", sans-serif;
-    font-size: 15px;
-    font-variation-settings: "wght" 450;
-    line-height: 1.5;
   }
-  .ft :is(p, ul) { margin: 0; }
-  .ft ul { list-style: none; padding: 0; }
-  .ft a { color: inherit; text-decoration: none; transition: color .2s; }
-  .ft a:hover, .ft a:focus-visible { color: var(--color-accent, #9d8cff); }
+  .ft a { color: inherit; text-decoration: none; }
+  /* desktop only: at least one screen tall, the wordmark and meta line at the bottom (.ft-mark margin-top: auto);
+     tablet and phone keep the height of the content */
+  @media (min-width: 1200px) {
+    .ft { min-height: calc(100vh / var(--z, 1)); }
+  }
 
-  /* call to action above the footer columns: one full screen tall, everything centred */
-  .ft-cta-hero {
+  /* headline and pills on the left, the socials below the buttons on the right edge. The top block takes the free
+     height of the screen-tall desktop footer and the socials drop to its bottom, so they always sit one footer gap
+     above the wordmark and the empty space opens between the buttons and the socials instead */
+  .ft-top {
+    flex: 1 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(24px, 2.5vw, 48px);
-    min-height: calc(100vh / var(--z, 1));
-    margin-top: calc(-1 * clamp(60px, 4vw, 80px));
-    margin-bottom: clamp(40px, 4vw, 80px);
-    text-align: center;
+    gap: clamp(28px, 3vw, 40px);
   }
-  .ft-cta-head {
+  .ft-social { align-self: flex-end; margin-top: auto; text-align: right; }
+  .ft-head {
     margin: 0;
-    max-width: 13em;
-    font-size: clamp(44px, 8.4vw, 170px);
+    font-size: clamp(48px, 6.25vw, 120px);
     font-weight: 800;
     font-variation-settings: "wght" 800;
-    line-height: .9;
-    letter-spacing: -.05em;
-    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -.03em;
   }
-  .ft-cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-  .ft .ft-btn {
+  .ft-accent { color: var(--ft-accent); }
+
+  .ft-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: clamp(28px, 2.2vw, 40px);
+  }
+  /* square buttons in monospace caps: the first solid accent, the second outlined; both turn black on hover */
+  .ft-pill {
     display: inline-flex;
     align-items: center;
-    padding: 14px 28px;
-    border: 1px solid rgba(255, 255, 255, .8);
-    font-size: 15px;
-    font-variation-settings: "wght" 500;
+    gap: 12px;
+    /* padding and type scale with the screen width, from phone to wide desktop */
+    padding: clamp(11px, .9vw, 18px) clamp(16px, 1.6vw, 28px);
+    border: 1px solid var(--ft-line);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(11px, calc(9px + .35vw), 15px);
+    letter-spacing: .06em;
     text-transform: uppercase;
+    white-space: nowrap;
     transition: background-color .25s, color .25s, border-color .25s;
   }
-  .ft .ft-btn-solid { background: #fff; border-color: #fff; color: #0b0b0b; }
-  .ft .ft-btn:hover, .ft .ft-btn:focus-visible { background: var(--color-accent, #9d8cff); border-color: var(--color-accent, #9d8cff); color: #0b0b0b; }
+  /* .ft prefix: outranks `.ft a { color: inherit }` */
+  .ft .ft-pill:first-child { background: var(--ft-accent); border-color: var(--ft-accent); color: #fff; }
+  /* hover inverts to white with black text */
+  .ft .ft-pill:hover, .ft .ft-pill:focus-visible { background: var(--ft-ink); border-color: var(--ft-ink); color: var(--ft-bg); }
+  .ft-pill:focus-visible { outline: 2px solid var(--ft-ink); outline-offset: 3px; }
 
-  /* four even columns from tablet up: the statement spans the first two, menu and socials take the last two */
-  .ft-top, .ft-info {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 20px;
+  .ft-social {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: calc(clamp(22px, 1.7vw, 32px) * .78);
+    font-weight: 560;
+    font-variation-settings: "wght" 560;
+    line-height: 1.15;
+    letter-spacing: -.01em;
   }
-  .ft-head {
-    grid-column: 1 / 3;
-    max-width: 19em;
-    font-size: clamp(24px, 1.75vw, 34px);
-    font-weight: 600;
-    font-variation-settings: "wght" 600;
-    line-height: 1.08;
-    letter-spacing: -.03em;
-    text-transform: uppercase;
-  }
-  .ft-label { color: var(--ft-muted); text-transform: uppercase; }
-  .ft-col ul { font-variation-settings: "wght" 560; }
+  .ft-social a:hover { color: var(--ft-accent); }
 
-  .ft-info {
-    position: relative;
-    margin-top: clamp(50px, 3vw, 60px);
-    padding-top: 26px;
-    border-top: 1px solid var(--ft-line);
-  }
-  .ft-contact { grid-column: 1 / 3; }
-  .ft-email {
-    display: inline-block;
-    font-size: clamp(24px, 1.75vw, 34px);
-    font-variation-settings: "wght" 600;
-    line-height: 1.2;
-    letter-spacing: -.03em;
-    text-transform: uppercase;
-  }
-  .ft-cta {
-    text-decoration: underline !important;
-    text-underline-offset: 3px;
-    font-variation-settings: "wght" 600;
-    text-transform: uppercase;
-  }
-  .ft-top-btn {
-    position: absolute;
-    top: 26px;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    padding: 8px;
-    border: 0;
-    background: none;
-    color: #fff;
-    cursor: pointer;
-    transition: transform .3s cubic-bezier(.2, .7, .2, 1), color .2s;
-  }
-  .ft-top-btn:hover { color: var(--color-accent, #9d8cff); transform: translateY(-4px); }
-  .ft-top-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-  .ft-top-btn svg { display: block; width: 100%; height: 100%; }
-
-  /* wordmark: MAGIAPIX is ~4.82em wide at this weight, so box width / 4.85em fills the width */
+  /* wordmark: MAGIAPIX is ~4.82em wide at this weight, so box width / 4.85em fills the width with a hair to spare,
+     the same at every breakpoint */
   .ft-mark {
-    margin-top: clamp(60px, 6vw, 110px);
-    color: #222;
+    /* faded white, the same 20% as the faded vertical section headings */
+    color: rgba(255, 255, 255, .2);
+    /* pushed to the bottom of the screen-tall footer */
+    margin-top: auto;
     container-type: inline-size;
     line-height: 0;
   }
@@ -210,22 +143,22 @@ const socials = [
     white-space: nowrap;
   }
 
-  .ft-bottom {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 20px;
-    margin-top: clamp(40px, 4vw, 80px);
+  .ft-meta {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     color: var(--ft-muted);
-    font-size: 13px;
-    text-transform: uppercase;
+    font-size: 14px;
   }
-  .ft-bottom > p:first-child { grid-column: 1 / 3; }
+  /* sits close under the wordmark: cancel most of the footer's column gap */
+  .ft-mark + .ft-meta { margin-top: calc(24px - clamp(32px, 3vw, 60px)); }
+  .ft-meta p { margin: 0; }
+  .ft-meta a:hover { color: var(--ft-accent); }
 
-  /* phone: one column, statement first, menu and socials side by side, then the info blocks stacked */
+  /* phone: the pills stay side by side at their own size (they wrap only when the screen is too narrow), socials
+     under them on the right as on desktop; the meta line stays centred */
   @media (max-width: 809.98px) {
-    .ft-top, .ft-info, .ft-bottom { grid-template-columns: 1fr 1fr; row-gap: 32px; }
-    .ft-head, .ft-contact, .ft-bottom > p:first-child { grid-column: 1 / -1; }
-    .ft-bottom { row-gap: 10px; }
-    .ft-mark > span { font-size: calc(100cqw / 4.85); }
+    .ft-actions { gap: 10px; }
+    .ft-meta { font-size: 12px; }
   }
 </style>
