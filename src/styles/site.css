@@ -1343,3 +1343,9 @@ html body { background: rgb(94, 94, 94); }
 .section-heading.rt{margin:0;font-family:"Zalando Sans Variable","Zalando Sans Variable Placeholder",sans-serif;font-size:var(--fs-4);font-weight:800;font-variation-settings:"wdth" 100,"wght" 800;line-height:.92;letter-spacing:-.033em;text-transform:uppercase}
 /* words and marks picked out in the accent colour: key phrases in the about statement and intro */
 .text-accent{color:var(--color-accent, rgb(157, 140, 255))}
+
+/* service lists (Service, ServiceInverse): on tablet and desktop, hovering one line fades the others */
+@media (min-width: 810px) and (hover: hover) {
+  .service-lines .service-line { transition: opacity 0.3s ease; }
+  .service-lines:has(.service-line:hover) .service-line:not(:hover) { opacity: 0.3; }
+}

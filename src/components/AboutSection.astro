@@ -1,49 +1,80 @@
 ---
-// About - Section: one markup for every breakpoint (lib/rv). Desktop/Wide and tablet/phone each have their copy
-// of the blurb (the scramble splits it into letters while it plays); the wide weight and per-breakpoint inline
-// values are in site.css.
+// About - Section: one sentence for every breakpoint (lib/rv), centered in the viewport: the studio line, in a
+// narrow column so the type stays large; the scramble splits it into letters while it plays.
 import HeadingsVertical from './HeadingsVertical.astro';
 import TextBackAnimation from './TextBackAnimation.astro';
 import { rv } from '../lib/rv';
 
 const look = rv({ lg: 'v-1qz6qus', xl: 'v-2sl3pd', t: 'v-ak7fvf', p: 'v-l8l8b2' });
 const since = rv({ lg: 'type-1xxob9n', xl: 'type-1xxob9n', t: 'type-1xxob9n', p: 'type-y2tuor' });
+const statement = rv({ lg: 'type-1qeok15', xl: 'type-9iwysc', t: 'type-1qeok15', p: 'type-y2tuor' });
+// weight 800 (the variable font's heaviest axis) and the size comes from the per-breakpoint rules below
+const statementStyle =
+  '--m-text-color:var(--color-white, rgb(255, 255, 255));--m-text-alignment:center;' +
+  '--m-font-size:var(--about-size);--m-line-height:var(--about-line-height);' +
+  '--m-font-weight:800;--m-font-variation-axes:\'wdth\' 100, \'wght\' 800;' +
+  'font-weight:800;font-variation-settings:\'wdth\' 100, \'wght\' 800;text-align:center';
 ---
 
 <section class:list={["m-faSoo m-dS8v4 m-xbhBc m-1qz6qus", look]} style="background-color:var(--color-black, rgb(0, 0, 0));width:100%"
-  ><div class="m-91mlgc"
-    ><div class="m-p3sb6n hide-tablet hide-phone"></div
-    ><div class="m-1j7sbv4"
-      ><div class="m-1dqc4is"
-        ><div class="m-1ds4kfw-container" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0.2,&quot;duration&quot;:0.9,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-          ><TextBackAnimation></TextBackAnimation
-        ></div
-        ><div class="m-9sybpk"
-          ><div class="m-1oe83v5 hide-phone"></div
-          ><div class="m-uqw1t6"
-            ><div class="m-1rin1de-container" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0.1,&quot;duration&quot;:0.9,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
-              ><div style="width:100%;position:relative;display:block;box-sizing:border-box;margin:0;padding:0;padding-bottom:10px;color:var(--color-white, rgb(255, 255, 255));white-space:pre-wrap;overflow-wrap:break-word;overflow:visible"
-                ><div class="hide-tablet hide-phone" style="font-family:&quot;Zalando Sans Variable&quot;, &quot;Zalando Sans Variable Placeholder&quot;, sans-serif;font-size:var(--fs-0);font-style:normal;font-weight:540;letter-spacing:0.15px;line-height:23px;text-align:left;font-variation-settings:&quot;wght&quot; 540;-webkit-font-variation-settings:&quot;wght&quot; 540;--m-font-weight:540;--m-font-variation-axes:&quot;wght&quot; 540;--m-font-variation-axes-preview:&quot;wght&quot; 540;margin:0;padding:0;color:var(--color-white, rgb(255, 255, 255));white-space:pre-wrap;overflow-wrap:break-word" aria-label="A SUBSCRIPTION, NOT A RETAINER. ONE MONTHLY RATE BUYS A SENIOR TEAM THAT SHIPS EVERY WEEK AND KEEPS SHARPENING UNTIL IT FEELS LIKE YOUR BRAND."
-                  ><span>A SUBSCRIPTION, NOT A RETAINER. ONE MONTHLY RATE BUYS A <span class="text-accent">SENIOR TEAM</span> THAT SHIPS <span class="text-accent">EVERY WEEK</span> AND KEEPS SHARPENING UNTIL IT FEELS LIKE </span
-                  ><span style="position:relative;display:inline-block;color:var(--color-accent, rgb(157, 140, 255));white-space:nowrap;font:inherit;font-variation-settings:inherit;font-feature-settings:inherit;letter-spacing:inherit;line-height:inherit">YOUR BRAND.<img src="/images/vXUsxAOZOzZ06OzL5JM6q7po.svg" alt="" aria-hidden="true" draggable="false" style="position:absolute;left:50%;top:100%;z-index:1;width:105%;height:7px;object-fit:fill;object-position:center;opacity:1;transform:translateX(-50%) translate(0px, -1px) rotate(0deg);transform-origin:center;pointer-events:none;user-select:none;max-width:none"
-                  ></span
-                ></div
-                ><div class="hide-lg hide-xl" style="font-family:&quot;Zalando Sans Variable&quot;, &quot;Zalando Sans Variable Placeholder&quot;, sans-serif;font-size:var(--fs-0);font-style:normal;font-weight:540;letter-spacing:0.15px;line-height:23px;text-align:left;font-variation-settings:&quot;wght&quot; 540;-webkit-font-variation-settings:&quot;wght&quot; 540;--m-font-weight:540;--m-font-variation-axes:&quot;wght&quot; 540;--m-font-variation-axes-preview:&quot;wght&quot; 540;margin:0;padding:0;color:var(--color-white, rgb(255, 255, 255));white-space:pre-wrap;overflow-wrap:break-word" aria-label="A SUBSCRIPTION, NOT A RETAINER. ONE MONTHLY RATE BUYS A SENIOR TEAM THAT SHIPS EVERY WEEK AND KEEPS SHARPENING UNTIL IT FEELS LIKE YOUR BRAND."
-                  ><span>A SUBSCRIPTION, NOT A RETAINER. ONE MONTHLY RATE BUYS A <span class="text-accent">SENIOR TEAM</span> THAT SHIPS <span class="text-accent">EVERY WEEK</span> AND KEEPS SHARPENING UNTIL IT FEELS LIKE </span
-                  ><span style="position:relative;display:inline-block;color:var(--color-accent, rgb(157, 140, 255));white-space:nowrap;font:inherit;font-variation-settings:inherit;font-feature-settings:inherit;letter-spacing:inherit;line-height:inherit">YOUR BRAND.<img src="/images/vXUsxAOZOzZ06OzL5JM6q7po.svg" alt="" aria-hidden="true" draggable="false" style="position:absolute;left:50%;top:100%;z-index:1;width:105%;height:7px;object-fit:fill;object-position:center;opacity:1;transform:translateX(-50%) translate(0px, -1px) rotate(0deg);transform-origin:center;pointer-events:none;user-select:none;max-width:none"
-                  ></span
-                ></div
-              ></div
-            ></div
-          ></div
-        ></div
-      ></div
-    ></div
-    ><div class="m-1b9qf9k-container"
-      ><HeadingsVertical variants={{ lg: "/About - H1", xl: "/About - H1", t: "/About - H2", p: "/About - H3" }} first="/About" extraClass="heading-faded"></HeadingsVertical
-    ></div
-    ><div class="m-egigc9" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));transform:none"
-      ><h6 class={`rt ${since}`} dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)));opacity:.2">© Since 2016</h6
+  ><div class="m-91mlgc about-statement-layout"
+    ><div class="about-statement" style="will-change:transform;opacity:0;transform:none" data-reveal="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;transition&quot;:{&quot;bounce&quot;:0,&quot;delay&quot;:0.2,&quot;duration&quot;:0.9,&quot;type&quot;:&quot;spring&quot;},&quot;threshold&quot;:0.5}"
+      ><TextBackAnimation
+        ><p class={`rt ${statement}`} dir="auto" style={statementStyle}
+          >Magiapix makes <span class="text-accent">brands</span>, <span class="text-accent">3D visuals</span> and <span class="text-accent">websites</span> that look like nothing else.</p
+      ></TextBackAnimation
     ></div
   ></div
+  ><div class="m-1b9qf9k-container"
+    ><HeadingsVertical variants={{ lg: "/About - H1", xl: "/About - H1", t: "/About - H2", p: "/About - H3" }} first="/About" extraClass="heading-faded"></HeadingsVertical
+  ></div
+  ><div class="m-egigc9" style="--extracted-1w1cjl5:var(--color-white, rgb(255, 255, 255));--m-paragraph-spacing:0px;--extracted-r6o4lv:var(--color-white, rgb(255, 255, 255));transform:none"
+    ><h6 class={`rt ${since}`} dir="auto" style="--m-text-color:var(--extracted-1w1cjl5, var(--color-white, rgb(255, 255, 255)));opacity:.2">© Since 2016</h6
+  ></div
 ></section>
+
+<style>
+  /* the statement is the only copy in the section: fill the canvas and sit in the middle of it */
+  .m-faSoo.m-1qz6qus .about-statement-layout {
+    align-content: center;
+  }
+  .m-faSoo.m-1qz6qus .about-statement {
+    grid-column: 1 / -1;
+    align-self: center;
+    justify-self: center;
+    /* a narrow column in the middle of the section: 60% of the canvas width */
+    width: 60%;
+    z-index: 2;
+    /* type scale steps, one per breakpoint (phone fs-3 ... wide fs-6). fs-6 is capped by the screen height
+       so the widest step still fits one screen on short desktops. */
+    --about-size: min(var(--fs-6), calc(11.5vh / var(--z, 1)));
+    --about-line-height: 1.04;
+  }
+  .about-statement :global(.m-1mu2gsw) {
+    align-items: center;
+    padding-right: 0;
+  }
+  @media (min-width: 810px) and (max-width: 1199.98px) {
+    .m-faSoo.m-1qz6qus .about-statement {
+      --about-size: var(--fs-4);
+      --about-line-height: 1.06;
+    }
+  }
+  @media (min-width: 1200px) and (max-width: 1599.98px) {
+    .m-faSoo.m-1qz6qus .about-statement {
+      --about-size: var(--fs-5);
+    }
+  }
+  @media (max-width: 809.98px) {
+    .m-faSoo.m-1qz6qus .about-statement-layout {
+      flex: 1 0 0;
+      height: auto;
+      justify-content: center;
+      align-items: center;
+    }
+    .m-faSoo.m-1qz6qus .about-statement {
+      --about-size: var(--fs-3);
+      --about-line-height: 1.12;
+    }
+  }
+</style>

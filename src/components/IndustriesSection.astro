@@ -58,11 +58,7 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
 ></section>
 
 <style>
-  /* heading sits on the left like the Why Us section: the generated rule anchors it right, so flip the anchor */
-  .m-11fsg2y-container {
-    left: 20px;
-    right: auto;
-  }
+  /* heading sits on the right, where the generated rule anchors it, like the Reach us heading it replaces */
   /* desktop: keep the heading in view while the rows scroll past, same as Why Us */
   @media (min-width: 1200px) {
     .m-11fsg2y-container { bottom: 20px; }
@@ -71,9 +67,9 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
       --m-font-size: min(var(--fs-8), calc((calc(100vh / var(--z, 1)) - 40px) / 4.1)) !important;
     }
   }
-  /* heading now sits on the left, so indent the content clear of it, as Why Us does on tablet.
+  /* heading on the right, so keep the content clear of it on that side.
      doubled class: the generated tablet rule `.m-S9Yzj.v-1kbukwf .m-bvf4f` outranks a single class */
   @media (min-width: 810px) {
-    .m-xpytne .m-bvf4f.m-bvf4f { padding-left: clamp(160px, 12vw, 280px); }
+    .m-xpytne .m-bvf4f.m-bvf4f { padding-right: clamp(160px, 12vw, 280px); }
   }
 </style>
