@@ -107,6 +107,9 @@ const socials = [
   }
   /* .ft prefix: outranks `.ft a { color: inherit }` */
   .ft .ft-pill:first-child { background: var(--ft-accent); border-color: var(--ft-accent); color: #fff; }
+  /* the second button is filled too, in dark grey, with no visible border (the border stays transparent so both
+     buttons keep the same size) */
+  .ft .ft-pill:nth-child(2) { background: var(--color-gray-850, #242424); border-color: transparent; color: #fff; }
   /* hover inverts to white with black text */
   .ft .ft-pill:hover, .ft .ft-pill:focus-visible { background: var(--ft-ink); border-color: var(--ft-ink); color: var(--ft-bg); }
   .ft-pill:focus-visible { outline: 2px solid var(--ft-ink); outline-offset: 3px; }
