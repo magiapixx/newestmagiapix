@@ -56,3 +56,24 @@ const intro = rv({ lg: 'type-1e97z2c', xl: 'type-1e97z2c', t: 'type-1e97z2c', p:
     ><div class="m-1wth8sw hide-phone"></div
   ></div
 ></section>
+
+<style>
+  /* heading sits on the left like the Why Us section: the generated rule anchors it right, so flip the anchor */
+  .m-11fsg2y-container {
+    left: 20px;
+    right: auto;
+  }
+  /* desktop: keep the heading in view while the rows scroll past, same as Why Us */
+  @media (min-width: 1200px) {
+    .m-11fsg2y-container { bottom: 20px; }
+    .m-11fsg2y-container :global(.m-v0AUC) { position: sticky; top: 20px; }
+    .m-11fsg2y-container :global(.m-v0AUC .rt) {
+      --m-font-size: min(var(--fs-8), calc((calc(100vh / var(--z, 1)) - 40px) / 4.1)) !important;
+    }
+  }
+  /* heading now sits on the left, so indent the content clear of it, as Why Us does on tablet.
+     doubled class: the generated tablet rule `.m-S9Yzj.v-1kbukwf .m-bvf4f` outranks a single class */
+  @media (min-width: 810px) {
+    .m-xpytne .m-bvf4f.m-bvf4f { padding-left: clamp(160px, 12vw, 280px); }
+  }
+</style>

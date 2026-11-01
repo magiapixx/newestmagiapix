@@ -1,5 +1,5 @@
 ---
-// Footer - Section: plain black, no background effects. Headline + two pill buttons and a social column on top,
+// Footer - Section: plain white, no background effects. Headline + two pill buttons and a social column on top,
 // a big ice7 wordmark, then a centred one-line meta bar (copyright, address, email)
 interface Props {
   linkWithLineSmallLink: string;
@@ -46,6 +46,9 @@ const socials = [
 <style>
   .ft {
     --ft-pad: clamp(15px, 1.25vw, 24px);
+    /* dark ink for white surface; accent darkened for readable text, the bright accent stays on the solid pill */
+    --ft-ink: #0b0b0b;
+    --ft-accent: #5b48c9;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -53,8 +56,8 @@ const socials = [
     width: 100%;
     /* height follows the content: a full-screen min-height left a screen-tall gap above the wordmark on tall screens */
     padding: clamp(90px, 7vw, 130px) var(--ft-pad) var(--ft-pad);
-    background: #000;
-    color: #fff;
+    background: #fff;
+    color: var(--ft-ink);
     font-family: "Zalando Sans Variable", "Zalando Sans Variable Placeholder", sans-serif;
   }
   .ft a { color: inherit; text-decoration: none; }
@@ -76,7 +79,7 @@ const socials = [
     line-height: 1;
     letter-spacing: -.03em;
   }
-  .ft-accent { color: var(--color-accent, #9d8cff); }
+  .ft-accent { color: var(--ft-accent); }
 
   .ft-actions {
     display: flex;
@@ -84,13 +87,13 @@ const socials = [
     gap: 14px;
     margin-top: clamp(28px, 2.2vw, 40px);
   }
-  /* square buttons in monospace caps: the first solid accent, the second outlined; both turn white on hover */
+  /* square buttons in monospace caps: the first solid accent, the second outlined; both turn black on hover */
   .ft-pill {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     padding: 16px 24px;
-    border: 1px solid rgba(255, 255, 255, .5);
+    border: 1px solid rgba(0, 0, 0, .24);
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     font-size: 14px;
     letter-spacing: .06em;
@@ -100,19 +103,21 @@ const socials = [
   }
   /* .ft prefix: outranks `.ft a { color: inherit }` */
   .ft .ft-pill:first-child { background: var(--color-accent, #9d8cff); border-color: var(--color-accent, #9d8cff); color: #000; }
-  .ft .ft-pill:hover, .ft .ft-pill:focus-visible { background: #fff; border-color: #fff; color: #000; }
-  .ft-pill:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .ft .ft-pill:hover, .ft .ft-pill:focus-visible { background: var(--ft-ink); border-color: var(--ft-ink); color: #fff; }
+  .ft-pill:focus-visible { outline: 2px solid var(--ft-ink); outline-offset: 3px; }
   .ft-pill svg { width: 16px; height: 10px; }
 
   .ft-social {
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: calc(clamp(22px, 1.7vw, 32px) * .7);
+    font-size: calc(clamp(22px, 1.7vw, 32px) * .78);
+    font-weight: 560;
+    font-variation-settings: "wght" 560;
     line-height: 1.15;
     letter-spacing: -.01em;
   }
-  .ft-social a:hover { color: var(--color-accent, #9d8cff); }
+  .ft-social a:hover { color: var(--ft-accent); }
   /* tablet and desktop: the headline starts where the wordmark's I starts. The I sits ~0.05em in from its box and
      the wordmark is box width / 6.15em, so that is 0.05 / 6.15 of the width; the socials close the row on the right */
   @media (min-width: 810px) {
@@ -122,7 +127,7 @@ const socials = [
 
   /* wordmark: ICE 7 is ~2.33em wide at this weight, so box width / 2.36em fills the width with a hair to spare */
   .ft-mark {
-    color: var(--color-accent, #9d8cff);
+    color: var(--ft-accent);
     margin-top: clamp(0px, 4vw, 80px);
     container-type: inline-size;
     line-height: 0;
@@ -138,8 +143,8 @@ const socials = [
   }
   /* tablet and desktop add the studio name, in the same heavy weight, and the whole line is sized down to fill
      the width (ICE 7 STUDIO is ~6.09em wide) */
-  /* ICE 7 in the accent, STUDIO in white */
-  .ft-mark-tail { display: none; color: #fff; }
+  /* ICE 7 in the accent, STUDIO in ink */
+  .ft-mark-tail { display: none; color: var(--ft-ink); }
   @media (min-width: 810px) {
     .ft-mark-tail { display: inline; }
     .ft-mark > span { font-size: calc(100cqw / 6.15); }
@@ -154,7 +159,7 @@ const socials = [
   /* sits close under the wordmark: cancel most of the footer's column gap */
   .ft-mark + .ft-meta { margin-top: calc(24px - clamp(40px, 6vw, 120px)); }
   .ft-meta p { margin: 0; }
-  .ft-meta a:hover { color: var(--color-accent, #9d8cff); }
+  .ft-meta a:hover { color: var(--ft-accent); }
 
   /* phone: left-aligned column, pills stacked, socials centred over the 7 of ICE 7 (its middle sits at ~86.2% of
      the width at every phone size, since the wordmark scales with it); the meta line stays centred */
