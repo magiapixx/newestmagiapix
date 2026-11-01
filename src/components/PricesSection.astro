@@ -1,9 +1,8 @@
 ---
 // Prices - Section: three website packages as stacked cards, after the Vucko services list. Each card has a big
 // number, the bracketed package name, a one-line pitch, the price, an example case study and the feature list.
-// On tall desktop screens the cards are sticky: each one stays at the top while the next slides over it, and it
-// recedes as it gets covered (scripts/components/price-stack.ts sets --cover from 0 to 1 and slides the numbers
-// in). The faded vertical "/Prices" heading the other sections use stays pinned on the right; phones get the
+// The cards scroll normally, one after another; they no longer stick and stack, so --cover from
+// scripts/components/price-stack.ts stays 0 (the script still slides the numbers in). The faded vertical "/Prices" heading the other sections use stays pinned on the right; phones get the
 // horizontal heading on top instead. Phone < 810px, tablet 810-1199.98px, desktop >= 1200px.
 import HeadingsVertical from './HeadingsVertical.astro';
 import { cases } from '../data/cases';
@@ -75,11 +74,11 @@ const plans = [
 <section class="prices"
   ><div class="prices-heading hide-phone"
     ><div class="prices-heading-pin"
-      ><HeadingsVertical first="/Prices" variants={{ lg: "/Prices - H2", xl: "/Prices - H1", t: "/Prices - H2", p: "/Prices - H2" }} extraClass="heading-faded"></HeadingsVertical
+      ><HeadingsVertical first="/The Plans" variants={{ lg: "/Prices - H2", xl: "/Prices - H1", t: "/Prices - H2", p: "/Prices - H2" }} extraClass="heading-faded"></HeadingsVertical
     ></div
   ></div
   ><div class="m-1e9h1h2 prices-heading-phone hide-tablet hide-lg hide-xl" style="--extracted-a0htzi:var(--color-white, rgb(255, 255, 255));--m-link-text-color:rgb(0, 153, 255);--m-link-text-decoration:underline;transform:none"
-    ><h3 class="rt type-wc4xhu section-heading" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/Prices</h3
+    ><h3 class="rt type-wc4xhu section-heading" dir="auto" style="--m-text-color:var(--extracted-a0htzi, var(--color-white, rgb(255, 255, 255)))">/The Plans</h3
   ></div
   ><div class="prices-rows"
     >{plans.map((plan, i) => { const ex = caseBySlug[plan.example]; const img = ex?.props.caseStudyImage1Image; return (
@@ -130,24 +129,17 @@ const plans = [
   }
   .prices :is(h3, p, ul) { margin: 0; }
 
-  /* cards: no borders and no visible background, only air. --cover (0-1) is how far the next card has slid over
-     this one while it is stuck: it tints the card and fades its content */
+  /* cards: no borders and no visible background, only air. The grey tint and fade the old stacking used
+     (driven by --cover) are gone: the cards stay plain black while scrolling */
   .prices-card {
-    --cover: 0;
     position: relative;
     padding: 60px 0;
     background: var(--color-black, #000);
-    background: color-mix(in srgb, var(--color-gray-900, #171717) calc(min(1, var(--cover) * 4) * 100%), var(--color-black, #000));
   }
-  /* hairline on top of each card with the short purple segment the Why Us rows use */
-  .prices-card::before, .prices-card::after { content: ""; position: absolute; top: 0; left: 0; height: 1px; }
-  .prices-card::before { right: 0; background: var(--color-gray-850, #242424); }
-  .prices-card::after { width: 40px; background: var(--color-accent, rgb(157, 140, 255)); }
   .prices-card-inner {
     display: grid;
     grid-template-areas: "num" "detail";
     gap: 24px;
-    opacity: calc(1 - var(--cover) * .7);
   }
 
   /* big number, slides up out of its mask */
@@ -278,8 +270,7 @@ const plans = [
     .prices { --gutter: 20px; --pad: 160px; grid-template-columns: 1fr auto; column-gap: 40px; }
     .prices-rows { grid-column: 1; grid-row: 1; }
     .prices-heading { grid-column: 2; grid-row: 1; }
-    .prices-heading-pin { position: sticky; top: 100px; }
-    .prices-card { padding: 80px 0; }
+    .prices-heading-pin { position: sticky; top: 100px; }    .prices-card { padding: 40px 0 80px; }
     .prices-card-inner {
       grid-template-columns: 1fr 2fr;
       grid-template-rows: auto 1fr;
@@ -295,7 +286,7 @@ const plans = [
   @media (min-width: 1200px) {
     .prices { --pad: 240px; }
     /* the card reaches the left edge of the screen, so its tint does too */
-    .prices-card { margin-left: calc(-1 * var(--gutter)); padding: 100px 4vw 100px var(--gutter); }
+    .prices-card { margin-left: calc(-1 * var(--gutter)); padding: 50px 4vw 100px var(--gutter); }
     .prices-card-inner {
       grid-template-columns: 3fr 3fr 6fr;
       grid-template-rows: auto 1fr;
@@ -312,10 +303,5 @@ const plans = [
     .prices-example-img { aspect-ratio: 16 / 9; }
     /* starts on the top edge of the image */
     .prices-offer { align-self: start; }
-  }
-
-  /* tall desktop screens: the cards stick and stack, each one a full screen tall */
-  @media (min-width: 1200px) and (min-height: 700px) {
-    .prices-card { position: sticky; top: 0; min-height: calc(100vh / var(--z, 1)); }
   }
 </style>
