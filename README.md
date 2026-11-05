@@ -2,6 +2,10 @@
 
 The Magiapix agency site, built with [Astro](https://astro.build). Pages are plain Astro components, animations are small TypeScript modules and the WebGL effects use three.js. There is no Framer runtime or Framer markup left in the project.
 
+## Homepage
+
+![Magiapix homepage](public/homepage.png)
+
 ## Requirements
 
 - Node.js **22.23.4+** (Astro 7 requirement)
